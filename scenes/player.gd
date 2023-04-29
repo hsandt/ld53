@@ -1,8 +1,8 @@
-extends CharacterBody3D
+extends CharacterBody2D
 
 
-var speed = 10
-var steer_speed = 4
+@export var speed = 1000
+@export var steer_speed = 40
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -12,10 +12,12 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	#TODO placeholder looping
-	if(position.x>50):
-		position.x=-50
+	if(position.x>1000):
+		position.x=-1000
+
 	position.x+=speed*delta
+
 	if (position.y<5) and Input.is_action_pressed("down"):
-		position.z+=steer_speed*delta
+		position.y+=steer_speed*delta
 	if (position.y>-5) and Input.is_action_pressed("up"):
-		position.z-=steer_speed*delta
+		position.y-=steer_speed*delta
