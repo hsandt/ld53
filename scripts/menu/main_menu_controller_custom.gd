@@ -2,6 +2,9 @@ extends Control
 signal start_game_pressed
 
 @onready var start_game_button: Button = $%StartGameButton
+@onready var options_button: Control = $%OptionsButton
+@onready var credits_button: Control = $%CreditsButton
+@onready var quit_button: Control = $%QuitButton
 @onready var options_menu: Control = $%OptionsMenu
 @onready var credits_menu: Control = $%CreditsMenu
 @onready var content: Control = $%Content
