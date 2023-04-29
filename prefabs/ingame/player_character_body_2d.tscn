@@ -1,12 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://bft0g7ppjcvde"]
+[gd_scene load_steps=8 format=3 uid="uid://bft0g7ppjcvde"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_2t2x0"]
 [ext_resource type="Material" uid="uid://r5m0e65nite5" path="res://materials/custom_sprite_shader_material.tres" id="1_i0yki"]
+[ext_resource type="Script" path="res://scripts/buffs/Buffs.gd" id="3_4x6o7"]
 [ext_resource type="SpriteFrames" uid="uid://bdq8so2kor0sb" path="res://animations/player_character_sprite_frames.tres" id="3_fgtjg"]
-[ext_resource type="Script" path="res://scenes/flashbox.gd" id="3_isr4f"]
 [ext_resource type="Script" path="res://scripts/visual/AnimatedSprite2DBrightnessController.gd" id="4_epfoh"]
+[ext_resource type="Script" path="res://scripts/powder/powder.gd" id="6_vdi8d"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_275y0"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6va3q"]
+size = Vector2(121, 124)
 
 [node name="PlayerCharacterBody2D" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite_with_brightness_controller")]
 modulate = Color(1, 0.305882, 1, 1)
@@ -14,10 +16,14 @@ material = ExtResource("1_i0yki")
 script = ExtResource("1_2t2x0")
 animated_sprite_with_brightness_controller = NodePath("AnimatedSprite2DBrightnessController")
 
+[node name="Buffs" type="Node" parent="."]
+script = ExtResource("3_4x6o7")
+
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_275y0")
+position = Vector2(-0.5, 1)
+shape = SubResource("RectangleShape2D_6va3q")
 
 [node name="AnimatedSprite2DBrightnessController" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("brighten_timer")]
 z_index = 2
@@ -36,10 +42,7 @@ offset_bottom = -83.0
 [node name="Flash Timer" type="Timer" parent="."]
 wait_time = 0.2
 
-[node name="flashbox (OLD)" type="Polygon2D" parent="."]
-visible = false
-z_index = 5
-polygon = PackedVector2Array(-63, -61, 67, -63, 64, 69, -60, 69)
-script = ExtResource("3_isr4f")
+[node name="cargo" type="Node2D" parent="."]
 
-[connection signal="timeout" from="Flash Timer" to="flashbox (OLD)" method="timeout"]
+[node name="powder_1" type="Node2D" parent="cargo"]
+script = ExtResource("6_vdi8d")

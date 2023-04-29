@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bft0g7ppjcvde" path="res://prefabs/ingame/player_character_body_2d.tscn" id="3_82xke"]
 [ext_resource type="Shader" path="res://shaders/custom_sprite_shader.gdshader" id="4_6tp5a"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ngocr"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cg7qu"]
 resource_local_to_scene = true
 shader = ExtResource("4_6tp5a")
 shader_parameter/brightness = 0.0
@@ -30,4 +30,4 @@ texture = ExtResource("1_pefx0")
 [node name="obstacle" parent="Map" instance=ExtResource("2_ywsfa")]
 
 [node name="PlayerCharacterBody2D" parent="." instance=ExtResource("3_82xke")]
-material = SubResource("ShaderMaterial_ngocr")
+material = SubResource("ShaderMaterial_cg7qu")
