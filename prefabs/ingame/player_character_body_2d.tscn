@@ -1,22 +1,31 @@
-[gd_scene load_steps=5 format=3 uid="uid://bft0g7ppjcvde"]
+[gd_scene load_steps=7 format=3 uid="uid://bft0g7ppjcvde"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_2t2x0"]
-[ext_resource type="Texture2D" uid="uid://c3qxp140a6du3" path="res://icon.svg" id="2_c2qm0"]
+[ext_resource type="Material" uid="uid://r5m0e65nite5" path="res://materials/custom_sprite_shader_material.tres" id="1_i0yki"]
+[ext_resource type="SpriteFrames" uid="uid://bdq8so2kor0sb" path="res://animations/player_character_sprite_frames.tres" id="3_fgtjg"]
 [ext_resource type="Script" path="res://scenes/flashbox.gd" id="3_isr4f"]
+[ext_resource type="Script" path="res://scripts/visual/AnimatedSprite2DBrightnessController.gd" id="4_epfoh"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_275y0"]
 
-[node name="PlayerCharacterBody2D" type="CharacterBody2D"]
+[node name="PlayerCharacterBody2D" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite_with_brightness_controller")]
+modulate = Color(1, 0.305882, 1, 1)
+material = ExtResource("1_i0yki")
 script = ExtResource("1_2t2x0")
+animated_sprite_with_brightness_controller = NodePath("AnimatedSprite2DBrightnessController")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_275y0")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="AnimatedSprite2DBrightnessController" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("brighten_timer")]
 z_index = 2
-texture = ExtResource("2_c2qm0")
+material = ExtResource("1_i0yki")
+sprite_frames = ExtResource("3_fgtjg")
+frame_progress = 0.58425
+script = ExtResource("4_epfoh")
+brighten_timer = NodePath("../Flash Timer")
 
 [node name="powder_bar" type="ProgressBar" parent="."]
 offset_left = -340.0
@@ -24,13 +33,13 @@ offset_top = -123.0
 offset_right = 337.0
 offset_bottom = -83.0
 
-[node name="flashbox" type="Polygon2D" parent="."]
+[node name="Flash Timer" type="Timer" parent="."]
+wait_time = 0.2
+
+[node name="flashbox (OLD)" type="Polygon2D" parent="."]
 visible = false
 z_index = 5
 polygon = PackedVector2Array(-63, -61, 67, -63, 64, 69, -60, 69)
 script = ExtResource("3_isr4f")
 
-[node name="Timer" type="Timer" parent="flashbox"]
-wait_time = 0.2
-
-[connection signal="timeout" from="flashbox/Timer" to="flashbox" method="timeout"]
+[connection signal="timeout" from="Flash Timer" to="flashbox (OLD)" method="timeout"]

@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
 
+@export var animated_sprite_with_brightness_controller: AnimatedSprite2DBrightnessController
+
 #how quickly the player recovers from impacts to full speed
 @export var powder = 100
 @export var acceleration = 1000
@@ -8,9 +10,14 @@ extends CharacterBody2D
 var current_speed = top_speed
 @export var steer_speed = 500
 
+## Brightness set when hurt
+@export var hurt_brightness: float = 0.5
+
+
 func hurt(damage):
 	powder -= damage
-	$flashbox.flash()
+	# Flash for the duration set in Flash Timer
+	animated_sprite_with_brightness_controller.set_brightness_for_duration(hurt_brightness)
 	current_speed*=0.5
 
 func _process(delta):
