@@ -1,9 +1,78 @@
-[gd_scene format=3 uid="uid://cqo0m47fbgtp"]
+[gd_scene load_steps=10 format=3 uid="uid://cqo0m47fbgtp"]
 
-[node name="first_scene" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[ext_resource type="Script" path="res://scenes/player.gd" id="1_ax7e3"]
+[ext_resource type="Texture2D" uid="uid://c3qxp140a6du3" path="res://icon.svg" id="1_t8r3p"]
+
+[sub_resource type="Gradient" id="Gradient_yuakg"]
+colors = PackedColorArray(0.683294, 0.683294, 0.683294, 1, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_wbmyj"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_bdjmp"]
+color_ramp = SubResource("Gradient_yuakg")
+noise = SubResource("FastNoiseLite_wbmyj")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qjb2q"]
+albedo_color = Color(0.513726, 0.207843, 0, 1)
+albedo_texture = SubResource("NoiseTexture2D_bdjmp")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y6wam"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_yw5y4"]
+
+[sub_resource type="Environment" id="Environment_ynkj2"]
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="map" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.593126, 0)
+
+[node name="floor" type="CSGBox3D" parent="map"]
+size = Vector3(100, 0.1, 10)
+material = SubResource("StandardMaterial3D_qjb2q")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.431452)
+size = Vector3(2, 2, 2)
+material = SubResource("StandardMaterial3D_y6wam")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.23767, 0, 2.72255)
+size = Vector3(2, 2, 2)
+material = SubResource("StandardMaterial3D_y6wam")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5872, 0, -3.32102)
+size = Vector3(2, 2, 2)
+material = SubResource("StandardMaterial3D_y6wam")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.8285, 0, 2.23005)
+size = Vector3(2, 2, 2)
+material = SubResource("StandardMaterial3D_y6wam")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5674, 0, -3.57284)
+size = Vector3(2, 2, 2)
+material = SubResource("StandardMaterial3D_y6wam")
+
+[node name="player" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.6367, 0, 0)
+script = ExtResource("1_ax7e3")
+
+[node name="Camera3D" type="Camera3D" parent="player"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 8.03321, 10.4476)
+fov = 37.8493
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="player"]
+shape = SubResource("SphereShape3D_yw5y4")
+
+[node name="Sprite3D" type="Sprite3D" parent="player"]
+billboard = 1
+texture = ExtResource("1_t8r3p")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ynkj2")
