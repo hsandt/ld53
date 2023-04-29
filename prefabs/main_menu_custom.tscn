@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bicer5hvlabr8"]
+[gd_scene load_steps=4 format=3 uid="uid://bicer5hvlabr8"]
 
-[ext_resource type="Script" path="res://addons/EasyMenus/Scripts/main_menu_controller.gd" id="1_eaawj"]
+[ext_resource type="Script" path="res://scripts/menu/main_menu_controller_custom.gd" id="1_i2sts"]
 [ext_resource type="PackedScene" uid="uid://bin6b2ypkka84" path="res://prefabs/options_menu_custom.tscn" id="2_87k8p"]
+[ext_resource type="PackedScene" uid="uid://djvedm1ibu5wi" path="res://prefabs/credits_menu.tscn" id="3_wydvs"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -10,7 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_eaawj")
+script = ExtResource("1_i2sts")
 
 [node name="Content" type="VBoxContainer" parent="."]
 unique_name_in_owner = true
@@ -59,6 +60,17 @@ focus_previous = NodePath("../StartGameButton")
 theme_override_font_sizes/font_size = 30
 text = "Options"
 
+[node name="CreditsButton" type="Button" parent="Content"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+focus_neighbor_top = NodePath("../StartGameButton")
+focus_neighbor_bottom = NodePath("../QuitButton")
+focus_next = NodePath("../QuitButton")
+focus_previous = NodePath("../StartGameButton")
+theme_override_font_sizes/font_size = 30
+text = "Credits"
+
 [node name="QuitButton" type="Button" parent="Content"]
 custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
@@ -75,7 +87,14 @@ unique_name_in_owner = true
 visible = false
 layout_mode = 1
 
+[node name="CreditsMenu" parent="." instance=ExtResource("3_wydvs")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
 [connection signal="pressed" from="Content/StartGameButton" to="." method="_on_start_game_button_pressed"]
 [connection signal="pressed" from="Content/OptionsButton" to="." method="open_options"]
+[connection signal="pressed" from="Content/CreditsButton" to="." method="open_credits"]
 [connection signal="pressed" from="Content/QuitButton" to="." method="quit"]
 [connection signal="close" from="OptionsMenu" to="." method="close_options"]
+[connection signal="close" from="CreditsMenu" to="." method="close_credits"]
