@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cqo0m47fbgtp"]
+[gd_scene load_steps=7 format=3 uid="uid://cqo0m47fbgtp"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_ax7e3"]
 [ext_resource type="Texture2D" uid="uid://d0vvv3dcec8mu" path="res://sprites/white_square_1x1.png" id="1_pefx0"]
 [ext_resource type="Texture2D" uid="uid://c3qxp140a6du3" path="res://icon.svg" id="1_t8r3p"]
+[ext_resource type="PackedScene" uid="uid://frkwtmcc68xw" path="res://scenes/obstacle.tscn" id="2_ywsfa"]
+[ext_resource type="Script" path="res://scenes/flashbox.gd" id="5_7h0o6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_275y0"]
 
@@ -22,26 +24,7 @@ modulate = Color(0.392157, 0.258824, 0.145098, 1)
 scale = Vector2(1900, 100)
 texture = ExtResource("1_pefx0")
 
-[node name="Obstacle" type="Sprite2D" parent="Map"]
-modulate = Color(0.654902, 0.113725, 0.0705882, 1)
-z_index = 1
-position = Vector2(597, -262)
-scale = Vector2(200, 200)
-texture = ExtResource("1_pefx0")
-
-[node name="Obstacle2" type="Sprite2D" parent="Map"]
-modulate = Color(0.654902, 0.113725, 0.0705882, 1)
-z_index = 1
-position = Vector2(825, 347)
-scale = Vector2(200, 200)
-texture = ExtResource("1_pefx0")
-
-[node name="Obstacle3" type="Sprite2D" parent="Map"]
-modulate = Color(0.654902, 0.113725, 0.0705882, 1)
-z_index = 1
-position = Vector2(1182, -10)
-scale = Vector2(200, 200)
-texture = ExtResource("1_pefx0")
+[node name="obstacle" parent="Map" instance=ExtResource("2_ywsfa")]
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 script = ExtResource("1_ax7e3")
@@ -54,3 +37,20 @@ shape = SubResource("CircleShape2D_275y0")
 [node name="Sprite2D" type="Sprite2D" parent="CharacterBody2D"]
 z_index = 2
 texture = ExtResource("1_t8r3p")
+
+[node name="powder_bar" type="ProgressBar" parent="CharacterBody2D"]
+offset_left = -340.0
+offset_top = -123.0
+offset_right = 337.0
+offset_bottom = -83.0
+
+[node name="flashbox" type="Polygon2D" parent="CharacterBody2D"]
+visible = false
+z_index = 5
+polygon = PackedVector2Array(-63, -61, 67, -63, 64, 69, -60, 69)
+script = ExtResource("5_7h0o6")
+
+[node name="Timer" type="Timer" parent="CharacterBody2D/flashbox"]
+wait_time = 0.2
+
+[connection signal="timeout" from="CharacterBody2D/flashbox/Timer" to="CharacterBody2D/flashbox" method="timeout"]
