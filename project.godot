@@ -25,6 +25,10 @@ MenuTemplateManager="*res://addons/EasyMenus/Nodes/menu_template_manager.tscn"
 SceneManager="*res://singletons/SceneManager.tscn"
 TransitionScreen="*res://singletons/TransitionScreen.tscn"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
