@@ -25,7 +25,6 @@ func hurt(damage):
 	$cargo.hurt(damage)
 
 func _process(delta):
-
 	$powder_bar.value=powder
 
 	if(current_speed < top_speed):

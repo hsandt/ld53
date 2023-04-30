@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://da42qeyca3od4"]
+
+[ext_resource type="Texture2D" uid="uid://d0vvv3dcec8mu" path="res://sprites/white_square_1x1.png" id="1_yx2i6"]
+[ext_resource type="PackedScene" uid="uid://bft0g7ppjcvde" path="res://prefabs/ingame/player_character_body_2d.tscn" id="3_0boj0"]
+[ext_resource type="Shader" path="res://shaders/custom_sprite_shader.gdshader" id="4_grac3"]
+[ext_resource type="Script" path="res://addons/EasyMenus/Scripts/pause_menu_controller.gd" id="5_jg3jj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pmq00"]
+resource_local_to_scene = true
+shader = ExtResource("4_grac3")
+shader_parameter/brightness = 0.0
+shader_parameter/modulate = Color(1, 1, 1, 1)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+modulate = Color(0.054902, 0.309804, 0.14902, 1)
+z_index = -1
+scale = Vector2(1920, 1080)
+texture = ExtResource("1_yx2i6")
+
+[node name="Map" type="Node2D" parent="."]
+position = Vector2(0, -1)
+
+[node name="PlayerCharacterBody2D" parent="." instance=ExtResource("3_0boj0")]
+material = SubResource("ShaderMaterial_pmq00")
+
+[node name="Node" type="Node" parent="PlayerCharacterBody2D"]
+script = ExtResource("5_jg3jj")

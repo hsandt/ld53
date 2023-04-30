@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://dtytmp4b8i0yi"]
+
+[ext_resource type="PackedScene" uid="uid://bigtdfruv4w60" path="res://prefabs/pause_menu_custom.tscn" id="1_axjj4"]
+[ext_resource type="PackedScene" uid="uid://ddxu5buxr3lp5" path="res://scenes/first_scene.tscn" id="2_p021c"]
+[ext_resource type="Shader" path="res://shaders/custom_sprite_shader.gdshader" id="5_vk7gt"]
+[ext_resource type="Script" path="res://scripts/menu/player_ui.gd" id="6_cwbd1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_owjhf"]
+resource_local_to_scene = true
+shader = ExtResource("5_vk7gt")
+shader_parameter/brightness = 0.0
+shader_parameter/modulate = Color(1, 1, 1, 1)
+
+[node name="test_ui2" type="Node2D"]
+
+[node name="PauseMenu" parent="." instance=ExtResource("1_axjj4")]
+
+[node name="Node2D" parent="." instance=ExtResource("2_p021c")]
+
+[node name="PlayerCharacterBody2D" parent="Node2D" index="3"]
+material = SubResource("ShaderMaterial_owjhf")
+
+[node name="Node" type="Node" parent="Node2D/PlayerCharacterBody2D" index="7"]
+script = ExtResource("6_cwbd1")
+
+[editable path="Node2D"]
