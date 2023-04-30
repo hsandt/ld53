@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://5t3b6kept6sa"]
+[gd_scene load_steps=4 format=3 uid="uid://c1w34qdaw0bhv"]
 
-[ext_resource type="Script" path="res://scripts/MainMenuManager.gd" id="1_1qlj3"]
+[ext_resource type="Script" path="res://scripts/menu/MainMenuManager.gd" id="1_d85wn"]
 [ext_resource type="PackedScene" uid="uid://ddxu5buxr3lp5" path="res://scenes/first_scene.tscn" id="2_wnfuy"]
 [ext_resource type="PackedScene" uid="uid://bicer5hvlabr8" path="res://prefabs/main_menu_custom.tscn" id="3_520ah"]
 
@@ -12,9 +12,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MainMenuManager" type="Node" parent="."]
-script = ExtResource("1_1qlj3")
+[node name="MainMenuManager" type="Node" parent="." node_paths=PackedStringArray("main_menu")]
+script = ExtResource("1_d85wn")
 first_scene = ExtResource("2_wnfuy")
+main_menu = NodePath("../MainMenu")
 initial_fade_in_speed = 2.0
 start_game_fade_out_speed = 2.0
 start_game_fade_in_speed = 2.0
