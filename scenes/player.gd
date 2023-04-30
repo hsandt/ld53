@@ -37,9 +37,9 @@ func _physics_process(delta):
 
 	var velocity_y = 0
 	if Input.is_action_pressed("down"):
-		velocity_y += $Buffs.get_sttribute("steer_speed",steer_speed)
+		velocity_y += $Buffs.get_attribute("steer_speed",steer_speed)
 	if Input.is_action_pressed("up"):
-		velocity_y -= $Buffs.get_sttribute("steer_speed",steer_speed)
+		velocity_y -= $Buffs.get_attribute("steer_speed",steer_speed)
 
 	velocity = Vector2(velocity_x, velocity_y)
 	move_and_slide()
