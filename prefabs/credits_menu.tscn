@@ -1,0 +1,53 @@
+[gd_scene load_steps=4 format=3 uid="uid://djvedm1ibu5wi"]
+
+[ext_resource type="Script" path="res://scripts/menu/credits_menu_controller.gd" id="1_jv2fy"]
+[ext_resource type="Script" path="res://addons/EasyMenus/Scripts/follow_focus_center.gd" id="2_euu87"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eu4mh"]
+
+[node name="CreditsMenu" type="Control" node_paths=PackedStringArray("credits_label")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jv2fy")
+credits_file_path = "res://data/credits.txt"
+credits_label = NodePath("MarginContainer/ScrollContainer/Credits RichTextLabel")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer"]
+layout_mode = 2
+script = ExtResource("2_euu87")
+transition_time = 0.15
+
+[node name="Credits RichTextLabel" type="RichTextLabel" parent="MarginContainer/ScrollContainer"]
+custom_minimum_size = Vector2(1102, 598)
+layout_mode = 2
+bbcode_enabled = true
+text = "[center]Dynamically loaded from res://data/credits.txt[/center]"
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+theme_override_styles/separator = SubResource("StyleBoxEmpty_eu4mh")
+
+[node name="BackButton" type="Button" parent="MarginContainer"]
+custom_minimum_size = Vector2(350, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 25
+text = "Back"
+
+[connection signal="pressed" from="MarginContainer/BackButton" to="." method="go_back"]

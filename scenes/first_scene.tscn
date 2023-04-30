@@ -1,78 +1,123 @@
-[gd_scene load_steps=10 format=3 uid="uid://cqo0m47fbgtp"]
+[gd_scene load_steps=6 format=3 uid="uid://ddxu5buxr3lp5"]
 
-[ext_resource type="Script" path="res://scenes/player.gd" id="1_ax7e3"]
-[ext_resource type="Texture2D" uid="uid://c3qxp140a6du3" path="res://icon.svg" id="1_t8r3p"]
+[ext_resource type="Texture2D" uid="uid://d0vvv3dcec8mu" path="res://sprites/white_square_1x1.png" id="1_pefx0"]
+[ext_resource type="PackedScene" uid="uid://cvgbpr47myc5j" path="res://prefabs/ingame/player_character_body_2d.tscn" id="3_82xke"]
+[ext_resource type="PackedScene" uid="uid://clbkj8klm4my3" path="res://prefabs/ingame/obstacle_big.tscn" id="3_ykc5j"]
+[ext_resource type="PackedScene" uid="uid://ybj4svsavf4f" path="res://prefabs/ingame/obstacle_medium.tscn" id="4_h1iuh"]
+[ext_resource type="PackedScene" uid="uid://b4r6q2xh20e8w" path="res://prefabs/ingame/obstacle_small.tscn" id="5_uibm3"]
 
-[sub_resource type="Gradient" id="Gradient_yuakg"]
-colors = PackedColorArray(0.683294, 0.683294, 0.683294, 1, 1, 1, 1, 1)
+[node name="Node2D" type="Node2D"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_wbmyj"]
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+layer = -1
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_bdjmp"]
-color_ramp = SubResource("Gradient_yuakg")
-noise = SubResource("FastNoiseLite_wbmyj")
+[node name="ParallaxLayer Floor" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1920, 0)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qjb2q"]
-albedo_color = Color(0.513726, 0.207843, 0, 1)
-albedo_texture = SubResource("NoiseTexture2D_bdjmp")
+[node name="Node2D" type="Node2D" parent="ParallaxBackground/ParallaxLayer Floor"]
+position = Vector2(960, 0)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y6wam"]
-albedo_color = Color(1, 0, 0, 1)
+[node name="Floor Full" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Node2D"]
+modulate = Color(0.054902, 0.309804, 0.14902, 1)
+z_index = -1
+scale = Vector2(1920, 1080)
+texture = ExtResource("1_pefx0")
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_yw5y4"]
+[node name="Floor Playable Area" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Node2D"]
+modulate = Color(0.392157, 0.258824, 0.145098, 1)
+scale = Vector2(1920, 700)
+texture = ExtResource("1_pefx0")
+metadata/_edit_lock_ = true
 
-[sub_resource type="Environment" id="Environment_ynkj2"]
-ambient_light_source = 2
-ambient_light_color = Color(1, 1, 1, 1)
+[node name="ParallaxLayer Background" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.8, 1)
+motion_mirroring = Vector2(1920, 0)
 
-[node name="Node3D" type="Node3D"]
+[node name="Node2D2" type="Node2D" parent="ParallaxBackground/ParallaxLayer Background"]
+position = Vector2(960, 0)
 
-[node name="map" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.593126, 0)
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Background/Node2D2"]
+position = Vector2(-783, -532)
+scale = Vector2(100, 100)
+texture = ExtResource("1_pefx0")
 
-[node name="floor" type="CSGBox3D" parent="map"]
-size = Vector3(100, 0.1, 10)
-material = SubResource("StandardMaterial3D_qjb2q")
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Background/Node2D2"]
+position = Vector2(-374, -544)
+scale = Vector2(100, 100)
+texture = ExtResource("1_pefx0")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="map"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.431452)
-size = Vector3(2, 2, 2)
-material = SubResource("StandardMaterial3D_y6wam")
+[node name="Sprite2D3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Background/Node2D2"]
+position = Vector2(46, -547)
+scale = Vector2(100, 100)
+texture = ExtResource("1_pefx0")
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="map"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.23767, 0, 2.72255)
-size = Vector3(2, 2, 2)
-material = SubResource("StandardMaterial3D_y6wam")
+[node name="Sprite2D4" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Background/Node2D2"]
+position = Vector2(360, -533)
+scale = Vector2(100, 100)
+texture = ExtResource("1_pefx0")
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="map"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.5872, 0, -3.32102)
-size = Vector3(2, 2, 2)
-material = SubResource("StandardMaterial3D_y6wam")
+[node name="Sprite2D5" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Background/Node2D2"]
+position = Vector2(797, -542)
+scale = Vector2(100, 100)
+texture = ExtResource("1_pefx0")
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="map"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.8285, 0, 2.23005)
-size = Vector3(2, 2, 2)
-material = SubResource("StandardMaterial3D_y6wam")
+[node name="ParallaxForeground" type="ParallaxBackground" parent="."]
+layer = 1
 
-[node name="CSGBox3D5" type="CSGBox3D" parent="map"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.5674, 0, -3.57284)
-size = Vector3(2, 2, 2)
-material = SubResource("StandardMaterial3D_y6wam")
+[node name="ParallaxLayer Foreground" type="ParallaxLayer" parent="ParallaxForeground"]
+motion_scale = Vector2(1.2, 1)
+motion_mirroring = Vector2(1920, 0)
 
-[node name="player" type="CharacterBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.6367, 0, 0)
-script = ExtResource("1_ax7e3")
+[node name="Node2D" type="Node2D" parent="ParallaxForeground/ParallaxLayer Foreground"]
+position = Vector2(960, 0)
 
-[node name="Camera3D" type="Camera3D" parent="player"]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 8.03321, 10.4476)
-fov = 37.8493
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxForeground/ParallaxLayer Foreground/Node2D"]
+modulate = Color(0.717647, 0.678431, 0.286275, 1)
+z_index = 17
+position = Vector2(-723, 535)
+scale = Vector2(100, 100)
+texture = ExtResource("1_pefx0")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="player"]
-shape = SubResource("SphereShape3D_yw5y4")
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxForeground/ParallaxLayer Foreground/Node2D"]
+modulate = Color(0.717647, 0.678431, 0.286275, 1)
+z_index = 17
+position = Vector2(-28, 523)
+scale = Vector2(100, 100)
+texture = ExtResource("1_pefx0")
 
-[node name="Sprite3D" type="Sprite3D" parent="player"]
-billboard = 1
-texture = ExtResource("1_t8r3p")
+[node name="Sprite2D3" type="Sprite2D" parent="ParallaxForeground/ParallaxLayer Foreground/Node2D"]
+modulate = Color(0.717647, 0.678431, 0.286275, 1)
+z_index = 17
+position = Vector2(603, 538)
+scale = Vector2(100, 100)
+texture = ExtResource("1_pefx0")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_ynkj2")
+[node name="Map" type="Node2D" parent="."]
+position = Vector2(0, -1)
+metadata/_edit_lock_ = true
+
+[node name="Obstacles" type="Node2D" parent="Map"]
+process_mode = 4
+visible = false
+
+[node name="obstacle_big" parent="Map/Obstacles" instance=ExtResource("3_ykc5j")]
+position = Vector2(520, 158)
+metadata/_edit_lock_ = true
+
+[node name="obstacle_medium" parent="Map/Obstacles" instance=ExtResource("4_h1iuh")]
+position = Vector2(574, -145)
+metadata/_edit_lock_ = true
+
+[node name="obstacle_small" parent="Map/Obstacles" instance=ExtResource("5_uibm3")]
+position = Vector2(529, -319)
+metadata/_edit_lock_ = true
+
+[node name="obstacle_small2" parent="Map/Obstacles" instance=ExtResource("5_uibm3")]
+position = Vector2(639, 356)
+metadata/_edit_lock_ = true
+
+[node name="PlayerCharacterBody2D" parent="." instance=ExtResource("3_82xke")]
+z_index = 10
+top_speed = 100
+half_extent_y = 290
+metadata/_edit_lock_ = true

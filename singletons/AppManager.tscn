@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b37ttm1m7i0xd"]
+
+[ext_resource type="Script" path="res://scripts/singleton/AppManager.gd" id="1_dpv1y"]
+
+[node name="AppManager" type="Node"]
+script = ExtResource("1_dpv1y")

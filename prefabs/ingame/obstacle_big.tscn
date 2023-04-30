@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://clbkj8klm4my3"]
+
+[ext_resource type="PackedScene" uid="uid://frkwtmcc68xw" path="res://prefabs/ingame/obstacle.tscn" id="1_mx18n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wsgx6"]
+resource_local_to_scene = true
+size = Vector2(80, 400)
+
+[node name="obstacle_big" instance=ExtResource("1_mx18n")]
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource("RectangleShape2D_wsgx6")
+
+[node name="Obstacle" parent="." index="1"]
+scale = Vector2(80, 400)
