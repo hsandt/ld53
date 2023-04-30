@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bft0g7ppjcvde" path="res://prefabs/ingame/player_character_body_2d.tscn" id="3_82xke"]
 [ext_resource type="Shader" path="res://shaders/custom_sprite_shader.gdshader" id="4_6tp5a"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jehe6"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_eeck6"]
 resource_local_to_scene = true
 shader = ExtResource("4_6tp5a")
 shader_parameter/brightness = 0.0
@@ -24,10 +24,10 @@ position = Vector2(0, -1)
 
 [node name="Floor Sprite2D" type="Sprite2D" parent="Map"]
 modulate = Color(0.392157, 0.258824, 0.145098, 1)
-scale = Vector2(1900, 100)
+scale = Vector2(1900, 874)
 texture = ExtResource("1_pefx0")
 
 [node name="obstacle" parent="Map" instance=ExtResource("2_ywsfa")]
 
 [node name="PlayerCharacterBody2D" parent="." instance=ExtResource("3_82xke")]
-material = SubResource("ShaderMaterial_jehe6")
+material = SubResource("ShaderMaterial_eeck6")
