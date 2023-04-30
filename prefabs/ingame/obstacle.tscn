@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://d0vvv3dcec8mu" path="res://sprites/white_square_1x1.png" id="2_73r3e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_48yfy"]
+resource_local_to_scene = true
 size = Vector2(200, 200)
 
 [node name="obstacle" type="Area2D"]

@@ -1,11 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://cqo0m47fbgtp"]
+[gd_scene load_steps=8 format=3 uid="uid://ddxu5buxr3lp5"]
 
 [ext_resource type="Texture2D" uid="uid://d0vvv3dcec8mu" path="res://sprites/white_square_1x1.png" id="1_pefx0"]
-[ext_resource type="PackedScene" uid="uid://frkwtmcc68xw" path="res://scenes/obstacle.tscn" id="2_ywsfa"]
 [ext_resource type="PackedScene" uid="uid://bft0g7ppjcvde" path="res://prefabs/ingame/player_character_body_2d.tscn" id="3_82xke"]
+[ext_resource type="PackedScene" uid="uid://clbkj8klm4my3" path="res://prefabs/ingame/obstacle_big.tscn" id="3_ykc5j"]
 [ext_resource type="Shader" path="res://shaders/custom_sprite_shader.gdshader" id="4_6tp5a"]
+[ext_resource type="PackedScene" uid="uid://ybj4svsavf4f" path="res://prefabs/ingame/obstacle_medium.tscn" id="4_h1iuh"]
+[ext_resource type="PackedScene" uid="uid://b4r6q2xh20e8w" path="res://prefabs/ingame/obstacle_small.tscn" id="5_uibm3"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_eeck6"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_31cs7"]
 resource_local_to_scene = true
 shader = ExtResource("4_6tp5a")
 shader_parameter/brightness = 0.0
@@ -27,7 +29,17 @@ modulate = Color(0.392157, 0.258824, 0.145098, 1)
 scale = Vector2(1900, 874)
 texture = ExtResource("1_pefx0")
 
-[node name="obstacle" parent="Map" instance=ExtResource("2_ywsfa")]
+[node name="obstacle_big" parent="Map" instance=ExtResource("3_ykc5j")]
+position = Vector2(510, 142)
+
+[node name="obstacle_medium" parent="Map" instance=ExtResource("4_h1iuh")]
+position = Vector2(641, -172)
+
+[node name="obstacle_small" parent="Map" instance=ExtResource("5_uibm3")]
+position = Vector2(527, -360)
+
+[node name="obstacle_small2" parent="Map" instance=ExtResource("5_uibm3")]
+position = Vector2(639, 356)
 
 [node name="PlayerCharacterBody2D" parent="." instance=ExtResource("3_82xke")]
-material = SubResource("ShaderMaterial_eeck6")
+material = SubResource("ShaderMaterial_31cs7")
