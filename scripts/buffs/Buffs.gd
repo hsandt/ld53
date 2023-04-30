@@ -9,18 +9,25 @@ class Buff:
 	var duration: float #in seconds
 	var chain: Array #index of other buffs this object deals with.
 
+#currently active
 var buff_stack = []
+
+#the list to get buffs from
+var buff_buffer = []
+#(buff buff buff buffer buff)
 
 func _ready ():
 	var speedup = Buff.new()
 	speedup.attribute="speed"
 	speedup.effect="multiplier"
-	speedup.value=1.5
+	speedup.value=2
 	speedup.probability=0.5 #50% chance of occuring
 	speedup.duration=5.0 #5 seconds long
 
-	buff_stack.append(speedup)
 	#TODO read in the buff list from the spreadsheet (csv file most likely)  at this point
+
+	buff_buffer.append(speedup)
+	buff_stack.append(speedup)
 
 func get_attribute(name,baseline):
 	for buff in buff_stack:
@@ -41,8 +48,13 @@ func add_if_roll(buff):
 		return true
 	return false
 
+func add_from_index(index):
+	add_if_roll(buff_buffer[index])
+
 func _process(delta):
 	for i in len(buff_stack):
+		if i>len(buff_stack): #FIXME wtf godot
+			continue
 		buff_stack[i].duration-=delta
 		if buff_stack[i].duration<0:
 			#TODO handle detonation effects here

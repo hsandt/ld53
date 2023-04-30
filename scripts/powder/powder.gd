@@ -5,9 +5,10 @@ extends Node2D
 
 @export var quality = 1
 
-# Perhaps as it gets damaged, more falls out so effect less likely?
+@export var buff_index = 0
+
+# Perhaps as it gets damaged, more powder falls out so effect less likely?
 var quantity = 100
 
-func buff(multiplier):
-	pass
-	#add_buff(["speed","multiplier",0.5,0.5,5])
+#TODO drag and drop part of interface for each of the powder kegs
+
