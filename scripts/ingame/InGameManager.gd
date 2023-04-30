@@ -1,31 +1,22 @@
 extends Node
 
 
-# BUG: circular dependency makes it always null, even when assigned
-## Scene loaded when starting the game
-#@export var first_scene: PackedScene
-# workaround
-@export_file("*.tscn") var first_scene_path: String
-var first_scene: PackedScene
+@export var pause_menu: PauseMenu
 
 
 func _ready():
-	first_scene = load(first_scene_path)
-	assert(first_scene_path != null or first_scene_path.is_empty(),
-		"[InGameManager] first_scene_path is not set on %s" % get_path())
-	assert(first_scene != null,
-		"[InGameManager] first_scene is not set on %s" % get_path())
+	assert(pause_menu != null,
+		"[InGameManager] pause_menu is not set on %s" % get_path())
+	pause_menu.visible = false
 
 
-# BUG: doesn't work, even with just _input
-func _unhandled_input(event: InputEvent):
+func _unhandled_input(event):
+	if (event.is_action_pressed(&"ui_cancel") or event.is_action_pressed(&"pause")):
+		if not pause_menu.visible:
+			pause_menu.accept_event()
+			pause_menu.open_pause_menu()
+		# no need to close else, as pause_menu_controller_custom.gd is handling
+		# this on their side
+
 	if event.is_action_pressed(&"restart"):
-		SceneManager.change_scene(first_scene)
-
-
-# WORKAROUND
-func _process(delta):
-	if Input.is_action_just_pressed(&"restart"):
-		# and while we're at it, let's cut the dep by reloading current scene
-		# this could be moved to AppManager
 		get_tree().reload_current_scene()

@@ -4,4 +4,3 @@
 
 [node name="InGameManager" type="Node"]
 script = ExtResource("1_0xi0f")
-first_scene_path = "res://scenes/first_scene.tscn"
