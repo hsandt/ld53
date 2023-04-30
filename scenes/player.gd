@@ -10,6 +10,9 @@ extends CharacterBody2D
 var current_speed = top_speed
 @export var steer_speed = 500
 
+## Max motion
+@export var half_extent_y = 500
+
 ## Brightness set when hurt
 @export var hurt_brightness: float = 0.5
 
@@ -34,7 +37,7 @@ func _process(delta):
 
 	position.x+=$Buffs.get_attribute("speed",current_speed)*delta
 
-	if (position.y<500) and Input.is_action_pressed("down"):
+	if (position.y<half_extent_y) and Input.is_action_pressed("down"):
 		position.y+=steer_speed*delta
-	if (position.y>-500) and Input.is_action_pressed("up"):
+	if (position.y>-half_extent_y) and Input.is_action_pressed("up"):
 		position.y-=steer_speed*delta

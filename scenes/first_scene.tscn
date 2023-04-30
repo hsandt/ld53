@@ -119,4 +119,5 @@ metadata/_edit_lock_ = true
 [node name="PlayerCharacterBody2D" parent="." instance=ExtResource("3_82xke")]
 z_index = 10
 top_speed = 100
+half_extent_y = 290
 metadata/_edit_lock_ = true
