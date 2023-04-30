@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://ddxu5buxr3lp5"]
+[gd_scene load_steps=10 format=3 uid="uid://ddxu5buxr3lp5"]
 
+[ext_resource type="PackedScene" uid="uid://bkxvhy0xyc6my" path="res://prefabs/ingame/in_game_manager.tscn" id="1_i0ea3"]
 [ext_resource type="Texture2D" uid="uid://d0vvv3dcec8mu" path="res://sprites/white_square_1x1.png" id="1_pefx0"]
 [ext_resource type="PackedScene" uid="uid://cvgbpr47myc5j" path="res://prefabs/ingame/player_character_body_2d.tscn" id="3_82xke"]
 [ext_resource type="PackedScene" uid="uid://clbkj8klm4my3" path="res://prefabs/ingame/obstacle_big.tscn" id="3_ykc5j"]
@@ -14,6 +15,8 @@ size = Vector2(1920, 100)
 size = Vector2(100, 1080)
 
 [node name="Node2D" type="Node2D"]
+
+[node name="InGameManager" parent="." instance=ExtResource("1_i0ea3")]
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 layer = -1
