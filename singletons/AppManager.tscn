@@ -3,4 +3,5 @@
 [ext_resource type="Script" path="res://scripts/singleton/AppManager.gd" id="1_dpv1y"]
 
 [node name="AppManager" type="Node"]
+process_mode = 3
 script = ExtResource("1_dpv1y")

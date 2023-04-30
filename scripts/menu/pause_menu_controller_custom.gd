@@ -38,7 +38,8 @@ func _on_quit_button_pressed():
 
 
 func _on_back_to_menu_button_pressed():
-	close_pause_menu()
+#	close_pause_menu()
+	hide()
 	emit_signal("back_to_main_pressed")
 
 func _unhandled_input(event):

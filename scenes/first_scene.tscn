@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://ddxu5buxr3lp5"]
+[gd_scene load_steps=12 format=3 uid="uid://ddxu5buxr3lp5"]
 
 [ext_resource type="PackedScene" uid="uid://bkxvhy0xyc6my" path="res://prefabs/ingame/in_game_manager.tscn" id="1_i0ea3"]
 [ext_resource type="Texture2D" uid="uid://d0vvv3dcec8mu" path="res://sprites/white_square_1x1.png" id="1_pefx0"]
 [ext_resource type="PackedScene" uid="uid://bigtdfruv4w60" path="res://prefabs/pause_menu_custom.tscn" id="2_afo14"]
+[ext_resource type="PackedScene" uid="uid://bicer5hvlabr8" path="res://prefabs/main_menu_custom.tscn" id="2_c5wuj"]
 [ext_resource type="PackedScene" uid="uid://cvgbpr47myc5j" path="res://prefabs/ingame/player_character_body_2d.tscn" id="3_82xke"]
 [ext_resource type="PackedScene" uid="uid://clbkj8klm4my3" path="res://prefabs/ingame/obstacle_big.tscn" id="3_ykc5j"]
 [ext_resource type="PackedScene" uid="uid://ybj4svsavf4f" path="res://prefabs/ingame/obstacle_medium.tscn" id="4_h1iuh"]
@@ -18,6 +19,7 @@ size = Vector2(100, 1080)
 [node name="Node2D" type="Node2D"]
 
 [node name="InGameManager" parent="." node_paths=PackedStringArray("pause_menu") instance=ExtResource("1_i0ea3")]
+main_menu_scene = ExtResource("2_c5wuj")
 pause_menu = NodePath("../CanvasLayer/PauseMenu")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -170,3 +172,5 @@ shape = SubResource("RectangleShape2D_u0xki")
 modulate = Color(1, 1, 1, 0.188235)
 scale = Vector2(1920, 1080)
 texture = ExtResource("1_pefx0")
+
+[connection signal="back_to_main_pressed" from="CanvasLayer/PauseMenu" to="InGameManager" method="_on_pause_menu_back_to_main_pressed"]
