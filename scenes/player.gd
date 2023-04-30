@@ -16,6 +16,8 @@ var current_speed = top_speed
 ## Brightness set when hurt
 @export var hurt_brightness: float = 0.5
 
+@onready var buffs: Buffs = $Buffs
+
 
 func hurt(damage):
 	powder -= damage
@@ -24,20 +26,28 @@ func hurt(damage):
 	current_speed*=0.5
 	$cargo.hurt(damage)
 
-func _process(delta):
+func _physics_process(delta):
+	# proto UI
+	$powder_bar.value = powder
 
-	$powder_bar.value=powder
+	if current_speed < top_speed:
+		current_speed += delta * acceleration
 
-	if(current_speed < top_speed):
-		current_speed+=delta*acceleration
+	var velocity_x = buffs.get_attribute("speed", current_speed)
 
-	#TODO placeholder looping
-	if(position.x>1500):
-		position.x=-1500
+	var velocity_y = 0
+	if Input.is_action_pressed("down"):
+		velocity_y += $Buffs.get_sttribute("steer_speed",steer_speed)
+	if Input.is_action_pressed("up"):
+		velocity_y -= $Buffs.get_sttribute("steer_speed",steer_speed)
 
-	position.x+=$Buffs.get_attribute("speed",current_speed)*delta
+	velocity = Vector2(velocity_x, velocity_y)
+	move_and_slide()
 
-	if (position.y<half_extent_y) and Input.is_action_pressed("down"):
-		position.y+=$Buffs.get_sttribute("steer_speed",steer_speed)*delta
-	if (position.y>-half_extent_y) and Input.is_action_pressed("up"):
-		position.y-=$Buffs.get_sttribute("steer_speed",steer_speed)*delta
+	# top limit
+	if position.y < -half_extent_y:
+		position.y  = -half_extent_y
+
+	# bottom limit
+	if position.y > half_extent_y:
+		position.y = half_extent_y

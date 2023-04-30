@@ -65,6 +65,11 @@ app_exit={
 "events": []
 }
 
+[layer_names]
+
+2d_physics/layer_1="PlayerCharacter"
+2d_physics/layer_9="Obstacle"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

@@ -1,3 +1,4 @@
+class_name Buffs
 extends Node
 
 #currently active
@@ -28,7 +29,7 @@ func add_if_roll(buff: Buff):
 func add(buff: Buff):
 	add_if_roll(buff)
 
-func _process(delta):
+func _physics_process(delta):
 	for i in len(buff_stack):
 		if i>len(buff_stack): #FIXME wtf godot
 			continue
