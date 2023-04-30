@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cvgbpr47myc5j"]
+[gd_scene load_steps=11 format=3 uid="uid://cvgbpr47myc5j"]
 
 [ext_resource type="Material" uid="uid://r5m0e65nite5" path="res://materials/player_character_material.tres" id="1_1l63l"]
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_2t2x0"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://scripts/cargo.gd" id="6_dru5e"]
 [ext_resource type="Script" path="res://scripts/powder/powder.gd" id="6_vdi8d"]
 [ext_resource type="Texture2D" uid="uid://b3xi3ohlwe8f4" path="res://sprites/keg.png" id="8_5dtp0"]
+[ext_resource type="Resource" uid="uid://jspb7btxv152" path="res://data/buffs/buff_speed_up.tres" id="8_68ol7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6va3q"]
 size = Vector2(121, 124)
@@ -49,6 +50,7 @@ script = ExtResource("6_dru5e")
 [node name="powder_1" type="Node2D" parent="cargo"]
 position = Vector2(-130, 7)
 script = ExtResource("6_vdi8d")
+buff = ExtResource("8_68ol7")
 
 [node name="Sprite2D" type="Sprite2D" parent="cargo/powder_1"]
 texture_filter = 1
