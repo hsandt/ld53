@@ -1,17 +1,10 @@
-class_name Buff
-extends Resource
+extends Control
 
-@export var description: String
-@export var attribute: String
-#effect in terms of math on number
-@export var effect: String
-##value in terms af attribute change
-@export var value: float
-## chance of being triggered
-@export_range(0.0, 1.0) var probability: float
-## in seconds
-@export var duration: float
-## the bad possibility on spark
-@export var worsen: Buff
-## the good possibility on spark
-@export var lucky: Buff
+@export var modifier: Modifier
+
+func _on_duration_timeout():
+	queue_free()
+
+func _on_spark():
+	if randf()<0.5:
+		pass

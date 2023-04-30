@@ -5,10 +5,8 @@ extends Node2D
 
 @export var quality = 1
 
-@export var buff: Buff
+@export var modifier: Modifier
 
 # Perhaps as it gets damaged, more powder falls out so effect less likely?
 var quantity = 100
-
-#TODO drag and drop part of interface for each of the powder kegs
 

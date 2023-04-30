@@ -1,28 +1,26 @@
 class_name Buffs
-extends Node
+extends Node2D
+
+@onready var buff_scene = preload("res://scripts/buffs/buff.tscn")
 
 #currently active
-var buff_stack = []
-
 func get_attribute(name,baseline):
-	for buff in buff_stack:
-		if buff.attribute == name:
-			match buff.effect:
+	for buff in get_children():
+		if buff.modifier.attribute == name:
+			match buff.modifier.effect:
 				"multiplier":
-					baseline*=buff.value
+					baseline*=buff.modifier.value
 				"addition":
-					baseline+=buff.value
+					baseline+=buff.modifier.value
 	return baseline
 
-func add_if_roll(buff: Buff):
-	if randf()<buff.probability:
-		buff_stack.append(buff)
+func add_if_roll(modifier: Modifier):
+	if randf()<modifier.probability:
+		var b = buff_scene.instantiate()
+		b.modifier=modifier
+		b.position.y-=200+(100*len(get_children()))
+		b.get_node("progress/duration").wait_time=b.modifier.duration
+		add_child(b)
 
-func add(buff: Buff):
-	add_if_roll(buff)
-
-func _physics_process(delta):
-	for i in range(buff_stack.size() -1 ,-1 ,-1):
-		buff_stack[i].duration-=delta
-		if buff_stack[i].duration<0:
-			buff_stack.remove_at(i)
+func add(modifier: Modifier):
+	add_if_roll(modifier)
