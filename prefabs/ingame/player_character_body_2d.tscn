@@ -1,12 +1,12 @@
 [gd_scene load_steps=11 format=3]
 
 [ext_resource type="Material" uid="uid://r5m0e65nite5" path="res://materials/player_character_material.tres" id="1_1l63l"]
-[ext_resource type="Script" path="res://scripts/ingame/player.gd" id="1_2t2x0"]
+[ext_resource type="Script" path="res://scripts/ingame/player_character/player.gd" id="1_2t2x0"]
 [ext_resource type="Script" path="res://scripts/buffs/Buffs.gd" id="3_4x6o7"]
 [ext_resource type="SpriteFrames" uid="uid://bdq8so2kor0sb" path="res://animations/player_character_sprite_frames.tres" id="3_fgtjg"]
 [ext_resource type="Script" path="res://scripts/visual/AnimatedSprite2DBrightnessController.gd" id="4_epfoh"]
-[ext_resource type="Script" path="res://scripts/cargo.gd" id="6_dru5e"]
-[ext_resource type="Script" path="res://scripts/powder/powder.gd" id="6_vdi8d"]
+[ext_resource type="Script" path="res://scripts/ingame/player_character/cargo.gd" id="6_dru5e"]
+[ext_resource type="Script" path="res://scripts/ingame/player_character/powder.gd" id="6_vdi8d"]
 [ext_resource type="Texture2D" uid="uid://b3xi3ohlwe8f4" path="res://sprites/keg.png" id="8_5dtp0"]
 [ext_resource type="Resource" uid="uid://b08wq3why3q7e" path="res://data/modifiers/steering.tres" id="8_vtdr1"]
 
