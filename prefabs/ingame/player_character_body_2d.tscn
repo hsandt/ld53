@@ -50,7 +50,7 @@ script = ExtResource("6_dru5e")
 [node name="powder_1" type="Node2D" parent="cargo"]
 position = Vector2(-130, 7)
 script = ExtResource("6_vdi8d")
-buff = ExtResource("8_68ol7")
+buff = ExtResource("8_ixoul")
 
 [node name="Sprite2D" type="Sprite2D" parent="cargo/powder_1"]
 texture_filter = 1
