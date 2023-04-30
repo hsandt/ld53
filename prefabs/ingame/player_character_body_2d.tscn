@@ -1,7 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://bft0g7ppjcvde"]
+[gd_scene load_steps=10 format=3 uid="uid://cvgbpr47myc5j"]
 
+[ext_resource type="Material" uid="uid://r5m0e65nite5" path="res://materials/player_character_material.tres" id="1_1l63l"]
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_2t2x0"]
-[ext_resource type="Material" uid="uid://r5m0e65nite5" path="res://materials/custom_sprite_shader_material.tres" id="1_i0yki"]
 [ext_resource type="Script" path="res://scripts/buffs/Buffs.gd" id="3_4x6o7"]
 [ext_resource type="SpriteFrames" uid="uid://bdq8so2kor0sb" path="res://animations/player_character_sprite_frames.tres" id="3_fgtjg"]
 [ext_resource type="Script" path="res://scripts/visual/AnimatedSprite2DBrightnessController.gd" id="4_epfoh"]
@@ -14,9 +14,17 @@ size = Vector2(121, 124)
 
 [node name="PlayerCharacterBody2D" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite_with_brightness_controller")]
 modulate = Color(1, 0.305882, 1, 1)
-material = ExtResource("1_i0yki")
+material = ExtResource("1_1l63l")
 script = ExtResource("1_2t2x0")
 animated_sprite_with_brightness_controller = NodePath("AnimatedSprite2DBrightnessController")
+
+[node name="AnimatedSprite2DBrightnessController" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("brighten_timer")]
+z_index = 2
+material = ExtResource("1_1l63l")
+sprite_frames = ExtResource("3_fgtjg")
+frame_progress = 0.58425
+script = ExtResource("4_epfoh")
+brighten_timer = NodePath("../Flash Timer")
 
 [node name="Buffs" type="Node" parent="."]
 script = ExtResource("3_4x6o7")
@@ -26,14 +34,6 @@ script = ExtResource("3_4x6o7")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 1)
 shape = SubResource("RectangleShape2D_6va3q")
-
-[node name="AnimatedSprite2DBrightnessController" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("brighten_timer")]
-z_index = 2
-material = ExtResource("1_i0yki")
-sprite_frames = ExtResource("3_fgtjg")
-frame_progress = 0.58425
-script = ExtResource("4_epfoh")
-brighten_timer = NodePath("../Flash Timer")
 
 [node name="powder_bar" type="ProgressBar" parent="."]
 offset_left = -340.0
