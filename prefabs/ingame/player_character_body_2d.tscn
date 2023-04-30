@@ -15,6 +15,7 @@ size = Vector2(121, 124)
 [node name="PlayerCharacterBody2D" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite_with_brightness_controller")]
 modulate = Color(1, 0.305882, 1, 1)
 material = ExtResource("1_1l63l")
+motion_mode = 1
 script = ExtResource("1_2t2x0")
 animated_sprite_with_brightness_controller = NodePath("AnimatedSprite2DBrightnessController")
 
@@ -28,8 +29,6 @@ brighten_timer = NodePath("../Flash Timer")
 
 [node name="Buffs" type="Node" parent="."]
 script = ExtResource("3_4x6o7")
-
-[node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 1)

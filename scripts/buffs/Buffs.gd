@@ -1,3 +1,4 @@
+class_name Buffs
 extends Node
 
 
