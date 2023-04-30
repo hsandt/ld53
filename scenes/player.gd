@@ -24,7 +24,7 @@ func hurt(damage):
 	current_speed*=0.5
 	$cargo.hurt(damage)
 
-func _process(delta):
+func _physics_process(delta):
 
 	$powder_bar.value=powder
 
