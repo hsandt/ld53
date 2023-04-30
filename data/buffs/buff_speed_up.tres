@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Buff" load_steps=2 format=3 uid="uid://jspb7btxv152"]
+
+[ext_resource type="Script" path="res://scripts/buffs/buff.gd" id="1_ja2v6"]
+
+[resource]
+script = ExtResource("1_ja2v6")
+attribute = "speed"
+effect = "multiplier"
+value = 2.0
+probability = 0.5
+duration = 5.0
+chain = []

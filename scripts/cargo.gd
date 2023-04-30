@@ -4,4 +4,8 @@ extends Node2D
 
 func hurt(_damage):
 	for child in get_children():
-		buffs.add_from_index(child.buff_index)
+		if child.buff == null:
+			push_error("[cargo] hurt: child '%s' has no buff defined", child.get_path())
+			continue
+
+		buffs.add(child.buff)

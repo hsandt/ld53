@@ -97,8 +97,6 @@ position = Vector2(0, -1)
 metadata/_edit_lock_ = true
 
 [node name="Obstacles" type="Node2D" parent="Map"]
-process_mode = 4
-visible = false
 
 [node name="obstacle_big" parent="Map/Obstacles" instance=ExtResource("3_ykc5j")]
 position = Vector2(520, 158)

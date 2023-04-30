@@ -5,7 +5,7 @@ extends Node2D
 
 @export var quality = 1
 
-@export var buff_index = 0
+@export var buff: Buff
 
 # Perhaps as it gets damaged, more powder falls out so effect less likely?
 var quantity = 100
