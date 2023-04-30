@@ -1,0 +1,11 @@
+buff_id	type	tag	mechanic	description
+SCORE_1	Town Cargo Quality Bar	scoring	you have +50% chance to have score * 2	
+CONSUME_1	Spark Consume	core mechanic	the spark you consumed is turned back into the powder it was and its Quality Value is * 4	
+CONSUME_2	Spark Consume	core mechanic	if the next spark you consume would be a worsen debuff, it is cancelled and you gain +10% Vertical Speed instead	
+CONSUME_3	Spark Consume	core mechanic	your next consumed spark will be a randomly chosen buff (this one excluded)	"If you consume again, it might taste good.."
+CONTROLS_1	Steering	controls	When moving, you immediately teleport up or down	
+DAMAGE_1	Powder Resistance	damage	foreach damageable keg, 50% chance to become immune to obstacle damage	
+DAMAGE_2	Obstacle Damage	damage	when you hit a BIG obstacle, the Quality Value of all your sparks is increase by * 1.5	"Maybe some rocks are not that bad after all"
+OTHER_1	UI	audiovisual	the position of BIG obstacles is shown on your progress bar	
+OTHER_2	Macro	win/loss	if you would take fatal damage, all your kegs are reset to their initial powder version instead. You keep all your buffs	"You reincarnated as a better elf. Or did you ?"
+PROGRESSION_2	Macro	powder selection	during the delivery phase, you are guaranteed to gain a powder of Quality Value 10 or more, even if you died	

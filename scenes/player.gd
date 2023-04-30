@@ -38,6 +38,6 @@ func _process(delta):
 	position.x+=$Buffs.get_attribute("speed",current_speed)*delta
 
 	if (position.y<half_extent_y) and Input.is_action_pressed("down"):
-		position.y+=steer_speed*delta
+		position.y+=$Buffs.get_sttribute("steer_speed",steer_speed)*delta
 	if (position.y>-half_extent_y) and Input.is_action_pressed("up"):
-		position.y-=steer_speed*delta
+		position.y-=$Buffs.get_sttribute("steer_speed",steer_speed)*delta

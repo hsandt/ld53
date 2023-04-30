@@ -1,0 +1,10 @@
+powder name	type	tag	quality value	symbol	mechanic	description	worsen version	description	possible buffs
+	Town Cargo Quality Bar	scoring	5	red !	if you hit a BIG obstacle, Quality Bar +10	"Townfolks are tired of your driving skills"	chance to have score of 0 increased by +30%	"The town mayor may be angry right now.."	SCORE_1
+	Powder Resistance	damage	5	green circle	foreach powder, 50% chance of PowderResistance to be * 0.5	"I think some kegs looks a bit broken"	foreach powder, PowderResistance * 0	"Better dodge them obstacles"	DAMAGE_1
+	Steering	controls	5	blue triangle	Vertical speed * 0.5	"Your cargo seems so heavy.."	Input direction are inverted and have an angular deviation of 0-20%	"Is it me or your steering wheel is crazy ?"	CONTROLS_1
+	Input Delay	controls	10	cyan wave	The vehicle accelerates over 0.5s instead of instantly	"Looks like your vehicle responds poorly"	The vehicle accelerates over 0.5s instead of instantly AND The vehicle decelerates over 0.5s instead of instantly	"Ok, your vehicle is definitely crap"	CONTROLS_1
+	Obstacle Damage	damage	10	yellow square	all obstacles are treated as type BIG	"Is it me or those rocks look mightier ?"	ObstacleDamage * 2	"Those rocks definitely look mightier"	DAMAGE_2
+	Spark Consume	core mechanic	20	magenta star	foreach spark, 50% chance of becoming locked (can't be consumed)		All buffs are turned into a worsen version instead	"All this power.. turned into curses.."	CONSUME_1
+	Screen	audiovisual	20	black eye	the screen shakes constantly	"You are not feeling very well.."	the keg symbols are shuffled	"Wait, am I hallucinating ?"	CONSUME_2  CONSUME_3
+	SFX	audiovisual	20	white ear	your cargo makes looping meowing sounds	"Something is weird with that engine sound"			CONSUME_2  CONSUME_3
+	UI	audiovisual	20	gold spiral	your progress bar updates only every 15s	"Damn, the UI is broken again"	your progress bar disappears	"Something is missing.."	CONSUME_2  CONSUME_3

@@ -1,12 +1,10 @@
 extends Node
 
-
 #currently active
 var buff_stack = []
 
 func _ready ():
 	pass
-
 
 func get_attribute(name,baseline):
 	for buff in buff_stack:
