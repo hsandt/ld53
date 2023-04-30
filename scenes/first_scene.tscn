@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ybj4svsavf4f" path="res://prefabs/ingame/obstacle_medium.tscn" id="4_h1iuh"]
 [ext_resource type="PackedScene" uid="uid://b4r6q2xh20e8w" path="res://prefabs/ingame/obstacle_small.tscn" id="5_uibm3"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_gtpbu"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dyn3e"]
 resource_local_to_scene = true
 shader = ExtResource("4_6tp5a")
 shader_parameter/brightness = 0.0
@@ -42,4 +42,4 @@ position = Vector2(527, -360)
 position = Vector2(639, 356)
 
 [node name="PlayerCharacterBody2D" parent="." instance=ExtResource("3_82xke")]
-material = SubResource("ShaderMaterial_gtpbu")
+material = SubResource("ShaderMaterial_dyn3e")
