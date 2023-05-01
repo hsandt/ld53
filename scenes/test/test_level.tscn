@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://csjk6doab3j7g"]
+[gd_scene load_steps=10 format=3 uid="uid://csjk6doab3j7g"]
 
 [ext_resource type="PackedScene" uid="uid://bkxvhy0xyc6my" path="res://prefabs/ingame/in_game_manager.tscn" id="1_phwtn"]
 [ext_resource type="Script" path="res://scripts/audio/MusicStreamPlayer.gd" id="2_6xvgp"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://4n8e4dswbycl" path="res://prefabs/ingame/player_character_body_2d.tscn" id="4_fkdm4"]
 [ext_resource type="Script" path="res://scripts/ingame/ScrollingCenter.gd" id="5_5wm0g"]
 [ext_resource type="PackedScene" uid="uid://bconteqikkki5" path="res://scenes/test/test_map.tscn" id="6_afsi3"]
+[ext_resource type="PackedScene" uid="uid://cxmcka11cekmi" path="res://prefabs/ingame/camera_2d.tscn" id="6_nrs72"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ft5pg"]
 size = Vector2(1920, 100)
@@ -46,7 +47,7 @@ script = ExtResource("5_5wm0g")
 player_character = NodePath("../PlayerCharacterBody2D")
 lookahead_distance = 500.0
 
-[node name="Camera2D" type="Camera2D" parent="ScrollingCenter"]
+[node name="Camera2D" parent="ScrollingCenter" instance=ExtResource("6_nrs72")]
 
 [node name="RigidBody2D Screen Colliders (BAD causes speed up)" type="AnimatableBody2D" parent="."]
 process_mode = 4
