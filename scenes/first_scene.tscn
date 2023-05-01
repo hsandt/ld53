@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" path="res://prefabs/ingame/player_character_body_2d.tscn" id="3_82xke"]
 [ext_resource type="Script" path="res://scripts/audio/MusicStreamPlayer.gd" id="3_a3gc7"]
 [ext_resource type="Script" path="res://scripts/ingame/ScrollingCenter.gd" id="6_b3o2y"]
-[ext_resource type="PackedScene" uid="uid://jpoe3ovp36uc" path="res://prefabs/ingame/map_1.tscn" id="8_srhq4"]
+[ext_resource type="PackedScene" uid="uid://depjc224vk7yr" path="res://prefabs/ingame/map_1.tscn" id="8_srhq4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ft5pg"]
 size = Vector2(1920, 100)
