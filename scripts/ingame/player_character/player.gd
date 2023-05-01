@@ -20,6 +20,8 @@ var current_speed = top_speed
 @onready var buffs: Buffs = $Buffs
 @onready var cargo: Cargo = $cargo
 
+var should_move: bool = false
+
 
 func hurt(damage):
 	powder -= damage
@@ -31,6 +33,9 @@ func hurt(damage):
 func _physics_process(delta):
 	# proto UI
 	$powder_bar.value = powder
+
+	if not should_move:
+		return
 
 	if current_speed < top_speed:
 		current_speed += delta * acceleration
