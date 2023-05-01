@@ -1,123 +1,83 @@
-[gd_scene load_steps=6 format=3 uid="uid://ddxu5buxr3lp5"]
+[gd_scene load_steps=11 format=3 uid="uid://ddxu5buxr3lp5"]
 
+[ext_resource type="PackedScene" uid="uid://bkxvhy0xyc6my" path="res://prefabs/ingame/in_game_manager.tscn" id="1_i0ea3"]
 [ext_resource type="Texture2D" uid="uid://d0vvv3dcec8mu" path="res://sprites/white_square_1x1.png" id="1_pefx0"]
-[ext_resource type="PackedScene" uid="uid://cvgbpr47myc5j" path="res://prefabs/ingame/player_character_body_2d.tscn" id="3_82xke"]
-[ext_resource type="PackedScene" uid="uid://clbkj8klm4my3" path="res://prefabs/ingame/obstacle_big.tscn" id="3_ykc5j"]
-[ext_resource type="PackedScene" uid="uid://ybj4svsavf4f" path="res://prefabs/ingame/obstacle_medium.tscn" id="4_h1iuh"]
-[ext_resource type="PackedScene" uid="uid://b4r6q2xh20e8w" path="res://prefabs/ingame/obstacle_small.tscn" id="5_uibm3"]
+[ext_resource type="PackedScene" uid="uid://bigtdfruv4w60" path="res://prefabs/pause_menu_custom.tscn" id="2_afo14"]
+[ext_resource type="AudioStream" uid="uid://ddhkhbl82shqs" path="res://audio/bgm/Level_WIP.ogg" id="2_jw3vr"]
+[ext_resource type="PackedScene" path="res://prefabs/ingame/player_character_body_2d.tscn" id="3_82xke"]
+[ext_resource type="Script" path="res://scripts/audio/MusicStreamPlayer.gd" id="3_a3gc7"]
+[ext_resource type="Script" path="res://scripts/ingame/ScrollingCenter.gd" id="6_b3o2y"]
+[ext_resource type="PackedScene" uid="uid://jpoe3ovp36uc" path="res://prefabs/ingame/map_1.tscn" id="8_srhq4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ft5pg"]
+size = Vector2(1920, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u0xki"]
+size = Vector2(100, 1080)
 
 [node name="Node2D" type="Node2D"]
+metadata/_edit_horizontal_guides_ = [-349.0, 350.0]
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-layer = -1
+[node name="InGameManager" parent="." node_paths=PackedStringArray("pause_menu", "player_character") instance=ExtResource("1_i0ea3")]
+pause_menu = NodePath("../CanvasLayer/PauseMenu")
+player_character = NodePath("../PlayerCharacterBody2D")
 
-[node name="ParallaxLayer Floor" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_mirroring = Vector2(1920, 0)
+[node name="MusicStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+process_mode = 3
+stream = ExtResource("2_jw3vr")
+volume_db = -10.0
+autoplay = true
+bus = &"Music"
+script = ExtResource("3_a3gc7")
 
-[node name="Node2D" type="Node2D" parent="ParallaxBackground/ParallaxLayer Floor"]
-position = Vector2(960, 0)
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Floor Full" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Node2D"]
-modulate = Color(0.054902, 0.309804, 0.14902, 1)
-z_index = -1
-scale = Vector2(1920, 1080)
-texture = ExtResource("1_pefx0")
-
-[node name="Floor Playable Area" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Node2D"]
-modulate = Color(0.392157, 0.258824, 0.145098, 1)
-scale = Vector2(1920, 700)
-texture = ExtResource("1_pefx0")
-metadata/_edit_lock_ = true
-
-[node name="ParallaxLayer Background" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.8, 1)
-motion_mirroring = Vector2(1920, 0)
-
-[node name="Node2D2" type="Node2D" parent="ParallaxBackground/ParallaxLayer Background"]
-position = Vector2(960, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Background/Node2D2"]
-position = Vector2(-783, -532)
-scale = Vector2(100, 100)
-texture = ExtResource("1_pefx0")
-
-[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Background/Node2D2"]
-position = Vector2(-374, -544)
-scale = Vector2(100, 100)
-texture = ExtResource("1_pefx0")
-
-[node name="Sprite2D3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Background/Node2D2"]
-position = Vector2(46, -547)
-scale = Vector2(100, 100)
-texture = ExtResource("1_pefx0")
-
-[node name="Sprite2D4" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Background/Node2D2"]
-position = Vector2(360, -533)
-scale = Vector2(100, 100)
-texture = ExtResource("1_pefx0")
-
-[node name="Sprite2D5" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Background/Node2D2"]
-position = Vector2(797, -542)
-scale = Vector2(100, 100)
-texture = ExtResource("1_pefx0")
-
-[node name="ParallaxForeground" type="ParallaxBackground" parent="."]
-layer = 1
-
-[node name="ParallaxLayer Foreground" type="ParallaxLayer" parent="ParallaxForeground"]
-motion_scale = Vector2(1.2, 1)
-motion_mirroring = Vector2(1920, 0)
-
-[node name="Node2D" type="Node2D" parent="ParallaxForeground/ParallaxLayer Foreground"]
-position = Vector2(960, 0)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxForeground/ParallaxLayer Foreground/Node2D"]
-modulate = Color(0.717647, 0.678431, 0.286275, 1)
-z_index = 17
-position = Vector2(-723, 535)
-scale = Vector2(100, 100)
-texture = ExtResource("1_pefx0")
-
-[node name="Sprite2D2" type="Sprite2D" parent="ParallaxForeground/ParallaxLayer Foreground/Node2D"]
-modulate = Color(0.717647, 0.678431, 0.286275, 1)
-z_index = 17
-position = Vector2(-28, 523)
-scale = Vector2(100, 100)
-texture = ExtResource("1_pefx0")
-
-[node name="Sprite2D3" type="Sprite2D" parent="ParallaxForeground/ParallaxLayer Foreground/Node2D"]
-modulate = Color(0.717647, 0.678431, 0.286275, 1)
-z_index = 17
-position = Vector2(603, 538)
-scale = Vector2(100, 100)
-texture = ExtResource("1_pefx0")
-
-[node name="Map" type="Node2D" parent="."]
-position = Vector2(0, -1)
-metadata/_edit_lock_ = true
-
-[node name="Obstacles" type="Node2D" parent="Map"]
-process_mode = 4
-visible = false
-
-[node name="obstacle_big" parent="Map/Obstacles" instance=ExtResource("3_ykc5j")]
-position = Vector2(520, 158)
-metadata/_edit_lock_ = true
-
-[node name="obstacle_medium" parent="Map/Obstacles" instance=ExtResource("4_h1iuh")]
-position = Vector2(574, -145)
-metadata/_edit_lock_ = true
-
-[node name="obstacle_small" parent="Map/Obstacles" instance=ExtResource("5_uibm3")]
-position = Vector2(529, -319)
-metadata/_edit_lock_ = true
-
-[node name="obstacle_small2" parent="Map/Obstacles" instance=ExtResource("5_uibm3")]
-position = Vector2(639, 356)
-metadata/_edit_lock_ = true
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("2_afo14")]
 
 [node name="PlayerCharacterBody2D" parent="." instance=ExtResource("3_82xke")]
 z_index = 10
+collision_mask = 65792
+platform_floor_layers = 4294967294
+platform_wall_layers = 256
 top_speed = 100
 half_extent_y = 290
 metadata/_edit_lock_ = true
+
+[node name="ScrollingCenter" type="Node2D" parent="." node_paths=PackedStringArray("player_character")]
+script = ExtResource("6_b3o2y")
+player_character = NodePath("../PlayerCharacterBody2D")
+lookahead_distance = 500.0
+
+[node name="Camera2D" type="Camera2D" parent="ScrollingCenter"]
+
+[node name="RigidBody2D Screen Colliders (BAD causes speed up)" type="AnimatableBody2D" parent="."]
+process_mode = 4
+collision_layer = 256
+
+[node name="CollisionShape2D Up" type="CollisionShape2D" parent="RigidBody2D Screen Colliders (BAD causes speed up)"]
+position = Vector2(1, -400)
+shape = SubResource("RectangleShape2D_ft5pg")
+
+[node name="CollisionShape2D Down" type="CollisionShape2D" parent="RigidBody2D Screen Colliders (BAD causes speed up)"]
+position = Vector2(0, 400)
+shape = SubResource("RectangleShape2D_ft5pg")
+
+[node name="CollisionShape2D Left" type="CollisionShape2D" parent="RigidBody2D Screen Colliders (BAD causes speed up)"]
+position = Vector2(-1010, -0.5)
+shape = SubResource("RectangleShape2D_u0xki")
+
+[node name="CollisionShape2D Right" type="CollisionShape2D" parent="RigidBody2D Screen Colliders (BAD causes speed up)"]
+position = Vector2(1010, -0.5)
+shape = SubResource("RectangleShape2D_u0xki")
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D Screen Colliders (BAD causes speed up)"]
+modulate = Color(1, 1, 1, 0.188235)
+scale = Vector2(1920, 1080)
+texture = ExtResource("1_pefx0")
+
+[node name="Map1" parent="." instance=ExtResource("8_srhq4")]
+
+[connection signal="back_to_main_pressed" from="CanvasLayer/PauseMenu" to="InGameManager" method="_on_pause_menu_back_to_main_pressed"]
+[connection signal="pause" from="CanvasLayer/PauseMenu" to="MusicStreamPlayer" method="_on_pause_menu_pause"]
+[connection signal="resume" from="CanvasLayer/PauseMenu" to="MusicStreamPlayer" method="_on_pause_menu_resume"]

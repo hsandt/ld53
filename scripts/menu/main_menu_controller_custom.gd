@@ -1,3 +1,4 @@
+class_name MainMenu
 extends Control
 signal start_game_pressed
 
@@ -11,6 +12,18 @@ signal start_game_pressed
 
 func _ready():
 	start_game_button.grab_focus()
+
+func disable_all_buttons():
+	start_game_button.disabled = true
+	options_button.disabled = true
+	credits_button.disabled = true
+	quit_button.disabled = true
+
+func enable_all_buttons():
+	start_game_button.disabled = false
+	options_button.disabled = false
+	credits_button.disabled = false
+	quit_button.disabled = false
 
 func quit():
 	get_tree().quit()

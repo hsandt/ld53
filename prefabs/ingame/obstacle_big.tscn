@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://clbkj8klm4my3"]
 
-[ext_resource type="PackedScene" uid="uid://frkwtmcc68xw" path="res://prefabs/ingame/obstacle.tscn" id="1_mx18n"]
+[ext_resource type="PackedScene" uid="uid://dpsojog231lgq" path="res://prefabs/ingame/obstacle.tscn" id="1_mx18n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wsgx6"]
 resource_local_to_scene = true

@@ -1,0 +1,7 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://baumorb1fn8dr"]
+
+[ext_resource type="FontFile" uid="uid://dm3h7hd5bjtar" path="res://fonts/ABeeZee/ABeeZee-Regular.ttf" id="1_100tb"]
+
+[resource]
+font = ExtResource("1_100tb")
+font_size = 50

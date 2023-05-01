@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bigtdfruv4w60"]
 
-[ext_resource type="Script" path="res://addons/EasyMenus/Scripts/pause_menu_controller.gd" id="1_pyugr"]
+[ext_resource type="Script" path="res://scripts/menu/pause_menu_controller_custom.gd" id="1_tl63u"]
 [ext_resource type="PackedScene" uid="uid://qlskttl1wjr7" path="res://addons/EasyMenus/Scenes/options_menu.tscn" id="2_1tmd0"]
 
 [node name="PauseMenu" type="Control"]
@@ -11,7 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_pyugr")
+script = ExtResource("1_tl63u")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
