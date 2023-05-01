@@ -1,6 +1,7 @@
+class_name Cargo
 extends Node2D
 
-@onready var buffs = get_node("../Buffs")
+@onready var buffs = $"../Buffs"
 
 func hurt(_damage):
 	for child in get_children():

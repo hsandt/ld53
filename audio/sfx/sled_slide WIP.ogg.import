@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c0nwej5v1btdg"
+path="res://.godot/imported/sled_slide WIP.ogg-364177d42139c7be087a9cdf03389de9.oggvorbisstr"
+
+[deps]
+
+source_file="res://audio/sfx/sled_slide WIP.ogg"
+dest_files=["res://.godot/imported/sled_slide WIP.ogg-364177d42139c7be087a9cdf03389de9.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
