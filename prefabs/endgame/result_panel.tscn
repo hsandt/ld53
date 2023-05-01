@@ -1,17 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://biov5pqyvllyy"]
+[gd_scene load_steps=6 format=3 uid="uid://biov5pqyvllyy"]
 
+[ext_resource type="Script" path="res://scripts/menu/ResultPanel.gd" id="1_72j1t"]
 [ext_resource type="Texture2D" uid="uid://num53150s11" path="res://sprites/bg/result_bg.png" id="1_hijyu"]
 [ext_resource type="LabelSettings" uid="uid://bpjnfbal18sp5" path="res://themes/label_settings_result_header.tres" id="2_n4x1k"]
 [ext_resource type="LabelSettings" uid="uid://baumorb1fn8dr" path="res://themes/label_settings_result_score.tres" id="3_q4mnf"]
 [ext_resource type="Theme" uid="uid://btrmulh3kwmt6" path="res://themes/theme_result_button.tres" id="4_b6yab"]
 
-[node name="result_panel" type="Control"]
+[node name="ResultPanel" type="Control" node_paths=PackedStringArray("replay_button", "back_to_main_menu_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_72j1t")
+replay_button = NodePath("MarginContainer/Control/VBoxContainer/ReplayButton")
+back_to_main_menu_button = NodePath("MarginContainer/Control/VBoxContainer/BackToMainMenuButton")
 
 [node name="BackgroundTextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -125,3 +129,6 @@ layout_mode = 2
 theme = ExtResource("4_b6yab")
 text = "Back to Main Menu"
 metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="MarginContainer/Control/VBoxContainer/ReplayButton" to="." method="_on_replay_button_pressed"]
+[connection signal="pressed" from="MarginContainer/Control/VBoxContainer/BackToMainMenuButton" to="." method="_on_back_to_main_menu_button_pressed"]

@@ -1,13 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://d1ugxan42mukd"]
+[gd_scene load_steps=5 format=3 uid="uid://d1ugxan42mukd"]
 
 [ext_resource type="Script" path="res://scripts/singleton/GameManager.gd" id="1_fyhmc"]
 [ext_resource type="PackedScene" uid="uid://c1w34qdaw0bhv" path="res://scenes/main_menu_scene.tscn" id="2_tvj08"]
 [ext_resource type="PackedScene" uid="uid://ddxu5buxr3lp5" path="res://scenes/first_scene.tscn" id="3_885vf"]
+[ext_resource type="PackedScene" uid="uid://c7277gfve8xvp" path="res://scenes/result_scene.tscn" id="4_m2syr"]
 
 [node name="GameManager" type="Node"]
 script = ExtResource("1_fyhmc")
 main_menu_scene = ExtResource("2_tvj08")
 first_scene = ExtResource("3_885vf")
+result_scene = ExtResource("4_m2syr")
 start_game_fade_out_speed = 2.0
 start_game_fade_in_speed = 2.0
 back_to_main_menu_fade_out_speed = 2.0
