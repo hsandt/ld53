@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://n87nhvob85pn"]
+[gd_scene load_steps=12 format=3 uid="uid://n87nhvob85pn"]
 
 [ext_resource type="Texture2D" uid="uid://b7vutp6ly7tx6" path="res://sprites/cooldown_circle.png" id="1_7tibs"]
 [ext_resource type="Script" path="res://scripts/buffs/buff.gd" id="1_1562j"]
+[ext_resource type="Texture2D" uid="uid://b5d35m852wwbg" path="res://sprites/buff_icons/black_eye.png" id="2_whe62"]
 [ext_resource type="Script" path="res://scripts/buffs/progress_bar.gd" id="3_kh3ky"]
 [ext_resource type="AudioStream" uid="uid://bg6cv3it1gsjq" path="res://audio/sfx/ui_click_1 WIP.ogg" id="4_0nxpa"]
 [ext_resource type="AudioStream" uid="uid://dpbdll3vkgsjb" path="res://audio/sfx/spark_loop.ogg" id="4_hmlaa"]
@@ -25,6 +26,11 @@ offset_right = 63.0
 offset_bottom = 54.0
 script = ExtResource("1_1562j")
 
+[node name="label" type="Sprite2D" parent="."]
+position = Vector2(17, 20)
+scale = Vector2(0.823688, 0.88019)
+texture = ExtResource("2_whe62")
+
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 0
 offset_left = 49.0
@@ -32,12 +38,6 @@ offset_top = 7.0
 offset_right = 255.0
 offset_bottom = 30.0
 text = "Invert controls"
-
-[node name="Polygon2D" type="Polygon2D" parent="."]
-position = Vector2(16, 22)
-scale = Vector2(0.469697, 0.596154)
-color = Color(0, 0.913725, 1, 1)
-polygon = PackedVector2Array(-34, 16, -22.8741, -0.361572, 0, -34, 32, 18)
 
 [node name="progress" type="TextureProgressBar" parent="."]
 z_index = -1
