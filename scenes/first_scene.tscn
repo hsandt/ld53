@@ -1,11 +1,21 @@
+<<<<<<< HEAD
 [gd_scene load_steps=12 format=3 uid="uid://ddxu5buxr3lp5"]
+=======
+[gd_scene load_steps=12 format=3 uid="uid://tx2hmn6o6i8q"]
+>>>>>>> fd687e304a1fc24876eb1d824b7bd58340acf768
 
 [ext_resource type="PackedScene" uid="uid://bkxvhy0xyc6my" path="res://prefabs/ingame/in_game_manager.tscn" id="1_i0ea3"]
 [ext_resource type="Texture2D" uid="uid://d0vvv3dcec8mu" path="res://sprites/white_square_1x1.png" id="1_pefx0"]
 [ext_resource type="PackedScene" uid="uid://bigtdfruv4w60" path="res://prefabs/pause_menu_custom.tscn" id="2_afo14"]
+<<<<<<< HEAD
 [ext_resource type="AudioStream" uid="uid://ddhkhbl82shqs" path="res://audio/bgm/Level_WIP.ogg" id="2_bo6oh"]
 [ext_resource type="PackedScene" uid="uid://cgrwrw8imf0gg" path="res://prefabs/ingame/player_character_body_2d.tscn" id="3_82xke"]
+=======
+[ext_resource type="AudioStream" uid="uid://ddhkhbl82shqs" path="res://audio/bgm/Level.ogg" id="2_jig5s"]
+[ext_resource type="PackedScene" uid="uid://4n8e4dswbycl" path="res://prefabs/ingame/player_character_body_2d.tscn" id="3_82xke"]
+>>>>>>> fd687e304a1fc24876eb1d824b7bd58340acf768
 [ext_resource type="Script" path="res://scripts/audio/MusicStreamPlayer.gd" id="3_a3gc7"]
+[ext_resource type="PackedScene" uid="uid://b3cj8qaa1pk0g" path="res://prefabs/ingame/hud/powders_panel.tscn" id="5_bsr04"]
 [ext_resource type="Script" path="res://scripts/ingame/ScrollingCenter.gd" id="6_b3o2y"]
 [ext_resource type="PackedScene" uid="uid://cxmcka11cekmi" path="res://prefabs/ingame/camera_2d.tscn" id="6_cbhgf"]
 [ext_resource type="PackedScene" uid="uid://dcqumcm4vc2x" path="res://prefabs/ingame/map_1.tscn" id="8_srhq4"]
@@ -26,15 +36,27 @@ player_character = NodePath("../PlayerCharacterBody2D")
 [node name="MusicStreamPlayer" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 process_mode = 3
-stream = ExtResource("2_bo6oh")
+stream = ExtResource("2_jig5s")
 volume_db = -10.0
 autoplay = true
 bus = &"Music"
 script = ExtResource("3_a3gc7")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 5
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("2_afo14")]
+
+[node name="HUD" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Powders Panel" parent="CanvasLayer/HUD" instance=ExtResource("5_bsr04")]
+layout_mode = 1
 
 [node name="PlayerCharacterBody2D" parent="." instance=ExtResource("3_82xke")]
 z_index = 10
