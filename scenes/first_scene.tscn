@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" path="res://prefabs/ingame/player_character_body_2d.tscn" id="3_82xke"]
 [ext_resource type="Script" path="res://scripts/audio/MusicStreamPlayer.gd" id="3_a3gc7"]
 [ext_resource type="Script" path="res://scripts/ingame/ScrollingCenter.gd" id="6_b3o2y"]
-[ext_resource type="PackedScene" uid="uid://cx7hm8oswyiu" path="res://prefabs/ingame/map.tscn" id="6_d44rd"]
+[ext_resource type="PackedScene" uid="uid://jpoe3ovp36uc" path="res://prefabs/ingame/map_1.tscn" id="8_srhq4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ft5pg"]
 size = Vector2(1920, 100)
@@ -35,11 +35,9 @@ script = ExtResource("3_a3gc7")
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("2_afo14")]
 
-[node name="Map" parent="." instance=ExtResource("6_d44rd")]
-
 [node name="PlayerCharacterBody2D" parent="." instance=ExtResource("3_82xke")]
 z_index = 10
-collision_mask = 256
+collision_mask = 65792
 platform_floor_layers = 4294967294
 platform_wall_layers = 256
 top_speed = 100
@@ -77,6 +75,8 @@ shape = SubResource("RectangleShape2D_u0xki")
 modulate = Color(1, 1, 1, 0.188235)
 scale = Vector2(1920, 1080)
 texture = ExtResource("1_pefx0")
+
+[node name="Map1" parent="." instance=ExtResource("8_srhq4")]
 
 [connection signal="back_to_main_pressed" from="CanvasLayer/PauseMenu" to="InGameManager" method="_on_pause_menu_back_to_main_pressed"]
 [connection signal="pause" from="CanvasLayer/PauseMenu" to="MusicStreamPlayer" method="_on_pause_menu_pause"]

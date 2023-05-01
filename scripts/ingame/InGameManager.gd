@@ -5,6 +5,7 @@ extends Node
 @export var player_character: Player
 
 
+var game_phase: Enums.GamePhase
 var is_going_back_to_main_menu: bool = false
 
 func _ready():
@@ -14,7 +15,14 @@ func _ready():
 	assert(player_character != null,
 		"[InGameManager] player_character is not set on %s" % get_path())
 
+	# Hide pause menu
 	pause_menu.visible = false
+
+	# Start in intro game phase
+	game_phase = Enums.GamePhase.INTRO
+
+	# For now, there is no intro so start racing immediately
+	game_phase = Enums.GamePhase.RACING
 
 
 func _unhandled_input(event):
@@ -27,6 +35,14 @@ func _unhandled_input(event):
 
 	if event.is_action_pressed(&"restart"):
 		get_tree().reload_current_scene()
+
+
+func enter_failure_phase():
+	game_phase = Enums.GamePhase.FAILURE
+
+
+func enter_success_phase():
+	game_phase = Enums.GamePhase.SUCCESS
 
 
 func _on_pause_menu_back_to_main_pressed():

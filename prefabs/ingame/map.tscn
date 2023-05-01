@@ -1,9 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://cx7hm8oswyiu"]
+[gd_scene load_steps=7 format=3 uid="uid://c1sn363gbpji"]
 
 [ext_resource type="PackedScene" uid="uid://clbkj8klm4my3" path="res://prefabs/ingame/obstacle_big.tscn" id="1_kox13"]
 [ext_resource type="PackedScene" uid="uid://ybj4svsavf4f" path="res://prefabs/ingame/obstacle_medium.tscn" id="2_5vsc1"]
 [ext_resource type="PackedScene" uid="uid://b4r6q2xh20e8w" path="res://prefabs/ingame/obstacle_small.tscn" id="3_6tmyp"]
 [ext_resource type="Texture2D" uid="uid://d0vvv3dcec8mu" path="res://sprites/white_square_1x1.png" id="4_kfb44"]
+[ext_resource type="Script" path="res://scripts/ingame/GoalArea2D.gd" id="5_yputo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_duqwo"]
+size = Vector2(100, 1080)
 
 [node name="Map" type="Node2D"]
 position = Vector2(0, -1)
@@ -111,3 +115,13 @@ z_index = 17
 position = Vector2(603, 538)
 scale = Vector2(100, 100)
 texture = ExtResource("4_kfb44")
+
+[node name="GoalArea2D" type="Area2D" parent="."]
+collision_layer = 65536
+script = ExtResource("5_yputo")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GoalArea2D"]
+shape = SubResource("RectangleShape2D_duqwo")
+
+[connection signal="body_entered" from="GoalArea2D" to="GoalArea2D" method="_on_body_entered"]

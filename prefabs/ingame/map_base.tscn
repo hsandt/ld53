@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://exsj7aotf4aj"]
+
+[ext_resource type="Script" path="res://scripts/ingame/GoalArea2D.gd" id="5_ja8b5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_duqwo"]
+size = Vector2(100, 1080)
+
+[node name="Map" type="Node2D"]
+position = Vector2(0, -1)
+metadata/_edit_lock_ = true
+metadata/_edit_horizontal_guides_ = [-349.0, 347.0]
+
+[node name="Obstacles" type="Node2D" parent="."]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+layer = -1
+
+[node name="ParallaxLayer Floor" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1920, 0)
+
+[node name="Offset" type="Node2D" parent="ParallaxBackground/ParallaxLayer Floor"]
+position = Vector2(960, 0)
+
+[node name="ParallaxLayer Background" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.8, 1)
+motion_mirroring = Vector2(1920, 0)
+
+[node name="Offset" type="Node2D" parent="ParallaxBackground/ParallaxLayer Background"]
+position = Vector2(960, 0)
+
+[node name="ParallaxForeground" type="ParallaxBackground" parent="."]
+layer = 1
+
+[node name="ParallaxLayer Foreground" type="ParallaxLayer" parent="ParallaxForeground"]
+motion_scale = Vector2(1.2, 1)
+motion_mirroring = Vector2(1920, 0)
+
+[node name="Offset" type="Node2D" parent="ParallaxForeground/ParallaxLayer Foreground"]
+position = Vector2(960, 0)
+
+[node name="GoalArea2D" type="Area2D" parent="."]
+collision_layer = 65536
+script = ExtResource("5_ja8b5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GoalArea2D"]
+position = Vector2(3841, 0)
+shape = SubResource("RectangleShape2D_duqwo")
+
+[connection signal="body_entered" from="GoalArea2D" to="GoalArea2D" method="_on_body_entered"]
