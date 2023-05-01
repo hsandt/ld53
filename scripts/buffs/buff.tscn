@@ -81,6 +81,7 @@ bus = &"SFX"
 
 [node name="spark_hit_sfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_ru8gr")
+volume_db = -10.0
 autoplay = true
 bus = &"SFX"
 
