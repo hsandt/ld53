@@ -10,8 +10,6 @@ func _ready():
 	if modifier.lucky == null and modifier.worsen == null:
 		# no further modifier, no button
 		spark_button.hide()
-
-func _ready():
 	$label.text=modifier.description
 	if(len(modifier.icon_path)>1):
 		$icon.texture=load("res://sprites/buff_icons/"+modifier.icon_path)
