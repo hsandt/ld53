@@ -18,6 +18,7 @@ size = Vector2(1920, 100)
 size = Vector2(100, 1080)
 
 [node name="Node2D" type="Node2D"]
+metadata/_edit_horizontal_guides_ = [-349.0, 350.0]
 
 [node name="InGameManager" parent="." node_paths=PackedStringArray("pause_menu", "player_character") instance=ExtResource("1_i0ea3")]
 pause_menu = NodePath("../CanvasLayer/PauseMenu")
