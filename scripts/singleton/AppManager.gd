@@ -5,7 +5,8 @@ extends Node
 ##
 ## Input Map
 ## Define input for the following actions:
-##   app_toggle_hidpi
+##   app_prev_resolution
+##   app_next_resolution
 ##   app_toggle_fullscreen
 ##   app_take_screenshot
 ##   app_exit
@@ -14,17 +15,18 @@ extends Node
 ## If true, auto-switch to fullscreen on standalone game start
 @export var auto_fullscreen_in_standalone: bool = false
 
-## Window initial size, used for hi-dpi resize
-## Set on _ready
-var initial_size : Vector2
+## Array of resolution presets
+@export var preset_resolutions: Array[Vector2i] = [
+		Vector2i(1280, 720),
+		Vector2i(1920, 1080),
+		Vector2i(2560, 1440),
+		Vector2i(3840, 2160),
+	]
 
-## Is window at 2x resolution?
-var hidpi_active = false
+var current_preset_resolution_index = -1
 
 
 func _ready():
-	initial_size = DisplayServer.window_get_size()
-
 	if DisplayServer.window_get_mode() not in \
 			[DisplayServer.WINDOW_MODE_FULLSCREEN, DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN] and \
 			auto_fullscreen_in_standalone:
@@ -36,8 +38,10 @@ func _ready():
 func _unhandled_input(event: InputEvent):
 	# let user toggle hi-dpi resolution freely
 	# (hi-dpi is hard to detect and resize is hard to force on start)
-	if event.is_action_pressed(&"app_toggle_hidpi"):
-		toggle_hidpi()
+	if event.is_action_pressed(&"app_prev_resolution"):
+		change_resolution(-1)
+	elif event.is_action_pressed(&"app_next_resolution"):
+		change_resolution(1)
 
 	if event.is_action_pressed(&"app_toggle_fullscreen"):
 		toggle_fullscreen()
@@ -49,17 +53,41 @@ func _unhandled_input(event: InputEvent):
 		get_tree().quit()
 
 
-func toggle_hidpi():
-	if hidpi_active:
-		# back to normal size
-		DisplayServer.window_set_size(initial_size)
-	else:
-		# set hi-dpi size (nothing more than 2x window size)
-		DisplayServer.window_set_size(initial_size * 2)
+func change_resolution(delta: int):
+	# Redo this every time in case user changed monitor during game (rare)
+	var screen_size = DisplayServer.screen_get_size()
 
-	# toggle
-	hidpi_active = not hidpi_active
-	print("[AppManager] Toggled hi-dpi size: %s" % hidpi_active)
+	# Filter out preset resolutions bigger than screen size
+	var valid_preset_resolutions = []
+	for preset_resolution in preset_resolutions:
+		if preset_resolution.x <= screen_size.x and \
+				preset_resolution.y <= screen_size.y:
+			valid_preset_resolutions.append(preset_resolution)
+
+	if valid_preset_resolutions.is_empty():
+		push_error("[AppManager] change_resolution: all preset resolutions are ",
+			"bigger than screen size, STOP")
+		return
+
+	var new_preset_resolution_index
+	if current_preset_resolution_index == -1:
+		if delta > 0:
+			new_preset_resolution_index = 0
+		else:
+			new_preset_resolution_index = valid_preset_resolutions.size() - 1
+	else:
+		new_preset_resolution_index = (current_preset_resolution_index + delta) % \
+			valid_preset_resolutions.size()
+
+	if current_preset_resolution_index == new_preset_resolution_index:
+		return
+
+	current_preset_resolution_index = new_preset_resolution_index
+
+	var new_preset_resolution = valid_preset_resolutions[new_preset_resolution_index]
+	DisplayServer.window_set_size(new_preset_resolution)
+
+	print("[AppManager] Changed to preset resolution: %s" % new_preset_resolution)
 
 
 func toggle_fullscreen():
