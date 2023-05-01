@@ -28,20 +28,38 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -100.0
-offset_right = 100.0
+offset_left = -436.0
+offset_right = 435.047
 offset_bottom = 120.0
 grow_horizontal = 2
 texture = ExtResource("2_lf63l")
 expand_mode = 3
 
-[node name="Character" type="TextureRect" parent="Bar"]
+[node name="Control" type="Control" parent="Bar"]
+layout_mode = 1
+anchor_left = 0.457
+anchor_top = 0.5
+anchor_right = 0.457
+anchor_bottom = 0.5
+offset_left = -358.068
+offset_top = -50.0
+offset_right = 357.932
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Character" type="TextureRect" parent="Bar/Control"]
 material = SubResource("CanvasItemMaterial_renjf")
-layout_mode = 0
-offset_left = -31.0
-offset_top = -31.0
-offset_right = 33.0
-offset_bottom = 33.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.054
+anchor_top = 0.327
+anchor_right = 0.054
+anchor_bottom = 0.327
+offset_left = -38.664
+offset_top = -32.7
+offset_right = 351.336
+offset_bottom = 294.3
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("3_7itls")
 script = ExtResource("3_6l2ct")
