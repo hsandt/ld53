@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-title="LD53"
+title="POWDER"
 all_platforms=(windows osx linux web)
 godot_bin="godot4.0.2_stable"
 godoticon_path="scripts/editor/godoticon"
