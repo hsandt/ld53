@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://b5d35m852wwbg" path="res://sprites/buff_icons/black_eye.png" id="2_whe62"]
 [ext_resource type="Script" path="res://scripts/buffs/progress_bar.gd" id="3_kh3ky"]
 [ext_resource type="AudioStream" uid="uid://bg6cv3it1gsjq" path="res://audio/sfx/ui_click_1 WIP.ogg" id="4_0nxpa"]
-[ext_resource type="AudioStream" uid="uid://dpbdll3vkgsjb" path="res://audio/sfx/spark_loop.ogg" id="4_hmlaa"]
+[ext_resource type="AudioStream" uid="uid://s0k6nyen83su" path="res://audio/sfx/spark_loop_ver2.ogg" id="6_0ukab"]
 [ext_resource type="AudioStream" uid="uid://dm2ra3plrjukb" path="res://audio/sfx/spark_hit WIP.ogg" id="6_ru8gr"]
 [ext_resource type="AudioStream" uid="uid://rxj2j25frlmi" path="res://audio/sfx/buff WIP.ogg" id="7_47n0n"]
 [ext_resource type="AudioStream" uid="uid://dfqveqh6ldxy5" path="res://audio/sfx/debuff WIP.ogg" id="8_5re6b"]
@@ -71,7 +71,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_ied63")
 stream = ExtResource("4_0nxpa")
 
 [node name="spark_loop_sfx" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_hmlaa")
+stream = ExtResource("6_0ukab")
 volume_db = -10.0
 autoplay = true
 
