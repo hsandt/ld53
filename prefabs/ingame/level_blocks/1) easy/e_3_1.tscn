@@ -1,15 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://b4yyjubvrbe8c"]
+[gd_scene load_steps=2 format=3 uid="uid://si5dyqylu1s"]
 
-[ext_resource type="PackedScene" uid="uid://ybj4svsavf4f" path="res://prefabs/ingame/obstacle_medium.tscn" id="1_emggh"]
-[ext_resource type="PackedScene" uid="uid://b4r6q2xh20e8w" path="res://prefabs/ingame/obstacle_small.tscn" id="2_7e38p"]
+[ext_resource type="PackedScene" uid="uid://b4r6q2xh20e8w" path="res://prefabs/ingame/obstacle_small.tscn" id="1_an2n0"]
 
-[node name="E3_1" type="Area2D"]
+[node name="M3_1" type="Area2D"]
+position = Vector2(1200, 0)
 
-[node name="obstacle_medium" parent="." instance=ExtResource("1_emggh")]
-position = Vector2(0, -245)
+[node name="obstacle_small" parent="." instance=ExtResource("1_an2n0")]
+position = Vector2(400, 0)
 
-[node name="obstacle_medium2" parent="." instance=ExtResource("1_emggh")]
-position = Vector2(0, 250)
+[node name="obstacle_small2" parent="." instance=ExtResource("1_an2n0")]
+position = Vector2(0, -275)
 
-[node name="obstacle_small" parent="." instance=ExtResource("2_7e38p")]
-position = Vector2(800, 0)
+[node name="obstacle_small3" parent="." instance=ExtResource("1_an2n0")]
+position = Vector2(0, 275)
