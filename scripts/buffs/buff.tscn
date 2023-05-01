@@ -1,8 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://n87nhvob85pn"]
+[gd_scene load_steps=11 format=3 uid="uid://n87nhvob85pn"]
 
 [ext_resource type="Texture2D" uid="uid://b7vutp6ly7tx6" path="res://sprites/cooldown_circle.png" id="1_7tibs"]
 [ext_resource type="Script" path="res://scripts/buffs/buff.gd" id="1_1562j"]
 [ext_resource type="Script" path="res://scripts/buffs/progress_bar.gd" id="3_kh3ky"]
+[ext_resource type="AudioStream" uid="uid://bg6cv3it1gsjq" path="res://audio/sfx/ui_click_1 WIP.ogg" id="4_0nxpa"]
+[ext_resource type="AudioStream" uid="uid://dpbdll3vkgsjb" path="res://audio/sfx/spark_loop.ogg" id="4_hmlaa"]
+[ext_resource type="AudioStream" uid="uid://dm2ra3plrjukb" path="res://audio/sfx/spark_hit WIP.ogg" id="6_ru8gr"]
+[ext_resource type="AudioStream" uid="uid://rxj2j25frlmi" path="res://audio/sfx/buff WIP.ogg" id="7_47n0n"]
+[ext_resource type="AudioStream" uid="uid://dfqveqh6ldxy5" path="res://audio/sfx/debuff WIP.ogg" id="8_5re6b"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qbw68"]
 bg_color = Color(0.243137, 0.180392, 0.180392, 0.341176)
@@ -61,6 +66,26 @@ offset_right = 167.0
 offset_bottom = 51.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_qbw68")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ied63")
+
+[node name="ui_click_sfx" type="AudioStreamPlayer" parent="spark_button"]
+stream = ExtResource("4_0nxpa")
+
+[node name="spark_loop_sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_hmlaa")
+volume_db = -10.0
+autoplay = true
+
+[node name="spark_hit_sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_ru8gr")
+autoplay = true
+
+[node name="buff_sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_47n0n")
+volume_db = -10.0
+
+[node name="debuff_sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_5re6b")
+volume_db = -10.0
 
 [connection signal="timeout" from="progress/duration" to="." method="_on_duration_timeout"]
 [connection signal="pressed" from="spark_button" to="." method="_on_spark_button_pressed"]
