@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://ybj4svsavf4f" path="res://prefabs/ingame/obstacle_medium.tscn" id="1_b1loc"]
 [ext_resource type="PackedScene" uid="uid://clbkj8klm4my3" path="res://prefabs/ingame/obstacle_big.tscn" id="2_h5h77"]
 
-[node name="H3_2" type="Area2D"]
+[node name="H3_1" type="Area2D"]
 
 [node name="obstacle_medium" parent="." instance=ExtResource("1_b1loc")]
 position = Vector2(0, -245)
