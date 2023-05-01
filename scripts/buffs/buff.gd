@@ -1,11 +1,14 @@
 extends Control
 
 @export var modifier: Modifier
+@export var explosion_prefab: PackedScene
 @onready var spark_button: Button = $spark_button
 
 func _ready():
 	assert(modifier != null,
 		"[buff] on buff '%s', modifier is not defined" % get_path())
+	assert(explosion_prefab != null,
+		"[buff] on buff '%s', explosion_prefab is not defined" % get_path())
 
 	if modifier.lucky == null and modifier.worsen == null:
 		# no further modifier, no button
@@ -15,9 +18,12 @@ func _ready():
 		$icon.texture=load("res://sprites/buff_icons/"+modifier.icon_path)
 
 func _on_duration_timeout():
-	queue_free()
+	# Timeout: explode without the burst effect
+	_explode()
 
 func _on_spark_button_pressed():
+	# Burst: explode with the burst effect (get lucky or worsen)
+
 	$spark_button/ui_click_sfx.play()
 	var buffs = get_parent()
 
@@ -44,3 +50,14 @@ func _on_spark_button_pressed():
 		$debuff_sfx.play()
 		buffs.add(modifier.worsen)
 
+	_explode()
+
+
+func _explode():
+	_play_explosion_feedback()
+	queue_free()
+
+
+func _play_explosion_feedback():
+	var explosion = explosion_prefab.instantiate()
+	get_tree().root.add_child(explosion)

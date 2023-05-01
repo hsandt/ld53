@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://c03i68p3oqkh2"]
+
+[ext_resource type="Texture2D" uid="uid://cnabhyboag8wj" path="res://sprites/hud/HUD_Keg.PNG" id="1_0ng4j"]
+
+[node name="Powder Panel" type="Panel"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(332, 332)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -106.0
+offset_top = -242.0
+offset_right = 78.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_0ng4j")

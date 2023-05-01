@@ -1,11 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://n87nhvob85pn"]
+[gd_scene load_steps=13 format=3 uid="uid://n87nhvob85pn"]
 
 [ext_resource type="Texture2D" uid="uid://b7vutp6ly7tx6" path="res://sprites/cooldown_circle.png" id="1_7tibs"]
 [ext_resource type="Script" path="res://scripts/buffs/buff.gd" id="1_1562j"]
 [ext_resource type="Texture2D" uid="uid://b5d35m852wwbg" path="res://sprites/buff_icons/black_eye.png" id="2_whe62"]
+[ext_resource type="PackedScene" uid="uid://rvie2lk2ka6u" path="res://prefabs/ingame/fx/explosion.tscn" id="2_xi3r8"]
 [ext_resource type="Script" path="res://scripts/buffs/progress_bar.gd" id="3_kh3ky"]
 [ext_resource type="AudioStream" uid="uid://bg6cv3it1gsjq" path="res://audio/sfx/ui_click_1 WIP.ogg" id="4_0nxpa"]
-[ext_resource type="AudioStream" uid="uid://dpbdll3vkgsjb" path="res://audio/sfx/spark_loop.ogg" id="4_hmlaa"]
+[ext_resource type="AudioStream" uid="uid://s0k6nyen83su" path="res://audio/sfx/spark_loop_ver2.ogg" id="6_0ukab"]
 [ext_resource type="AudioStream" uid="uid://dm2ra3plrjukb" path="res://audio/sfx/spark_hit WIP.ogg" id="6_ru8gr"]
 [ext_resource type="AudioStream" uid="uid://rxj2j25frlmi" path="res://audio/sfx/buff WIP.ogg" id="7_47n0n"]
 [ext_resource type="AudioStream" uid="uid://dfqveqh6ldxy5" path="res://audio/sfx/debuff WIP.ogg" id="8_5re6b"]
@@ -25,6 +26,7 @@ offset_top = 14.0
 offset_right = 63.0
 offset_bottom = 54.0
 script = ExtResource("1_1562j")
+explosion_prefab = ExtResource("2_xi3r8")
 
 [node name="icon" type="Sprite2D" parent="."]
 position = Vector2(17, 20)
@@ -69,23 +71,28 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_ied63")
 
 [node name="ui_click_sfx" type="AudioStreamPlayer" parent="spark_button"]
 stream = ExtResource("4_0nxpa")
+bus = &"SFX"
 
 [node name="spark_loop_sfx" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_hmlaa")
+stream = ExtResource("6_0ukab")
 volume_db = -10.0
 autoplay = true
+bus = &"SFX"
 
 [node name="spark_hit_sfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_ru8gr")
 autoplay = true
+bus = &"SFX"
 
 [node name="buff_sfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_47n0n")
 volume_db = -10.0
+bus = &"SFX"
 
 [node name="debuff_sfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_5re6b")
 volume_db = -10.0
+bus = &"SFX"
 
 [connection signal="timeout" from="progress/duration" to="." method="_on_duration_timeout"]
 [connection signal="pressed" from="spark_button" to="." method="_on_spark_button_pressed"]

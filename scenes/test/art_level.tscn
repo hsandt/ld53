@@ -1,11 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://ssep3fv1vsc8"]
+[gd_scene load_steps=13 format=3 uid="uid://ssep3fv1vsc8"]
 
 [ext_resource type="PackedScene" uid="uid://bkxvhy0xyc6my" path="res://prefabs/ingame/in_game_manager.tscn" id="1_r0yvm"]
+[ext_resource type="AudioStream" uid="uid://ddhkhbl82shqs" path="res://audio/bgm/Level_WIP.ogg" id="2_6ot5u"]
 [ext_resource type="Script" path="res://scripts/audio/MusicStreamPlayer.gd" id="2_l6ce7"]
 [ext_resource type="PackedScene" uid="uid://bigtdfruv4w60" path="res://prefabs/pause_menu_custom.tscn" id="3_1fatq"]
 [ext_resource type="PackedScene" uid="uid://4n8e4dswbycl" path="res://prefabs/ingame/player_character_body_2d.tscn" id="4_3j6cy"]
 [ext_resource type="Script" path="res://scripts/ingame/ScrollingCenter.gd" id="5_g1h1w"]
+[ext_resource type="PackedScene" uid="uid://b3cj8qaa1pk0g" path="res://prefabs/ingame/hud/powders_panel.tscn" id="5_jdasq"]
 [ext_resource type="PackedScene" uid="uid://dut1iocwxhlh7" path="res://scenes/test/art_map.tscn" id="6_50fx4"]
+[ext_resource type="PackedScene" uid="uid://cxmcka11cekmi" path="res://prefabs/ingame/camera_2d.tscn" id="6_a1bd6"]
 [ext_resource type="Texture2D" uid="uid://dk7tsog5tghbd" path="res://sprites/ref/ingame_mockup.png" id="7_7d17y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ft5pg"]
@@ -24,14 +27,27 @@ player_character = NodePath("../PlayerCharacterBody2D")
 [node name="MusicStreamPlayer" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 process_mode = 3
+stream = ExtResource("2_6ot5u")
 volume_db = -10.0
 autoplay = true
 bus = &"Music"
 script = ExtResource("2_l6ce7")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 5
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("3_1fatq")]
+
+[node name="HUD" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Powders Panel" parent="CanvasLayer/HUD" instance=ExtResource("5_jdasq")]
+layout_mode = 1
 
 [node name="PlayerCharacterBody2D" parent="." instance=ExtResource("4_3j6cy")]
 z_index = 10
@@ -47,7 +63,7 @@ script = ExtResource("5_g1h1w")
 player_character = NodePath("../PlayerCharacterBody2D")
 lookahead_distance = 500.0
 
-[node name="Camera2D" type="Camera2D" parent="ScrollingCenter"]
+[node name="Camera2D" parent="ScrollingCenter" instance=ExtResource("6_a1bd6")]
 
 [node name="RigidBody2D Screen Colliders (BAD causes speed up)" type="AnimatableBody2D" parent="."]
 process_mode = 4
@@ -75,11 +91,15 @@ scale = Vector2(1920, 1080)
 
 [node name="ArtMap" parent="." instance=ExtResource("6_50fx4")]
 
-[node name="REFERENCE Sprite2D" type="Sprite2D" parent="."]
+[node name="CanvasLayer REF" type="CanvasLayer" parent="."]
+layer = 10
 visible = false
-modulate = Color(1, 1, 1, 0.388235)
-position = Vector2(953, 0)
+
+[node name="REFERENCE Sprite2D" type="Sprite2D" parent="CanvasLayer REF"]
+modulate = Color(1, 1, 1, 0.709804)
+position = Vector2(960, 540)
 texture = ExtResource("7_7d17y")
+metadata/_edit_lock_ = true
 
 [connection signal="back_to_main_pressed" from="CanvasLayer/PauseMenu" to="InGameManager" method="_on_pause_menu_back_to_main_pressed"]
 [connection signal="pause" from="CanvasLayer/PauseMenu" to="MusicStreamPlayer" method="_on_pause_menu_pause"]
