@@ -22,6 +22,7 @@ layout_mode = 1
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_k8odg")
+volume_db = -8.0
 autoplay = true
 
 [connection signal="start_game_pressed" from="MainMenu" to="MainMenuManager" method="_on_main_menu_start_game_pressed"]
