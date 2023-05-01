@@ -1,6 +1,8 @@
+
 [gd_scene load_steps=23 format=3 uid="uid://dcqumcm4vc2x"]
 
-[ext_resource type="PackedScene" uid="uid://exsj7aotf4aj" path="res://prefabs/ingame/map_base.tscn" id="1_p1joc"]
+
+[ext_resource type="PackedScene" uid="uid://bcxj2wu4hjq7t" path="res://prefabs/ingame/map_base.tscn" id="1_p1joc"]
 [ext_resource type="PackedScene" uid="uid://clbkj8klm4my3" path="res://prefabs/ingame/obstacle_big.tscn" id="2_dcore"]
 [ext_resource type="PackedScene" uid="uid://b4r6q2xh20e8w" path="res://prefabs/ingame/obstacle_small.tscn" id="4_5y8ev"]
 [ext_resource type="Texture2D" uid="uid://d0vvv3dcec8mu" path="res://sprites/white_square_1x1.png" id="5_1yeif"]
@@ -238,6 +240,7 @@ scale = Vector2(100, 100)
 texture = ExtResource("5_1yeif")
 
 [node name="GoalArea2D" parent="." index="3"]
+
 position = Vector2(90000, 0)
 metadata/_edit_group_ = true
 
