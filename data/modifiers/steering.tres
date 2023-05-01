@@ -4,7 +4,6 @@
 
 [sub_resource type="Resource" id="Resource_s2te1"]
 script = ExtResource("1_eyiv6")
-icon_path = ""
 description = "Teleport TODO"
 attribute = "steer_speed"
 effect = "multiply"
@@ -14,7 +13,6 @@ duration = 5.0
 
 [sub_resource type="Resource" id="Resource_54gr4"]
 script = ExtResource("1_eyiv6")
-icon_path = ""
 description = "Input inverted."
 attribute = "steer_speed"
 effect = "multiply"
@@ -24,7 +22,6 @@ duration = 5.0
 
 [resource]
 script = ExtResource("1_eyiv6")
-icon_path = ""
 description = "Vertical speed * 0.5"
 attribute = "steer_speed"
 effect = "multiply"

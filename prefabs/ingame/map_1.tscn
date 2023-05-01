@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://boss2x6cwuv2j"]
+[gd_scene load_steps=6 format=3 uid="uid://jpoe3ovp36uc"]
 
-[ext_resource type="PackedScene" uid="uid://bcxj2wu4hjq7t" path="res://prefabs/ingame/map_base.tscn" id="1_p1joc"]
+[ext_resource type="PackedScene" uid="uid://exsj7aotf4aj" path="res://prefabs/ingame/map_base.tscn" id="1_p1joc"]
 [ext_resource type="PackedScene" uid="uid://clbkj8klm4my3" path="res://prefabs/ingame/obstacle_big.tscn" id="2_dcore"]
 [ext_resource type="PackedScene" uid="uid://ybj4svsavf4f" path="res://prefabs/ingame/obstacle_medium.tscn" id="3_sns40"]
 [ext_resource type="PackedScene" uid="uid://b4r6q2xh20e8w" path="res://prefabs/ingame/obstacle_small.tscn" id="4_5y8ev"]
@@ -83,7 +83,7 @@ scale = Vector2(100, 100)
 texture = ExtResource("5_1yeif")
 
 [node name="GoalArea2D" parent="." index="3"]
-position = Vector2(2345, 0)
+position = Vector2(546, 0)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" parent="GoalArea2D" index="0"]

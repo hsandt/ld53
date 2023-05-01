@@ -1,7 +1,6 @@
 class_name Modifier
 extends Resource
 
-@export var icon_path: String
 @export var description: String
 @export var attribute: String
 #effect in terms of math on number

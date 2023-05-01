@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://ctl427p21n042"]
-
-[ext_resource type="PackedScene" uid="uid://b6tjyuvk6wmn4" path="res://prefabs/ingame/progress_bar.tscn" id="1_yiqjb"]
-
-[node name="Node2D" type="Node2D"]
-
-[node name="ProgressBar" parent="." instance=ExtResource("1_yiqjb")]
