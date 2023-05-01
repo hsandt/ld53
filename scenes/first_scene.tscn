@@ -1,19 +1,9 @@
-<<<<<<< HEAD
-[gd_scene load_steps=12 format=3 uid="uid://ddxu5buxr3lp5"]
-=======
 [gd_scene load_steps=12 format=3 uid="uid://tx2hmn6o6i8q"]
->>>>>>> fd687e304a1fc24876eb1d824b7bd58340acf768
 
 [ext_resource type="PackedScene" uid="uid://bkxvhy0xyc6my" path="res://prefabs/ingame/in_game_manager.tscn" id="1_i0ea3"]
-[ext_resource type="Texture2D" uid="uid://d0vvv3dcec8mu" path="res://sprites/white_square_1x1.png" id="1_pefx0"]
 [ext_resource type="PackedScene" uid="uid://bigtdfruv4w60" path="res://prefabs/pause_menu_custom.tscn" id="2_afo14"]
-<<<<<<< HEAD
-[ext_resource type="AudioStream" uid="uid://ddhkhbl82shqs" path="res://audio/bgm/Level_WIP.ogg" id="2_bo6oh"]
-[ext_resource type="PackedScene" uid="uid://cgrwrw8imf0gg" path="res://prefabs/ingame/player_character_body_2d.tscn" id="3_82xke"]
-=======
 [ext_resource type="AudioStream" uid="uid://ddhkhbl82shqs" path="res://audio/bgm/Level.ogg" id="2_jig5s"]
 [ext_resource type="PackedScene" uid="uid://4n8e4dswbycl" path="res://prefabs/ingame/player_character_body_2d.tscn" id="3_82xke"]
->>>>>>> fd687e304a1fc24876eb1d824b7bd58340acf768
 [ext_resource type="Script" path="res://scripts/audio/MusicStreamPlayer.gd" id="3_a3gc7"]
 [ext_resource type="PackedScene" uid="uid://b3cj8qaa1pk0g" path="res://prefabs/ingame/hud/powders_panel.tscn" id="5_bsr04"]
 [ext_resource type="Script" path="res://scripts/ingame/ScrollingCenter.gd" id="6_b3o2y"]
@@ -26,7 +16,7 @@ size = Vector2(1920, 100)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u0xki"]
 size = Vector2(100, 1080)
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D2" type="Node2D"]
 metadata/_edit_horizontal_guides_ = [-349.0, 350.0]
 
 [node name="InGameManager" parent="." node_paths=PackedStringArray("pause_menu", "player_character") instance=ExtResource("1_i0ea3")]
@@ -98,7 +88,6 @@ shape = SubResource("RectangleShape2D_u0xki")
 [node name="Sprite2D" type="Sprite2D" parent="RigidBody2D Screen Colliders (BAD causes speed up)"]
 modulate = Color(1, 1, 1, 0.188235)
 scale = Vector2(1920, 1080)
-texture = ExtResource("1_pefx0")
 
 [node name="Map1" parent="." instance=ExtResource("8_srhq4")]
 

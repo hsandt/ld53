@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Modifier" load_steps=4 format=3 uid="uid://ddrmj67iflcgc"]
+[gd_resource type="Resource" script_class="Modifier" load_steps=4 format=3 uid="uid://hqgedus288jo"]
 
 [ext_resource type="Script" path="res://scripts/buffs/modifier.gd" id="1_5n5vq"]
 
