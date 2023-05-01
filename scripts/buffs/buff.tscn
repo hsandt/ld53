@@ -36,6 +36,7 @@ polygon = PackedVector2Array(-34, 16, -22.8741, -0.361572, 0, -34, 32, 18)
 
 [node name="progress" type="TextureProgressBar" parent="."]
 z_index = -1
+layout_mode = 0
 offset_left = -10.0
 offset_top = -7.0
 offset_right = 54.0
@@ -51,8 +52,7 @@ wait_time = 10.0
 one_shot = true
 autostart = true
 
-[node name="Button" type="Button" parent="."]
-visible = false
+[node name="spark_button" type="Button" parent="."]
 z_index = -2
 layout_mode = 0
 offset_left = -15.0
@@ -63,3 +63,4 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_qbw68")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ied63")
 
 [connection signal="timeout" from="progress/duration" to="." method="_on_duration_timeout"]
+[connection signal="pressed" from="spark_button" to="." method="_on_spark_button_pressed"]
