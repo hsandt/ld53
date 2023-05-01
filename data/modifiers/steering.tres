@@ -24,7 +24,7 @@ duration = 5.0
 
 [resource]
 script = ExtResource("1_eyiv6")
-icon_path = "blue_triangle.png"
+icon_path = ""
 description = "Vertical speed * 0.5"
 attribute = "steer_speed"
 effect = "multiply"
