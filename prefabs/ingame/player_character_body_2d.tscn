@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cgrwrw8imf0gg"]
+[gd_scene load_steps=13 format=3 uid="uid://4n8e4dswbycl"]
 
 [ext_resource type="Material" uid="uid://r5m0e65nite5" path="res://materials/player_character_material.tres" id="1_1l63l"]
 [ext_resource type="Script" path="res://scripts/ingame/player_character/player.gd" id="1_2t2x0"]
@@ -8,9 +8,9 @@
 [ext_resource type="Script" path="res://scripts/ingame/player_character/cargo.gd" id="6_dru5e"]
 [ext_resource type="Script" path="res://scripts/ingame/player_character/powder.gd" id="6_vdi8d"]
 [ext_resource type="Texture2D" uid="uid://b3xi3ohlwe8f4" path="res://sprites/keg.png" id="8_5dtp0"]
-[ext_resource type="Resource" uid="uid://bbnsbtut0li7h" path="res://data/modifiers/town_cargo.tres" id="8_or7er"]
+[ext_resource type="Resource" uid="uid://2f5agh7wsf8u" path="res://data/modifiers/town_cargo.tres" id="8_or7er"]
 [ext_resource type="Resource" uid="uid://b08wq3why3q7e" path="res://data/modifiers/steering.tres" id="8_vtdr1"]
-[ext_resource type="Resource" uid="uid://ddrmj67iflcgc" path="res://data/modifiers/obstacle_damage.tres" id="11_fnbfi"]
+[ext_resource type="Resource" uid="uid://hqgedus288jo" path="res://data/modifiers/obstacle_damage.tres" id="11_fnbfi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6va3q"]
 size = Vector2(128, 128)
