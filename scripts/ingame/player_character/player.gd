@@ -18,7 +18,7 @@ var current_speed = top_speed
 @export var hurt_brightness: float = 0.5
 
 @onready var buffs: Buffs = $Buffs
-@onready var cargo: Cargo = $cargo
+@onready var cargo: Node2D = $cargo
 
 var should_move: bool = false
 
