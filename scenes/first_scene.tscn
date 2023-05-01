@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ddxu5buxr3lp5"]
+[gd_scene load_steps=11 format=3 uid="uid://ddxu5buxr3lp5"]
 
 [ext_resource type="PackedScene" uid="uid://bkxvhy0xyc6my" path="res://prefabs/ingame/in_game_manager.tscn" id="1_i0ea3"]
 [ext_resource type="Texture2D" uid="uid://d0vvv3dcec8mu" path="res://sprites/white_square_1x1.png" id="1_pefx0"]
@@ -6,10 +6,8 @@
 [ext_resource type="AudioStream" uid="uid://ddhkhbl82shqs" path="res://audio/bgm/Level_WIP.ogg" id="2_jw3vr"]
 [ext_resource type="PackedScene" path="res://prefabs/ingame/player_character_body_2d.tscn" id="3_82xke"]
 [ext_resource type="Script" path="res://scripts/audio/MusicStreamPlayer.gd" id="3_a3gc7"]
-[ext_resource type="PackedScene" uid="uid://clbkj8klm4my3" path="res://prefabs/ingame/obstacle_big.tscn" id="3_ykc5j"]
-[ext_resource type="PackedScene" uid="uid://ybj4svsavf4f" path="res://prefabs/ingame/obstacle_medium.tscn" id="4_h1iuh"]
-[ext_resource type="PackedScene" uid="uid://b4r6q2xh20e8w" path="res://prefabs/ingame/obstacle_small.tscn" id="5_uibm3"]
 [ext_resource type="Script" path="res://scripts/ingame/ScrollingCenter.gd" id="6_b3o2y"]
+[ext_resource type="PackedScene" uid="uid://cx7hm8oswyiu" path="res://prefabs/ingame/map.tscn" id="6_d44rd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ft5pg"]
 size = Vector2(1920, 100)
@@ -121,27 +119,7 @@ position = Vector2(603, 538)
 scale = Vector2(100, 100)
 texture = ExtResource("1_pefx0")
 
-[node name="Map" type="Node2D" parent="."]
-position = Vector2(0, -1)
-metadata/_edit_lock_ = true
-
-[node name="Obstacles" type="Node2D" parent="Map"]
-
-[node name="obstacle_big" parent="Map/Obstacles" instance=ExtResource("3_ykc5j")]
-position = Vector2(520, 158)
-metadata/_edit_lock_ = true
-
-[node name="obstacle_medium" parent="Map/Obstacles" instance=ExtResource("4_h1iuh")]
-position = Vector2(574, -145)
-metadata/_edit_lock_ = true
-
-[node name="obstacle_small" parent="Map/Obstacles" instance=ExtResource("5_uibm3")]
-position = Vector2(529, -319)
-metadata/_edit_lock_ = true
-
-[node name="obstacle_small2" parent="Map/Obstacles" instance=ExtResource("5_uibm3")]
-position = Vector2(639, 356)
-metadata/_edit_lock_ = true
+[node name="Map" parent="." instance=ExtResource("6_d44rd")]
 
 [node name="PlayerCharacterBody2D" parent="." instance=ExtResource("3_82xke")]
 z_index = 10

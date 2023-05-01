@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://cx7hm8oswyiu"]
+
+[ext_resource type="PackedScene" uid="uid://clbkj8klm4my3" path="res://prefabs/ingame/obstacle_big.tscn" id="1_kox13"]
+[ext_resource type="PackedScene" uid="uid://ybj4svsavf4f" path="res://prefabs/ingame/obstacle_medium.tscn" id="2_5vsc1"]
+[ext_resource type="PackedScene" uid="uid://b4r6q2xh20e8w" path="res://prefabs/ingame/obstacle_small.tscn" id="3_6tmyp"]
+
+[node name="Map" type="Node2D"]
+position = Vector2(0, -1)
+metadata/_edit_lock_ = true
+
+[node name="Obstacles" type="Node2D" parent="."]
+
+[node name="obstacle_big" parent="Obstacles" instance=ExtResource("1_kox13")]
+position = Vector2(520, 158)
+metadata/_edit_lock_ = true
+
+[node name="obstacle_medium" parent="Obstacles" instance=ExtResource("2_5vsc1")]
+position = Vector2(574, -145)
+metadata/_edit_lock_ = true
+
+[node name="obstacle_small" parent="Obstacles" instance=ExtResource("3_6tmyp")]
+position = Vector2(529, -319)
+metadata/_edit_lock_ = true
+
+[node name="obstacle_small2" parent="Obstacles" instance=ExtResource("3_6tmyp")]
+position = Vector2(639, 356)
+metadata/_edit_lock_ = true
