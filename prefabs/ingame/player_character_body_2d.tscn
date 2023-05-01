@@ -13,7 +13,7 @@
 [ext_resource type="Resource" uid="uid://hqgedus288jo" path="res://data/modifiers/obstacle_damage.tres" id="11_fnbfi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6va3q"]
-size = Vector2(121, 124)
+size = Vector2(128, 128)
 
 [node name="PlayerCharacterBody2D" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite_with_brightness_controller")]
 material = ExtResource("1_1l63l")
@@ -24,6 +24,8 @@ animated_sprite_with_brightness_controller = NodePath("AnimatedSprite2DBrightnes
 [node name="AnimatedSprite2DBrightnessController" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("brighten_timer")]
 z_index = 2
 material = ExtResource("1_1l63l")
+position = Vector2(-27, -33)
+scale = Vector2(0.5, 0.5)
 sprite_frames = ExtResource("3_fgtjg")
 frame_progress = 0.58425
 script = ExtResource("4_epfoh")
@@ -35,6 +37,7 @@ script = ExtResource("3_4x6o7")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 1)
 shape = SubResource("RectangleShape2D_6va3q")
+metadata/_edit_lock_ = true
 
 [node name="powder_bar" type="ProgressBar" parent="."]
 offset_left = -340.0
