@@ -18,6 +18,7 @@ var current_speed = top_speed
 @export var hurt_brightness: float = 0.5
 
 @onready var buffs: Buffs = $Buffs
+@onready var cargo: Cargo = $cargo
 
 
 func hurt(damage):
@@ -25,7 +26,7 @@ func hurt(damage):
 	# Flash for the duration set in Flash Timer
 	animated_sprite_with_brightness_controller.set_brightness_for_duration(hurt_brightness)
 	current_speed*=0.5
-	$cargo.hurt(damage)
+	cargo.hurt(damage)
 
 func _physics_process(delta):
 	# proto UI
