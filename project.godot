@@ -25,6 +25,7 @@ AppManager="*res://singletons/AppManager.tscn"
 MenuTemplateManager="*res://addons/EasyMenus/Nodes/menu_template_manager.tscn"
 SceneManager="*res://singletons/SceneManager.tscn"
 TransitionScreen="*res://singletons/TransitionScreen.tscn"
+GameManager="*res://singletons/GameManager.tscn"
 
 [display]
 

@@ -1,20 +1,19 @@
 extends Node
 
 
-@export var main_menu_scene: PackedScene
 @export var pause_menu: PauseMenu
+@export var player_character: Player
 
-## Speed factor for back to main menu fade out animation
-@export var back_to_main_menu_fade_out_speed: float = 1.0
 
-## Speed factor for back to main menu fade in animation
-@export var back_to_main_menu_fade_in_speed: float = 1.0
+var is_going_back_to_main_menu: bool = false
 
 func _ready():
-	assert(main_menu_scene != null,
-		"[InGameManager] main_menu_scene is not set on %s" % get_path())
+
 	assert(pause_menu != null,
 		"[InGameManager] pause_menu is not set on %s" % get_path())
+	assert(player_character != null,
+		"[InGameManager] player_character is not set on %s" % get_path())
+
 	pause_menu.visible = false
 
 
@@ -31,5 +30,13 @@ func _unhandled_input(event):
 
 
 func _on_pause_menu_back_to_main_pressed():
-	await SceneManager.change_scene_with_fade_async(main_menu_scene,
-		back_to_main_menu_fade_out_speed, back_to_main_menu_fade_in_speed)
+	is_going_back_to_main_menu = true
+
+	# Disable important gameplay elements as we are resuming time before
+	# going back to main, so we want to avoid any further gameplay events
+	# Also remember to check is_going_back_to_main_menu before doing
+	# important gameplay events that could still happen when PC is disabled,
+	# such as scrolling to the end of the level
+	player_character.process_mode = Node.PROCESS_MODE_DISABLED
+
+	await GameManager.go_back_to_main_menu()

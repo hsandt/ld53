@@ -15,8 +15,6 @@ func change_scene_with_fade_async(scene: PackedScene,
 	await TransitionScreen.fade_out_async(fade_out_speed)
 	# await should wait for end of frame, so we can safely call_change_scene_immediate here
 	_change_scene_immediate(scene)
-	# hack to avoid still being paused after pause back to menu
-	get_tree().paused = false
 	await TransitionScreen.fade_in_async(fade_in_speed)
 
 
