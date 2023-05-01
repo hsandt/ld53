@@ -1,0 +1,95 @@
+[gd_scene load_steps=12 format=3 uid="uid://csp6wk7wehm4a"]
+
+[ext_resource type="PackedScene" uid="uid://bkxvhy0xyc6my" path="res://prefabs/ingame/in_game_manager.tscn" id="1_1xegr"]
+[ext_resource type="AudioStream" uid="uid://ddhkhbl82shqs" path="res://audio/bgm/Level_WIP.ogg" id="2_7mi4s"]
+[ext_resource type="Script" path="res://scripts/audio/MusicStreamPlayer.gd" id="3_m4u3p"]
+[ext_resource type="PackedScene" uid="uid://b6tjyuvk6wmn4" path="res://prefabs/ingame/progress_bar.tscn" id="4_5ud8x"]
+[ext_resource type="PackedScene" uid="uid://bigtdfruv4w60" path="res://prefabs/pause_menu_custom.tscn" id="5_r8507"]
+[ext_resource type="PackedScene" uid="uid://cgrwrw8imf0gg" path="res://prefabs/ingame/player_character_body_2d.tscn" id="6_ix61o"]
+[ext_resource type="Script" path="res://scripts/ingame/ScrollingCenter.gd" id="7_8p4a4"]
+[ext_resource type="Texture2D" uid="uid://d0vvv3dcec8mu" path="res://sprites/white_square_1x1.png" id="8_5f6l2"]
+[ext_resource type="PackedScene" uid="uid://dcqumcm4vc2x" path="res://prefabs/ingame/map_1.tscn" id="9_xupcf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ft5pg"]
+size = Vector2(1920, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u0xki"]
+size = Vector2(100, 1080)
+
+[node name="Node2D" type="Node2D"]
+metadata/_edit_horizontal_guides_ = [-349.0, 350.0]
+
+[node name="InGameManager" parent="." node_paths=PackedStringArray("pause_menu", "player_character") instance=ExtResource("1_1xegr")]
+pause_menu = NodePath("../CanvasLayer/PauseMenu")
+player_character = NodePath("../PlayerCharacterBody2D")
+
+[node name="MusicStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+process_mode = 3
+stream = ExtResource("2_7mi4s")
+volume_db = -10.0
+autoplay = true
+bus = &"Music"
+script = ExtResource("3_m4u3p")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ProgressBar" parent="CanvasLayer" instance=ExtResource("4_5ud8x")]
+anchors_preset = 5
+anchor_top = 0.0
+anchor_bottom = 0.0
+grow_vertical = 1
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("5_r8507")]
+
+[node name="PlayerCharacterBody2D" parent="." instance=ExtResource("6_ix61o")]
+z_index = 10
+collision_mask = 65792
+platform_floor_layers = 4294967294
+platform_wall_layers = 256
+powder = null
+acceleration = null
+top_speed = 100
+steer_speed = null
+half_extent_y = 290
+hurt_brightness = null
+metadata/_edit_lock_ = true
+
+[node name="ScrollingCenter" type="Node2D" parent="." node_paths=PackedStringArray("player_character", "map")]
+script = ExtResource("7_8p4a4")
+player_character = NodePath("../PlayerCharacterBody2D")
+map = NodePath("../Map1")
+lookahead_distance = 500.0
+
+[node name="Camera2D" type="Camera2D" parent="ScrollingCenter"]
+
+[node name="RigidBody2D Screen Colliders (BAD causes speed up)" type="AnimatableBody2D" parent="."]
+process_mode = 4
+collision_layer = 256
+
+[node name="CollisionShape2D Up" type="CollisionShape2D" parent="RigidBody2D Screen Colliders (BAD causes speed up)"]
+position = Vector2(1, -400)
+shape = SubResource("RectangleShape2D_ft5pg")
+
+[node name="CollisionShape2D Down" type="CollisionShape2D" parent="RigidBody2D Screen Colliders (BAD causes speed up)"]
+position = Vector2(0, 400)
+shape = SubResource("RectangleShape2D_ft5pg")
+
+[node name="CollisionShape2D Left" type="CollisionShape2D" parent="RigidBody2D Screen Colliders (BAD causes speed up)"]
+position = Vector2(-1010, -0.5)
+shape = SubResource("RectangleShape2D_u0xki")
+
+[node name="CollisionShape2D Right" type="CollisionShape2D" parent="RigidBody2D Screen Colliders (BAD causes speed up)"]
+position = Vector2(1010, -0.5)
+shape = SubResource("RectangleShape2D_u0xki")
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D Screen Colliders (BAD causes speed up)"]
+modulate = Color(1, 1, 1, 0.188235)
+scale = Vector2(1920, 1080)
+texture = ExtResource("8_5f6l2")
+
+[node name="Map1" parent="." instance=ExtResource("9_xupcf")]
+
+[connection signal="back_to_main_pressed" from="CanvasLayer/PauseMenu" to="InGameManager" method="_on_pause_menu_back_to_main_pressed"]
+[connection signal="resume" from="CanvasLayer/PauseMenu" to="MusicStreamPlayer" method="_on_pause_menu_resume"]
+[connection signal="progress_changed" from="ScrollingCenter" to="CanvasLayer/ProgressBar" method="_on_scrolling_center_progress_changed"]

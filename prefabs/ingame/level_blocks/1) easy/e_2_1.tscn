@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cc20pbugg1vaw"]
+
+[ext_resource type="PackedScene" uid="uid://b4r6q2xh20e8w" path="res://prefabs/ingame/obstacle_small.tscn" id="1_8ca78"]
+
+[node name="E2_1" type="Area2D"]
+
+[node name="obstacle_small" parent="." instance=ExtResource("1_8ca78")]
+position = Vector2(0, 0)
+
+[node name="obstacle_small2" parent="." instance=ExtResource("1_8ca78")]
+position = Vector2(800, -100)

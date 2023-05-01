@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://xntlf174d640"]
+
+[ext_resource type="PackedScene" uid="uid://ybj4svsavf4f" path="res://prefabs/ingame/obstacle_medium.tscn" id="1_l4fa4"]
+
+[node name="M1_1_VAR" type="Area2D"]
+
+[node name="obstacle_medium" parent="." instance=ExtResource("1_l4fa4")]
+position = Vector2(0, -400)
+
+[node name="obstacle_medium2" parent="." instance=ExtResource("1_l4fa4")]
+position = Vector2(800, -200)

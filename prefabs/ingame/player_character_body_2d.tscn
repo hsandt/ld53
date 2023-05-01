@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3]
+[gd_scene load_steps=13 format=3 uid="uid://4n8e4dswbycl"]
 
 [ext_resource type="Material" uid="uid://r5m0e65nite5" path="res://materials/player_character_material.tres" id="1_1l63l"]
 [ext_resource type="Script" path="res://scripts/ingame/player_character/player.gd" id="1_2t2x0"]
@@ -8,10 +8,12 @@
 [ext_resource type="Script" path="res://scripts/ingame/player_character/cargo.gd" id="6_dru5e"]
 [ext_resource type="Script" path="res://scripts/ingame/player_character/powder.gd" id="6_vdi8d"]
 [ext_resource type="Texture2D" uid="uid://b3xi3ohlwe8f4" path="res://sprites/keg.png" id="8_5dtp0"]
+[ext_resource type="Resource" uid="uid://2f5agh7wsf8u" path="res://data/modifiers/town_cargo.tres" id="8_or7er"]
 [ext_resource type="Resource" uid="uid://b08wq3why3q7e" path="res://data/modifiers/steering.tres" id="8_vtdr1"]
+[ext_resource type="Resource" uid="uid://hqgedus288jo" path="res://data/modifiers/obstacle_damage.tres" id="11_fnbfi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6va3q"]
-size = Vector2(121, 124)
+size = Vector2(128, 128)
 
 [node name="PlayerCharacterBody2D" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite_with_brightness_controller")]
 material = ExtResource("1_1l63l")
@@ -22,6 +24,8 @@ animated_sprite_with_brightness_controller = NodePath("AnimatedSprite2DBrightnes
 [node name="AnimatedSprite2DBrightnessController" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("brighten_timer")]
 z_index = 2
 material = ExtResource("1_1l63l")
+position = Vector2(-27, -33)
+scale = Vector2(0.5, 0.5)
 sprite_frames = ExtResource("3_fgtjg")
 frame_progress = 0.58425
 script = ExtResource("4_epfoh")
@@ -33,6 +37,7 @@ script = ExtResource("3_4x6o7")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, 1)
 shape = SubResource("RectangleShape2D_6va3q")
+metadata/_edit_lock_ = true
 
 [node name="powder_bar" type="ProgressBar" parent="."]
 offset_left = -340.0
@@ -49,9 +54,10 @@ script = ExtResource("6_dru5e")
 [node name="powder_1" type="Node2D" parent="cargo"]
 position = Vector2(-106, -24)
 script = ExtResource("6_vdi8d")
-modifier = ExtResource("8_vtdr1")
+modifier = ExtResource("8_or7er")
 
 [node name="Sprite2D" type="Sprite2D" parent="cargo/powder_1"]
+visible = false
 texture_filter = 1
 scale = Vector2(4, 4)
 texture = ExtResource("8_5dtp0")
@@ -62,6 +68,7 @@ script = ExtResource("6_vdi8d")
 modifier = ExtResource("8_vtdr1")
 
 [node name="Sprite2D" type="Sprite2D" parent="cargo/powder_2"]
+visible = false
 texture_filter = 1
 scale = Vector2(4, 4)
 texture = ExtResource("8_5dtp0")
@@ -69,9 +76,10 @@ texture = ExtResource("8_5dtp0")
 [node name="powder_3" type="Node2D" parent="cargo"]
 position = Vector2(-273, -22)
 script = ExtResource("6_vdi8d")
-modifier = ExtResource("8_vtdr1")
+modifier = ExtResource("11_fnbfi")
 
 [node name="Sprite2D" type="Sprite2D" parent="cargo/powder_3"]
+visible = false
 texture_filter = 1
 scale = Vector2(4, 4)
 texture = ExtResource("8_5dtp0")
@@ -82,6 +90,7 @@ script = ExtResource("6_vdi8d")
 modifier = ExtResource("8_vtdr1")
 
 [node name="Sprite2D" type="Sprite2D" parent="cargo/powder_4"]
+visible = false
 texture_filter = 1
 scale = Vector2(4, 4)
 texture = ExtResource("8_5dtp0")
@@ -92,6 +101,7 @@ script = ExtResource("6_vdi8d")
 modifier = ExtResource("8_vtdr1")
 
 [node name="Sprite2D" type="Sprite2D" parent="cargo/powder_5"]
+visible = false
 texture_filter = 1
 scale = Vector2(4, 4)
 texture = ExtResource("8_5dtp0")
@@ -102,6 +112,7 @@ script = ExtResource("6_vdi8d")
 modifier = ExtResource("8_vtdr1")
 
 [node name="Sprite2D" type="Sprite2D" parent="cargo/powder_6"]
+visible = false
 texture_filter = 1
 scale = Vector2(4, 4)
 texture = ExtResource("8_5dtp0")

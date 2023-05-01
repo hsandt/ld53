@@ -1,8 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://n87nhvob85pn"]
+[gd_scene load_steps=13 format=3 uid="uid://n87nhvob85pn"]
 
 [ext_resource type="Texture2D" uid="uid://b7vutp6ly7tx6" path="res://sprites/cooldown_circle.png" id="1_7tibs"]
 [ext_resource type="Script" path="res://scripts/buffs/buff.gd" id="1_1562j"]
+[ext_resource type="Texture2D" uid="uid://b5d35m852wwbg" path="res://sprites/buff_icons/black_eye.png" id="2_whe62"]
+[ext_resource type="PackedScene" uid="uid://rvie2lk2ka6u" path="res://prefabs/ingame/fx/explosion.tscn" id="2_xi3r8"]
 [ext_resource type="Script" path="res://scripts/buffs/progress_bar.gd" id="3_kh3ky"]
+[ext_resource type="AudioStream" uid="uid://bg6cv3it1gsjq" path="res://audio/sfx/ui_click_1 WIP.ogg" id="4_0nxpa"]
+[ext_resource type="AudioStream" uid="uid://s0k6nyen83su" path="res://audio/sfx/spark_loop_ver2.ogg" id="6_0ukab"]
+[ext_resource type="AudioStream" uid="uid://dm2ra3plrjukb" path="res://audio/sfx/spark_hit WIP.ogg" id="6_ru8gr"]
+[ext_resource type="AudioStream" uid="uid://rxj2j25frlmi" path="res://audio/sfx/buff WIP.ogg" id="7_47n0n"]
+[ext_resource type="AudioStream" uid="uid://dfqveqh6ldxy5" path="res://audio/sfx/debuff WIP.ogg" id="8_5re6b"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qbw68"]
 bg_color = Color(0.243137, 0.180392, 0.180392, 0.341176)
@@ -19,8 +26,14 @@ offset_top = 14.0
 offset_right = 63.0
 offset_bottom = 54.0
 script = ExtResource("1_1562j")
+explosion_prefab = ExtResource("2_xi3r8")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="icon" type="Sprite2D" parent="."]
+position = Vector2(17, 20)
+scale = Vector2(0.823688, 0.88019)
+texture = ExtResource("2_whe62")
+
+[node name="label" type="RichTextLabel" parent="."]
 layout_mode = 0
 offset_left = 49.0
 offset_top = 7.0
@@ -28,14 +41,9 @@ offset_right = 255.0
 offset_bottom = 30.0
 text = "Invert controls"
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-position = Vector2(16, 22)
-scale = Vector2(0.469697, 0.596154)
-color = Color(0, 0.913725, 1, 1)
-polygon = PackedVector2Array(-34, 16, -22.8741, -0.361572, 0, -34, 32, 18)
-
 [node name="progress" type="TextureProgressBar" parent="."]
 z_index = -1
+layout_mode = 0
 offset_left = -10.0
 offset_top = -7.0
 offset_right = 54.0
@@ -51,8 +59,7 @@ wait_time = 10.0
 one_shot = true
 autostart = true
 
-[node name="Button" type="Button" parent="."]
-visible = false
+[node name="spark_button" type="Button" parent="."]
 z_index = -2
 layout_mode = 0
 offset_left = -15.0
@@ -62,4 +69,30 @@ offset_bottom = 51.0
 theme_override_styles/normal = SubResource("StyleBoxFlat_qbw68")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ied63")
 
+[node name="ui_click_sfx" type="AudioStreamPlayer" parent="spark_button"]
+stream = ExtResource("4_0nxpa")
+bus = &"SFX"
+
+[node name="spark_loop_sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_0ukab")
+volume_db = -10.0
+autoplay = true
+bus = &"SFX"
+
+[node name="spark_hit_sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_ru8gr")
+autoplay = true
+bus = &"SFX"
+
+[node name="buff_sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_47n0n")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="debuff_sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_5re6b")
+volume_db = -10.0
+bus = &"SFX"
+
 [connection signal="timeout" from="progress/duration" to="." method="_on_duration_timeout"]
+[connection signal="pressed" from="spark_button" to="." method="_on_spark_button_pressed"]

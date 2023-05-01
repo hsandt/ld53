@@ -3,6 +3,7 @@ extends Node
 
 @export var pause_menu: PauseMenu
 @export var player_character: Player
+@export var intro_duration: float = 1.0
 
 
 var game_phase: Enums.GamePhase
@@ -21,8 +22,12 @@ func _ready():
 	# Start in intro game phase
 	game_phase = Enums.GamePhase.INTRO
 
+	# wait for intro duration, pausable, physics time
+	await get_tree().create_timer(intro_duration, false, true).timeout
+
 	# For now, there is no intro so start racing immediately
 	game_phase = Enums.GamePhase.RACING
+	player_character.should_move = true
 
 
 func _unhandled_input(event):
