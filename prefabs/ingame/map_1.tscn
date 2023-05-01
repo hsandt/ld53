@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dcqumcm4vc2x"]
+[gd_scene load_steps=26 format=3 uid="uid://dcqumcm4vc2x"]
 
 [ext_resource type="PackedScene" uid="uid://exsj7aotf4aj" path="res://prefabs/ingame/map_base.tscn" id="1_p1joc"]
 [ext_resource type="PackedScene" uid="uid://clbkj8klm4my3" path="res://prefabs/ingame/obstacle_big.tscn" id="2_dcore"]
@@ -22,6 +22,9 @@
 [ext_resource type="PackedScene" uid="uid://bd6lf1v27urol" path="res://prefabs/ingame/level_blocks/taunter.tscn" id="19_uca22"]
 [ext_resource type="PackedScene" uid="uid://cgycsjw2bp36y" path="res://prefabs/ingame/level_blocks/2) medium/m_2_2.tscn" id="21_42i8i"]
 [ext_resource type="PackedScene" uid="uid://bnu83ry4mx0jt" path="res://prefabs/ingame/level_blocks/2) medium/m_2_2_var.tscn" id="22_3hqkh"]
+[ext_resource type="PackedScene" uid="uid://cau6r6xtx83yb" path="res://prefabs/ingame/level_blocks/3) hard/h_1_1.tscn" id="23_opmms"]
+[ext_resource type="PackedScene" uid="uid://v6capjk77oqc" path="res://prefabs/ingame/level_blocks/2) medium/m_3_2.tscn" id="24_e4n12"]
+[ext_resource type="PackedScene" uid="uid://cgal80fcmkp72" path="res://prefabs/ingame/level_blocks/2) medium/m_2_3.tscn" id="25_aoatp"]
 
 [node name="Map1" instance=ExtResource("1_p1joc")]
 
@@ -149,7 +152,7 @@ position = Vector2(60009, 0)
 [node name="E1_6" parent="Obstacles/LevelArea_Part1" index="29" instance=ExtResource("5_f7h4w")]
 position = Vector2(64749, 200)
 
-[node name="taunter" parent="Obstacles/LevelArea_Part1" index="30" instance=ExtResource("19_uca22")]
+[node name="taunter_top" parent="Obstacles/LevelArea_Part1" index="30" instance=ExtResource("19_uca22")]
 position = Vector2(68121, -202)
 
 [node name="obstacle_big4" parent="Obstacles/LevelArea_Part1" index="31" instance=ExtResource("2_dcore")]
@@ -178,6 +181,86 @@ position = Vector2(83469, 86)
 
 [node name="M2_3" parent="Obstacles/LevelArea_Part1" index="39" instance=ExtResource("22_3hqkh")]
 position = Vector2(86000, 0)
+
+[node name="LevelArea_Part2" type="Node2D" parent="Obstacles" index="1"]
+
+[node name="E1_1" parent="Obstacles/LevelArea_Part2" index="0" instance=ExtResource("5_f7h4w")]
+position = Vector2(94000, 225)
+
+[node name="E1_2_VAR" parent="Obstacles/LevelArea_Part2" index="1" instance=ExtResource("7_qi00t")]
+position = Vector2(98000, 0)
+
+[node name="H1_1" parent="Obstacles/LevelArea_Part2" index="2" instance=ExtResource("23_opmms")]
+position = Vector2(102000, 0)
+
+[node name="M3_2" parent="Obstacles/LevelArea_Part2" index="3" instance=ExtResource("24_e4n12")]
+position = Vector2(119500, 0)
+
+[node name="E1_2" parent="Obstacles/LevelArea_Part2" index="4" instance=ExtResource("5_f7h4w")]
+position = Vector2(123456, 271)
+
+[node name="E1_1_VAR" parent="Obstacles/LevelArea_Part2" index="5" instance=ExtResource("5_bhy6y")]
+position = Vector2(126486, 130)
+
+[node name="obstacle_big2" parent="Obstacles/LevelArea_Part2" index="6" instance=ExtResource("2_dcore")]
+position = Vector2(134000, 0)
+
+[node name="M2_2" parent="Obstacles/LevelArea_Part2" index="7" instance=ExtResource("21_42i8i")]
+position = Vector2(105000, 175)
+
+[node name="obstacle_small" parent="Obstacles/LevelArea_Part2" index="8" instance=ExtResource("4_5y8ev")]
+position = Vector2(106859, 262)
+
+[node name="M2_4" parent="Obstacles/LevelArea_Part2" index="9" instance=ExtResource("22_3hqkh")]
+position = Vector2(107555, -200)
+
+[node name="M2_3" parent="Obstacles/LevelArea_Part2" index="10" instance=ExtResource("25_aoatp")]
+position = Vector2(110000, 175)
+
+[node name="obstacle_small2" parent="Obstacles/LevelArea_Part2" index="11" instance=ExtResource("4_5y8ev")]
+position = Vector2(112500, -275)
+
+[node name="obstacle_small3" parent="Obstacles/LevelArea_Part2" index="12" instance=ExtResource("4_5y8ev")]
+position = Vector2(112500, 275)
+
+[node name="obstacle_big" parent="Obstacles/LevelArea_Part2" index="13" instance=ExtResource("2_dcore")]
+position = Vector2(113930, -132)
+
+[node name="M2_5" parent="Obstacles/LevelArea_Part2" index="14" instance=ExtResource("25_aoatp")]
+position = Vector2(115300, 225)
+
+[node name="H1_2" parent="Obstacles/LevelArea_Part2" index="15" instance=ExtResource("23_opmms")]
+position = Vector2(117350, 0)
+
+[node name="taunter_bottom" parent="Obstacles/LevelArea_Part2" index="16" instance=ExtResource("19_uca22")]
+position = Vector2(139500, -200)
+
+[node name="taunter_top" parent="Obstacles/LevelArea_Part2" index="17" instance=ExtResource("19_uca22")]
+position = Vector2(141500, 10)
+
+[node name="taunter_bottom2" parent="Obstacles/LevelArea_Part2" index="18" instance=ExtResource("19_uca22")]
+position = Vector2(143500, -200)
+
+[node name="M2_6" parent="Obstacles/LevelArea_Part2" index="19" instance=ExtResource("22_3hqkh")]
+position = Vector2(145870, -85)
+
+[node name="obstacle_big3" parent="Obstacles/LevelArea_Part2" index="20" instance=ExtResource("2_dcore")]
+position = Vector2(148333, 0)
+
+[node name="M3_3" parent="Obstacles/LevelArea_Part2" index="21" instance=ExtResource("24_e4n12")]
+position = Vector2(150000, 0)
+
+[node name="E1_3" parent="Obstacles/LevelArea_Part2" index="22" instance=ExtResource("5_f7h4w")]
+position = Vector2(152741, 250)
+
+[node name="obstacle_small4" parent="Obstacles/LevelArea_Part2" index="23" instance=ExtResource("4_5y8ev")]
+position = Vector2(156000, -250)
+
+[node name="obstacle_small5" parent="Obstacles/LevelArea_Part2" index="24" instance=ExtResource("4_5y8ev")]
+position = Vector2(156000, 250)
+
+[node name="obstacle_small6" parent="Obstacles/LevelArea_Part2" index="25" instance=ExtResource("4_5y8ev")]
+position = Vector2(158000, 0)
 
 [node name="Floor Full" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset" index="0"]
 modulate = Color(0.054902, 0.309804, 0.14902, 1)
@@ -238,7 +321,7 @@ scale = Vector2(100, 100)
 texture = ExtResource("5_1yeif")
 
 [node name="GoalArea2D" parent="." index="3"]
-position = Vector2(90000, 0)
+position = Vector2(160000, 0)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" parent="GoalArea2D" index="0"]
