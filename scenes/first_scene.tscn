@@ -35,8 +35,6 @@ script = ExtResource("3_a3gc7")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 5
 
-[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("2_afo14")]
-
 [node name="HUD" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 15
@@ -47,6 +45,8 @@ grow_vertical = 2
 
 [node name="Powders Panel" parent="CanvasLayer/HUD" instance=ExtResource("5_bsr04")]
 layout_mode = 1
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("2_afo14")]
 
 [node name="PlayerCharacterBody2D" parent="." instance=ExtResource("3_82xke")]
 z_index = 10
