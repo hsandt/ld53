@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6ccfxn6p388r"]
+
+[ext_resource type="PackedScene" uid="uid://ybj4svsavf4f" path="res://prefabs/ingame/obstacle_medium.tscn" id="1_v0sab"]
+[ext_resource type="PackedScene" uid="uid://clbkj8klm4my3" path="res://prefabs/ingame/obstacle_big.tscn" id="2_t1hwc"]
+
+[node name="M3_3" type="Area2D"]
+
+[node name="obstacle_medium" parent="." instance=ExtResource("1_v0sab")]
+position = Vector2(0, -245)
+
+[node name="obstacle_medium2" parent="." instance=ExtResource("1_v0sab")]
+position = Vector2(0, 250)
+
+[node name="obstacle_big" parent="." instance=ExtResource("2_t1hwc")]
+position = Vector2(650, 0)
