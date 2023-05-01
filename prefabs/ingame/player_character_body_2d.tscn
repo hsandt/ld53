@@ -57,6 +57,7 @@ script = ExtResource("6_vdi8d")
 modifier = ExtResource("8_or7er")
 
 [node name="Sprite2D" type="Sprite2D" parent="cargo/powder_1"]
+visible = false
 texture_filter = 1
 scale = Vector2(4, 4)
 texture = ExtResource("8_5dtp0")
@@ -67,6 +68,7 @@ script = ExtResource("6_vdi8d")
 modifier = ExtResource("8_vtdr1")
 
 [node name="Sprite2D" type="Sprite2D" parent="cargo/powder_2"]
+visible = false
 texture_filter = 1
 scale = Vector2(4, 4)
 texture = ExtResource("8_5dtp0")
@@ -77,6 +79,7 @@ script = ExtResource("6_vdi8d")
 modifier = ExtResource("11_fnbfi")
 
 [node name="Sprite2D" type="Sprite2D" parent="cargo/powder_3"]
+visible = false
 texture_filter = 1
 scale = Vector2(4, 4)
 texture = ExtResource("8_5dtp0")
@@ -87,6 +90,7 @@ script = ExtResource("6_vdi8d")
 modifier = ExtResource("8_vtdr1")
 
 [node name="Sprite2D" type="Sprite2D" parent="cargo/powder_4"]
+visible = false
 texture_filter = 1
 scale = Vector2(4, 4)
 texture = ExtResource("8_5dtp0")
@@ -97,6 +101,7 @@ script = ExtResource("6_vdi8d")
 modifier = ExtResource("8_vtdr1")
 
 [node name="Sprite2D" type="Sprite2D" parent="cargo/powder_5"]
+visible = false
 texture_filter = 1
 scale = Vector2(4, 4)
 texture = ExtResource("8_5dtp0")
@@ -107,6 +112,7 @@ script = ExtResource("6_vdi8d")
 modifier = ExtResource("8_vtdr1")
 
 [node name="Sprite2D" type="Sprite2D" parent="cargo/powder_6"]
+visible = false
 texture_filter = 1
 scale = Vector2(4, 4)
 texture = ExtResource("8_5dtp0")
