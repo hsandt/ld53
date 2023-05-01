@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=4 format=3 uid="uid://btrmulh3kwmt6"]
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://btrmulh3kwmt6"]
 
 [ext_resource type="FontFile" uid="uid://dm3h7hd5bjtar" path="res://fonts/ABeeZee/ABeeZee-Regular.ttf" id="1_r7y7i"]
 
@@ -14,18 +14,6 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 corner_detail = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u187f"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(0, 0, 0, 0.6)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
-
 [resource]
 default_font = ExtResource("1_r7y7i")
 default_font_size = 50
@@ -33,4 +21,4 @@ Button/styles/disabled = SubResource("StyleBoxFlat_jjuqy")
 Button/styles/focus = SubResource("StyleBoxFlat_jjuqy")
 Button/styles/hover = SubResource("StyleBoxFlat_jjuqy")
 Button/styles/normal = SubResource("StyleBoxFlat_jjuqy")
-Button/styles/pressed = SubResource("StyleBoxFlat_u187f")
+Button/styles/pressed = SubResource("StyleBoxFlat_jjuqy")
