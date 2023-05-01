@@ -2,6 +2,11 @@ extends Control
 
 @export var modifier: Modifier
 
+func _ready():
+	$label.text=modifier.description
+	if(len(modifier.icon_path)>1):
+		$icon.texture=load("res://sprites/buff_icons/"+modifier.icon_path)
+
 func _on_duration_timeout():
 	queue_free()
 

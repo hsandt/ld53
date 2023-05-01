@@ -26,12 +26,12 @@ offset_right = 63.0
 offset_bottom = 54.0
 script = ExtResource("1_1562j")
 
-[node name="label" type="Sprite2D" parent="."]
+[node name="icon" type="Sprite2D" parent="."]
 position = Vector2(17, 20)
 scale = Vector2(0.823688, 0.88019)
 texture = ExtResource("2_whe62")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
+[node name="label" type="RichTextLabel" parent="."]
 layout_mode = 0
 offset_left = 49.0
 offset_top = 7.0
