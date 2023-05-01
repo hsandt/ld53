@@ -22,7 +22,7 @@ duration = 5.0
 
 [resource]
 script = ExtResource("1_eyiv6")
-description = "Vertial speed *0.5"
+description = "Vertical speed * 0.5"
 attribute = "steer_speed"
 effect = "multiply"
 value = 0.5
