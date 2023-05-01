@@ -27,7 +27,6 @@ func hurt(damage):
 	powder -= damage
 	# Flash for the duration set in Flash Timer
 	animated_sprite_with_brightness_controller.set_brightness_for_duration(hurt_brightness)
-	current_speed*=0.5
 	cargo.hurt(damage)
 
 func _physics_process(delta):

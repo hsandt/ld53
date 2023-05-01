@@ -4,7 +4,7 @@
 [ext_resource type="AudioStream" uid="uid://ddhkhbl82shqs" path="res://audio/bgm/Level_WIP.ogg" id="2_6ot5u"]
 [ext_resource type="Script" path="res://scripts/audio/MusicStreamPlayer.gd" id="2_l6ce7"]
 [ext_resource type="PackedScene" uid="uid://bigtdfruv4w60" path="res://prefabs/pause_menu_custom.tscn" id="3_1fatq"]
-[ext_resource type="PackedScene" uid="uid://4n8e4dswbycl" path="res://prefabs/ingame/player_character_body_2d.tscn" id="4_3j6cy"]
+[ext_resource type="PackedScene" uid="uid://cgrwrw8imf0gg" path="res://prefabs/ingame/player_character_body_2d.tscn" id="4_3j6cy"]
 [ext_resource type="Script" path="res://scripts/ingame/ScrollingCenter.gd" id="5_g1h1w"]
 [ext_resource type="PackedScene" uid="uid://b3cj8qaa1pk0g" path="res://prefabs/ingame/hud/powders_panel.tscn" id="5_jdasq"]
 [ext_resource type="PackedScene" uid="uid://dut1iocwxhlh7" path="res://scenes/test/art_map.tscn" id="6_50fx4"]
@@ -58,9 +58,10 @@ top_speed = 100
 half_extent_y = 290
 metadata/_edit_lock_ = true
 
-[node name="ScrollingCenter" type="Node2D" parent="." node_paths=PackedStringArray("player_character")]
+[node name="ScrollingCenter" type="Node2D" parent="." node_paths=PackedStringArray("player_character", "map")]
 script = ExtResource("5_g1h1w")
 player_character = NodePath("../PlayerCharacterBody2D")
+map = NodePath("../ArtMap")
 lookahead_distance = 500.0
 
 [node name="Camera2D" parent="ScrollingCenter" instance=ExtResource("6_a1bd6")]

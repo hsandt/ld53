@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cgrwrw8imf0gg" path="res://prefabs/ingame/player_character_body_2d.tscn" id="6_ix61o"]
 [ext_resource type="Script" path="res://scripts/ingame/ScrollingCenter.gd" id="7_8p4a4"]
 [ext_resource type="Texture2D" uid="uid://d0vvv3dcec8mu" path="res://sprites/white_square_1x1.png" id="8_5f6l2"]
-[ext_resource type="PackedScene" uid="uid://boss2x6cwuv2j" path="res://prefabs/ingame/map_1.tscn" id="9_xupcf"]
+[ext_resource type="PackedScene" uid="uid://dcqumcm4vc2x" path="res://prefabs/ingame/map_1.tscn" id="9_xupcf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ft5pg"]
 size = Vector2(1920, 100)

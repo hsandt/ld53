@@ -15,10 +15,11 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6va3q"]
 size = Vector2(128, 128)
 
-[node name="PlayerCharacterBody2D" type="CharacterBody2D"]
+[node name="PlayerCharacterBody2D" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite_with_brightness_controller")]
 material = ExtResource("1_1l63l")
 motion_mode = 1
 script = ExtResource("1_2t2x0")
+animated_sprite_with_brightness_controller = NodePath("AnimatedSprite2DBrightnessController")
 
 [node name="AnimatedSprite2DBrightnessController" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("brighten_timer")]
 z_index = 2
