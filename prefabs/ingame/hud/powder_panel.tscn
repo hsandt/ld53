@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://c03i68p3oqkh2"]
+[gd_scene load_steps=3 format=3 uid="uid://c03i68p3oqkh2"]
 
 [ext_resource type="Texture2D" uid="uid://cnabhyboag8wj" path="res://sprites/hud/HUD_Keg.PNG" id="1_0ng4j"]
+[ext_resource type="PackedScene" uid="uid://n87nhvob85pn" path="res://scripts/buffs/buff.tscn" id="2_pfr15"]
 
 [node name="Powder Panel" type="Panel"]
 self_modulate = Color(1, 1, 1, 0)
@@ -18,3 +19,10 @@ offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_0ng4j")
+
+[node name="buff" parent="." instance=ExtResource("2_pfr15")]
+offset_left = -29.0
+offset_top = 97.0
+offset_right = 11.0
+offset_bottom = 137.0
+scale = Vector2(2.41221, 4.01272)

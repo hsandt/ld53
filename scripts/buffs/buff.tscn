@@ -12,7 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://dfqveqh6ldxy5" path="res://audio/sfx/debuff WIP.ogg" id="8_5re6b"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qbw68"]
-bg_color = Color(0.243137, 0.180392, 0.180392, 0.341176)
+bg_color = Color(0.0117647, 0.0117647, 0.0117647, 0.639216)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ied63"]
 bg_color = Color(1, 1, 1, 0.6)
@@ -57,7 +57,6 @@ script = ExtResource("3_kh3ky")
 [node name="duration" type="Timer" parent="progress"]
 wait_time = 10.0
 one_shot = true
-autostart = true
 
 [node name="spark_button" type="Button" parent="."]
 z_index = -2
@@ -76,12 +75,10 @@ bus = &"SFX"
 [node name="spark_loop_sfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_0ukab")
 volume_db = -10.0
-autoplay = true
 bus = &"SFX"
 
 [node name="spark_hit_sfx" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_ru8gr")
-autoplay = true
 bus = &"SFX"
 
 [node name="buff_sfx" type="AudioStreamPlayer" parent="."]

@@ -30,23 +30,41 @@ scale = Vector2(0.5, 0.5)
 theme_override_constants/separation = 16
 metadata/_edit_use_anchors_ = true
 
-[node name="Powder Panel" parent="HBoxContainer" instance=ExtResource("2_eju3d")]
+[node name="Powder Panel1" parent="HBoxContainer" instance=ExtResource("2_eju3d")]
 layout_mode = 2
+
+[node name="buff" parent="HBoxContainer/Powder Panel1" index="1"]
+visible = false
 
 [node name="Powder Panel2" parent="HBoxContainer" instance=ExtResource("2_eju3d")]
 layout_mode = 2
 
+[node name="buff" parent="HBoxContainer/Powder Panel2" index="1"]
+visible = false
+
 [node name="Powder Panel3" parent="HBoxContainer" instance=ExtResource("2_eju3d")]
 layout_mode = 2
+
+[node name="buff" parent="HBoxContainer/Powder Panel3" index="1"]
+visible = false
 
 [node name="Powder Panel4" parent="HBoxContainer" instance=ExtResource("2_eju3d")]
 layout_mode = 2
 
+[node name="buff" parent="HBoxContainer/Powder Panel4" index="1"]
+visible = false
+
 [node name="Powder Panel5" parent="HBoxContainer" instance=ExtResource("2_eju3d")]
 layout_mode = 2
 
+[node name="buff" parent="HBoxContainer/Powder Panel5" index="1"]
+visible = false
+
 [node name="Powder Panel6" parent="HBoxContainer" instance=ExtResource("2_eju3d")]
 layout_mode = 2
+
+[node name="buff" parent="HBoxContainer/Powder Panel6" index="1"]
+visible = false
 
 [node name="CanvasLayer REF" type="CanvasLayer" parent="."]
 layer = 10
@@ -57,3 +75,10 @@ modulate = Color(1, 1, 1, 0.709804)
 position = Vector2(960, 540)
 texture = ExtResource("3_bcp3u")
 metadata/_edit_lock_ = true
+
+[editable path="HBoxContainer/Powder Panel1"]
+[editable path="HBoxContainer/Powder Panel2"]
+[editable path="HBoxContainer/Powder Panel3"]
+[editable path="HBoxContainer/Powder Panel4"]
+[editable path="HBoxContainer/Powder Panel5"]
+[editable path="HBoxContainer/Powder Panel6"]

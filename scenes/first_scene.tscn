@@ -45,7 +45,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Powders Panel" parent="CanvasLayer/HUD" instance=ExtResource("5_bsr04")]
+[node name="powderpanel" parent="CanvasLayer/HUD" instance=ExtResource("5_bsr04")]
+unique_name_in_owner = true
 layout_mode = 1
 
 [node name="PlayerCharacterBody2D" parent="." instance=ExtResource("3_82xke")]
