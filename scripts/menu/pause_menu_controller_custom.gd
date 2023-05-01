@@ -16,7 +16,7 @@ func open_pause_menu():
 func close_pause_menu():
 	get_tree().paused = false
 	hide()
-	emit_signal("resume")
+	emit_signal(&"resume")
 
 func _on_resume_game_button_pressed():
 	close_pause_menu()
@@ -39,9 +39,9 @@ func _on_quit_button_pressed():
 
 func _on_back_to_menu_button_pressed():
 	close_pause_menu()
-	emit_signal("back_to_main_pressed")
+	emit_signal(&"back_to_main_pressed")
 
 func _unhandled_input(event):
-	if (event.is_action_pressed("ui_cancel") or event.is_action_pressed("pause")) and visible and !options_menu.visible:
+	if event.is_action_pressed(&"pause") and visible and !options_menu.visible:
 		accept_event()
 		close_pause_menu()

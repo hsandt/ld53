@@ -18,7 +18,7 @@ func _ready():
 
 
 func _unhandled_input(event):
-	if (event.is_action_pressed(&"ui_cancel") or event.is_action_pressed(&"pause")):
+	if event.is_action_pressed(&"pause"):
 		if not pause_menu.visible:
 			pause_menu.accept_event()
 			pause_menu.open_pause_menu()
