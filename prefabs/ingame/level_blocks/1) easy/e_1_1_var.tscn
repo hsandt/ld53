@@ -9,4 +9,4 @@ position = Vector2(750, 0)
 position = Vector2(0, -400)
 
 [node name="obstacle_small2" parent="." instance=ExtResource("1_bi7kj")]
-position = Vector2(800, -200)
+position = Vector2(850, -200)
