@@ -27,6 +27,7 @@ player_character = NodePath("../PlayerCharacterBody2D")
 unique_name_in_owner = true
 process_mode = 3
 stream = ExtResource("2_jw3vr")
+volume_db = -10.0
 autoplay = true
 bus = &"Music"
 script = ExtResource("3_a3gc7")
