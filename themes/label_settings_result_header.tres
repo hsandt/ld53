@@ -1,0 +1,7 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://bpjnfbal18sp5"]
+
+[ext_resource type="FontFile" uid="uid://5xvq3p46cg15" path="res://fonts/Kaushan_Script/KaushanScript-Regular.ttf" id="1_n1lol"]
+
+[resource]
+font = ExtResource("1_n1lol")
+font_size = 80

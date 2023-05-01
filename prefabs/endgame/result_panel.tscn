@@ -1,0 +1,127 @@
+[gd_scene load_steps=5 format=3 uid="uid://biov5pqyvllyy"]
+
+[ext_resource type="Texture2D" uid="uid://num53150s11" path="res://sprites/bg/result_bg.png" id="1_hijyu"]
+[ext_resource type="LabelSettings" uid="uid://bpjnfbal18sp5" path="res://themes/label_settings_result_header.tres" id="2_n4x1k"]
+[ext_resource type="LabelSettings" uid="uid://baumorb1fn8dr" path="res://themes/label_settings_result_score.tres" id="3_q4mnf"]
+[ext_resource type="Theme" uid="uid://btrmulh3kwmt6" path="res://themes/theme_result_button.tres" id="4_b6yab"]
+
+[node name="result_panel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackgroundTextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_hijyu")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.576042
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+metadata/_edit_use_anchors_ = true
+
+[node name="Control" type="Control" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="OutcomePanelContainer" type="PanelContainer" parent="MarginContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -835.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="OutcomeLabel" type="Label" parent="MarginContainer/Control/OutcomePanelContainer"]
+layout_mode = 2
+text = "Delivery succeeded!"
+label_settings = ExtResource("2_n4x1k")
+
+[node name="ScorePanelContainer" type="PanelContainer" parent="MarginContainer/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.233673
+anchor_right = 1.0
+anchor_bottom = 0.687755
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Control/ScorePanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+metadata/_edit_use_anchors_ = true
+
+[node name="Control" type="Control" parent="MarginContainer/Control/ScorePanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/Control/ScorePanelContainer/MarginContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 50
+columns = 2
+
+[node name="PowderLeftLabel" type="Label" parent="MarginContainer/Control/ScorePanelContainer/MarginContainer/Control/GridContainer"]
+layout_mode = 2
+text = "Powder left"
+label_settings = ExtResource("3_q4mnf")
+
+[node name="PowderLeftValueLabel" type="Label" parent="MarginContainer/Control/ScorePanelContainer/MarginContainer/Control/GridContainer"]
+layout_mode = 2
+text = "50kg"
+label_settings = ExtResource("3_q4mnf")
+
+[node name="PowderTypesLeftLabel" type="Label" parent="MarginContainer/Control/ScorePanelContainer/MarginContainer/Control/GridContainer"]
+layout_mode = 2
+text = "Powder types left"
+label_settings = ExtResource("3_q4mnf")
+
+[node name="PowderTypesLeftValueLabel" type="Label" parent="MarginContainer/Control/ScorePanelContainer/MarginContainer/Control/GridContainer"]
+layout_mode = 2
+text = "2"
+label_settings = ExtResource("3_q4mnf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.219922
+anchor_top = 0.744231
+anchor_right = 0.813712
+anchor_bottom = 0.878846
+theme_override_constants/separation = 30
+metadata/_edit_use_anchors_ = true
+
+[node name="ReplayButton" type="Button" parent="MarginContainer/Control/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_b6yab")
+text = "Replay"
+metadata/_edit_use_anchors_ = true
+
+[node name="BackToMainMenuButton" type="Button" parent="MarginContainer/Control/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_b6yab")
+text = "Back to Main Menu"
+metadata/_edit_use_anchors_ = true
