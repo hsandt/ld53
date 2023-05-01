@@ -1,15 +1,7 @@
-# Godot Project Bootstrap
+# P.O.W.D.E.R
 
-A sample project to copy for a quickstart with Godot 4. Especially useful for jams.
+Powder on wild days explodes randomly (P.O.W.D.E.R) is a action game submitted for Ludum Dare 53
+on the theme "Delivery".
 
-It uses the Compatibility Renderer to allow web export, which is convenient for jam games.
-
-## Usage
-
-1. Copy the repository content into a folder with your project name
-2. Add the copied project to Godot launcher project list, select it and rename it with your project name
-3. Open the project, open res://prefabs/main_menu_custom.tscn and customize MainMenu/Content/Title text with your project name
-
-## Add-ons
-
-* [EasyMenus](https://godotengine.org/asset-library/asset/1541) v1.0
+Ludum Dare page: incoming
+itch.io page: incoming

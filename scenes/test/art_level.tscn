@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://dxxghvqt5g42c"]
+[gd_scene load_steps=13 format=3 uid="uid://dxxghvqt5g42c"]
 
 [ext_resource type="PackedScene" uid="uid://bkxvhy0xyc6my" path="res://prefabs/ingame/in_game_manager.tscn" id="1_r0yvm"]
 [ext_resource type="Script" path="res://scripts/audio/MusicStreamPlayer.gd" id="2_l6ce7"]
+[ext_resource type="AudioStream" uid="uid://ddhkhbl82shqs" path="res://audio/bgm/Level.ogg" id="2_xkvw2"]
 [ext_resource type="PackedScene" uid="uid://bigtdfruv4w60" path="res://prefabs/pause_menu_custom.tscn" id="3_1fatq"]
 [ext_resource type="PackedScene" uid="uid://4n8e4dswbycl" path="res://prefabs/ingame/player_character_body_2d.tscn" id="4_3j6cy"]
 [ext_resource type="Script" path="res://scripts/ingame/ScrollingCenter.gd" id="5_g1h1w"]
@@ -26,6 +27,7 @@ player_character = NodePath("../PlayerCharacterBody2D")
 [node name="MusicStreamPlayer" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 process_mode = 3
+stream = ExtResource("2_xkvw2")
 volume_db = -10.0
 autoplay = true
 bus = &"Music"

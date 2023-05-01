@@ -27,7 +27,7 @@ func _ready():
 
 	# For now, there is no intro so start racing immediately
 	game_phase = Enums.GamePhase.RACING
-	player_character.should_move = true
+	player_character.start_move()
 
 
 func _unhandled_input(event):

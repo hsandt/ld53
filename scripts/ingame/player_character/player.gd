@@ -3,6 +3,7 @@ extends CharacterBody2D
 
 
 @export var animated_sprite_with_brightness_controller: AnimatedSprite2DBrightnessController
+@export var sled_slide_sfx_player: AudioStreamPlayer
 
 #how quickly the player recovers from impacts to full speed
 @export var powder = 100
@@ -20,7 +21,7 @@ var current_speed = top_speed
 @onready var buffs: Buffs = $Buffs
 @onready var cargo: Node2D = $cargo
 
-var should_move: bool = false
+var _should_move: bool = false
 
 
 func hurt(damage):
@@ -33,7 +34,7 @@ func _physics_process(delta):
 	# proto UI
 	$powder_bar.value = powder
 
-	if not should_move:
+	if not _should_move:
 		return
 
 	if current_speed < top_speed:
@@ -57,3 +58,12 @@ func _physics_process(delta):
 	# bottom limit
 	if position.y > half_extent_y:
 		position.y = half_extent_y
+
+
+func start_move():
+	sled_slide_sfx_player.play()
+	_should_move = true
+
+func stop_move():
+	sled_slide_sfx_player.stop()
+	_should_move = false

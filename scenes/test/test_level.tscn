@@ -1,12 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://csjk6doab3j7g"]
+[gd_scene load_steps=12 format=3 uid="uid://csjk6doab3j7g"]
 
 [ext_resource type="PackedScene" uid="uid://bkxvhy0xyc6my" path="res://prefabs/ingame/in_game_manager.tscn" id="1_phwtn"]
 [ext_resource type="Script" path="res://scripts/audio/MusicStreamPlayer.gd" id="2_6xvgp"]
-[ext_resource type="PackedScene" path="res://prefabs/ingame/progress_bar.tscn" id="3_aoqhy"]
+[ext_resource type="AudioStream" uid="uid://ddhkhbl82shqs" path="res://audio/bgm/Level.ogg" id="2_olimf"]
+[ext_resource type="PackedScene" uid="uid://b6tjyuvk6wmn4" path="res://prefabs/ingame/progress_bar.tscn" id="3_aoqhy"]
 [ext_resource type="PackedScene" uid="uid://bigtdfruv4w60" path="res://prefabs/pause_menu_custom.tscn" id="3_p7iai"]
 [ext_resource type="PackedScene" uid="uid://4n8e4dswbycl" path="res://prefabs/ingame/player_character_body_2d.tscn" id="4_fkdm4"]
 [ext_resource type="Script" path="res://scripts/ingame/ScrollingCenter.gd" id="5_5wm0g"]
-[ext_resource type="PackedScene" path="res://scenes/test/test_map.tscn" id="6_afsi3"]
+[ext_resource type="PackedScene" uid="uid://bconteqikkki5" path="res://scenes/test/test_map.tscn" id="6_afsi3"]
 [ext_resource type="PackedScene" uid="uid://cxmcka11cekmi" path="res://prefabs/ingame/camera_2d.tscn" id="6_nrs72"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ft5pg"]
@@ -15,7 +16,7 @@ size = Vector2(1920, 100)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u0xki"]
 size = Vector2(100, 1080)
 
-[node name="Node2D" type="Node2D"]
+[node name="Node2D3" type="Node2D"]
 metadata/_edit_horizontal_guides_ = [-349.0, 350.0]
 
 [node name="InGameManager" parent="." node_paths=PackedStringArray("pause_menu", "player_character") instance=ExtResource("1_phwtn")]
@@ -25,6 +26,7 @@ player_character = NodePath("../PlayerCharacterBody2D")
 [node name="MusicStreamPlayer" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 process_mode = 3
+stream = ExtResource("2_olimf")
 volume_db = -10.0
 autoplay = true
 bus = &"Music"
