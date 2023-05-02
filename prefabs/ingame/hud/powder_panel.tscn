@@ -1,13 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://c03i68p3oqkh2"]
+[gd_scene load_steps=6 format=3 uid="uid://c03i68p3oqkh2"]
 
-[ext_resource type="Texture2D" uid="uid://cnabhyboag8wj" path="res://sprites/hud/HUD_Keg.PNG" id="1_0ng4j"]
+[ext_resource type="Texture2D" uid="uid://fkkus6hs8i7f" path="res://sprites/hud/HUD__0000_Keg_Idle.png" id="1_srpb8"]
 [ext_resource type="PackedScene" uid="uid://n87nhvob85pn" path="res://scripts/buffs/buff.tscn" id="2_pfr15"]
+[ext_resource type="SpriteFrames" uid="uid://dwrs2bhosv0et" path="res://animations/powder_panel_sprite_frames.tres" id="3_jit8g"]
+[ext_resource type="Script" path="res://scripts/visual/AnimatedSprite2DBrightnessController.gd" id="6_7s2n6"]
+
+[sub_resource type="AnimatedTexture" id="AnimatedTexture_gq4n8"]
+frame_0/texture = ExtResource("1_srpb8")
 
 [node name="Powder Panel" type="Panel"]
 self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(332, 332)
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect OLD" type="TextureRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -18,7 +24,7 @@ offset_right = 78.0
 offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_0ng4j")
+texture = SubResource("AnimatedTexture_gq4n8")
 
 [node name="buff" parent="." instance=ExtResource("2_pfr15")]
 offset_left = -29.0
@@ -26,3 +32,13 @@ offset_top = 97.0
 offset_right = 11.0
 offset_bottom = 137.0
 scale = Vector2(2.41221, 4.01272)
+
+[node name="AnimatedSprite2DBrightnessController" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("brighten_timer")]
+position = Vector2(153, 43)
+sprite_frames = ExtResource("3_jit8g")
+animation = &"idle"
+autoplay = "idle"
+script = ExtResource("6_7s2n6")
+brighten_timer = NodePath("../BrightenTimer")
+
+[node name="BrightenTimer" type="Timer" parent="."]

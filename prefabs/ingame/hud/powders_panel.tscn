@@ -10,23 +10,23 @@ texture = ExtResource("1_i3g7h")
 
 [node name="Powders Panel" type="Panel"]
 anchors_preset = -1
-anchor_left = 0.201562
 anchor_top = 0.794444
-anchor_right = 0.801042
+anchor_right = 1.0
 anchor_bottom = 1.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_msqmn")
 script = ExtResource("2_c6afb")
 metadata/_edit_group_ = true
 metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.0451781
+anchor_left = 0.246875
 anchor_top = 0.252252
-anchor_right = 0.946134
+anchor_right = 0.786458
 anchor_bottom = 1.0045
-offset_right = 1037.0
+offset_right = 1036.0
 offset_bottom = 167.0
 scale = Vector2(0.5, 0.5)
 theme_override_constants/separation = 16
