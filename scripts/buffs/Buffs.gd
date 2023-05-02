@@ -26,11 +26,11 @@ func _ready():
 	buffs.append(powderpanel6.get_node("buff"))
 
 #currently active
-func get_attribute(name,baseline):
+func get_attribute(attribute_name,baseline):
 	for buff in buffs:
 		if(buff.modifier == null):
 			continue
-		if buff.modifier.attribute == name:
+		if buff.modifier.attribute == attribute_name:
 			match buff.modifier.effect:
 				"multiplier":
 					baseline*=buff.modifier.value
