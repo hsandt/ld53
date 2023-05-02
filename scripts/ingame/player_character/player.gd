@@ -21,7 +21,12 @@ var current_speed = top_speed
 @onready var buffs: Buffs = $Buffs
 @onready var cargo: Node2D = $cargo
 
+var in_game_manager: InGameManager
 var _should_move: bool = false
+
+
+func _ready():
+	in_game_manager = get_tree().get_first_node_in_group(&"in_game_manager")
 
 
 func hurt(damage):
@@ -33,6 +38,9 @@ func hurt(damage):
 func _physics_process(delta):
 	# proto UI
 	$powder_bar.value = powder
+	# proto game over
+	if powder <= 0:
+		in_game_manager.enter_failure_phase()
 
 	if not _should_move:
 		return

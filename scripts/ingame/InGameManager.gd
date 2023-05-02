@@ -47,6 +47,7 @@ func _unhandled_input(event):
 
 func enter_failure_phase():
 	GameManager.game_phase = Enums.GamePhase.FAILURE
+	GameManager.enter_result_scene()
 
 
 func enter_success_phase():

@@ -6,7 +6,7 @@
 [ext_resource type="LabelSettings" uid="uid://baumorb1fn8dr" path="res://themes/label_settings_result_score.tres" id="3_q4mnf"]
 [ext_resource type="Theme" uid="uid://btrmulh3kwmt6" path="res://themes/theme_result_button.tres" id="4_b6yab"]
 
-[node name="ResultPanel" type="Control" node_paths=PackedStringArray("replay_button", "back_to_main_menu_button")]
+[node name="ResultPanel" type="Control" node_paths=PackedStringArray("outcome_label", "replay_button", "back_to_main_menu_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,8 +14,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_72j1t")
+outcome_label = NodePath("MarginContainer/Control/OutcomePanelContainer/OutcomeLabel")
 replay_button = NodePath("MarginContainer/Control/VBoxContainer/ReplayButton")
 back_to_main_menu_button = NodePath("MarginContainer/Control/VBoxContainer/BackToMainMenuButton")
+outcome_text_success = "Delivery succeeded!"
+outcome_text_failure = "All your powder has exploded!"
 
 [node name="BackgroundTextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -54,15 +57,18 @@ grow_vertical = 2
 
 [node name="OutcomeLabel" type="Label" parent="MarginContainer/Control/OutcomePanelContainer"]
 layout_mode = 2
-text = "Delivery succeeded!"
+text = "All your base is belonging"
 label_settings = ExtResource("2_n4x1k")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="ScorePanelContainer" type="PanelContainer" parent="MarginContainer/Control"]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 0.233673
-anchor_right = 1.0
-anchor_bottom = 0.687755
+anchor_left = 0.00129366
+anchor_top = 0.235596
+anchor_right = 1.00129
+anchor_bottom = 0.689678
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
