@@ -28,8 +28,8 @@ extends Node
 ## Speed factor for back to main menu fade in animation
 @export var back_to_main_menu_fade_in_speed: float = 1.0
 
-
-var has_done_main_menu_initial_fading: bool = false
+## Current game phase
+var game_phase: Enums.GamePhase = Enums.GamePhase.MAIN_MENU
 
 
 func _ready():

@@ -11,6 +11,8 @@ extends Node
 func _ready():
 	assert(main_menu != null, "[MainMenuManager] main_menu is not set on %s" % get_path())
 
+	GameManager.game_phase = Enums.GamePhase.MAIN_MENU
+
 	# Wait 1 frame so children are ready
 	await get_tree().process_frame
 
