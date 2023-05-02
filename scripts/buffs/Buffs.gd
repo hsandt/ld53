@@ -17,7 +17,6 @@ func _ready():
 	var powderpanel5 = base_powder.get_child(4)
 	var powderpanel6 = base_powder.get_child(5)
 
-	print(base_powder)
 	buffs.append(powderpanel1.get_node("buff"))
 	buffs.append(powderpanel2.get_node("buff"))
 	buffs.append(powderpanel3.get_node("buff"))
