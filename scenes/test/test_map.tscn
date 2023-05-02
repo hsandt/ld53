@@ -72,7 +72,7 @@ position = Vector2(603, 538)
 scale = Vector2(100, 100)
 
 [node name="GoalArea2D" parent="." index="3"]
-position = Vector2(7677, 0)
+position = Vector2(1863, 59)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" parent="GoalArea2D" index="0"]

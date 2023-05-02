@@ -1,3 +1,4 @@
+class_name InGameManager
 extends Node
 
 
@@ -5,6 +6,7 @@ extends Node
 @export var player_character: Player
 @export var intro_duration: float = 1.0
 
+@onready var hud: HUD = %HUD
 
 var game_phase: Enums.GamePhase
 var is_going_back_to_main_menu: bool = false
@@ -15,6 +17,8 @@ func _ready():
 		"[InGameManager] pause_menu is not set on %s" % get_path())
 	assert(player_character != null,
 		"[InGameManager] player_character is not set on %s" % get_path())
+	assert(hud != null,
+		"[InGameManager] hud not found at %%HUD in same scene as %s" % get_path())
 
 	# Hide pause menu
 	pause_menu.visible = false

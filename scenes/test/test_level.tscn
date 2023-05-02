@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://csjk6doab3j7g"]
+[gd_scene load_steps=13 format=3 uid="uid://csjk6doab3j7g"]
 
 [ext_resource type="PackedScene" uid="uid://bkxvhy0xyc6my" path="res://prefabs/ingame/in_game_manager.tscn" id="1_phwtn"]
 [ext_resource type="Script" path="res://scripts/audio/MusicStreamPlayer.gd" id="2_6xvgp"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b6tjyuvk6wmn4" path="res://prefabs/ingame/progress_bar.tscn" id="3_aoqhy"]
 [ext_resource type="PackedScene" uid="uid://bigtdfruv4w60" path="res://prefabs/pause_menu_custom.tscn" id="3_p7iai"]
 [ext_resource type="PackedScene" uid="uid://4n8e4dswbycl" path="res://prefabs/ingame/player_character_body_2d.tscn" id="4_fkdm4"]
+[ext_resource type="PackedScene" uid="uid://ch6p14onhqdd1" path="res://prefabs/ingame/hud/hud.tscn" id="5_4lqub"]
 [ext_resource type="Script" path="res://scripts/ingame/ScrollingCenter.gd" id="5_5wm0g"]
 [ext_resource type="PackedScene" uid="uid://bconteqikkki5" path="res://scenes/test/test_map.tscn" id="6_afsi3"]
 [ext_resource type="PackedScene" uid="uid://cxmcka11cekmi" path="res://prefabs/ingame/camera_2d.tscn" id="6_nrs72"]
@@ -40,6 +41,9 @@ anchor_top = 0.0
 anchor_bottom = 0.0
 grow_vertical = 1
 
+[node name="HUD" parent="CanvasLayer" instance=ExtResource("5_4lqub")]
+unique_name_in_owner = true
+
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("3_p7iai")]
 
 [node name="PlayerCharacterBody2D" parent="." instance=ExtResource("4_fkdm4")]
@@ -51,9 +55,10 @@ top_speed = 100
 half_extent_y = 290
 metadata/_edit_lock_ = true
 
-[node name="ScrollingCenter" type="Node2D" parent="." node_paths=PackedStringArray("player_character")]
+[node name="ScrollingCenter" type="Node2D" parent="." node_paths=PackedStringArray("player_character", "map")]
 script = ExtResource("5_5wm0g")
 player_character = NodePath("../PlayerCharacterBody2D")
+map = NodePath("../TestMap")
 lookahead_distance = 500.0
 
 [node name="Camera2D" parent="ScrollingCenter" instance=ExtResource("6_nrs72")]

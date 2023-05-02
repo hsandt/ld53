@@ -3,20 +3,20 @@ extends Node2D
 
 @onready var buff_scene = preload("res://scripts/buffs/buff.tscn")
 
-
-#@onready var base_powder= get_node("/root/Node2D2/CanvasLayer/HUD/powderpanel/HboxContainer")
-@onready var base_powder= get_node("/root/Node2D2/CanvasLayer/HUD/powderpanel/HBoxContainer")
-@onready var powderpanel1= get_node("/root/Node2D2/CanvasLayer/HUD/powderpanel/HBoxContainer/Powder Panel1")
-@onready var powderpanel2= get_node("/root/Node2D2/CanvasLayer/HUD/powderpanel/HBoxContainer/Powder Panel2")
-@onready var powderpanel3= get_node("/root/Node2D2/CanvasLayer/HUD/powderpanel/HBoxContainer/Powder Panel3")
-@onready var powderpanel4= get_node("/root/Node2D2/CanvasLayer/HUD/powderpanel/HBoxContainer/Powder Panel4")
-@onready var powderpanel5= get_node("/root/Node2D2/CanvasLayer/HUD/powderpanel/HBoxContainer/Powder Panel5")
-@onready var powderpanel6= get_node("/root/Node2D2/CanvasLayer/HUD/powderpanel/HBoxContainer/Powder Panel6")
-
+var in_game_manager: InGameManager
 var bcount=0
-
 var buffs = []
+
 func _ready():
+	in_game_manager = get_tree().get_first_node_in_group(&"in_game_manager")
+	var base_powder = in_game_manager.hud.powder_panel.hbox
+	var powderpanel1 = base_powder.get_child(0)
+	var powderpanel2 = base_powder.get_child(1)
+	var powderpanel3 = base_powder.get_child(2)
+	var powderpanel4 = base_powder.get_child(3)
+	var powderpanel5 = base_powder.get_child(4)
+	var powderpanel6 = base_powder.get_child(5)
+
 	print(base_powder)
 	buffs.append(powderpanel1.get_node("buff"))
 	buffs.append(powderpanel2.get_node("buff"))
