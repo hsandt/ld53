@@ -1,17 +1,18 @@
+class_name ScrollingCenter
 extends Node2D
 
+
+signal progress_changed(progression)
 
 @export var player_character: CharacterBody2D
 @export var map: Map
 
-var _start_position
-var _distance_from_goal
-
-
 ## Distance to place camera (and screen colliders) ahead of player character
 @export var lookahead_distance: float
 
-signal progress_changed(progression)
+var _start_position
+var _distance_from_goal
+
 
 func _ready():
 	# Wait 1 frame so children are ready

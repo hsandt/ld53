@@ -49,6 +49,7 @@ half_extent_y = 290
 metadata/_edit_lock_ = true
 
 [node name="ScrollingCenter" type="Node2D" parent="." node_paths=PackedStringArray("player_character", "map")]
+unique_name_in_owner = true
 script = ExtResource("5_5wm0g")
 player_character = NodePath("../PlayerCharacterBody2D")
 map = NodePath("../TestMap")

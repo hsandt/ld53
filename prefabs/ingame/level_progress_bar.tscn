@@ -1,15 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://b6tjyuvk6wmn4"]
+[gd_scene load_steps=7 format=3 uid="uid://bpkn3ndchrsjs"]
 
-[ext_resource type="Script" path="res://prefabs/ingame/progress_bar.gd" id="1_2yeig"]
-[ext_resource type="Texture2D" uid="uid://dpjky27d2po5n" path="res://sprites/hud/HUD_ProgressBar.PNG" id="2_lf63l"]
-[ext_resource type="Script" path="res://scripts/ui/progression_ui.gd" id="3_6l2ct"]
-[ext_resource type="Texture2D" uid="uid://c0hgwpvaucvba" path="res://sprites/hud/HUD_ProgressIcon.PNG" id="3_7itls"]
+[ext_resource type="Script" path="res://prefabs/ingame/level_progress_bar.gd" id="1_yr0b8"]
+[ext_resource type="Texture2D" uid="uid://dpjky27d2po5n" path="res://sprites/hud/HUD_ProgressBar.PNG" id="2_v5650"]
+[ext_resource type="Texture2D" uid="uid://c0hgwpvaucvba" path="res://sprites/hud/HUD_ProgressIcon.PNG" id="3_oxbvg"]
+[ext_resource type="Script" path="res://scripts/ui/progression_ui.gd" id="4_jxsh6"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_hv01k"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_renjf"]
 
-[node name="ProgressBar" type="Control"]
+[node name="LevelProgressBar" type="Control"]
 layout_mode = 3
 anchors_preset = 7
 anchor_left = 0.5
@@ -20,7 +20,7 @@ grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-script = ExtResource("1_2yeig")
+script = ExtResource("1_yr0b8")
 
 [node name="Bar" type="TextureRect" parent="."]
 material = SubResource("CanvasItemMaterial_hv01k")
@@ -32,7 +32,7 @@ offset_left = -436.0
 offset_right = 435.047
 offset_bottom = 120.0
 grow_horizontal = 2
-texture = ExtResource("2_lf63l")
+texture = ExtResource("2_v5650")
 expand_mode = 3
 
 [node name="Control" type="Control" parent="Bar"]
@@ -61,5 +61,5 @@ offset_top = -32.7
 offset_right = 351.336
 offset_bottom = 294.3
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("3_7itls")
-script = ExtResource("3_6l2ct")
+texture = ExtResource("3_oxbvg")
+script = ExtResource("4_jxsh6")

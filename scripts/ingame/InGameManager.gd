@@ -7,6 +7,8 @@ extends Node
 @export var intro_duration: float = 1.0
 
 @onready var hud: HUD = %HUD
+@onready var scrolling_center: ScrollingCenter = %ScrollingCenter
+
 
 var is_going_back_to_main_menu: bool = false
 
