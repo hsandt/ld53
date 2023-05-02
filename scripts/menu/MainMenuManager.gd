@@ -20,12 +20,8 @@ func _ready():
 	main_menu.disable_all_buttons()
 
 	if TransitionScreen.animation_player.current_animation.is_empty():
+		# No transition, we must be entering main menu for the first time
 		await TransitionScreen.fade_in_async(initial_fade_in_speed)
-
-		# Remember we've done it for initial game launch, and won't need it
-		# anymore as further transitions from other scenes will handle fade in
-		# on their own
-		GameManager.has_done_main_menu_initial_fading = true
 	else:
 		# Transition is already playing fade, so we must be coming back from
 		# another scene, and playing fade-in, so just wait for it to finish
