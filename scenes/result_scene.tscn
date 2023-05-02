@@ -1,7 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://c7277gfve8xvp"]
+[gd_scene load_steps=5 format=3 uid="uid://c7277gfve8xvp"]
 
 [ext_resource type="PackedScene" uid="uid://biov5pqyvllyy" path="res://prefabs/endgame/result_panel.tscn" id="1_qle1s"]
+[ext_resource type="Script" path="res://scripts/audio/ResultAudioStreamPlayer.gd" id="2_qhhiy"]
+[ext_resource type="AudioStream" uid="uid://dquru8of8k4he" path="res://audio/bgm/Victory.ogg" id="3_1eevt"]
+[ext_resource type="AudioStream" uid="uid://carnipcw75bid" path="res://audio/bgm/Game Over.ogg" id="4_rxdh7"]
 
 [node name="result_scene" type="CanvasLayer"]
 
 [node name="ResultPanel" parent="." instance=ExtResource("1_qle1s")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -10.0
+script = ExtResource("2_qhhiy")
+result_audio_stream_success = ExtResource("3_1eevt")
+result_audio_stream_failure = ExtResource("4_rxdh7")
