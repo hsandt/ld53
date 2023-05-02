@@ -40,6 +40,8 @@ func get_attribute(name,baseline):
 
 func add_if_roll(modifier: Modifier):
 	if randf()<modifier.probability:
+		# modulo for safety, would need something cleaner
+		bcount = bcount % buffs.size()
 		buffs[bcount].activate(modifier)
 		bcount+=1
 
