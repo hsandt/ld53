@@ -1,9 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://csjk6doab3j7g"]
+[gd_scene load_steps=12 format=3 uid="uid://csjk6doab3j7g"]
 
 [ext_resource type="PackedScene" uid="uid://bkxvhy0xyc6my" path="res://prefabs/ingame/in_game_manager.tscn" id="1_phwtn"]
 [ext_resource type="Script" path="res://scripts/audio/MusicStreamPlayer.gd" id="2_6xvgp"]
 [ext_resource type="AudioStream" uid="uid://ddhkhbl82shqs" path="res://audio/bgm/Level.ogg" id="2_olimf"]
-[ext_resource type="PackedScene" uid="uid://b6tjyuvk6wmn4" path="res://prefabs/ingame/progress_bar.tscn" id="3_aoqhy"]
 [ext_resource type="PackedScene" uid="uid://bigtdfruv4w60" path="res://prefabs/pause_menu_custom.tscn" id="3_p7iai"]
 [ext_resource type="PackedScene" uid="uid://4n8e4dswbycl" path="res://prefabs/ingame/player_character_body_2d.tscn" id="4_fkdm4"]
 [ext_resource type="PackedScene" uid="uid://ch6p14onhqdd1" path="res://prefabs/ingame/hud/hud.tscn" id="5_4lqub"]
@@ -34,12 +33,6 @@ bus = &"Music"
 script = ExtResource("2_6xvgp")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="ProgressBar" parent="CanvasLayer" instance=ExtResource("3_aoqhy")]
-anchors_preset = 5
-anchor_top = 0.0
-anchor_bottom = 0.0
-grow_vertical = 1
 
 [node name="HUD" parent="CanvasLayer" instance=ExtResource("5_4lqub")]
 unique_name_in_owner = true
