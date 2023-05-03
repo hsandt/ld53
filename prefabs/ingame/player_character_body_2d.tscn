@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://4n8e4dswbycl"]
+[gd_scene load_steps=15 format=3 uid="uid://4n8e4dswbycl"]
 
 [ext_resource type="Material" uid="uid://r5m0e65nite5" path="res://materials/player_character_material.tres" id="1_1l63l"]
 [ext_resource type="Script" path="res://scripts/ingame/player_character/player.gd" id="1_2t2x0"]
+[ext_resource type="Script" path="res://addons/smoothing/smoothing_2d.gd" id="3_3adtf"]
 [ext_resource type="Script" path="res://scripts/buffs/Buffs.gd" id="3_4x6o7"]
 [ext_resource type="SpriteFrames" uid="uid://bdq8so2kor0sb" path="res://animations/player_character_sprite_frames.tres" id="3_fgtjg"]
 [ext_resource type="Script" path="res://scripts/visual/AnimatedSprite2DBrightnessController.gd" id="4_epfoh"]
@@ -20,10 +21,13 @@ size = Vector2(128, 128)
 material = ExtResource("1_1l63l")
 motion_mode = 1
 script = ExtResource("1_2t2x0")
-animated_sprite_with_brightness_controller = NodePath("AnimatedSprite2DBrightnessController")
+animated_sprite_with_brightness_controller = NodePath("Smoothing2D/AnimatedSprite2DBrightnessController")
 sled_slide_sfx_player = NodePath("SledSlideAudioStreamPlayer")
 
-[node name="AnimatedSprite2DBrightnessController" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("brighten_timer")]
+[node name="Smoothing2D" type="Node2D" parent="."]
+script = ExtResource("3_3adtf")
+
+[node name="AnimatedSprite2DBrightnessController" type="AnimatedSprite2D" parent="Smoothing2D" node_paths=PackedStringArray("brighten_timer")]
 z_index = 2
 material = ExtResource("1_1l63l")
 position = Vector2(-27, -33)
@@ -31,7 +35,14 @@ scale = Vector2(0.5, 0.5)
 sprite_frames = ExtResource("3_fgtjg")
 frame_progress = 0.58425
 script = ExtResource("4_epfoh")
-brighten_timer = NodePath("../Flash Timer")
+brighten_timer = NodePath("../../Flash Timer")
+
+[node name="powder_bar" type="ProgressBar" parent="Smoothing2D"]
+unique_name_in_owner = true
+offset_left = -340.0
+offset_top = -123.0
+offset_right = 337.0
+offset_bottom = -83.0
 
 [node name="Buffs" type="Node2D" parent="."]
 script = ExtResource("3_4x6o7")
@@ -40,12 +51,6 @@ script = ExtResource("3_4x6o7")
 position = Vector2(-0.5, 1)
 shape = SubResource("RectangleShape2D_6va3q")
 metadata/_edit_lock_ = true
-
-[node name="powder_bar" type="ProgressBar" parent="."]
-offset_left = -340.0
-offset_top = -123.0
-offset_right = 337.0
-offset_bottom = -83.0
 
 [node name="Flash Timer" type="Timer" parent="."]
 wait_time = 0.2

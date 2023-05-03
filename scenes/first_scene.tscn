@@ -81,7 +81,13 @@ modulate = Color(1, 1, 1, 0.188235)
 scale = Vector2(1920, 1080)
 
 [node name="Map1" parent="." instance=ExtResource("8_srhq4")]
+process_mode = 4
+
+[node name="GoalArea2D" parent="Map1" index="3"]
+position = Vector2(20000, 0)
 
 [connection signal="back_to_main_pressed" from="CanvasLayer/PauseMenu" to="InGameManager" method="_on_pause_menu_back_to_main_pressed"]
 [connection signal="pause" from="CanvasLayer/PauseMenu" to="MusicStreamPlayer" method="_on_pause_menu_pause"]
 [connection signal="resume" from="CanvasLayer/PauseMenu" to="MusicStreamPlayer" method="_on_pause_menu_resume"]
+
+[editable path="Map1"]

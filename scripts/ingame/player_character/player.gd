@@ -38,7 +38,7 @@ func hurt(damage):
 
 func _physics_process(delta):
 	# proto UI
-	$powder_bar.value = powder
+	%powder_bar.value = powder
 	# proto game over
 	if powder <= 0:
 		in_game_manager.enter_failure_phase()
