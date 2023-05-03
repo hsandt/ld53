@@ -18,8 +18,9 @@ scale = Vector2(2.41221, 4.01272)
 [node name="AnimatedSprite2DBrightnessController" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("brighten_timer")]
 position = Vector2(153, 43)
 sprite_frames = ExtResource("3_jit8g")
-animation = &"idle"
+animation = &"spark"
 autoplay = "idle"
+frame_progress = 0.195146
 script = ExtResource("6_7s2n6")
 brighten_timer = NodePath("../BrightenTimer")
 
