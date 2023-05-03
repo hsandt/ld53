@@ -9,7 +9,6 @@ extends CharacterBody2D
 @export var powder = 100
 @export var acceleration = 1000
 @export var top_speed = 1000
-var current_speed = top_speed
 @export var steer_speed = 500
 
 ## Max motion
@@ -23,10 +22,12 @@ var current_speed = top_speed
 
 var in_game_manager: InGameManager
 var _should_move: bool = false
+var current_speed: float
 
 
 func _ready():
 	in_game_manager = get_tree().get_first_node_in_group(&"in_game_manager")
+	current_speed = top_speed
 
 
 func hurt(damage):
