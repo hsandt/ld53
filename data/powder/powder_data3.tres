@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="PowderData" load_steps=2 format=3 uid="uid://cvf4qyku1aljk"]
+
+[ext_resource type="Script" path="res://scripts/buffs/powder_data.gd" id="1_l15oh"]
+
+[resource]
+script = ExtResource("1_l15oh")
+max_stamina = 8.0

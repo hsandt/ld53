@@ -9,7 +9,13 @@ var buffs = []
 
 func _ready():
 	in_game_manager = get_tree().get_first_node_in_group(&"in_game_manager")
-	var base_powder = in_game_manager.hud.powder_panel.hbox
+
+	if in_game_manager == null:
+		# we must be playing scene player character scene individually for
+		# testing
+		return
+
+	var base_powder = in_game_manager.hud.powders_panel.hbox
 	var powderpanel1 = base_powder.get_child(0)
 	var powderpanel2 = base_powder.get_child(1)
 	var powderpanel3 = base_powder.get_child(2)

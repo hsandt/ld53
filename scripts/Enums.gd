@@ -7,3 +7,13 @@ enum GamePhase {
 	SUCCESS,
 	FAILURE
 }
+
+enum PowderState {
+	IDLE,
+	SPARK,
+	CONSUMED
+}
+
+enum PowderType {
+
+}

@@ -20,6 +20,6 @@ anchor_top = 0.0
 anchor_bottom = 0.0
 grow_vertical = 1
 
-[node name="powderpanel" parent="." instance=ExtResource("1_dbama")]
+[node name="PowdersPanel" parent="." instance=ExtResource("1_dbama")]
 unique_name_in_owner = true
 layout_mode = 1

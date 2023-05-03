@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://4n8e4dswbycl"]
+[gd_scene load_steps=18 format=3 uid="uid://4n8e4dswbycl"]
 
 [ext_resource type="Material" uid="uid://r5m0e65nite5" path="res://materials/player_character_material.tres" id="1_1l63l"]
 [ext_resource type="Script" path="res://scripts/ingame/player_character/player.gd" id="1_2t2x0"]
@@ -9,10 +9,13 @@
 [ext_resource type="Script" path="res://scripts/ingame/player_character/cargo.gd" id="6_dru5e"]
 [ext_resource type="Script" path="res://scripts/ingame/player_character/powder.gd" id="6_vdi8d"]
 [ext_resource type="Texture2D" uid="uid://b3xi3ohlwe8f4" path="res://sprites/keg.png" id="8_5dtp0"]
-[ext_resource type="Resource" uid="uid://2f5agh7wsf8u" path="res://data/modifiers/town_cargo.tres" id="8_or7er"]
-[ext_resource type="Resource" uid="uid://b08wq3why3q7e" path="res://data/modifiers/steering.tres" id="8_vtdr1"]
-[ext_resource type="Resource" uid="uid://hqgedus288jo" path="res://data/modifiers/obstacle_damage.tres" id="11_fnbfi"]
+[ext_resource type="Resource" uid="uid://dh5e1dxjgkf28" path="res://data/powder/powder_data1.tres" id="9_mwhkn"]
+[ext_resource type="Resource" uid="uid://yyykh8u2jh" path="res://data/powder/powder_data2.tres" id="11_7dolm"]
+[ext_resource type="Resource" uid="uid://cvf4qyku1aljk" path="res://data/powder/powder_data3.tres" id="12_gwqog"]
 [ext_resource type="AudioStream" uid="uid://c0nwej5v1btdg" path="res://audio/sfx/sled_slide WIP.ogg" id="12_wu4gh"]
+[ext_resource type="Resource" uid="uid://c1ke3n7n43u1s" path="res://data/powder/powder_data4.tres" id="13_am5yu"]
+[ext_resource type="Resource" uid="uid://c1k7drcrmlqwr" path="res://data/powder/powder_data5.tres" id="14_3f0vo"]
+[ext_resource type="Resource" uid="uid://dqm84c5fyf83m" path="res://data/powder/powder_data6.tres" id="15_2xh4w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6va3q"]
 size = Vector2(128, 128)
@@ -37,8 +40,9 @@ frame_progress = 0.58425
 script = ExtResource("4_epfoh")
 brighten_timer = NodePath("../../Flash Timer")
 
-[node name="powder_bar" type="ProgressBar" parent="Smoothing2D"]
+[node name="powder_bar" type="ProgressBar" parent="."]
 unique_name_in_owner = true
+visible = false
 offset_left = -340.0
 offset_top = -123.0
 offset_right = 337.0
@@ -61,7 +65,7 @@ script = ExtResource("6_dru5e")
 [node name="powder_1" type="Node2D" parent="cargo"]
 position = Vector2(-106, -24)
 script = ExtResource("6_vdi8d")
-modifier = ExtResource("8_or7er")
+data = ExtResource("9_mwhkn")
 
 [node name="Sprite2D" type="Sprite2D" parent="cargo/powder_1"]
 visible = false
@@ -72,7 +76,7 @@ texture = ExtResource("8_5dtp0")
 [node name="powder_2" type="Node2D" parent="cargo"]
 position = Vector2(-189, -22)
 script = ExtResource("6_vdi8d")
-modifier = ExtResource("8_vtdr1")
+data = ExtResource("11_7dolm")
 
 [node name="Sprite2D" type="Sprite2D" parent="cargo/powder_2"]
 visible = false
@@ -83,7 +87,7 @@ texture = ExtResource("8_5dtp0")
 [node name="powder_3" type="Node2D" parent="cargo"]
 position = Vector2(-273, -22)
 script = ExtResource("6_vdi8d")
-modifier = ExtResource("11_fnbfi")
+data = ExtResource("12_gwqog")
 
 [node name="Sprite2D" type="Sprite2D" parent="cargo/powder_3"]
 visible = false
@@ -94,7 +98,7 @@ texture = ExtResource("8_5dtp0")
 [node name="powder_4" type="Node2D" parent="cargo"]
 position = Vector2(-107, 16)
 script = ExtResource("6_vdi8d")
-modifier = ExtResource("8_vtdr1")
+data = ExtResource("13_am5yu")
 
 [node name="Sprite2D" type="Sprite2D" parent="cargo/powder_4"]
 visible = false
@@ -105,7 +109,7 @@ texture = ExtResource("8_5dtp0")
 [node name="powder_5" type="Node2D" parent="cargo"]
 position = Vector2(-190, 18)
 script = ExtResource("6_vdi8d")
-modifier = ExtResource("8_vtdr1")
+data = ExtResource("14_3f0vo")
 
 [node name="Sprite2D" type="Sprite2D" parent="cargo/powder_5"]
 visible = false
@@ -116,7 +120,7 @@ texture = ExtResource("8_5dtp0")
 [node name="powder_6" type="Node2D" parent="cargo"]
 position = Vector2(-274, 18)
 script = ExtResource("6_vdi8d")
-modifier = ExtResource("8_vtdr1")
+data = ExtResource("15_2xh4w")
 
 [node name="Sprite2D" type="Sprite2D" parent="cargo/powder_6"]
 visible = false

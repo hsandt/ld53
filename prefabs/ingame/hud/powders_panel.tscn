@@ -7,7 +7,7 @@
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_msqmn"]
 texture = ExtResource("1_i3g7h")
 
-[node name="Powders Panel" type="Panel"]
+[node name="PowdersPanel" type="Panel"]
 anchors_preset = -1
 anchor_top = 0.794444
 anchor_right = 1.0

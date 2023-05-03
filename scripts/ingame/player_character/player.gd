@@ -5,8 +5,6 @@ extends CharacterBody2D
 @export var animated_sprite_with_brightness_controller: AnimatedSprite2DBrightnessController
 @export var sled_slide_sfx_player: AudioStreamPlayer
 
-#how quickly the player recovers from impacts to full speed
-@export var powder = 100
 @export var acceleration = 1000
 @export var top_speed = 1000
 @export var steer_speed = 500
@@ -18,7 +16,7 @@ extends CharacterBody2D
 @export var hurt_brightness: float = 0.5
 
 @onready var buffs: Buffs = $Buffs
-@onready var cargo: Node2D = $cargo
+@onready var cargo: Cargo = $cargo
 
 var in_game_manager: InGameManager
 var _should_move: bool = false
@@ -31,18 +29,12 @@ func _ready():
 
 
 func hurt(damage):
-	powder -= damage
 	# Flash for the duration set in Flash Timer
 	animated_sprite_with_brightness_controller.set_brightness_for_duration(hurt_brightness)
 	cargo.hurt(damage)
 
-func _physics_process(delta):
-	# proto UI
-	%powder_bar.value = powder
-	# proto game over
-	if powder <= 0:
-		in_game_manager.enter_failure_phase()
 
+func _physics_process(delta):
 	if not _should_move:
 		return
 
