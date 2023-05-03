@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://tx2hmn6o6i8q"]
+[gd_scene load_steps=10 format=3 uid="uid://tx2hmn6o6i8q"]
 
 [ext_resource type="PackedScene" uid="uid://bkxvhy0xyc6my" path="res://prefabs/ingame/in_game_manager.tscn" id="1_i0ea3"]
 [ext_resource type="PackedScene" uid="uid://bigtdfruv4w60" path="res://prefabs/pause_menu_custom.tscn" id="2_afo14"]
@@ -10,17 +10,11 @@
 [ext_resource type="PackedScene" uid="uid://cxmcka11cekmi" path="res://prefabs/ingame/camera_2d.tscn" id="6_cbhgf"]
 [ext_resource type="PackedScene" uid="uid://dcqumcm4vc2x" path="res://prefabs/ingame/map_1.tscn" id="8_srhq4"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ft5pg"]
-size = Vector2(1920, 100)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_u0xki"]
-size = Vector2(100, 1080)
-
-[node name="Node2D2" type="Node2D"]
+[node name="Level" type="Node2D"]
 metadata/_edit_horizontal_guides_ = [-349.0, 350.0]
 
 [node name="InGameManager" parent="." node_paths=PackedStringArray("pause_menu", "player_character") instance=ExtResource("1_i0ea3")]
-pause_menu = NodePath("../CanvasLayer/PauseMenu")
+pause_menu = NodePath("../HUDCanvasLayer/PauseMenu")
 player_character = NodePath("../PlayerCharacterBody2D")
 
 [node name="MusicStreamPlayer" type="AudioStreamPlayer" parent="."]
@@ -31,13 +25,13 @@ autoplay = true
 bus = &"Music"
 script = ExtResource("3_a3gc7")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="HUDCanvasLayer" type="CanvasLayer" parent="."]
 layer = 5
 
-[node name="HUD" parent="CanvasLayer" instance=ExtResource("4_mq5bu")]
+[node name="HUD" parent="HUDCanvasLayer" instance=ExtResource("4_mq5bu")]
 unique_name_in_owner = true
 
-[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("2_afo14")]
+[node name="PauseMenu" parent="HUDCanvasLayer" instance=ExtResource("2_afo14")]
 
 [node name="PlayerCharacterBody2D" parent="." instance=ExtResource("3_82xke")]
 z_index = 10
@@ -56,38 +50,13 @@ lookahead_distance = 500.0
 
 [node name="Camera2D" parent="ScrollingCenter" instance=ExtResource("6_cbhgf")]
 
-[node name="RigidBody2D Screen Colliders (BAD causes speed up)" type="AnimatableBody2D" parent="."]
-process_mode = 4
-collision_layer = 256
-
-[node name="CollisionShape2D Up" type="CollisionShape2D" parent="RigidBody2D Screen Colliders (BAD causes speed up)"]
-position = Vector2(1, -400)
-shape = SubResource("RectangleShape2D_ft5pg")
-
-[node name="CollisionShape2D Down" type="CollisionShape2D" parent="RigidBody2D Screen Colliders (BAD causes speed up)"]
-position = Vector2(0, 400)
-shape = SubResource("RectangleShape2D_ft5pg")
-
-[node name="CollisionShape2D Left" type="CollisionShape2D" parent="RigidBody2D Screen Colliders (BAD causes speed up)"]
-position = Vector2(-1010, -0.5)
-shape = SubResource("RectangleShape2D_u0xki")
-
-[node name="CollisionShape2D Right" type="CollisionShape2D" parent="RigidBody2D Screen Colliders (BAD causes speed up)"]
-position = Vector2(1010, -0.5)
-shape = SubResource("RectangleShape2D_u0xki")
-
-[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D Screen Colliders (BAD causes speed up)"]
-modulate = Color(1, 1, 1, 0.188235)
-scale = Vector2(1920, 1080)
-
 [node name="Map1" parent="." instance=ExtResource("8_srhq4")]
-process_mode = 4
 
 [node name="GoalArea2D" parent="Map1" index="3"]
 position = Vector2(20000, 0)
 
-[connection signal="back_to_main_pressed" from="CanvasLayer/PauseMenu" to="InGameManager" method="_on_pause_menu_back_to_main_pressed"]
-[connection signal="pause" from="CanvasLayer/PauseMenu" to="MusicStreamPlayer" method="_on_pause_menu_pause"]
-[connection signal="resume" from="CanvasLayer/PauseMenu" to="MusicStreamPlayer" method="_on_pause_menu_resume"]
+[connection signal="back_to_main_pressed" from="HUDCanvasLayer/PauseMenu" to="InGameManager" method="_on_pause_menu_back_to_main_pressed"]
+[connection signal="pause" from="HUDCanvasLayer/PauseMenu" to="MusicStreamPlayer" method="_on_pause_menu_pause"]
+[connection signal="resume" from="HUDCanvasLayer/PauseMenu" to="MusicStreamPlayer" method="_on_pause_menu_resume"]
 
 [editable path="Map1"]
