@@ -7,7 +7,7 @@ extends CharacterBody2D
 
 @export var acceleration = 1000
 @export var top_speed = 1000
-@export var steer_speed = 500
+@export var base_steer_speed = 500
 
 ## Max motion
 @export var half_extent_y = 500
@@ -20,15 +20,21 @@ extends CharacterBody2D
 
 var in_game_manager: InGameManager
 
+## Base attributes dictionary
 var current_base_attributes := {
-	"speed": 0.0
+	# Do not set these values to exported members as default values here,
+	# because we must wait for initialization to be completed, so do it in
+	# _ready instead
+	"speed": 0.0,
+	"steer_speed": 0.0
 }
 
 var _should_move: bool = false
 
 func _ready():
 	in_game_manager = get_tree().get_first_node_in_group(&"in_game_manager")
-	set_base_attribute("current_speed", top_speed)
+	set_base_attribute("speed", 0)
+	set_base_attribute("steer_speed", base_steer_speed)
 
 
 func _physics_process(delta):
@@ -46,9 +52,9 @@ func _physics_process(delta):
 
 	var velocity_y = 0
 	if Input.is_action_pressed("down"):
-		velocity_y += $Buffs.get_attribute("steer_speed",steer_speed)
+		velocity_y += _compute_current_attribute("steer_speed")
 	if Input.is_action_pressed("up"):
-		velocity_y -= $Buffs.get_attribute("steer_speed",steer_speed)
+		velocity_y -= _compute_current_attribute("steer_speed")
 
 	velocity = Vector2(velocity_x, velocity_y)
 	move_and_slide()
