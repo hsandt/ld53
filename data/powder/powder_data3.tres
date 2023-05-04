@@ -1,7 +1,9 @@
-[gd_resource type="Resource" script_class="PowderData" load_steps=2 format=3 uid="uid://cvf4qyku1aljk"]
+[gd_resource type="Resource" script_class="PowderData" load_steps=3 format=3]
 
 [ext_resource type="Script" path="res://scripts/buffs/powder_data.gd" id="1_l15oh"]
+[ext_resource type="Resource" uid="uid://b08wq3why3q7e" path="res://data/modifiers/modifier_debuff_steering_slower.tres" id="2_raykt"]
 
 [resource]
 script = ExtResource("1_l15oh")
+spark_debuff_modifier = ExtResource("2_raykt")
 max_stamina = 8.0

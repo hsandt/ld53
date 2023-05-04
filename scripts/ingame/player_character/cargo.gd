@@ -33,3 +33,26 @@ func connect_powders_ui(powders_panel: PowdersPanel):
 func hurt(damage: float):
 	for powder in powders:
 		powder.try_take_damage(damage)
+
+
+## Return an array of [modifier factor, modifier offset] by cumulating
+## all the modifiers for the passed attribute from all powders for multiply and
+## add operations respectively
+func get_attribute_modifier_factor_and_offset(attribute_name: String) -> Array[float]:
+	# Initialize cumulated factor and offset with their base value
+	var cumulated_modifier_factor = 1.0
+	var cumulated_modifier_offset = 0.0
+
+	for powder in powders:
+		var modifier = powder.current_modifier
+
+		if modifier == null or modifier.attribute != attribute_name:
+			continue
+
+		match modifier.effect:
+			"multiply":
+				cumulated_modifier_factor *= modifier.value
+			"addition":
+				cumulated_modifier_offset += modifier.value
+
+	return [cumulated_modifier_factor, cumulated_modifier_offset]

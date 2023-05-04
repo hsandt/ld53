@@ -1,7 +1,9 @@
-[gd_resource type="Resource" script_class="PowderData" load_steps=2 format=3 uid="uid://dh5e1dxjgkf28"]
+[gd_resource type="Resource" script_class="PowderData" load_steps=3 format=3 uid="uid://c7p5gth3tpo8l"]
 
 [ext_resource type="Script" path="res://scripts/buffs/powder_data.gd" id="1_u324e"]
+[ext_resource type="Resource" uid="uid://b6hbcmfyc8bkx" path="res://data/modifiers/modifier_debuff_speed_slower.tres" id="2_xifc7"]
 
 [resource]
 script = ExtResource("1_u324e")
+spark_debuff_modifier = ExtResource("2_xifc7")
 max_stamina = 5.0
