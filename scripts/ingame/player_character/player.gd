@@ -81,6 +81,8 @@ func get_base_attribute(attribute_name: String) -> float:
 
 
 func set_base_attribute(attribute_name: String, value: float):
+	assert(attribute_name in current_base_attributes,
+		"[Player] set_base_attribute: unknown attribute %s. " % attribute_name)
 	current_base_attributes[attribute_name] = value
 
 
