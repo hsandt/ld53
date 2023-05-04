@@ -30,19 +30,6 @@ func _ready():
 	buffs.append(powderpanel5.get_node("buff"))
 	buffs.append(powderpanel6.get_node("buff"))
 
-#currently active
-func get_attribute(attribute_name,baseline):
-	for buff in buffs:
-		if(buff.modifier == null):
-			continue
-		if buff.modifier.attribute == attribute_name:
-			match buff.modifier.effect:
-				"multiplier":
-					baseline*=buff.modifier.value
-				"addition":
-					baseline+=buff.modifier.value
-	return baseline
-
 func add_if_roll(modifier: Modifier):
 	if randf()<modifier.probability:
 		# modulo for safety, would need something cleaner

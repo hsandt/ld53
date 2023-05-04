@@ -17,3 +17,8 @@ enum PowderState {
 enum PowderType {
 
 }
+
+enum ModifierOperation {
+	MULTIPLY,
+	ADD
+}

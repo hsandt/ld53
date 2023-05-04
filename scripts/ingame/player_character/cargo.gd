@@ -49,10 +49,10 @@ func get_attribute_modifier_factor_and_offset(attribute_name: String) -> Array[f
 		if modifier == null or modifier.attribute != attribute_name:
 			continue
 
-		match modifier.effect:
-			"multiply":
+		match modifier.operation:
+			Enums.ModifierOperation.MULTIPLY:
 				cumulated_modifier_factor *= modifier.value
-			"addition":
+			Enums.ModifierOperation.ADD:
 				cumulated_modifier_offset += modifier.value
 
 	return [cumulated_modifier_factor, cumulated_modifier_offset]
