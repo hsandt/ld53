@@ -25,36 +25,37 @@ var current_base_attributes := {
 	# Do not set these values to exported members as default values here,
 	# because we must wait for initialization to be completed, so do it in
 	# _ready instead
-	"speed": 0.0,
-	"steer_speed": 0.0
+	&"speed": 0.0,
+	&"steer_speed": 0.0
 }
 
 var _should_move: bool = false
 
 func _ready():
 	in_game_manager = get_tree().get_first_node_in_group(&"in_game_manager")
-	set_base_attribute("speed", 0)
-	set_base_attribute("steer_speed", base_steer_speed)
+
+	set_base_attribute(&"speed", 0)
+	set_base_attribute(&"steer_speed", base_steer_speed)
 
 
 func _physics_process(delta):
 	if not _should_move:
 		return
 
-	var previous_base_speed = get_base_attribute("speed")
+	var previous_base_speed = get_base_attribute(&"speed")
 	if previous_base_speed < top_speed:
 		# Accelerate until top speed
 		var new_base_speed = min(previous_base_speed + delta * acceleration, top_speed)
-		set_base_attribute("speed", new_base_speed)
+		set_base_attribute(&"speed", new_base_speed)
 
 	# Compute current speed from base and any modifiers
-	var velocity_x = _compute_current_attribute("speed")
+	var velocity_x = _compute_current_attribute(&"speed")
 
 	var velocity_y = 0
 	if Input.is_action_pressed("down"):
-		velocity_y += _compute_current_attribute("steer_speed")
+		velocity_y += _compute_current_attribute(&"steer_speed")
 	if Input.is_action_pressed("up"):
-		velocity_y -= _compute_current_attribute("steer_speed")
+		velocity_y -= _compute_current_attribute(&"steer_speed")
 
 	velocity = Vector2(velocity_x, velocity_y)
 	move_and_slide()
@@ -69,7 +70,7 @@ func _physics_process(delta):
 
 
 func _compute_current_attribute(attribute_name: String):
-	var modifier_values := cargo.get_attribute_modifier_factor_and_offset("speed")
+	var modifier_values := cargo.get_attribute_modifier_factor_and_offset(&"speed")
 	var modifier_factor := modifier_values[0]
 	var modifier_offset := modifier_values[1]
 
