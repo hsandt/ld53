@@ -33,8 +33,8 @@ script = ExtResource("3_3adtf")
 [node name="AnimatedSprite2DBrightnessController" type="AnimatedSprite2D" parent="Smoothing2D" node_paths=PackedStringArray("brighten_timer")]
 z_index = 2
 material = ExtResource("1_1l63l")
-position = Vector2(-27, -33)
-scale = Vector2(0.5, 0.5)
+position = Vector2(-36, -37)
+scale = Vector2(0.615126, 0.615126)
 sprite_frames = ExtResource("3_fgtjg")
 frame_progress = 0.58425
 script = ExtResource("4_epfoh")
@@ -52,6 +52,7 @@ offset_bottom = -83.0
 script = ExtResource("3_4x6o7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 2
 position = Vector2(-0.5, 1)
 shape = SubResource("RectangleShape2D_6va3q")
 metadata/_edit_lock_ = true
