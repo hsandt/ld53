@@ -22,6 +22,8 @@
 size = Vector2(128, 128)
 
 [node name="PlayerCharacterBody2D" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite_with_brightness_controller", "sled_slide_sfx_player")]
+z_index = 5
+y_sort_enabled = true
 material = ExtResource("1_1l63l")
 motion_mode = 1
 script = ExtResource("1_2t2x0")
@@ -29,10 +31,10 @@ animated_sprite_with_brightness_controller = NodePath("Smoothing2D/AnimatedSprit
 sled_slide_sfx_player = NodePath("SledSlideAudioStreamPlayer")
 
 [node name="Smoothing2D" type="Node2D" parent="."]
+y_sort_enabled = true
 script = ExtResource("3_3adtf")
 
 [node name="AnimatedSprite2DBrightnessController" type="AnimatedSprite2D" parent="Smoothing2D" node_paths=PackedStringArray("brighten_timer")]
-z_index = 2
 material = ExtResource("1_1l63l")
 position = Vector2(-36, -37)
 scale = Vector2(0.615126, 0.615126)

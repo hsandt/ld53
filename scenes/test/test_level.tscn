@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://csjk6doab3j7g"]
+[gd_scene load_steps=15 format=3 uid="uid://csjk6doab3j7g"]
 
 [ext_resource type="PackedScene" uid="uid://bkxvhy0xyc6my" path="res://prefabs/ingame/in_game_manager.tscn" id="1_phwtn"]
 [ext_resource type="Script" path="res://scripts/audio/MusicStreamPlayer.gd" id="2_6xvgp"]
@@ -9,6 +9,9 @@
 [ext_resource type="Script" path="res://scripts/ingame/ScrollingCenter.gd" id="5_5wm0g"]
 [ext_resource type="PackedScene" uid="uid://bconteqikkki5" path="res://scenes/test/test_map.tscn" id="6_afsi3"]
 [ext_resource type="PackedScene" uid="uid://cxmcka11cekmi" path="res://prefabs/ingame/camera_2d.tscn" id="6_nrs72"]
+[ext_resource type="PackedScene" uid="uid://clbkj8klm4my3" path="res://prefabs/ingame/obstacle_big.tscn" id="10_gdkho"]
+[ext_resource type="PackedScene" uid="uid://b4r6q2xh20e8w" path="res://prefabs/ingame/obstacle_small.tscn" id="10_p16jm"]
+[ext_resource type="PackedScene" uid="uid://ybj4svsavf4f" path="res://prefabs/ingame/obstacle_medium.tscn" id="11_bo41w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ft5pg"]
 size = Vector2(1920, 100)
@@ -17,6 +20,7 @@ size = Vector2(1920, 100)
 size = Vector2(100, 1080)
 
 [node name="Node2D3" type="Node2D"]
+y_sort_enabled = true
 metadata/_edit_horizontal_guides_ = [-349.0, 350.0]
 
 [node name="InGameManager" parent="." node_paths=PackedStringArray("pause_menu", "player_character") instance=ExtResource("1_phwtn")]
@@ -40,7 +44,6 @@ unique_name_in_owner = true
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("3_p7iai")]
 
 [node name="PlayerCharacterBody2D" parent="." instance=ExtResource("4_fkdm4")]
-z_index = 10
 collision_mask = 65792
 platform_floor_layers = 4294967294
 platform_wall_layers = 256
@@ -81,6 +84,16 @@ modulate = Color(1, 1, 1, 0.188235)
 scale = Vector2(1920, 1080)
 
 [node name="TestMap" parent="." instance=ExtResource("6_afsi3")]
+
+[node name="obstacle_small" parent="." instance=ExtResource("10_p16jm")]
+position = Vector2(814, -172)
+
+[node name="obstacle_medium" parent="." instance=ExtResource("11_bo41w")]
+position = Vector2(612, 244)
+
+[node name="obstacle_big" parent="." instance=ExtResource("10_gdkho")]
+position = Vector2(355, 46)
+metadata/_edit_group_ = true
 
 [connection signal="back_to_main_pressed" from="CanvasLayer/PauseMenu" to="InGameManager" method="_on_pause_menu_back_to_main_pressed"]
 [connection signal="pause" from="CanvasLayer/PauseMenu" to="MusicStreamPlayer" method="_on_pause_menu_pause"]
