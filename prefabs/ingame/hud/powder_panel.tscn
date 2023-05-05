@@ -30,6 +30,7 @@ brighten_timer = NodePath("../BrightenTimer")
 [node name="BrightenTimer" type="Timer" parent="."]
 
 [node name="Button" type="Button" parent="."]
+unique_name_in_owner = true
 layout_mode = 0
 offset_left = -9.0
 offset_top = -82.0

@@ -15,3 +15,9 @@ func _ready():
 			continue
 
 		powder_panels.append(powder_panel)
+
+	# Focus first panel button
+	# This is required for pure keyboard/gamepad control since we don't have mappings
+	# for each power yet, but as least with can navigate left/right mid-action and ui_accept
+	# Xenoblade-style
+	powder_panels[0].button.grab_focus()

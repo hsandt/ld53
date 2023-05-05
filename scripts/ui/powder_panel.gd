@@ -4,6 +4,9 @@ extends Panel
 
 @export var animated_sprite: AnimatedSprite2D
 
+@onready var button: Button = %Button
+
+
 var powder_state_to_animation := {
 	Enums.PowderState.IDLE: &"idle",
 	Enums.PowderState.SPARK: &"spark",
