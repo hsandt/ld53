@@ -11,6 +11,7 @@
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 volume_db = -10.0
+bus = &"Music"
 script = ExtResource("2_qhhiy")
 result_audio_stream_success = ExtResource("3_1eevt")
 result_audio_stream_failure = ExtResource("4_rxdh7")
