@@ -12,6 +12,7 @@ position = Vector2(1012, -148)
 script = ExtResource("1_57mkc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 2
 shape = SubResource("RectangleShape2D_48yfy")
 
 [node name="Obstacle" type="Sprite2D" parent="."]
