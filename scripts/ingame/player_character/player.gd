@@ -70,7 +70,7 @@ func _physics_process(delta):
 
 
 func _compute_current_attribute(attribute_name: String):
-	var modifier_values := cargo.get_attribute_modifier_factor_and_offset(&"speed")
+	var modifier_values := cargo.get_attribute_modifier_factor_and_offset(attribute_name)
 	var modifier_factor := modifier_values[0]
 	var modifier_offset := modifier_values[1]
 
