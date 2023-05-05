@@ -26,7 +26,7 @@ func go_back():
 func on_open():
 	# Local fix for https://github.com/SavoVuksan/EasyMenus/issues/6
 	# Auto-scroll to top when options menu is opened
-	$MarginContainer/ScrollContainer.scroll_vertical = 0.0
+	$MarginContainer/ScrollContainer.scroll_vertical = 0
 
 	sfx_volume_slider.hslider.grab_focus()
 

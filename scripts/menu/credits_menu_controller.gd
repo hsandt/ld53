@@ -21,8 +21,8 @@ signal close
 
 var scroll_container_content: Control
 
-## Stored scroll value as workaround for rounding of scroll value preventing
-## scrolling down by small increments
+## Stored scroll value as float as workaround for rounding of scroll value preventing
+## scrolling down by small increments.
 var stored_scroll_value: float
 
 
@@ -53,7 +53,7 @@ func _unhandled_input(event):
 		scroll_delta = scroll_page_increment
 
 	if scroll_delta != 0:
-		var scroll_destination := scroll_container.scroll_vertical + scroll_delta
+		var scroll_destination := roundi(scroll_container.scroll_vertical + scroll_delta)
 		if animate:
 			var tween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 			tween.tween_property(scroll_container, "scroll_vertical", scroll_destination, transition_time)
@@ -83,8 +83,8 @@ func _process(delta):
 		var v_scroll_bar_max = max(0, scroll_container_content.size.y - scroll_container.size.y)
 		stored_scroll_value = clamp(stored_scroll_value, 0.0, v_scroll_bar_max)
 
-		# Then set scroll value using this safe custom value
-		scroll_container.scroll_vertical = stored_scroll_value
+		# Then set scroll value using this safe custom value, rounding at the last moment
+		scroll_container.scroll_vertical = roundi(stored_scroll_value)
 
 
 func load_text() -> String:
@@ -104,7 +104,7 @@ func load_text() -> String:
 
 # Called from outside initializes the options menu
 func on_open():
-	scroll_container.scroll_vertical = 0.0
+	scroll_container.scroll_vertical = 0
 	stored_scroll_value = 0.0
 	back_button.grab_focus()
 
