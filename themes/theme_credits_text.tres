@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://ccl8f1knd33xp"]
+
+[ext_resource type="FontFile" uid="uid://cu4sqw1fxt0d5" path="res://fonts/Comfortaa/static/Comfortaa-Regular.ttf" id="1_t1nxk"]
+
+[resource]
+default_font = ExtResource("1_t1nxk")
+default_font_size = 30
