@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="ObstacleData" load_steps=2 format=3 uid="uid://t8uk8cjeixwk"]
+
+[ext_resource type="Script" path="res://scripts/ingame/obstacle_data.gd" id="1_eg6ih"]
+
+[resource]
+script = ExtResource("1_eg6ih")
+damage = 10
