@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=3 format=3 uid="uid://btrmulh3kwmt6"]
 
-[ext_resource type="FontFile" uid="uid://dm3h7hd5bjtar" path="res://fonts/ABeeZee/ABeeZee-Regular.ttf" id="1_r7y7i"]
+[ext_resource type="FontFile" uid="uid://jc3sjkv4y04y" path="res://fonts/Comfortaa/Comfortaa-VariableFont_wght.ttf" id="1_pdc6j"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jjuqy"]
 content_margin_left = 10.0
@@ -15,7 +15,7 @@ corner_radius_bottom_left = 3
 corner_detail = 5
 
 [resource]
-default_font = ExtResource("1_r7y7i")
+default_font = ExtResource("1_pdc6j")
 default_font_size = 50
 Button/styles/disabled = SubResource("StyleBoxFlat_jjuqy")
 Button/styles/focus = SubResource("StyleBoxFlat_jjuqy")

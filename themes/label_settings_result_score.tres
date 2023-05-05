@@ -1,7 +1,11 @@
-[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://baumorb1fn8dr"]
+[gd_resource type="LabelSettings" load_steps=3 format=3 uid="uid://baumorb1fn8dr"]
 
-[ext_resource type="FontFile" uid="uid://dm3h7hd5bjtar" path="res://fonts/ABeeZee/ABeeZee-Regular.ttf" id="1_100tb"]
+[ext_resource type="FontFile" uid="uid://jc3sjkv4y04y" path="res://fonts/Comfortaa/Comfortaa-VariableFont_wght.ttf" id="1_s8fov"]
+
+[sub_resource type="FontVariation" id="FontVariation_ink7s"]
+base_font = ExtResource("1_s8fov")
+variation_embolden = 0.65
 
 [resource]
-font = ExtResource("1_100tb")
+font = SubResource("FontVariation_ink7s")
 font_size = 50
