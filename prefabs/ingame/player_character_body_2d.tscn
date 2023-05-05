@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://4n8e4dswbycl"]
+[gd_scene load_steps=19 format=3 uid="uid://4n8e4dswbycl"]
 
 [ext_resource type="Material" uid="uid://r5m0e65nite5" path="res://materials/player_character_material.tres" id="1_1l63l"]
 [ext_resource type="Script" path="res://scripts/ingame/player_character/player.gd" id="1_2t2x0"]
@@ -16,6 +16,7 @@
 [ext_resource type="Resource" uid="uid://bpe7dhjxtq3s7" path="res://data/powder/powder_data4.tres" id="13_am5yu"]
 [ext_resource type="Resource" uid="uid://hp287jqswffu" path="res://data/powder/powder_data5.tres" id="14_3f0vo"]
 [ext_resource type="Resource" path="res://data/powder/powder_data6.tres" id="15_2xh4w"]
+[ext_resource type="AudioStream" uid="uid://dm2ra3plrjukb" path="res://audio/sfx/spark_hit WIP.ogg" id="17_iu00d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6va3q"]
 size = Vector2(128, 128)
@@ -131,4 +132,9 @@ texture = ExtResource("8_5dtp0")
 
 [node name="SledSlideAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_wu4gh")
+bus = &"SFX"
+
+[node name="hurt_sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_iu00d")
+volume_db = -5.0
 bus = &"SFX"

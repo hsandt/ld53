@@ -17,6 +17,7 @@ extends CharacterBody2D
 
 @onready var buffs: Buffs = $Buffs
 @onready var cargo: Cargo = $cargo
+@onready var hurt_sfx: AudioStreamPlayer = $hurt_sfx
 
 var in_game_manager: InGameManager
 
@@ -36,7 +37,7 @@ func _ready():
 
 	set_base_attribute(&"speed", 0)
 	set_base_attribute(&"steer_speed", base_steer_speed)
-
+@export var damage = 10
 
 func _physics_process(delta):
 	if not _should_move:
@@ -101,3 +102,4 @@ func hurt(damage):
 	# Flash for the duration set in Flash Timer
 	animated_sprite_with_brightness_controller.set_brightness_for_duration(hurt_brightness)
 	cargo.hurt(damage)
+	hurt_sfx.play()
