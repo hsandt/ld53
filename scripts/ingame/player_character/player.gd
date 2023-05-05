@@ -37,7 +37,6 @@ func _ready():
 
 	set_base_attribute(&"speed", 0)
 	set_base_attribute(&"steer_speed", base_steer_speed)
-@export var damage = 10
 
 func _physics_process(delta):
 	if not _should_move:
