@@ -2,8 +2,6 @@ class_name Cargo
 extends Node2D
 
 
-var in_game_manager: InGameManager
-
 ## Cached array of powder children
 var powders: Array[Powder]
 
@@ -12,8 +10,6 @@ var powder_burst_or_consumed_count: int
 
 
 func _ready():
-	in_game_manager = get_tree().get_first_node_in_group(&"in_game_manager")
-
 	for child in get_children():
 		var powder := child as Powder
 		if powder == null:
@@ -69,9 +65,20 @@ func get_attribute_modifier_factor_and_offset(attribute_name: String) -> Array[f
 	return [cumulated_modifier_factor, cumulated_modifier_offset]
 
 
+## Return powder stats: [idle_powder_count, total_powder_stamina]
+func get_powder_stats() -> Array:
+	var idle_powder_count: int = 0
+	var total_powder_stamina: float = 0.0
+	for powder in powders:
+		if powder.state == Enums.PowderState.IDLE:
+			idle_powder_count += 1
+			total_powder_stamina += powder.current_stamina
+	return [idle_powder_count, total_powder_stamina]
+
+
 func _on_powder_state_changed(previous_state: Enums.PowderState, new_state: Enums.PowderState, _powder_index: int):
 	if previous_state == Enums.PowderState.IDLE and new_state != Enums.PowderState.IDLE:
 		powder_burst_or_consumed_count += 1
 
 	if powder_burst_or_consumed_count >= powders.size():
-		in_game_manager.enter_failure_phase()
+		GameManager.enter_failure_phase(self)

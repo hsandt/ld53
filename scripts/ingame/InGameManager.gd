@@ -11,7 +11,6 @@ extends Node
 
 
 var is_going_back_to_main_menu: bool = false
-
 func _ready():
 
 	assert(pause_menu != null,
@@ -45,16 +44,6 @@ func _unhandled_input(event):
 
 	if event.is_action_pressed(&"restart"):
 		get_tree().reload_current_scene()
-
-
-func enter_failure_phase():
-	GameManager.game_phase = Enums.GamePhase.FAILURE
-	GameManager.enter_result_scene()
-
-
-func enter_success_phase():
-	GameManager.game_phase = Enums.GamePhase.SUCCESS
-	GameManager.enter_result_scene()
 
 
 func _on_pause_menu_back_to_main_pressed():

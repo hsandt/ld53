@@ -14,8 +14,8 @@ var state: Enums.PowderState
 ## Current modifier applied, or null if none
 var current_modifier: Modifier
 
-## stamina left before turning into spark
-var _current_stamina: float
+## Stamina left before turning into spark
+var current_stamina: float
 
 
 func _ready():
@@ -24,7 +24,7 @@ func _ready():
 	# no signal for initialization, so set state directly
 	state = Enums.PowderState.IDLE
 	current_modifier = null
-	_current_stamina = data.max_stamina
+	current_stamina = data.max_stamina
 
 func change_state(new_state: Enums.PowderState):
 	if state != new_state:
@@ -40,13 +40,13 @@ func consume():
 	change_state(Enums.PowderState.CONSUMED)
 
 func try_take_damage(damage: float):
-	if _current_stamina <= 0:
+	if current_stamina <= 0:
 		# powder has already burst (possibly even be consumed), so ignore
 		# further damage
 		return
 
-	_current_stamina -= damage
+	current_stamina -= damage
 
-	if _current_stamina <= 0.0:
-		_current_stamina = 0.0
+	if current_stamina <= 0.0:
+		current_stamina = 0.0
 		burst()

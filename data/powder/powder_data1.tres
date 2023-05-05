@@ -6,4 +6,4 @@
 [resource]
 script = ExtResource("1_u324e")
 spark_debuff_modifier = ExtResource("2_oxhus")
-max_stamina = 5.0
+max_stamina = 1.0

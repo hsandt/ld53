@@ -31,6 +31,8 @@ extends Node
 ## Current game phase
 var game_phase: Enums.GamePhase = Enums.GamePhase.MAIN_MENU
 
+## Powder stats [idle_powder_count, total_powder_stamina] on game session end to show in result
+var powder_stats: Array
 
 func _ready():
 	assert(main_menu_scene != null,
@@ -51,3 +53,20 @@ func enter_result_scene():
 func go_back_to_main_menu():
 	await SceneManager.change_scene_with_fade_async(main_menu_scene,
 		back_to_main_menu_fade_out_speed, back_to_main_menu_fade_in_speed)
+
+
+func enter_failure_phase(cargo: Cargo):
+	game_phase = Enums.GamePhase.FAILURE
+
+	# Store result before changing scene
+	powder_stats = cargo.get_powder_stats()
+
+	enter_result_scene()
+
+func enter_success_phase(cargo: Cargo):
+	game_phase = Enums.GamePhase.SUCCESS
+
+	# Store result before changing scene
+	powder_stats = cargo.get_powder_stats()
+
+	enter_result_scene()

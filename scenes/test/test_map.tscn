@@ -9,19 +9,12 @@
 
 [node name="obstacle_big" parent="Obstacles" index="0" instance=ExtResource("2_37nsa")]
 position = Vector2(520, 158)
-metadata/_edit_lock_ = true
 
 [node name="obstacle_medium" parent="Obstacles" index="1" instance=ExtResource("3_000la")]
-position = Vector2(574, -145)
-metadata/_edit_lock_ = true
+position = Vector2(1466, -145)
 
 [node name="obstacle_small" parent="Obstacles" index="2" instance=ExtResource("4_8kp5m")]
 position = Vector2(529, -319)
-metadata/_edit_lock_ = true
-
-[node name="obstacle_small2" parent="Obstacles" index="3" instance=ExtResource("4_8kp5m")]
-position = Vector2(639, 356)
-metadata/_edit_lock_ = true
 
 [node name="Floor Full" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset" index="0"]
 modulate = Color(0.054902, 0.309804, 0.14902, 1)

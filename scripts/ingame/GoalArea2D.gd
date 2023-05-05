@@ -11,4 +11,4 @@ func _ready():
 func _on_body_entered(body):
 	var character_body := body as Player
 	if character_body != null:
-		in_game_manager.enter_success_phase()
+		GameManager.enter_success_phase(in_game_manager.player_character.cargo)
