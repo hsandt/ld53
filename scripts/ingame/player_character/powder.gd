@@ -3,7 +3,7 @@ extends Node2D
 
 
 ## Signal sent when state changes
-signal state_changed(new_state: Enums.PowderState)
+signal state_changed(previous_state: Enums.PowderState, new_state: Enums.PowderState)
 
 ## Associated powder data
 @export var data: PowderData
@@ -28,8 +28,9 @@ func _ready():
 
 func change_state(new_state: Enums.PowderState):
 	if state != new_state:
+		var previous_state = state
 		state = new_state
-		state_changed.emit(new_state)
+		state_changed.emit(previous_state, new_state)
 
 func burst():
 	change_state(Enums.PowderState.SPARK)

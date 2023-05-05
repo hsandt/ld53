@@ -19,7 +19,7 @@ func _ready():
 func register_observed_powder(powder: Powder):
 	observed_powder = powder
 
-func on_powder_state_changed(new_state: Enums.PowderState):
+func on_powder_state_changed(_previous_state: Enums.PowderState, new_state: Enums.PowderState):
 	animated_sprite.animation = powder_state_to_animation[new_state]
 
 func _on_button_pressed():

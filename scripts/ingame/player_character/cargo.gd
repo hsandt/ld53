@@ -2,10 +2,18 @@ class_name Cargo
 extends Node2D
 
 
+var in_game_manager: InGameManager
+
+## Cached array of powder children
 var powders: Array[Powder]
+
+## Cached number of powder that are either in BURST or CONSUMED state
+var powder_burst_or_consumed_count: int
 
 
 func _ready():
+	in_game_manager = get_tree().get_first_node_in_group(&"in_game_manager")
+
 	for child in get_children():
 		var powder := child as Powder
 		if powder == null:
@@ -13,6 +21,8 @@ func _ready():
 			continue
 
 		powders.append(powder)
+
+	powder_burst_or_consumed_count = 0
 
 
 func connect_powders_ui(powders_panel: PowdersPanel):
@@ -28,6 +38,7 @@ func connect_powders_ui(powders_panel: PowdersPanel):
 
 		# Registration for model -> UI update
 		powders[i].state_changed.connect(powder_panels[i].on_powder_state_changed)
+		powders[i].state_changed.connect(_on_powder_state_changed.bind(i))
 
 
 func hurt(damage: float):
@@ -56,3 +67,11 @@ func get_attribute_modifier_factor_and_offset(attribute_name: String) -> Array[f
 				cumulated_modifier_offset += modifier.value
 
 	return [cumulated_modifier_factor, cumulated_modifier_offset]
+
+
+func _on_powder_state_changed(previous_state: Enums.PowderState, new_state: Enums.PowderState, powder_index: int):
+	if previous_state == Enums.PowderState.IDLE and new_state != Enums.PowderState.IDLE:
+		powder_burst_or_consumed_count += 1
+
+	if powder_burst_or_consumed_count >= powders.size():
+		in_game_manager.enter_failure_phase()
