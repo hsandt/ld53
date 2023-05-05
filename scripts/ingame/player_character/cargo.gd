@@ -69,7 +69,7 @@ func get_attribute_modifier_factor_and_offset(attribute_name: String) -> Array[f
 	return [cumulated_modifier_factor, cumulated_modifier_offset]
 
 
-func _on_powder_state_changed(previous_state: Enums.PowderState, new_state: Enums.PowderState, powder_index: int):
+func _on_powder_state_changed(previous_state: Enums.PowderState, new_state: Enums.PowderState, _powder_index: int):
 	if previous_state == Enums.PowderState.IDLE and new_state != Enums.PowderState.IDLE:
 		powder_burst_or_consumed_count += 1
 
