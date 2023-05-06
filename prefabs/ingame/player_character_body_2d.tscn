@@ -2,9 +2,9 @@
 
 [ext_resource type="Material" uid="uid://r5m0e65nite5" path="res://materials/player_character_material.tres" id="1_1l63l"]
 [ext_resource type="Script" path="res://scripts/ingame/player_character/player.gd" id="1_2t2x0"]
-[ext_resource type="Script" path="res://addons/smoothing/smoothing_2d.gd" id="3_3adtf"]
 [ext_resource type="Script" path="res://scripts/buffs/Buffs.gd" id="3_4x6o7"]
 [ext_resource type="SpriteFrames" uid="uid://bdq8so2kor0sb" path="res://animations/player_character_sprite_frames.tres" id="3_fgtjg"]
+[ext_resource type="Script" path="res://addons/smoothing/smoothing_2d.gd" id="3_vbvgt"]
 [ext_resource type="Script" path="res://scripts/visual/AnimatedSprite2DBrightnessController.gd" id="4_epfoh"]
 [ext_resource type="Script" path="res://scripts/ingame/player_character/cargo.gd" id="6_dru5e"]
 [ext_resource type="Script" path="res://scripts/ingame/player_character/powder.gd" id="6_vdi8d"]
@@ -31,15 +31,14 @@ animated_sprite_with_brightness_controller = NodePath("Smoothing2D/AnimatedSprit
 sled_slide_sfx_player = NodePath("SledSlideAudioStreamPlayer")
 
 [node name="Smoothing2D" type="Node2D" parent="."]
-y_sort_enabled = true
-script = ExtResource("3_3adtf")
+position = Vector2(-36, -37)
+script = ExtResource("3_vbvgt")
 
 [node name="AnimatedSprite2DBrightnessController" type="AnimatedSprite2D" parent="Smoothing2D" node_paths=PackedStringArray("brighten_timer")]
 material = ExtResource("1_1l63l")
-position = Vector2(-36, -37)
 scale = Vector2(0.615126, 0.615126)
 sprite_frames = ExtResource("3_fgtjg")
-frame_progress = 0.58425
+autoplay = "default"
 script = ExtResource("4_epfoh")
 brighten_timer = NodePath("../../Flash Timer")
 
