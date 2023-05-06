@@ -25,6 +25,14 @@ var scroll_container_content: Control
 ## scrolling down by small increments.
 var stored_scroll_value: float
 
+## To make mouse still compatible with the stored scroll workaround,
+## we must set this flag only when we want to set scroll by code,
+## else give the hand to native UI
+var is_scrolling_controlled_by_immediate_directional_input: bool
+
+## Same as is_scrolling_controlled_by_immediate_directional_input, but for tween
+var is_scrolling_controlled_by_tween: bool
+
 
 func _ready():
 	assert(credits_label != null, "[credits_menu_controller] credits_label is not set on %s" % get_path())
@@ -53,12 +61,20 @@ func _unhandled_input(event):
 		scroll_delta = scroll_page_increment
 
 	if scroll_delta != 0:
-		var scroll_destination := roundi(scroll_container.scroll_vertical + scroll_delta)
+		var scroll_destination := scroll_container.scroll_vertical + scroll_delta
 		if animate:
 			var tween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
-			tween.tween_property(scroll_container, "scroll_vertical", scroll_destination, transition_time)
+			# tween the stored value first to be safe, and make sure you update it
+			# process will make sure to update scroll container scroll over time
+			tween.tween_property(self, "stored_scroll_value", scroll_destination, transition_time)
+			is_scrolling_controlled_by_tween = true
+			tween.finished.connect(_on_scrolling_tween_finished)
 		else:
-			scroll_container.scroll_vertical = scroll_destination
+			# Set stored scroll value and let _process update UI value
+			stored_scroll_value = scroll_destination
+
+			# Remember to immediately update and consume flag
+			is_scrolling_controlled_by_immediate_directional_input = true
 
 
 func _process(delta):
@@ -83,8 +99,33 @@ func _process(delta):
 		var v_scroll_bar_max = max(0, scroll_container_content.size.y - scroll_container.size.y)
 		stored_scroll_value = clamp(stored_scroll_value, 0.0, v_scroll_bar_max)
 
-		# Then set scroll value using this safe custom value, rounding at the last moment
-		scroll_container.scroll_vertical = roundi(stored_scroll_value)
+		# Remember to immediately update and consume flag
+		is_scrolling_controlled_by_immediate_directional_input = true
+
+	if is_scrolling_controlled_by_immediate_directional_input or \
+			is_scrolling_controlled_by_tween:
+		# Consume any immediate input flag to let mouse handle scrollbar next time,
+		# but NOT tween flag until tween is finished
+		is_scrolling_controlled_by_immediate_directional_input = false
+
+		# Whether stored scroll value changed by tween or progressive input as above,
+		# set scroll value using this safe custom value, rounding at the last moment
+		var target_scroll_vertical = roundi(stored_scroll_value)
+		if scroll_container.scroll_vertical != target_scroll_vertical:
+			scroll_container.scroll_vertical = target_scroll_vertical
+	else:
+		# When native UI is controlling the scroll, we want the reverse:
+		# update stored scroll value with any change (bigger than a fraction)
+		# This allows us to update the stored scroll value if mouse dragged scrollbar
+		# and resume from the correct position with scrolling via custom input
+		var rounded_stored_scroll_value = roundi(stored_scroll_value)
+		if rounded_stored_scroll_value != scroll_container.scroll_vertical:
+			stored_scroll_value = float(scroll_container.scroll_vertical)
+
+
+func _on_scrolling_tween_finished():
+	# Release code control to let mouse drag scrollbar
+	is_scrolling_controlled_by_tween = false
 
 
 func load_text() -> String:

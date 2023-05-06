@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://djvedm1ibu5wi"]
+[gd_scene load_steps=5 format=3 uid="uid://djvedm1ibu5wi"]
 
 [ext_resource type="Script" path="res://scripts/menu/credits_menu_controller.gd" id="1_jv2fy"]
-[ext_resource type="Script" path="res://addons/EasyMenus/Scripts/follow_focus_center.gd" id="2_euu87"]
 [ext_resource type="Theme" uid="uid://ccl8f1knd33xp" path="res://themes/theme_credits_text.tres" id="3_36vwa"]
 [ext_resource type="FontFile" uid="uid://jc3sjkv4y04y" path="res://fonts/Comfortaa/Comfortaa-VariableFont_wght.ttf" id="4_2uyo8"]
 
@@ -41,7 +40,6 @@ layout_mode = 2
 unique_name_in_owner = true
 custom_minimum_size = Vector2(1870, 900)
 layout_mode = 2
-script = ExtResource("2_euu87")
 
 [node name="Credits RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/ScrollContainer"]
 custom_minimum_size = Vector2(1870, 900)

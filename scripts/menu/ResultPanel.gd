@@ -22,6 +22,8 @@ func _ready():
 	powder_types_left_value_label.text = str(powder_stats[0])
 	powder_left_value_label.text = str(powder_stats[1])
 
+	replay_button.grab_focus()
+
 
 func _disable_all_buttons():
 	replay_button.disabled = true

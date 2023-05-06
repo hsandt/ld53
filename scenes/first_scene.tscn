@@ -34,7 +34,6 @@ unique_name_in_owner = true
 [node name="PauseMenu" parent="HUDCanvasLayer" instance=ExtResource("2_afo14")]
 
 [node name="PlayerCharacterBody2D" parent="." instance=ExtResource("3_82xke")]
-z_index = 10
 collision_mask = 65792
 platform_floor_layers = 4294967294
 platform_wall_layers = 256
@@ -52,11 +51,6 @@ lookahead_distance = 500.0
 
 [node name="Map1" parent="." instance=ExtResource("8_srhq4")]
 
-[node name="GoalArea2D" parent="Map1" index="3"]
-position = Vector2(20000, 0)
-
 [connection signal="back_to_main_pressed" from="HUDCanvasLayer/PauseMenu" to="InGameManager" method="_on_pause_menu_back_to_main_pressed"]
 [connection signal="pause" from="HUDCanvasLayer/PauseMenu" to="MusicStreamPlayer" method="_on_pause_menu_pause"]
 [connection signal="resume" from="HUDCanvasLayer/PauseMenu" to="MusicStreamPlayer" method="_on_pause_menu_resume"]
-
-[editable path="Map1"]
