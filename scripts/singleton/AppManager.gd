@@ -23,6 +23,8 @@ extends Node
 		Vector2i(3840, 2160),
 	]
 
+var config = ConfigFile.new()
+
 var current_preset_resolution_index = -1
 
 
@@ -89,16 +91,25 @@ func change_resolution(delta: int):
 
 	print("[AppManager] Changed to preset resolution: %s" % new_preset_resolution)
 
-
 func toggle_fullscreen():
+	var new_window_mode: DisplayServer.WindowMode
+
 	# For debug, borderless window is enough
 	if DisplayServer.window_get_mode() not in \
 			[DisplayServer.WINDOW_MODE_FULLSCREEN, DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN]:
-		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
-		print("[AppManager] Toggled fullscreen: WINDOW_MODE_FULLSCREEN")
+		new_window_mode = DisplayServer.WINDOW_MODE_FULLSCREEN
+		print("[AppManager] Toggle fullscreen: WINDOW_MODE_FULLSCREEN")
 	else:
-		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-		print("[AppManager] Toggled fullscreen: WINDOW_MODE_WINDOWED")
+		new_window_mode = DisplayServer.WINDOW_MODE_WINDOWED
+		print("[AppManager] Toggle fullscreen: WINDOW_MODE_WINDOWED")
+
+	DisplayServer.window_set_mode(new_window_mode)
+
+	config.set_value(OptionsConstants.section_name, OptionsConstants.fullscreen_key_name,
+		new_window_mode == DisplayServer.WINDOW_MODE_FULLSCREEN)
+	config.save(OptionsConstants.config_file_name)
+
+	print("[AppManager] Saved fullscreen mode to user options config")
 
 
 func take_screenshot():
