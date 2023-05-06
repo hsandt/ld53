@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/singleton/GameManager.gd" id="1_fyhmc"]
 [ext_resource type="PackedScene" uid="uid://c1w34qdaw0bhv" path="res://scenes/main_menu_scene.tscn" id="2_tvj08"]
-[ext_resource type="PackedScene" uid="uid://ddxu5buxr3lp5" path="res://scenes/first_scene.tscn" id="3_885vf"]
+[ext_resource type="PackedScene" uid="uid://tx2hmn6o6i8q" path="res://scenes/first_scene.tscn" id="3_885vf"]
 [ext_resource type="PackedScene" uid="uid://c7277gfve8xvp" path="res://scenes/result_scene.tscn" id="4_m2syr"]
 
 [node name="GameManager" type="Node"]

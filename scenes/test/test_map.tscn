@@ -1,27 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bconteqikkki5"]
+[gd_scene load_steps=2 format=3 uid="uid://bconteqikkki5"]
 
 [ext_resource type="PackedScene" uid="uid://bcxj2wu4hjq7t" path="res://prefabs/ingame/map_base.tscn" id="1_q0gv3"]
-[ext_resource type="PackedScene" uid="uid://clbkj8klm4my3" path="res://prefabs/ingame/obstacle_big.tscn" id="2_37nsa"]
-[ext_resource type="PackedScene" uid="uid://ybj4svsavf4f" path="res://prefabs/ingame/obstacle_medium.tscn" id="3_000la"]
-[ext_resource type="PackedScene" uid="uid://b4r6q2xh20e8w" path="res://prefabs/ingame/obstacle_small.tscn" id="4_8kp5m"]
 
 [node name="Map1" instance=ExtResource("1_q0gv3")]
-
-[node name="obstacle_big" parent="Obstacles" index="0" instance=ExtResource("2_37nsa")]
-position = Vector2(520, 158)
-metadata/_edit_lock_ = true
-
-[node name="obstacle_medium" parent="Obstacles" index="1" instance=ExtResource("3_000la")]
-position = Vector2(574, -145)
-metadata/_edit_lock_ = true
-
-[node name="obstacle_small" parent="Obstacles" index="2" instance=ExtResource("4_8kp5m")]
-position = Vector2(529, -319)
-metadata/_edit_lock_ = true
-
-[node name="obstacle_small2" parent="Obstacles" index="3" instance=ExtResource("4_8kp5m")]
-position = Vector2(639, 356)
-metadata/_edit_lock_ = true
 
 [node name="Floor Full" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset" index="0"]
 modulate = Color(0.054902, 0.309804, 0.14902, 1)
@@ -72,7 +53,7 @@ position = Vector2(603, 538)
 scale = Vector2(100, 100)
 
 [node name="GoalArea2D" parent="." index="3"]
-position = Vector2(7677, 0)
+position = Vector2(1863, 59)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" parent="GoalArea2D" index="0"]

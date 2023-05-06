@@ -1,59 +1,75 @@
 [gd_scene load_steps=5 format=3 uid="uid://b3cj8qaa1pk0g"]
 
 [ext_resource type="Texture2D" uid="uid://chece7uq52u57" path="res://sprites/hud/HUD_KegContainer.PNG" id="1_i3g7h"]
+[ext_resource type="Script" path="res://scripts/ui/powders_panel.gd" id="2_c6afb"]
 [ext_resource type="PackedScene" uid="uid://c03i68p3oqkh2" path="res://prefabs/ingame/hud/powder_panel.tscn" id="2_eju3d"]
-[ext_resource type="Texture2D" uid="uid://dk7tsog5tghbd" path="res://sprites/ref/ingame_mockup.png" id="3_bcp3u"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_msqmn"]
 texture = ExtResource("1_i3g7h")
 
-[node name="Powders Panel" type="Panel"]
+[node name="PowdersPanel" type="Panel"]
 anchors_preset = -1
-anchor_left = 0.201562
 anchor_top = 0.794444
-anchor_right = 0.801042
+anchor_right = 1.0
 anchor_bottom = 1.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_msqmn")
+script = ExtResource("2_c6afb")
 metadata/_edit_group_ = true
 metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.0451781
+anchor_left = 0.246875
 anchor_top = 0.252252
-anchor_right = 0.946134
+anchor_right = 0.786458
 anchor_bottom = 1.0045
-offset_right = 1037.0
+offset_right = 1036.0
 offset_bottom = 167.0
 scale = Vector2(0.5, 0.5)
 theme_override_constants/separation = 16
 metadata/_edit_use_anchors_ = true
 
-[node name="Powder Panel" parent="HBoxContainer" instance=ExtResource("2_eju3d")]
+[node name="Powder Panel1" parent="HBoxContainer" instance=ExtResource("2_eju3d")]
 layout_mode = 2
+
+[node name="buff" parent="HBoxContainer/Powder Panel1" index="0"]
+visible = false
 
 [node name="Powder Panel2" parent="HBoxContainer" instance=ExtResource("2_eju3d")]
 layout_mode = 2
 
+[node name="buff" parent="HBoxContainer/Powder Panel2" index="0"]
+visible = false
+
 [node name="Powder Panel3" parent="HBoxContainer" instance=ExtResource("2_eju3d")]
 layout_mode = 2
+
+[node name="buff" parent="HBoxContainer/Powder Panel3" index="0"]
+visible = false
 
 [node name="Powder Panel4" parent="HBoxContainer" instance=ExtResource("2_eju3d")]
 layout_mode = 2
 
+[node name="buff" parent="HBoxContainer/Powder Panel4" index="0"]
+visible = false
+
 [node name="Powder Panel5" parent="HBoxContainer" instance=ExtResource("2_eju3d")]
 layout_mode = 2
+
+[node name="buff" parent="HBoxContainer/Powder Panel5" index="0"]
+visible = false
 
 [node name="Powder Panel6" parent="HBoxContainer" instance=ExtResource("2_eju3d")]
 layout_mode = 2
 
-[node name="CanvasLayer REF" type="CanvasLayer" parent="."]
-layer = 10
+[node name="buff" parent="HBoxContainer/Powder Panel6" index="0"]
 visible = false
 
-[node name="REFERENCE Sprite2D" type="Sprite2D" parent="CanvasLayer REF"]
-modulate = Color(1, 1, 1, 0.709804)
-position = Vector2(960, 540)
-texture = ExtResource("3_bcp3u")
-metadata/_edit_lock_ = true
+[editable path="HBoxContainer/Powder Panel1"]
+[editable path="HBoxContainer/Powder Panel2"]
+[editable path="HBoxContainer/Powder Panel3"]
+[editable path="HBoxContainer/Powder Panel4"]
+[editable path="HBoxContainer/Powder Panel5"]
+[editable path="HBoxContainer/Powder Panel6"]

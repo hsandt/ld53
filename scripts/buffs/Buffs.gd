@@ -3,24 +3,39 @@ extends Node2D
 
 @onready var buff_scene = preload("res://scripts/buffs/buff.tscn")
 
-#currently active
-func get_attribute(name,baseline):
-	for buff in get_children():
-		if buff.modifier.attribute == name:
-			match buff.modifier.effect:
-				"multiplier":
-					baseline*=buff.modifier.value
-				"addition":
-					baseline+=buff.modifier.value
-	return baseline
+var in_game_manager: InGameManager
+var bcount=0
+var buffs = []
+
+func _ready():
+	in_game_manager = get_tree().get_first_node_in_group(&"in_game_manager")
+
+	if in_game_manager == null:
+		# we must be playing scene player character scene individually for
+		# testing
+		return
+
+	var base_powder = in_game_manager.hud.powders_panel.hbox
+	var powderpanel1 = base_powder.get_child(0)
+	var powderpanel2 = base_powder.get_child(1)
+	var powderpanel3 = base_powder.get_child(2)
+	var powderpanel4 = base_powder.get_child(3)
+	var powderpanel5 = base_powder.get_child(4)
+	var powderpanel6 = base_powder.get_child(5)
+
+	buffs.append(powderpanel1.get_node("buff"))
+	buffs.append(powderpanel2.get_node("buff"))
+	buffs.append(powderpanel3.get_node("buff"))
+	buffs.append(powderpanel4.get_node("buff"))
+	buffs.append(powderpanel5.get_node("buff"))
+	buffs.append(powderpanel6.get_node("buff"))
 
 func add_if_roll(modifier: Modifier):
 	if randf()<modifier.probability:
-		var b = buff_scene.instantiate()
-		b.modifier=modifier
-		b.position.y-=200+(100*len(get_children()))
-		b.get_node("progress/duration").wait_time=b.modifier.duration
-		add_child(b)
+		# modulo for safety, would need something cleaner
+		bcount = bcount % buffs.size()
+		buffs[bcount].activate(modifier)
+		bcount+=1
 
 func add(modifier: Modifier):
 	add_if_roll(modifier)

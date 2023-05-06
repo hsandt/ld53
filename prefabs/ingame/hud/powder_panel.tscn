@@ -1,20 +1,41 @@
-[gd_scene load_steps=2 format=3 uid="uid://c03i68p3oqkh2"]
+[gd_scene load_steps=5 format=3 uid="uid://c03i68p3oqkh2"]
 
-[ext_resource type="Texture2D" uid="uid://cnabhyboag8wj" path="res://sprites/hud/HUD_Keg.PNG" id="1_0ng4j"]
+[ext_resource type="Script" path="res://scripts/ui/powder_panel.gd" id="1_8dg0n"]
+[ext_resource type="PackedScene" uid="uid://n87nhvob85pn" path="res://scripts/buffs/buff.tscn" id="2_pfr15"]
+[ext_resource type="SpriteFrames" uid="uid://dwrs2bhosv0et" path="res://animations/powder_panel_sprite_frames.tres" id="3_jit8g"]
+[ext_resource type="Script" path="res://scripts/visual/AnimatedSprite2DBrightnessController.gd" id="6_7s2n6"]
 
-[node name="Powder Panel" type="Panel"]
+[node name="PowderPanel" type="Panel" node_paths=PackedStringArray("animated_sprite")]
 self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(332, 332)
+script = ExtResource("1_8dg0n")
+animated_sprite = NodePath("AnimatedSprite2DBrightnessController")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -106.0
-offset_top = -242.0
-offset_right = 78.0
-offset_bottom = -2.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("1_0ng4j")
+[node name="buff" parent="." instance=ExtResource("2_pfr15")]
+offset_left = -29.0
+offset_top = 97.0
+offset_right = 11.0
+offset_bottom = 137.0
+scale = Vector2(2.41221, 4.01272)
+
+[node name="AnimatedSprite2DBrightnessController" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("brighten_timer")]
+position = Vector2(153, 43)
+sprite_frames = ExtResource("3_jit8g")
+animation = &"spark"
+autoplay = "idle"
+frame_progress = 0.997247
+script = ExtResource("6_7s2n6")
+brighten_timer = NodePath("../BrightenTimer")
+
+[node name="BrightenTimer" type="Timer" parent="."]
+
+[node name="Button" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -9.0
+offset_top = -82.0
+offset_right = 306.0
+offset_bottom = 338.0
+flat = true
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

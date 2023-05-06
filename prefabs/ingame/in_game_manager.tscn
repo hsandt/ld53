@@ -2,5 +2,5 @@
 
 [ext_resource type="Script" path="res://scripts/ingame/InGameManager.gd" id="1_0xi0f"]
 
-[node name="InGameManager" type="Node"]
+[node name="InGameManager" type="Node" groups=["in_game_manager"]]
 script = ExtResource("1_0xi0f")

@@ -1,0 +1,36 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://dwrs2bhosv0et"]
+
+[ext_resource type="Texture2D" uid="uid://b1bdlsppvrrqx" path="res://sprites/hud/HUD__0007_Keg_Destroyed.png" id="1_s1074"]
+[ext_resource type="Texture2D" uid="uid://fkkus6hs8i7f" path="res://sprites/hud/HUD__0000_Keg_Idle.png" id="2_fgn3c"]
+[ext_resource type="Texture2D" uid="uid://crbtpwi8b027t" path="res://sprites/hud/HUD__0001_Keg_Spark1.png" id="3_tq8bf"]
+[ext_resource type="Texture2D" uid="uid://b6u233srvgy6t" path="res://sprites/hud/HUD__0004_Keg_Spark4.png" id="4_kolce"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_s1074")
+}],
+"loop": true,
+"name": &"consumed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_fgn3c")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_tq8bf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_kolce")
+}],
+"loop": true,
+"name": &"spark",
+"speed": 4.0
+}]

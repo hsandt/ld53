@@ -3,7 +3,7 @@ extends TextureRect
 @export_range(0, 1) var progression : float = 0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	progression = clampf(progression, 0, 1)
 	self.anchor_left = progression
 	self.anchor_top = 0.5

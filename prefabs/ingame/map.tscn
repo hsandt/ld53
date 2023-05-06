@@ -10,11 +10,13 @@
 size = Vector2(100, 1080)
 
 [node name="Map" type="Node2D"]
+y_sort_enabled = true
 position = Vector2(0, -1)
 metadata/_edit_lock_ = true
 metadata/_edit_horizontal_guides_ = [-349.0, 347.0]
 
 [node name="Obstacles" type="Node2D" parent="."]
+y_sort_enabled = true
 
 [node name="obstacle_big" parent="Obstacles" instance=ExtResource("1_kox13")]
 position = Vector2(520, 158)

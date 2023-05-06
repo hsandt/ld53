@@ -4,8 +4,8 @@ extends Resource
 @export var icon_path: String
 @export var description: String
 @export var attribute: String
-#effect in terms of math on number
-@export var effect: String
+## Which type of math operation to apply to the attribute
+@export var operation: Enums.ModifierOperation
 ##value in terms af attribute change
 @export var value: float
 ## chance of being triggered

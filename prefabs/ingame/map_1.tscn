@@ -33,10 +33,16 @@
 [ext_resource type="Texture2D" uid="uid://dg3ew6ye7cij4" path="res://sprites/bg/BG_Bottom.PNG" id="31_d78n8"]
 
 [node name="Map1" instance=ExtResource("1_p1joc")]
+y_sort_enabled = true
+
+[node name="Obstacles" parent="." index="0"]
+y_sort_enabled = true
 
 [node name="LevelArea_Part1" type="Node2D" parent="Obstacles" index="0"]
+y_sort_enabled = true
 
 [node name="PACING" type="Node2D" parent="Obstacles/LevelArea_Part1" index="0"]
+y_sort_enabled = true
 
 [node name="PART1_END" parent="Obstacles/LevelArea_Part1/PACING" index="0" instance=ExtResource("2_dcore")]
 position = Vector2(90000, -850)
@@ -73,6 +79,7 @@ position = Vector2(240000, -450)
 
 [node name="obstacle_small" parent="Obstacles/LevelArea_Part1" index="1" instance=ExtResource("4_5y8ev")]
 position = Vector2(973, -275)
+metadata/_edit_group_ = true
 
 [node name="E1_1" parent="Obstacles/LevelArea_Part1" index="2" instance=ExtResource("5_f7h4w")]
 position = Vector2(1800, 275)
@@ -189,6 +196,7 @@ position = Vector2(83469, 86)
 position = Vector2(86000, 0)
 
 [node name="LevelArea_Part2" type="Node2D" parent="Obstacles" index="1"]
+y_sort_enabled = true
 
 [node name="E1_1" parent="Obstacles/LevelArea_Part2" index="0" instance=ExtResource("5_f7h4w")]
 position = Vector2(94000, 225)
@@ -269,6 +277,7 @@ position = Vector2(156000, 250)
 position = Vector2(158000, 0)
 
 [node name="LevelArea_Part3" type="Node2D" parent="Obstacles" index="2"]
+y_sort_enabled = true
 
 [node name="taunter_top" parent="Obstacles/LevelArea_Part3" index="0" instance=ExtResource("19_uca22")]
 position = Vector2(160700, 26)
@@ -335,28 +344,33 @@ modulate = Color(0.85098, 0.85098, 0.85098, 1)
 z_index = -1
 scale = Vector2(1920, 1080)
 texture = ExtResource("5_1yeif")
+metadata/_edit_lock_ = true
 
 [node name="Floor Full Road Texture" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset" index="1"]
 modulate = Color(0.541176, 0.454902, 0.176471, 1)
 z_index = -1
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("28_hjsoh")
+metadata/_edit_lock_ = true
 
 [node name="Gradient" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset" index="2"]
 z_index = -1
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("29_yl3ek")
+metadata/_edit_lock_ = true
 
 [node name="Floor Playable Area Hint" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset" index="3"]
 modulate = Color(0.392157, 0.258824, 0.145098, 0.168627)
 scale = Vector2(1920, 700)
 texture = ExtResource("5_1yeif")
+metadata/_edit_lock_ = true
 
 [node name="Trees Top" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset" index="4"]
 modulate = Color(0.607843, 0.662745, 0.372549, 1)
 position = Vector2(0, -427)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("30_ffs6n")
+metadata/_edit_lock_ = true
 
 [node name="Trees Bottom" type="Sprite2D" parent="ParallaxForeground/ParallaxLayer Foreground/Offset" index="0"]
 modulate = Color(0.717647, 0.678431, 0.286275, 1)
@@ -364,6 +378,7 @@ z_index = 17
 position = Vector2(0, 417)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("31_d78n8")
+metadata/_edit_lock_ = true
 
 [node name="GoalArea2D" parent="." index="3"]
 position = Vector2(240000, 0)

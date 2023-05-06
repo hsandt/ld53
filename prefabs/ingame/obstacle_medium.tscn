@@ -1,15 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://ybj4svsavf4f"]
+[gd_scene load_steps=5 format=3 uid="uid://ybj4svsavf4f"]
 
 [ext_resource type="PackedScene" uid="uid://dpsojog231lgq" path="res://prefabs/ingame/obstacle.tscn" id="1_nr6rm"]
+[ext_resource type="Resource" uid="uid://t8uk8cjeixwk" path="res://data/obstacles/obstacle_data_medium.tres" id="2_0ilok"]
+[ext_resource type="Texture2D" uid="uid://81bhl401wbnw" path="res://sprites/obstacles/Obstacle_Small_Rock.png" id="3_3raw4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wsgx6"]
 resource_local_to_scene = true
 size = Vector2(50, 200)
 
 [node name="obstacle_medium" instance=ExtResource("1_nr6rm")]
+data = ExtResource("2_0ilok")
 
 [node name="CollisionShape2D" parent="." index="0"]
 shape = SubResource("RectangleShape2D_wsgx6")
 
 [node name="Obstacle" parent="." index="1"]
-scale = Vector2(50, 200)
+modulate = Color(0.788235, 0.74902, 0.741176, 1)
+position = Vector2(4, -11)
+scale = Vector2(0.667, 0.667)
+texture = ExtResource("3_3raw4")

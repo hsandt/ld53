@@ -4,7 +4,13 @@ extends Control
 @export var explosion_prefab: PackedScene
 @onready var spark_button: Button = $spark_button
 
-func _ready():
+func activate(mod):
+	visible=true
+	$progress/duration.wait_time=mod.duration
+	$progress/duration.start()
+	$spark_loop_sfx.play()
+	$spark_hit_sfx.play()
+	modifier=mod
 	assert(modifier != null,
 		"[buff] on buff '%s', modifier is not defined" % get_path())
 	assert(explosion_prefab != null,
@@ -25,7 +31,6 @@ func _on_spark_button_pressed():
 	# Burst: explode with the burst effect (get lucky or worsen)
 
 	$spark_button/ui_click_sfx.play()
-	var buffs = get_parent()
 
 	if modifier.lucky == null and modifier.worsen == null:
 		push_error("[buff] button should not even be visible")
@@ -45,17 +50,16 @@ func _on_spark_button_pressed():
 
 	if trigger_lucky_effect:
 		$buff_sfx.play()
-		buffs.add(modifier.lucky)
+		activate(modifier.lucky)
 	else:
 		$debuff_sfx.play()
-		buffs.add(modifier.worsen)
+		activate(modifier.worsen)
 
 	_explode()
 
 
 func _explode():
 	_play_explosion_feedback()
-	queue_free()
 
 
 func _play_explosion_feedback():

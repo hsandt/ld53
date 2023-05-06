@@ -2,7 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://b4r6q2xh20e8w" path="res://prefabs/ingame/obstacle_small.tscn" id="1_dtx4j"]
 
-[node name="E2_3" type="Area2D"]
+[node name="E2_3" type="Node2D"]
+y_sort_enabled = true
 
 [node name="obstacle_small" parent="." instance=ExtResource("1_dtx4j")]
 position = Vector2(0, 0)

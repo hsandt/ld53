@@ -2,7 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://clbkj8klm4my3" path="res://prefabs/ingame/obstacle_big.tscn" id="1_sgno7"]
 
-[node name="H2_1" type="Area2D"]
+[node name="H2_1" type="Node2D"]
+y_sort_enabled = true
 position = Vector2(1500, 0)
 
 [node name="obstacle_big" parent="." instance=ExtResource("1_sgno7")]
