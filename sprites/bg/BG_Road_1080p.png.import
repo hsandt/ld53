@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cw4jfyrulfmd3"
-path="res://.godot/imported/BG_Gradient.PNG-efe371af8c2ddbea0371a91955b27fac.ctex"
+uid="uid://dhe6mdl6q78lm"
+path="res://.godot/imported/BG_Road_1080p.png-cd0c1b9813e05488d0ea233afcaaabcd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/bg/BG_Gradient.PNG"
-dest_files=["res://.godot/imported/BG_Gradient.PNG-efe371af8c2ddbea0371a91955b27fac.ctex"]
+source_file="res://sprites/bg/BG_Road_1080p.png"
+dest_files=["res://.godot/imported/BG_Road_1080p.png-cd0c1b9813e05488d0ea233afcaaabcd.ctex"]
 
 [params]
 

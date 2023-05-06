@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bxigukpv2ox41"]
+
+[ext_resource type="Shader" path="res://shaders/gradient.gdshader" id="1_x08o6"]
+
+[resource]
+shader = ExtResource("1_x08o6")
+shader_parameter/gradient_max_value = 0.6
+shader_parameter/gradient_max_v = 0.5
+shader_parameter/gradient_color = Color(1, 1, 1, 1)
