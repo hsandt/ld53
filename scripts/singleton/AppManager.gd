@@ -97,8 +97,8 @@ func toggle_fullscreen():
 	# For debug, borderless window is enough
 	if DisplayServer.window_get_mode() not in \
 			[DisplayServer.WINDOW_MODE_FULLSCREEN, DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN]:
-		new_window_mode = DisplayServer.WINDOW_MODE_FULLSCREEN
-		print("[AppManager] Toggle fullscreen: WINDOW_MODE_FULLSCREEN")
+		new_window_mode = DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN
+		print("[AppManager] Toggle fullscreen: WINDOW_MODE_EXCLUSIVE_FULLSCREEN")
 	else:
 		new_window_mode = DisplayServer.WINDOW_MODE_WINDOWED
 		print("[AppManager] Toggle fullscreen: WINDOW_MODE_WINDOWED")
@@ -106,7 +106,7 @@ func toggle_fullscreen():
 	DisplayServer.window_set_mode(new_window_mode)
 
 	config.set_value(OptionsConstants.section_name, OptionsConstants.fullscreen_key_name,
-		new_window_mode == DisplayServer.WINDOW_MODE_FULLSCREEN)
+		new_window_mode == DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
 	config.save(OptionsConstants.config_file_name)
 
 	print("[AppManager] Saved fullscreen mode to user options config")
