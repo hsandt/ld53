@@ -9,6 +9,8 @@ const HSliderWLabel = preload("res://addons/EasyMenus/Scripts/slider_w_labels.gd
 @onready var render_scale_current_value_label: Label = $%RenderScaleCurrentValueLabel
 @onready var render_scale_slider: HSlider = $%RenderScaleSlider
 @onready var vsync_check_button: CheckButton = $%VSyncCheckButton
+# ADDED to hide when not relevant
+@onready var anti_aliasing_2d_label: Label = $%AntiAliasing2DLabel
 @onready var anti_aliasing_2d_option_button: OptionButton = $%AntiAliasing2DOptionButton
 @onready var anti_aliasing_3d_option_button: OptionButton = $%AntiAliasing3DOptionButton
 
@@ -17,6 +19,16 @@ var music_bus_index
 var config = ConfigFile.new()
 
 
+func _ready():
+	# ADDED: Disable options irrelevant to web or desktop using Compatibility renderer
+	# See https://github.com/SavoVuksan/EasyMenus/issues/7
+	if OS.has_feature("web"):
+		vsync_check_button.visible = false
+	if OS.has_feature("web") or \
+			ProjectSettings.get_setting("rendering/renderer/rendering_method") == "gl_compatibility":
+		anti_aliasing_2d_label.visible = false
+		anti_aliasing_2d_option_button.visible = false
+
 # Emits close signal and saves the options
 func go_back():
 	save_options()
@@ -24,7 +36,7 @@ func go_back():
 
 # Called from outside initializes the options menu
 func on_open():
-	# Local fix for https://github.com/SavoVuksan/EasyMenus/issues/6
+	# ADDED: Local fix for https://github.com/SavoVuksan/EasyMenus/issues/6
 	# Auto-scroll to top when options menu is opened
 	$MarginContainer/ScrollContainer.scroll_vertical = 0
 
@@ -66,8 +78,6 @@ func load_options():
 	var music_volume = config.get_value(OptionsConstants.section_name, OptionsConstants.music_volume_key_name, 1)
 	var fullscreen = config.get_value(OptionsConstants.section_name, OptionsConstants.fullscreen_key_name, false)
 	var render_scale = config.get_value(OptionsConstants.section_name, OptionsConstants.render_scale_key, 1)
-	var vsync = config.get_value(OptionsConstants.section_name, OptionsConstants.vsync_key, true)
-	var msaa_2d = config.get_value(OptionsConstants.section_name, OptionsConstants.msaa_2d_key, 0)
 	var msaa_3d = config.get_value(OptionsConstants.section_name, OptionsConstants.msaa_3d_key, 0)
 
 	sfx_volume_slider.hslider.value = sfx_volume
@@ -75,12 +85,23 @@ func load_options():
 	fullscreen_check_button.button_pressed = fullscreen
 	render_scale_slider.value = render_scale
 
-	# Need to set it like that to guarantee signal to be triggered
-	vsync_check_button.set_pressed_no_signal(vsync)
-	vsync_check_button.emit_signal("toggled", vsync)
+	# ADDED: Only update VSync if button is visible, so web also skips this step and avoids console error
+	# Also MOVED get_value inside this block so it's not only assigned when used
+	# See https://github.com/SavoVuksan/EasyMenus/issues/7
+	if vsync_check_button.visible:
+		var vsync = config.get_value(OptionsConstants.section_name, OptionsConstants.vsync_key, true)
+		# Need to set it like that to guarantee signal to be triggered
+		vsync_check_button.set_pressed_no_signal(vsync)
+		vsync_check_button.emit_signal("toggled", vsync)
 
-	anti_aliasing_2d_option_button.selected = msaa_2d
-	anti_aliasing_2d_option_button.emit_signal("item_selected", msaa_2d)
+	# ADDED: Only update VSync if button is visible, so web also skips this step and avoids console error
+	# Also MOVED get_value inside this block so it's not only assigned when used
+	# See https://github.com/SavoVuksan/EasyMenus/issues/7
+	if anti_aliasing_2d_option_button.visible:
+		var msaa_2d = config.get_value(OptionsConstants.section_name, OptionsConstants.msaa_2d_key, 0)
+		anti_aliasing_2d_option_button.selected = msaa_2d
+		anti_aliasing_2d_option_button.emit_signal("item_selected", msaa_2d)
+
 	anti_aliasing_3d_option_button.selected = msaa_3d
 	anti_aliasing_3d_option_button.emit_signal("item_selected", msaa_3d)
 
