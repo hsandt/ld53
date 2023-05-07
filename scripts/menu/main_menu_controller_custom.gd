@@ -13,6 +13,11 @@ signal start_game_pressed
 func _ready():
 	start_game_button.grab_focus()
 
+	# ADDED: remove quit button in web export
+	# It would just freeze the game but cannot close the window/embedded frame anyway
+	if OS.has_feature("web"):
+		quit_button.visible = false
+
 func disable_all_buttons():
 	start_game_button.disabled = true
 	options_button.disabled = true
