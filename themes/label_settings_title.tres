@@ -1,0 +1,7 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://6lpf7ir6fyi8"]
+
+[ext_resource type="FontFile" uid="uid://ctqyxwoyjwblp" path="res://fonts/Lobster_Two/LobsterTwo-Bold.ttf" id="1_fgyr6"]
+
+[resource]
+font = ExtResource("1_fgyr6")
+font_size = 150
