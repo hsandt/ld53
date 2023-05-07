@@ -13,6 +13,9 @@ extends Node
 ##   app_exit
 
 
+## Control showing current FPS
+@export var fps_control: Control
+
 ## If true, auto-switch to fullscreen on standalone game start
 @export var auto_fullscreen_in_standalone: bool = false
 
@@ -30,12 +33,17 @@ var current_preset_resolution_index = -1
 
 
 func _ready():
+	assert(fps_control != null,	"[InGameManager] fps_control is not set on %s" % get_path())
+
 	if DisplayServer.window_get_mode() not in \
 			[DisplayServer.WINDOW_MODE_FULLSCREEN, DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN] and \
 			auto_fullscreen_in_standalone:
 		if OS.has_feature("standalone"):
 			print("[AppManager] Playing standalone game with auto-fullscreen ON, enabling fullscreen")
 			call_deferred(&"toggle_fullscreen")
+
+	# Show FPS by default in editor/debug exports. Else, wait for user to toggle it.
+	fps_control.visible = OS.has_feature("debug")
 
 
 func _unhandled_input(event: InputEvent):
@@ -116,11 +124,10 @@ func toggle_fullscreen():
 
 
 func toggle_debug_fps():
-	var previous_value = ProjectSettings.get_setting("debug/settings/stdout/print_fps")
-	var new_value = not previous_value
-	ProjectSettings.set_setting("debug/settings/stdout/print_fps", new_value)
+	var new_value = not fps_control.visible
+	fps_control.visible = new_value
 
-	print("[AppManager] Toggle debug print_fps: %s" % new_value)
+	print("[AppManager] Toggle FPS in debug overlay: %s" % new_value)
 
 
 func take_screenshot():

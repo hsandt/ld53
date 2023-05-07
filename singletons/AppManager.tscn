@@ -1,7 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://b37ttm1m7i0xd"]
+[gd_scene load_steps=3 format=3 uid="uid://b37ttm1m7i0xd"]
 
 [ext_resource type="Script" path="res://scripts/singleton/AppManager.gd" id="1_dpv1y"]
+[ext_resource type="PackedScene" uid="uid://ilw4fn8ru2pb" path="res://prefabs/debug/fps_debug.tscn" id="2_frkwv"]
 
-[node name="AppManager" type="Node"]
+[node name="AppManager" type="Node" node_paths=PackedStringArray("fps_control")]
 process_mode = 3
 script = ExtResource("1_dpv1y")
+fps_control = NodePath("DebugCanvasLayer/HBoxContainer - FPS")
+
+[node name="DebugCanvasLayer" type="CanvasLayer" parent="."]
+layer = 100
+
+[node name="HBoxContainer - FPS" parent="DebugCanvasLayer" instance=ExtResource("2_frkwv")]
