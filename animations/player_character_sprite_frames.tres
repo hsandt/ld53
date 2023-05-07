@@ -1,8 +1,11 @@
-[gd_resource type="SpriteFrames" load_steps=4 format=3 uid="uid://bdq8so2kor0sb"]
+[gd_resource type="SpriteFrames" load_steps=7 format=3 uid="uid://bdq8so2kor0sb"]
 
 [ext_resource type="Texture2D" uid="uid://dee3qwqxubv2a" path="res://sprites/player/Player_Idle_1.png" id="1_u68e4"]
 [ext_resource type="Texture2D" uid="uid://bpboup8xkuyjq" path="res://sprites/player/Player_Idle_2.png" id="2_v0aj7"]
 [ext_resource type="Texture2D" uid="uid://cjegj7r6i87fv" path="res://sprites/player/Player_Idle_3.png" id="3_ffl1t"]
+[ext_resource type="Texture2D" uid="uid://dn1gb3aqi1x85" path="res://sprites/player/Player_Idle_4.png" id="4_dfhcu"]
+[ext_resource type="Texture2D" uid="uid://dcek6x4cha2ik" path="res://sprites/player/Player_Idle_5.png" id="5_emat0"]
+[ext_resource type="Texture2D" uid="uid://8fal7ofwuuai" path="res://sprites/player/Player_Idle_6.png" id="6_a1ck1"]
 
 [resource]
 animations = [{
@@ -15,6 +18,15 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("3_ffl1t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_dfhcu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_emat0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_a1ck1")
 }],
 "loop": true,
 "name": &"default",
