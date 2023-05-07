@@ -8,6 +8,7 @@ extends Node
 ##   app_prev_resolution
 ##   app_next_resolution
 ##   app_toggle_fullscreen
+##   app_toggle_debug_fps
 ##   app_take_screenshot
 ##   app_exit
 
@@ -47,6 +48,8 @@ func _unhandled_input(event: InputEvent):
 
 	if event.is_action_pressed(&"app_toggle_fullscreen"):
 		toggle_fullscreen()
+	if event.is_action_pressed(&"app_toggle_debug_fps"):
+		toggle_debug_fps()
 
 	if event.is_action_pressed(&"app_take_screenshot"):
 		take_screenshot()
@@ -110,6 +113,14 @@ func toggle_fullscreen():
 	config.save(OptionsConstants.config_file_name)
 
 	print("[AppManager] Saved fullscreen mode to user options config")
+
+
+func toggle_debug_fps():
+	var previous_value = ProjectSettings.get_setting("debug/settings/stdout/print_fps")
+	var new_value = not previous_value
+	ProjectSettings.set_setting("debug/settings/stdout/print_fps", new_value)
+
+	print("[AppManager] Toggle debug print_fps: %s" % new_value)
 
 
 func take_screenshot():
