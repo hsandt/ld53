@@ -1,6 +1,6 @@
-[gd_resource type="Theme" load_steps=3 format=3 uid="uid://btrmulh3kwmt6"]
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://d2ibmuqmyfsfj"]
 
-[ext_resource type="FontFile" uid="uid://jc3sjkv4y04y" path="res://fonts/Comfortaa/Comfortaa-VariableFont_wght.ttf" id="1_pdc6j"]
+[ext_resource type="FontFile" uid="uid://jc3sjkv4y04y" path="res://fonts/Comfortaa/Comfortaa-VariableFont_wght.ttf" id="1_3jvsp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jjuqy"]
 content_margin_left = 10.0
@@ -15,7 +15,7 @@ corner_radius_bottom_left = 3
 corner_detail = 5
 
 [resource]
-default_font = ExtResource("1_pdc6j")
+default_font = ExtResource("1_3jvsp")
 default_font_size = 50
 Button/styles/disabled = SubResource("StyleBoxFlat_jjuqy")
 Button/styles/focus = SubResource("StyleBoxFlat_jjuqy")
