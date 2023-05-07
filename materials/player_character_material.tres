@@ -5,4 +5,4 @@
 [resource]
 shader = ExtResource("1_dgwag")
 shader_parameter/brightness = 0.0
-shader_parameter/modulate = Color(0.443137, 0.67451, 0.431373, 1)
+shader_parameter/modulate = Color(0.682353, 0.894118, 0.666667, 1)
