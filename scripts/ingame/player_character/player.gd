@@ -6,8 +6,11 @@ extends CharacterBody2D
 @export var sled_slide_sfx_player: AudioStreamPlayer
 
 @export var acceleration = 1000
-@export var top_speed = 1000
+@export var target_base_speed = 1000
 @export var base_steer_speed = 500
+
+## Velocity X at which animation speed scale should be 1
+@export_range(1.0, 2000.0) var animation_reference_velocity_x: float = 1000.0
 
 ## Brightness set when hurt
 @export var hurt_brightness: float = 0.5
@@ -35,14 +38,18 @@ func _ready():
 	set_base_attribute(&"speed", 0)
 	set_base_attribute(&"steer_speed", base_steer_speed)
 
+func _process(delta):
+	# Play animation faster when character moves faster than reference speed, and vice-versa
+	animated_sprite_with_brightness_controller.speed_scale = velocity.x / animation_reference_velocity_x
+
 func _physics_process(delta):
 	if not _should_move:
 		return
 
 	var previous_base_speed = get_base_attribute(&"speed")
-	if previous_base_speed < top_speed:
+	if previous_base_speed < target_base_speed:
 		# Accelerate until top speed
-		var new_base_speed = min(previous_base_speed + delta * acceleration, top_speed)
+		var new_base_speed = min(previous_base_speed + delta * acceleration, target_base_speed)
 		set_base_attribute(&"speed", new_base_speed)
 
 	# Compute current speed from base and any modifiers
