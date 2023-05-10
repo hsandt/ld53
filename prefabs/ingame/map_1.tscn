@@ -37,8 +37,9 @@ normal = Vector2(0, 1)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_421ki"]
 
-[node name="Map1" instance=ExtResource("1_p1joc")]
+[node name="Map1" node_paths=PackedStringArray("world_boundary") instance=ExtResource("1_p1joc")]
 y_sort_enabled = true
+world_boundary = NodePath("WorldBoundaryStaticBody2D")
 
 [node name="Obstacles" parent="." index="0"]
 y_sort_enabled = true
