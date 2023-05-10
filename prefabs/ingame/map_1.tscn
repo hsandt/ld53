@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://dcqumcm4vc2x"]
+[gd_scene load_steps=34 format=3 uid="uid://dcqumcm4vc2x"]
 
 [ext_resource type="PackedScene" uid="uid://bcxj2wu4hjq7t" path="res://prefabs/ingame/map_base.tscn" id="1_p1joc"]
 [ext_resource type="PackedScene" uid="uid://clbkj8klm4my3" path="res://prefabs/ingame/obstacle_big.tscn" id="2_dcore"]
@@ -31,6 +31,11 @@
 [ext_resource type="Texture2D" uid="uid://bwwvc3lhn1t6m" path="res://sprites/bg/BG_Top.PNG" id="30_ffs6n"]
 [ext_resource type="Material" uid="uid://bxigukpv2ox41" path="res://materials/gradient_material.tres" id="31_1r4mq"]
 [ext_resource type="Texture2D" uid="uid://dg3ew6ye7cij4" path="res://sprites/bg/BG_Bottom.PNG" id="31_d78n8"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_4ljo6"]
+normal = Vector2(0, 1)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_421ki"]
 
 [node name="Map1" instance=ExtResource("1_p1joc")]
 y_sort_enabled = true
@@ -390,3 +395,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("5_1yeif")
+
+[node name="WorldBoundaryStaticBody2D" type="StaticBody2D" parent="." index="5"]
+collision_layer = 256
+
+[node name="WorldBoundaryTopCollisionShape2D" type="CollisionShape2D" parent="WorldBoundaryStaticBody2D" index="0"]
+position = Vector2(0, -349)
+shape = SubResource("WorldBoundaryShape2D_4ljo6")
+
+[node name="WorldBoundaryBottomCollisionShape2D" type="CollisionShape2D" parent="WorldBoundaryStaticBody2D" index="1"]
+position = Vector2(0, 349)
+shape = SubResource("WorldBoundaryShape2D_421ki")

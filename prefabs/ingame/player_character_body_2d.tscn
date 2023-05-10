@@ -19,7 +19,7 @@
 [ext_resource type="AudioStream" uid="uid://dm2ra3plrjukb" path="res://audio/sfx/spark_hit WIP.ogg" id="17_iu00d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6va3q"]
-size = Vector2(128, 128)
+size = Vector2(128, 56)
 
 [node name="PlayerCharacterBody2D" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite_with_brightness_controller", "sled_slide_sfx_player")]
 z_index = 5
@@ -31,11 +31,11 @@ animated_sprite_with_brightness_controller = NodePath("Smoothing2D/AnimatedSprit
 sled_slide_sfx_player = NodePath("SledSlideAudioStreamPlayer")
 
 [node name="Smoothing2D" type="Node2D" parent="."]
-position = Vector2(-36, -37)
 script = ExtResource("3_vbvgt")
 
 [node name="AnimatedSprite2DBrightnessController" type="AnimatedSprite2D" parent="Smoothing2D" node_paths=PackedStringArray("brighten_timer")]
 material = ExtResource("1_1l63l")
+position = Vector2(-38, -78)
 scale = Vector2(0.615126, 0.615126)
 sprite_frames = ExtResource("3_fgtjg")
 autoplay = "default"
@@ -55,7 +55,6 @@ script = ExtResource("3_4x6o7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 2
-position = Vector2(-0.5, 1)
 shape = SubResource("RectangleShape2D_6va3q")
 metadata/_edit_lock_ = true
 

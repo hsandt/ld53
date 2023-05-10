@@ -9,9 +9,6 @@ extends CharacterBody2D
 @export var top_speed = 1000
 @export var base_steer_speed = 500
 
-## Max motion
-@export var half_extent_y = 500
-
 ## Brightness set when hurt
 @export var hurt_brightness: float = 0.5
 
@@ -59,14 +56,7 @@ func _physics_process(delta):
 
 	velocity = Vector2(velocity_x, velocity_y)
 	move_and_slide()
-
-	# top limit
-	if position.y < -half_extent_y:
-		position.y  = -half_extent_y
-
-	# bottom limit
-	if position.y > half_extent_y:
-		position.y = half_extent_y
+	print(position.x)
 
 
 func _compute_current_attribute(attribute_name: String):
