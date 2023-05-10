@@ -38,7 +38,7 @@ func _ready():
 	set_base_attribute(&"speed", 0)
 	set_base_attribute(&"steer_speed", base_steer_speed)
 
-func _process(delta):
+func _process(_delta):
 	# Play animation faster when character moves faster than reference speed, and vice-versa
 	animated_sprite_with_brightness_controller.speed_scale = velocity.x / animation_reference_velocity_x
 
