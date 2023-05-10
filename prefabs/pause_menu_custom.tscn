@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bigtdfruv4w60"]
 
 [ext_resource type="Script" path="res://scripts/menu/pause_menu_controller_custom.gd" id="1_tl63u"]
-[ext_resource type="PackedScene" uid="uid://qlskttl1wjr7" path="res://addons/EasyMenus/Scenes/options_menu.tscn" id="2_1tmd0"]
+[ext_resource type="PackedScene" uid="uid://bin6b2ypkka84" path="res://prefabs/options_menu_custom.tscn" id="2_nm2cw"]
 
 [node name="PauseMenu" type="Control"]
 process_mode = 3
@@ -70,7 +70,7 @@ size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 30
 text = "Quit"
 
-[node name="OptionsMenu" parent="." instance=ExtResource("2_1tmd0")]
+[node name="OptionsMenu" parent="." instance=ExtResource("2_nm2cw")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
