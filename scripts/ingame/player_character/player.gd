@@ -64,7 +64,6 @@ func _physics_process(delta):
 
 	velocity = Vector2(velocity_x, velocity_y)
 	move_and_slide()
-	print(position.x)
 
 
 func _compute_current_attribute(attribute_name: String):
