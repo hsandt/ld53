@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="PowderData" load_steps=3 format=3 uid="uid://c7p5gth3tpo8l"]
 
 [ext_resource type="Script" path="res://scripts/buffs/powder_data.gd" id="1_u324e"]
-[ext_resource type="Resource" uid="uid://b08wq3why3q7e" path="res://data/modifiers/modifier_debuff_steering_slower.tres" id="2_oxhus"]
+[ext_resource type="Resource" uid="uid://dghtj0tch86j5" path="res://data/modifiers/modifier_speed_faster.tres" id="2_2qit2"]
 
 [resource]
 script = ExtResource("1_u324e")
-spark_debuff_modifier = ExtResource("2_oxhus")
+spark_debuff_modifier = ExtResource("2_2qit2")
 max_stamina = 1.0
