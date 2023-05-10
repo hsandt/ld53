@@ -48,11 +48,12 @@ func _physics_process(delta):
 	# Compute current speed from base and any modifiers
 	var velocity_x = _compute_current_attribute(&"speed")
 
-	var velocity_y = 0
-	if Input.is_action_pressed("down"):
-		velocity_y += _compute_current_attribute(&"steer_speed")
-	if Input.is_action_pressed("up"):
-		velocity_y -= _compute_current_attribute(&"steer_speed")
+	var velocity_y
+	var vertical_input = Input.get_axis("up", "down")
+	if vertical_input != 0.0:
+		velocity_y = vertical_input * _compute_current_attribute(&"steer_speed")
+	else:
+		velocity_y = 0.0
 
 	velocity = Vector2(velocity_x, velocity_y)
 	move_and_slide()
