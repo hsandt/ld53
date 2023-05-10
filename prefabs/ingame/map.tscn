@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c1sn363gbpji"]
+[gd_scene load_steps=7 format=3 uid="uid://7k43qh0vwawx"]
 
 [ext_resource type="PackedScene" uid="uid://clbkj8klm4my3" path="res://prefabs/ingame/obstacle_big.tscn" id="1_kox13"]
 [ext_resource type="PackedScene" uid="uid://ybj4svsavf4f" path="res://prefabs/ingame/obstacle_medium.tscn" id="2_5vsc1"]
