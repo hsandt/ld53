@@ -11,15 +11,17 @@
 [ext_resource type="Shader" path="res://shaders/custom_sprite_shader.gdshader" id="7_ib5jx"]
 [ext_resource type="PackedScene" uid="uid://dcqumcm4vc2x" path="res://prefabs/ingame/map_1.tscn" id="8_srhq4"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8tlf4"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j85an"]
 resource_local_to_scene = true
 shader = ExtResource("7_ib5jx")
 shader_parameter/brightness = 0.0
 
 [node name="Level" type="Node2D"]
+y_sort_enabled = true
 metadata/_edit_horizontal_guides_ = [-349.0, 350.0]
 
-[node name="InGameManager" parent="." node_paths=PackedStringArray("pause_menu", "player_character") instance=ExtResource("1_i0ea3")]
+[node name="InGameManager" parent="." node_paths=PackedStringArray("level", "pause_menu", "player_character") instance=ExtResource("1_i0ea3")]
+level = NodePath("..")
 pause_menu = NodePath("../HUDCanvasLayer/PauseMenu")
 player_character = NodePath("../PlayerCharacterBody2D")
 
@@ -42,11 +44,12 @@ metadata/_edit_use_anchors_ = true
 metadata/_edit_use_anchors_ = true
 
 [node name="PlayerCharacterBody2D" parent="." instance=ExtResource("3_82xke")]
-material = SubResource("ShaderMaterial_8tlf4")
+material = SubResource("ShaderMaterial_j85an")
 collision_mask = 65792
 platform_floor_layers = 4294967294
 platform_wall_layers = 256
 smoke_fx_max_speed_scale = 1.8
+metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
 [node name="ScrollingCenter" type="Node2D" parent="." node_paths=PackedStringArray("player_character", "map")]

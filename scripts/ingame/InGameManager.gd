@@ -2,6 +2,7 @@ class_name InGameManager
 extends Node
 
 
+@export var level: Node2D
 @export var pause_menu: PauseMenu
 @export var player_character: Player
 @export var intro_duration: float = 1.0
@@ -9,10 +10,11 @@ extends Node
 @onready var hud: HUD = %HUD
 @onready var scrolling_center: ScrollingCenter = %ScrollingCenter
 
-
 var is_going_back_to_main_menu: bool = false
-func _ready():
 
+func _ready():
+	assert(level != null,
+		"[InGameManager] level is not set on %s" % get_path())
 	assert(pause_menu != null,
 		"[InGameManager] pause_menu is not set on %s" % get_path())
 	assert(player_character != null,

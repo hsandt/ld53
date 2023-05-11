@@ -22,12 +22,13 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6va3q"]
 size = Vector2(128, 56)
 
-[node name="PlayerCharacterBody2D" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite_with_brightness_controller", "smoke_fx_parent", "sled_slide_sfx_player")]
+[node name="PlayerCharacterBody2D" type="CharacterBody2D" node_paths=PackedStringArray("smoothing_node", "animated_sprite_with_brightness_controller", "smoke_fx_parent", "sled_slide_sfx_player")]
 z_index = 5
 y_sort_enabled = true
 material = ExtResource("1_1l63l")
 motion_mode = 1
 script = ExtResource("1_2t2x0")
+smoothing_node = NodePath("Smoothing2D")
 animated_sprite_with_brightness_controller = NodePath("Smoothing2D/AnimatedSprite2DBrightnessController")
 smoke_fx_parent = NodePath("Smoothing2D/SmokeFXParent")
 sled_slide_sfx_player = NodePath("SledSlideAudioStreamPlayer")
@@ -38,6 +39,7 @@ smoke_fx_max_speed_scale = 1.5
 [node name="Smoothing2D" type="Node2D" parent="."]
 y_sort_enabled = true
 script = ExtResource("3_vbvgt")
+flags = 31
 
 [node name="AnimatedSprite2DBrightnessController" type="AnimatedSprite2D" parent="Smoothing2D" node_paths=PackedStringArray("brighten_timer")]
 modulate = Color(0.662395, 0.882034, 0.648641, 1)
@@ -47,7 +49,10 @@ sprite_frames = ExtResource("3_fgtjg")
 autoplay = "default"
 offset = Vector2(-38, -130)
 script = ExtResource("4_epfoh")
-brighten_timer = NodePath("../../Flash Timer")
+brighten_timer = NodePath("../Flash Timer")
+
+[node name="Flash Timer" type="Timer" parent="Smoothing2D"]
+wait_time = 0.2
 
 [node name="SmokeFXParent" type="Node2D" parent="Smoothing2D"]
 y_sort_enabled = true
@@ -83,9 +88,6 @@ script = ExtResource("3_4x6o7")
 z_index = 2
 shape = SubResource("RectangleShape2D_6va3q")
 metadata/_edit_lock_ = true
-
-[node name="Flash Timer" type="Timer" parent="."]
-wait_time = 0.2
 
 [node name="cargo" type="Node2D" parent="."]
 script = ExtResource("6_dru5e")

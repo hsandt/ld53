@@ -2,6 +2,7 @@ class_name Player
 extends CharacterBody2D
 
 
+@export var smoothing_node: Node2D
 @export var animated_sprite_with_brightness_controller: AnimatedSprite2DBrightnessController
 
 ## Parent of smoke FX animated sprites
@@ -43,7 +44,7 @@ extends CharacterBody2D
 var in_game_manager: InGameManager
 
 ## Derived from smoke_fx_parent
-## We can't @export it because of https://github.com/godotengine/godot/issues/62916
+## We can't @export it because of https://github.com/godotengine/g$Smoothing2Dodot/issues/62916
 ## until Godot 4.1
 var smoke_fx_animated_sprites: Array[AnimatedSprite2D]
 
@@ -64,6 +65,26 @@ var _should_move: bool = false
 
 func _ready():
 	in_game_manager = get_tree().get_first_node_in_group(&"in_game_manager")
+
+	# To make Y sort work, we have disabled global out on the Smoothing2D node,
+	# but then we must move it outside the PlayerCharacter root and target it
+	# from the outside
+	# See https://github.com/lawnjelly/smoothing-addon#y-sort-in-2d
+
+	# First, let's switch to global Z index if needed as reparent will break it
+	# if PlayerCharacter has its own Z index != 0 and we use relative Z index
+	if smoothing_node.z_as_relative:
+		var global_z_index = Utils.get_absolute_z_index(smoothing_node)
+		smoothing_node.z_as_relative = false
+		smoothing_node.z_index = global_z_index
+
+	# Second, let's explicitly target the Player Character as it won't be a
+	# parent anymore
+	smoothing_node.target = get_path()
+
+	# Finally, reparent the smoothing node to outer node level
+	# Since we are processing children in _ready, defer this to end of frame
+	smoothing_node.reparent.call_deferred(in_game_manager.level)
 
 	for child in smoke_fx_parent.get_children():
 		var animated_sprite = child as AnimatedSprite2D
