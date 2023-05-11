@@ -3,5 +3,6 @@
 [ext_resource type="Shader" path="res://shaders/custom_sprite_shader.gdshader" id="1_dgwag"]
 
 [resource]
+resource_local_to_scene = true
 shader = ExtResource("1_dgwag")
 shader_parameter/brightness = 0.0
