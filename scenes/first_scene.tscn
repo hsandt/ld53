@@ -30,8 +30,10 @@ layer = 5
 
 [node name="HUD" parent="HUDCanvasLayer" instance=ExtResource("4_mq5bu")]
 unique_name_in_owner = true
+metadata/_edit_use_anchors_ = true
 
 [node name="PauseMenu" parent="HUDCanvasLayer" instance=ExtResource("2_afo14")]
+metadata/_edit_use_anchors_ = true
 
 [node name="PlayerCharacterBody2D" parent="." instance=ExtResource("3_82xke")]
 collision_mask = 65792

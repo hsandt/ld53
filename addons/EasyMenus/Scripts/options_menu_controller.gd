@@ -13,10 +13,15 @@ const HSliderWLabel = preload("res://addons/EasyMenus/Scripts/slider_w_labels.gd
 @onready var anti_aliasing_2d_label: Label = $%AntiAliasing2DLabel
 @onready var anti_aliasing_2d_option_button: OptionButton = $%AntiAliasing2DOptionButton
 @onready var anti_aliasing_3d_option_button: OptionButton = $%AntiAliasing3DOptionButton
+@onready var back_button: Button = $%BackButton
 
 var sfx_bus_index
 var music_bus_index
 var config = ConfigFile.new()
+
+## Stores last focused control to restore selection when re-entering this sub-menu
+## (except if we were selecting the Back button, which is not interesting to focus)
+var last_non_back_focus_owner: Control
 
 
 func _ready():
@@ -31,6 +36,14 @@ func _ready():
 
 # Emits close signal and saves the options
 func go_back():
+	# Store last focus except if it's Back button, which we don't want to focus
+	# when coming back as it doesn't help editing options faster
+	var last_focus_owner = get_viewport().gui_get_focus_owner()
+	if last_focus_owner != back_button:
+		last_non_back_focus_owner = get_viewport().gui_get_focus_owner()
+	else:
+		last_non_back_focus_owner = null
+
 	save_options()
 	emit_signal("close")
 
@@ -40,7 +53,10 @@ func on_open():
 	# Auto-scroll to top when options menu is opened
 	$MarginContainer/ScrollContainer.scroll_vertical = 0
 
-	sfx_volume_slider.hslider.grab_focus()
+	if last_non_back_focus_owner != null:
+		last_non_back_focus_owner.grab_focus()
+	else:
+		sfx_volume_slider.hslider.grab_focus()
 
 	sfx_bus_index = AudioServer.get_bus_index(OptionsConstants.sfx_bus_name)
 	music_bus_index = AudioServer.get_bus_index(OptionsConstants.music_bus_name)

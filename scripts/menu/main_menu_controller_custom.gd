@@ -10,6 +10,9 @@ signal start_game_pressed
 @onready var credits_menu: Control = $%CreditsMenu
 @onready var content: Control = $%Content
 
+## Stores last focused control to restore selection when exiting sub-menu
+var last_focus_owner: Control
+
 func _ready():
 	start_game_button.grab_focus()
 
@@ -34,6 +37,8 @@ func quit():
 	get_tree().quit()
 
 func open_options():
+	last_focus_owner = get_viewport().gui_get_focus_owner()
+
 	options_menu.show()
 	content.hide()
 	options_menu.on_open()
@@ -43,7 +48,13 @@ func close_options():
 	start_game_button.grab_focus()
 	options_menu.hide()
 
+	# We could of course just hardcore options_button.grab_focus(),
+	# but useful to generalize if we want to create a generic menu stack later
+	last_focus_owner.grab_focus()
+
 func open_credits():
+	last_focus_owner = get_viewport().gui_get_focus_owner()
+
 	credits_menu.show()
 	content.hide()
 	credits_menu.on_open()
@@ -52,6 +63,8 @@ func close_credits():
 	content.show();
 	start_game_button.grab_focus()
 	credits_menu.hide()
+
+	last_focus_owner.grab_focus()
 
 
 func _on_start_game_button_pressed():
