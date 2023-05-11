@@ -1,10 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://4n8e4dswbycl"]
+[gd_scene load_steps=20 format=3 uid="uid://4n8e4dswbycl"]
 
 [ext_resource type="Material" uid="uid://r5m0e65nite5" path="res://materials/player_character_material.tres" id="1_1l63l"]
 [ext_resource type="Script" path="res://scripts/ingame/player_character/player.gd" id="1_2t2x0"]
 [ext_resource type="Script" path="res://scripts/buffs/Buffs.gd" id="3_4x6o7"]
 [ext_resource type="SpriteFrames" uid="uid://bdq8so2kor0sb" path="res://animations/player_character_sprite_frames.tres" id="3_fgtjg"]
 [ext_resource type="Script" path="res://addons/smoothing/smoothing_2d.gd" id="3_vbvgt"]
+[ext_resource type="SpriteFrames" uid="uid://bflcfapsa7jdd" path="res://animations/fx_smoke_sprite_frames.tres" id="4_8fo18"]
 [ext_resource type="Script" path="res://scripts/visual/AnimatedSprite2DBrightnessController.gd" id="4_epfoh"]
 [ext_resource type="Script" path="res://scripts/ingame/player_character/cargo.gd" id="6_dru5e"]
 [ext_resource type="Script" path="res://scripts/ingame/player_character/powder.gd" id="6_vdi8d"]
@@ -21,27 +22,51 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6va3q"]
 size = Vector2(128, 56)
 
-[node name="PlayerCharacterBody2D" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite_with_brightness_controller", "sled_slide_sfx_player")]
+[node name="PlayerCharacterBody2D" type="CharacterBody2D" node_paths=PackedStringArray("animated_sprite_with_brightness_controller", "smoke_fx_parent", "sled_slide_sfx_player")]
 z_index = 5
 y_sort_enabled = true
 material = ExtResource("1_1l63l")
 motion_mode = 1
 script = ExtResource("1_2t2x0")
 animated_sprite_with_brightness_controller = NodePath("Smoothing2D/AnimatedSprite2DBrightnessController")
+smoke_fx_parent = NodePath("Smoothing2D/SmokeFXParent")
 sled_slide_sfx_player = NodePath("SledSlideAudioStreamPlayer")
+smoke_fx_min_unclamped_speed_ratio = 0.3
+smoke_fx_max_scale_factor = 1.2
+smoke_fx_max_speed_scale = 1.5
 
 [node name="Smoothing2D" type="Node2D" parent="."]
+y_sort_enabled = true
 script = ExtResource("3_vbvgt")
 
 [node name="AnimatedSprite2DBrightnessController" type="AnimatedSprite2D" parent="Smoothing2D" node_paths=PackedStringArray("brighten_timer")]
 modulate = Color(0.662395, 0.882034, 0.648641, 1)
 material = ExtResource("1_1l63l")
-position = Vector2(-38, -78)
 scale = Vector2(0.615126, 0.615126)
 sprite_frames = ExtResource("3_fgtjg")
 autoplay = "default"
+offset = Vector2(-38, -130)
 script = ExtResource("4_epfoh")
 brighten_timer = NodePath("../../Flash Timer")
+
+[node name="SmokeFXParent" type="Node2D" parent="Smoothing2D"]
+y_sort_enabled = true
+position = Vector2(-82, -2)
+
+[node name="SmokeFXBackAnimatedSprite2D" type="AnimatedSprite2D" parent="Smoothing2D/SmokeFXParent"]
+position = Vector2(24.5, -24.25)
+scale = Vector2(0.5, 0.5)
+sprite_frames = ExtResource("4_8fo18")
+autoplay = "default"
+frame_progress = 0.871004
+offset = Vector2(-154, -113)
+
+[node name="SmokeFXFrontAnimatedSprite2D" type="AnimatedSprite2D" parent="Smoothing2D/SmokeFXParent"]
+position = Vector2(-15.5, 27.75)
+scale = Vector2(0.5, 0.5)
+sprite_frames = ExtResource("4_8fo18")
+autoplay = "default"
+offset = Vector2(-154, -113)
 
 [node name="powder_bar" type="ProgressBar" parent="."]
 unique_name_in_owner = true

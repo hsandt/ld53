@@ -1,0 +1,34 @@
+[gd_resource type="SpriteFrames" load_steps=7 format=3 uid="uid://bflcfapsa7jdd"]
+
+[ext_resource type="Texture2D" uid="uid://c8bm1vpbh68w5" path="res://sprites/fx/FX_Smoke/FX_Smoke1.png" id="1_no7cj"]
+[ext_resource type="Texture2D" uid="uid://61n4v24s5s6q" path="res://sprites/fx/FX_Smoke/FX_Smoke2.png" id="2_a0cjr"]
+[ext_resource type="Texture2D" uid="uid://degvqe4vu1reg" path="res://sprites/fx/FX_Smoke/FX_Smoke3.png" id="3_wnti0"]
+[ext_resource type="Texture2D" uid="uid://dnl83lfc4ir10" path="res://sprites/fx/FX_Smoke/FX_Smoke4.png" id="4_gebda"]
+[ext_resource type="Texture2D" uid="uid://cvibbwvu5mpwc" path="res://sprites/fx/FX_Smoke/FX_Smoke5.png" id="5_64iqg"]
+[ext_resource type="Texture2D" uid="uid://dipubhnctfrcr" path="res://sprites/fx/FX_Smoke/FX_Smoke6.png" id="6_3yhgw"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_no7cj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_a0cjr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_wnti0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_gebda")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_64iqg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_3yhgw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
