@@ -2,10 +2,10 @@ shader_type canvas_item;
 
 uniform float brightness : hint_range(0.0, 1.0) = 0.0;
 
-// Custom modulate parameter, set it instead of native modulate which is currently
-// hard to retrieve properly
-// See https://github.com/godotengine/godot/issues/49781
-uniform vec4 modulate : source_color = vec4(1.0);
+// Custom modulate varying parameter, set it in vertex to COLOR when it is still just
+// MODULATE (inaccessible in Godot 4), then retrieve it in fragment and use it
+// See https://github.com/godotengine/godot/issues/49781 CiberTurtle's answer
+varying flat vec4 modulate;
 
 // Source: https://www.shadertoy.com/view/wt23Rt
 // which itself uses several sources, but adapted the code each time
@@ -74,6 +74,10 @@ vec3 hsl2rgb(vec3 hsl){
 		float a=2.*hsl.z-b;
 		return a+hue2rgb(hsl.x)*(b-a);
 	}
+}
+
+void vertex() {
+	modulate = COLOR;
 }
 
 void fragment() {
