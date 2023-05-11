@@ -90,7 +90,8 @@ func _process(_delta):
 			shader_material.set_shader_parameter("brightness", target_brightness)
 	elif was_overriding_brightness:
 		if shader_material:
-			shader_material.set_shader_parameter("brightness", 0)
+			# Revert to initial value for consistency with setup
+			shader_material.set_shader_parameter("brightness", initial_brightness)
 
 	was_overriding_brightness = override_brightness
 
@@ -99,7 +100,8 @@ func _process(_delta):
 			modulate = target_modulate
 	elif was_overriding_modulate:
 		if shader_material:
-			modulate = Color.WHITE
+			# Revert to initial value for consistency with setup
+			modulate = initial_modulate
 
 	was_overriding_modulate = override_modulate
 
