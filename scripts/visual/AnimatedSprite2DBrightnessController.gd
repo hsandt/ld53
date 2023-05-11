@@ -31,7 +31,7 @@ extends AnimatedSprite2D
 
 # Initial state
 
-var initial_brightness: bool
+var initial_brightness: float
 var initial_modulate: Color
 
 
