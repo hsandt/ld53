@@ -5,7 +5,6 @@
 
 [node name="RaceTimer" type="Control" node_paths=PackedStringArray("time_label")]
 layout_mode = 3
-anchors_preset = 0
 anchor_left = 0.0166667
 anchor_top = 0.025
 anchor_right = 0.196875

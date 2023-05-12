@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://c03i68p3oqkh2"]
+[gd_scene load_steps=5 format=3 uid="uid://c03i68p3oqkh2"]
 
 [ext_resource type="Script" path="res://scripts/ui/powder_panel.gd" id="1_8dg0n"]
 [ext_resource type="PackedScene" uid="uid://b2td8kx06arn4" path="res://prefabs/ingame/fx/OneShotFX_ExplosionRegular.tscn" id="2_k3aqf"]
-[ext_resource type="PackedScene" uid="uid://n87nhvob85pn" path="res://scripts/buffs/buff.tscn" id="2_pfr15"]
 [ext_resource type="SpriteFrames" uid="uid://dwrs2bhosv0et" path="res://animations/powder_panel_sprite_frames.tres" id="3_jit8g"]
 [ext_resource type="Script" path="res://scripts/visual/AnimatedSprite2DBrightnessController.gd" id="6_7s2n6"]
 
@@ -13,13 +12,6 @@ script = ExtResource("1_8dg0n")
 explosion_regular_prefab = ExtResource("2_k3aqf")
 animated_sprite = NodePath("AnimatedSprite2DBrightnessController")
 explosion_anchor = NodePath("ExplosionAnchorMarker2D")
-
-[node name="buff" parent="." instance=ExtResource("2_pfr15")]
-offset_left = -29.0
-offset_top = 97.0
-offset_right = 11.0
-offset_bottom = 137.0
-scale = Vector2(2.41221, 4.01272)
 
 [node name="AnimatedSprite2DBrightnessController" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("brighten_timer")]
 position = Vector2(153, 43)
