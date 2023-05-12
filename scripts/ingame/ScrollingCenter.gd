@@ -18,11 +18,15 @@ func _ready():
 	# Wait 1 frame so children are ready
 	await get_tree().process_frame
 	assert(player_character, "player_character is not set on %s" % get_path())
-	_start_position = player_character.position.x
-	_distance_from_goal = map.goal_area.position.x - _start_position
+
+	# Map should not be offset but to be safe, use global position
+	_start_position = player_character.global_position.x
+	_distance_from_goal = map.goal_area.global_position.x - _start_position
 
 func _process(_delta):
 	# position.y is always 0, just update position.x
+	# Local position works because ScrollingCenter and player_character have the same parent,
+	# Level (which should not be offset anyway)
 	position.x = player_character.position.x + lookahead_distance
 	#print("------------------------------------------------------------------------------")
 	#print("px ", player_character.position.x)

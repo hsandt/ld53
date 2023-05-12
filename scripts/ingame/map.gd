@@ -9,6 +9,8 @@ func _ready():
 	# (see https://github.com/godotengine/godot/issues/76917):
 	# repeat the boundary every 22000px (since the next boundary will cover the second half)
 	# until you cover the whole map
+	# Note: local position works because goal_area and world_boundary have the same parent, the map
+	# (which should not be offset anyway)
 	var goal_distance = goal_area.position.x
 	# We need one extra world boundary for every 22000px to the goal (except for the last 11000px
 	# which will be covered by the last boundary toward left). Ceil to be sure to cover everything.
