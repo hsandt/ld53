@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbrsk66hcfe88"]
+
+[ext_resource type="Script" path="res://scripts/ui/race_timer.gd" id="1_dbk3p"]
+[ext_resource type="LabelSettings" uid="uid://bxxar55tvcyf1" path="res://themes/label_settings_hud_text.tres" id="2_20ap1"]
+
+[node name="RaceTimer" type="Control" node_paths=PackedStringArray("time_label")]
+layout_mode = 3
+anchors_preset = 0
+anchor_left = 0.0166667
+anchor_top = 0.025
+anchor_right = 0.196875
+anchor_bottom = 0.0981481
+script = ExtResource("1_dbk3p")
+time_label = NodePath("TimeLabel")
+metadata/_edit_use_anchors_ = true
+
+[node name="TimeLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.0375723
+anchor_top = -0.126582
+anchor_right = 0.656069
+anchor_bottom = 1.25316
+offset_right = 1.52588e-05
+grow_horizontal = 2
+grow_vertical = 2
+text = "00.0s"
+label_settings = ExtResource("2_20ap1")
+horizontal_alignment = 2
+metadata/_edit_use_anchors_ = true

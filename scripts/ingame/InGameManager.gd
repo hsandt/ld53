@@ -13,6 +13,8 @@ extends Node
 
 var is_going_back_to_main_menu: bool = false
 
+var racing_time: float
+
 func _ready():
 	assert(level != null,
 		"[InGameManager] level is not set on %s" % get_path())
@@ -28,6 +30,7 @@ func _ready():
 
 	# Start in intro game phase, pause logic
 	GameManager.game_phase = Enums.GamePhase.INTRO
+	racing_time = 0.0
 
 	# Wait 1 frame so children of player_character are ready
 	await get_tree().physics_frame
@@ -41,6 +44,11 @@ func _ready():
 	GameManager.game_phase = Enums.GamePhase.RACING
 	player_character.resume_logic()
 	player_character.start_move()
+
+
+func _physics_process(delta):
+	if GameManager.game_phase == Enums.GamePhase.RACING:
+		racing_time += delta
 
 
 func _unhandled_input(event):
