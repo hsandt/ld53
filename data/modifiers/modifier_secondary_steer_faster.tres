@@ -1,13 +1,13 @@
-[gd_resource type="Resource" script_class="Modifier" load_steps=2 format=3 uid="uid://bfl6qcxanifdx"]
+[gd_resource type="Resource" script_class="Modifier" load_steps=3 format=3 uid="uid://bfl6qcxanifdx"]
 
 [ext_resource type="Script" path="res://scripts/buffs/modifier.gd" id="1_enwhq"]
+[ext_resource type="Texture2D" uid="uid://cjvheby6qhdeh" path="res://sprites/buff_icons/blue_triangle.png" id="1_nhqp1"]
 
 [resource]
 script = ExtResource("1_enwhq")
-icon_path = ""
+icon_texture = ExtResource("1_nhqp1")
 description = "Steer speed +50%"
 attribute = "steer_speed"
 operation = 1
 value = 250.0
 lucky_modifier_probability = 0.5
-duration = 0.0

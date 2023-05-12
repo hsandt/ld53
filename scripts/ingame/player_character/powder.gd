@@ -40,6 +40,8 @@ func _physics_process(delta):
 		if current_time_left_before_burst <= 0:
 			burst()
 
+## Change to new state
+## Call this after setting modifier so HUD can access new data
 func change_state(new_state: Enums.PowderState):
 	if state != new_state:
 		var previous_state = state
@@ -57,16 +59,18 @@ func burst():
 	# later
 	current_time_left_before_burst = 0
 
-	change_state(Enums.PowderState.SPARK)
+	# Set modifier before calling change_state so HUD can access new modifier
 	current_modifier = data.spark_debuff_modifier
+	change_state(Enums.PowderState.SPARK)
 
 func consume():
 	if state != Enums.PowderState.SPARK:
 		push_error("[Powder] burst: current state is %s, expected SPARK. Stop." % state)
 		return
 
-	change_state(Enums.PowderState.CONSUMED)
+	# Set modifier before calling change_state so HUD can access new modifier
 	trigger_random_modifier_from(current_modifier)
+	change_state(Enums.PowderState.CONSUMED)
 
 func trigger_random_modifier_from(modifier: Modifier):
 	if modifier.lucky == null and modifier.worsen == null:

@@ -1,17 +1,17 @@
-[gd_resource type="Resource" script_class="Modifier" load_steps=4 format=3 uid="uid://dghtj0tch86j5"]
+[gd_resource type="Resource" script_class="Modifier" load_steps=5 format=3 uid="uid://dghtj0tch86j5"]
 
+[ext_resource type="Texture2D" uid="uid://cjvheby6qhdeh" path="res://sprites/buff_icons/blue_triangle.png" id="1_35wbu"]
 [ext_resource type="Resource" uid="uid://bfl6qcxanifdx" path="res://data/modifiers/modifier_secondary_steer_faster.tres" id="1_r4irx"]
 [ext_resource type="Script" path="res://scripts/buffs/modifier.gd" id="2_4t4sc"]
 [ext_resource type="Resource" uid="uid://bj8tuh4wi1mb0" path="res://data/modifiers/modifier_secondary_steer_invert.tres" id="3_g3ygq"]
 
 [resource]
 script = ExtResource("2_4t4sc")
-icon_path = ""
+icon_texture = ExtResource("1_35wbu")
 description = "Speed +50%"
 attribute = "speed"
 operation = 1
 value = 500.0
 lucky_modifier_probability = 0.5
-duration = 5.0
 worsen = ExtResource("3_g3ygq")
 lucky = ExtResource("1_r4irx")

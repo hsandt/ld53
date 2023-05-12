@@ -46,7 +46,7 @@ func replace_icon(executable_path: String, icon_path: String) -> void:
 
 	executable_file.seek(resources_section_entry.pointer_to_raw_data)
 	var resources := executable_file.get_buffer(resources_section_entry.size_of_raw_data)
-	
+
 	resources = icon_replacer.replace_icons(resources, resources_section_entry.virtual_address, images)
 	if not resources.is_empty():
 		executable_file.seek(resources_section_entry.pointer_to_raw_data)

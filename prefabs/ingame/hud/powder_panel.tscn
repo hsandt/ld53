@@ -1,17 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://c03i68p3oqkh2"]
+[gd_scene load_steps=8 format=3 uid="uid://c03i68p3oqkh2"]
 
 [ext_resource type="Script" path="res://scripts/ui/powder_panel.gd" id="1_8dg0n"]
 [ext_resource type="PackedScene" uid="uid://b2td8kx06arn4" path="res://prefabs/ingame/fx/OneShotFX_ExplosionRegular.tscn" id="2_k3aqf"]
 [ext_resource type="SpriteFrames" uid="uid://dwrs2bhosv0et" path="res://animations/powder_panel_sprite_frames.tres" id="3_jit8g"]
+[ext_resource type="Script" path="res://scripts/ui/ModifierHintPanel.gd" id="5_koyt8"]
+[ext_resource type="Texture2D" uid="uid://e5vl1gxyxgkn" path="res://sprites/buff_icons/cyan_wave.png" id="5_rqsqe"]
 [ext_resource type="Script" path="res://scripts/visual/AnimatedSprite2DBrightnessController.gd" id="6_7s2n6"]
+[ext_resource type="LabelSettings" uid="uid://djnk27qxxh71p" path="res://themes/label_settings_hud_modifier_hint.tres" id="6_iyjnn"]
 
-[node name="PowderPanel" type="Panel" node_paths=PackedStringArray("animated_sprite", "explosion_anchor")]
+[node name="PowderPanel" type="Panel" node_paths=PackedStringArray("animated_sprite", "explosion_anchor", "modifier_hint_panel")]
 self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(332, 332)
 script = ExtResource("1_8dg0n")
 explosion_regular_prefab = ExtResource("2_k3aqf")
 animated_sprite = NodePath("AnimatedSprite2DBrightnessController")
 explosion_anchor = NodePath("ExplosionAnchorMarker2D")
+modifier_hint_panel = NodePath("ModifierHintPanel")
 
 [node name="AnimatedSprite2DBrightnessController" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("brighten_timer")]
 position = Vector2(153, 43)
@@ -35,5 +39,44 @@ flat = true
 
 [node name="ExplosionAnchorMarker2D" type="Marker2D" parent="."]
 position = Vector2(150, 115)
+
+[node name="ModifierHintPanel" type="Panel" parent="." node_paths=PackedStringArray("icon", "hint")]
+self_modulate = Color(1, 1, 1, 0.839216)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0421687
+anchor_top = 0.0331325
+anchor_right = 0.846386
+anchor_bottom = 0.768072
+script = ExtResource("5_koyt8")
+icon = NodePath("IconTextureRect")
+hint = NodePath("HintLabel")
+metadata/_edit_use_anchors_ = true
+
+[node name="IconTextureRect" type="TextureRect" parent="ModifierHintPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -32.0
+offset_right = 32.0
+offset_bottom = 64.0
+grow_horizontal = 2
+texture = ExtResource("5_rqsqe")
+
+[node name="HintLabel" type="Label" parent="ModifierHintPanel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.315574
+anchor_right = 1.0
+anchor_bottom = 0.942623
+grow_horizontal = 2
+grow_vertical = 0
+text = "Speed + 50%"
+label_settings = ExtResource("6_iyjnn")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

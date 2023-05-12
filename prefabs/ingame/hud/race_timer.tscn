@@ -1,7 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cbrsk66hcfe88"]
+[gd_scene load_steps=3 format=3 uid="uid://ti4qa4copd3i"]
 
 [ext_resource type="Script" path="res://scripts/ui/race_timer.gd" id="1_dbk3p"]
-[ext_resource type="LabelSettings" uid="uid://bxxar55tvcyf1" path="res://themes/label_settings_hud_text.tres" id="2_20ap1"]
+[ext_resource type="LabelSettings" uid="uid://bxxar55tvcyf1" path="res://themes/label_settings_hud_racing_time.tres" id="2_k2x7y"]
 
 [node name="RaceTimer" type="Control" node_paths=PackedStringArray("time_label")]
 layout_mode = 3
@@ -24,6 +24,6 @@ offset_right = 1.52588e-05
 grow_horizontal = 2
 grow_vertical = 2
 text = "00.0s"
-label_settings = ExtResource("2_20ap1")
+label_settings = ExtResource("2_k2x7y")
 horizontal_alignment = 2
 metadata/_edit_use_anchors_ = true

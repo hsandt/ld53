@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="Modifier" load_steps=2 format=3 uid="uid://b10gbs6vmxyv4"]
+[gd_resource type="Resource" script_class="Modifier" load_steps=3 format=3 uid="uid://b10gbs6vmxyv4"]
 
+[ext_resource type="Texture2D" uid="uid://b0mfdohd5xecv" path="res://sprites/buff_icons/green_circle.png" id="1_l1cck"]
 [ext_resource type="Script" path="res://scripts/buffs/modifier.gd" id="2_hw4r0"]
 
 [resource]
 script = ExtResource("2_hw4r0")
-icon_path = ""
+icon_texture = ExtResource("1_l1cck")
 description = "Damage -50%"
 attribute = "damage_factor"
 operation = 1
