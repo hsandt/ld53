@@ -104,3 +104,4 @@ func try_take_damage(damage: float):
 	if current_stamina <= 0.0:
 		current_stamina = 0.0
 		burst()
+

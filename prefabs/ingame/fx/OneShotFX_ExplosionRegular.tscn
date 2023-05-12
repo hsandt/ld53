@@ -8,6 +8,7 @@
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = ExtResource("2_hrnn1")
+offset = Vector2(0, -40)
 
 [node name="AudioStreamPlayer" parent="." index="1"]
 stream = ExtResource("3_lunau")
