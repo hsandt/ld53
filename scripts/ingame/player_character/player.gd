@@ -49,7 +49,6 @@ extends CharacterBody2D
 ## Brightness set when hurt
 @export var hurt_brightness: float = 0.5
 
-@onready var buffs: Buffs = $Buffs
 @onready var cargo: Cargo = $cargo
 
 var in_game_manager: InGameManager
@@ -76,6 +75,8 @@ var _should_move: bool = false
 
 func _ready():
 	in_game_manager = get_tree().get_first_node_in_group(&"in_game_manager")
+
+	cargo.player = self
 
 	# To make Y sort work, we have disabled global out on the Smoothing2D node,
 	# but then we must move it outside the PlayerCharacter root and target it

@@ -1,8 +1,7 @@
-[gd_scene load_steps=22 format=3 uid="uid://4n8e4dswbycl"]
+[gd_scene load_steps=21 format=3 uid="uid://4n8e4dswbycl"]
 
 [ext_resource type="Material" uid="uid://r5m0e65nite5" path="res://materials/player_character_material.tres" id="1_1l63l"]
 [ext_resource type="Script" path="res://scripts/ingame/player_character/player.gd" id="1_2t2x0"]
-[ext_resource type="Script" path="res://scripts/buffs/Buffs.gd" id="3_4x6o7"]
 [ext_resource type="SpriteFrames" uid="uid://bdq8so2kor0sb" path="res://animations/player_character_sprite_frames.tres" id="3_fgtjg"]
 [ext_resource type="PackedScene" uid="uid://c2xin4pnaxyml" path="res://prefabs/ingame/fx/OneShotFX_HitObstacle.tscn" id="3_uc2vh"]
 [ext_resource type="Script" path="res://addons/smoothing/smoothing_2d.gd" id="3_vbvgt"]
@@ -87,9 +86,6 @@ offset_left = -340.0
 offset_top = -123.0
 offset_right = 337.0
 offset_bottom = -83.0
-
-[node name="Buffs" type="Node2D" parent="."]
-script = ExtResource("3_4x6o7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 2
