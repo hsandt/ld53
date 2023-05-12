@@ -10,6 +10,10 @@ extends CharacterBody2D
 
 @export var sled_slide_sfx_player: AudioStreamPlayer
 
+@export var fx_hit_obstacle_prefab: PackedScene
+
+@export var fx_hit_obstacle_anchor: Marker2D
+
 @export var acceleration = 1000
 @export var target_base_speed = 1000
 @export var base_steer_speed = 500
@@ -39,7 +43,6 @@ extends CharacterBody2D
 
 @onready var buffs: Buffs = $Buffs
 @onready var cargo: Cargo = $cargo
-@onready var hurt_sfx: AudioStreamPlayer = $hurt_sfx
 
 var in_game_manager: InGameManager
 
@@ -195,4 +198,11 @@ func hurt(damage):
 	# Flash for the duration set in Flash Timer
 	animated_sprite_with_brightness_controller.set_brightness_for_duration(hurt_brightness)
 	cargo.hurt(damage)
-	hurt_sfx.play()
+	_play_fx_hit_obstacle()
+
+
+func _play_fx_hit_obstacle():
+	# FX prefab includes SFX
+	var fx_hit_obstacle = fx_hit_obstacle_prefab.instantiate()
+	in_game_manager.level.add_child(fx_hit_obstacle)
+	fx_hit_obstacle.global_position = fx_hit_obstacle_anchor.global_position

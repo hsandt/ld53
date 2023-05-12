@@ -1,9 +1,10 @@
-[gd_scene load_steps=20 format=3 uid="uid://4n8e4dswbycl"]
+[gd_scene load_steps=21 format=3 uid="uid://4n8e4dswbycl"]
 
 [ext_resource type="Material" uid="uid://r5m0e65nite5" path="res://materials/player_character_material.tres" id="1_1l63l"]
 [ext_resource type="Script" path="res://scripts/ingame/player_character/player.gd" id="1_2t2x0"]
 [ext_resource type="Script" path="res://scripts/buffs/Buffs.gd" id="3_4x6o7"]
 [ext_resource type="SpriteFrames" uid="uid://bdq8so2kor0sb" path="res://animations/player_character_sprite_frames.tres" id="3_fgtjg"]
+[ext_resource type="PackedScene" uid="uid://c2xin4pnaxyml" path="res://prefabs/ingame/fx/OneShotFX_HitObstacle.tscn" id="3_uc2vh"]
 [ext_resource type="Script" path="res://addons/smoothing/smoothing_2d.gd" id="3_vbvgt"]
 [ext_resource type="SpriteFrames" uid="uid://bflcfapsa7jdd" path="res://animations/fx_smoke_sprite_frames.tres" id="4_8fo18"]
 [ext_resource type="Script" path="res://scripts/visual/AnimatedSprite2DBrightnessController.gd" id="4_epfoh"]
@@ -22,7 +23,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6va3q"]
 size = Vector2(128, 56)
 
-[node name="PlayerCharacterBody2D" type="CharacterBody2D" node_paths=PackedStringArray("smoothing_node", "animated_sprite_with_brightness_controller", "smoke_fx_parent", "sled_slide_sfx_player")]
+[node name="PlayerCharacterBody2D" type="CharacterBody2D" node_paths=PackedStringArray("smoothing_node", "animated_sprite_with_brightness_controller", "smoke_fx_parent", "sled_slide_sfx_player", "fx_hit_obstacle_anchor")]
 z_index = 5
 y_sort_enabled = true
 material = ExtResource("1_1l63l")
@@ -32,6 +33,8 @@ smoothing_node = NodePath("Smoothing2D")
 animated_sprite_with_brightness_controller = NodePath("Smoothing2D/AnimatedSprite2DBrightnessController")
 smoke_fx_parent = NodePath("Smoothing2D/SmokeFXParent")
 sled_slide_sfx_player = NodePath("SledSlideAudioStreamPlayer")
+fx_hit_obstacle_prefab = ExtResource("3_uc2vh")
+fx_hit_obstacle_anchor = NodePath("FXHitObstacleAnchorMarker2D")
 smoke_fx_min_unclamped_speed_ratio = 0.3
 smoke_fx_max_scale_factor = 1.2
 smoke_fx_max_speed_scale = 1.5
@@ -157,6 +160,9 @@ visible = false
 texture_filter = 1
 scale = Vector2(4, 4)
 texture = ExtResource("8_5dtp0")
+
+[node name="FXHitObstacleAnchorMarker2D" type="Marker2D" parent="."]
+position = Vector2(96, -70)
 
 [node name="SledSlideAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_wu4gh")
