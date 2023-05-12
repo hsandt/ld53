@@ -4,6 +4,7 @@ extends Node
 
 @export var level: Node2D
 @export var pause_menu: PauseMenu
+@export var screen_fx_canvas_layer: ScreenFXCanvasLayer
 @export var player_character: Player
 @export var intro_duration: float = 1.0
 

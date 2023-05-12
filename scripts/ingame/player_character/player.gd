@@ -8,6 +8,8 @@ extends CharacterBody2D
 ## Parent of smoke FX animated sprites
 @export var smoke_fx_parent: Node2D
 
+@export var first_smoke_fx_frame_desync: int = 2
+
 @export var sled_slide_sfx_player: AudioStreamPlayer
 
 @export var fx_hit_obstacle_prefab: PackedScene
@@ -37,6 +39,10 @@ extends CharacterBody2D
 
 ## Max animated speed scale allowed even at high speed
 @export_range(1.0, 10.0) var smoke_fx_max_speed_scale: float = 5.0
+
+## Velocity X at which speed lines should start playing, also reference for scaling
+## (speed scale is 1 at this value)
+@export_range(1.0, 3000.0) var speed_lines_min_speed: float = 1500.0
 
 ## Brightness set when hurt
 @export var hurt_brightness: float = 0.5
@@ -109,15 +115,17 @@ func _ready():
 func _process(_delta):
 	# Play animations faster when character moves faster than reference speed, and vice-versa
 	var unclamped_speed_ratio = velocity.x / animation_reference_velocity_x
-	print(velocity.x)
-	print("unclamped_speed_ratio: ", unclamped_speed_ratio)
 	animated_sprite_with_brightness_controller.speed_scale = unclamped_speed_ratio
 
 	# Smoke FX are a bit special, don't show them at all at low speed
 	if unclamped_speed_ratio < smoke_fx_min_unclamped_speed_ratio:
-		smoke_fx_parent.visible = false
+		if smoke_fx_parent.visible:
+			smoke_fx_parent.visible = false
 	else:
-		smoke_fx_parent.visible = true
+		if not smoke_fx_parent.visible:
+			smoke_fx_parent.visible = true
+			# Offset one of the FX for desync
+			smoke_fx_animated_sprites[0].frame = first_smoke_fx_frame_desync
 
 		# Calculate scale based on speed
 		var scale_factor: float
@@ -129,18 +137,25 @@ func _process(_delta):
 		else:
 			# Above ref speed, just scale until max scale factor
 			scale_factor = min(unclamped_speed_ratio, smoke_fx_max_scale_factor)
-			print("unclamped_speed_ratio 2: ", unclamped_speed_ratio)
-			print("scale_factor: ", scale_factor)
 
 		var smoke_fx_scale = scale_factor * smoke_fx_initial_scale
-		print("smoke_fx_initial_scale: ", smoke_fx_initial_scale)
-		print("smoke_fx_scale: ", smoke_fx_scale)
 
 		# When visible, apply speed scale as usual, but also scale
 		for smoke_fx_animated_sprite in smoke_fx_animated_sprites:
 			smoke_fx_animated_sprite.speed_scale = min(unclamped_speed_ratio, smoke_fx_max_speed_scale)
 			smoke_fx_animated_sprite.scale = smoke_fx_scale * Vector2.ONE
-			print("smoke_fx_animated_sprite.scale: ", smoke_fx_animated_sprite.scale)
+
+	# Speed lines
+	var screen_fx_canvas_layer = in_game_manager.screen_fx_canvas_layer
+
+	var unclamped_speed_lines_speed_ratio = velocity.x / speed_lines_min_speed
+	if unclamped_speed_lines_speed_ratio >= 1:
+		# If already playing, this will update speed
+		screen_fx_canvas_layer.play_speed_lines(unclamped_speed_lines_speed_ratio)
+	else:
+		if screen_fx_canvas_layer.is_playing_speed_lines():
+			screen_fx_canvas_layer.stop_speed_lines()
+
 
 func _physics_process(delta):
 	if not _should_move:
