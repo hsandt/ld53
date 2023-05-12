@@ -8,6 +8,9 @@ signal state_changed(previous_state: Enums.PowderState, new_state: Enums.PowderS
 ## Associated powder data
 @export var data: PowderData
 
+## Owning cargo (set from cargo)
+var cargo: Cargo
+
 ## Current FSM state
 var state: Enums.PowderState
 
@@ -99,7 +102,9 @@ func try_take_damage(damage: float):
 		# or timeout, so ignore further damage
 		return
 
-	current_stamina -= damage
+	var damage_factor = cargo.player.compute_current_attribute(&"damage_factor")
+
+	current_stamina -= damage * damage_factor
 
 	if current_stamina <= 0.0:
 		current_stamina = 0.0

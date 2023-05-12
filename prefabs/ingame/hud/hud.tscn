@@ -27,4 +27,3 @@ layout_mode = 1
 
 [node name="RaceTimer" parent="." instance=ExtResource("4_u8kxe")]
 layout_mode = 1
-anchors_preset = -1

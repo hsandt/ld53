@@ -67,8 +67,12 @@ var current_base_attributes := {
 	# Do not set these values to exported members as default values here,
 	# because we must wait for initialization to be completed, so do it in
 	# _ready instead
+	# Horizontal speed
 	&"speed": 0.0,
-	&"steer_speed": 0.0
+	# Vertical speed
+	&"steer_speed": 0.0,
+	# Factor applied to received damage
+	&"damage_factor": 1.0,
 }
 
 var _should_move: bool = false
@@ -171,12 +175,12 @@ func _physics_process(delta):
 		set_base_attribute(&"speed", new_base_speed)
 
 	# Compute current speed from base and any modifiers
-	var velocity_x = _compute_current_attribute(&"speed")
+	var velocity_x = compute_current_attribute(&"speed")
 
 	var velocity_y
 	var vertical_input = Input.get_axis("up", "down")
 	if vertical_input != 0.0:
-		velocity_y = vertical_input * _compute_current_attribute(&"steer_speed")
+		velocity_y = vertical_input * compute_current_attribute(&"steer_speed")
 	else:
 		velocity_y = 0.0
 
@@ -184,7 +188,7 @@ func _physics_process(delta):
 	move_and_slide()
 
 
-func _compute_current_attribute(attribute_name: String):
+func compute_current_attribute(attribute_name: String):
 	var modifier_values := cargo.get_attribute_modifier_factor_and_offset(attribute_name)
 	var modifier_factor := modifier_values[0]
 	var modifier_offset := modifier_values[1]
@@ -193,12 +197,14 @@ func _compute_current_attribute(attribute_name: String):
 
 
 func get_base_attribute(attribute_name: String) -> float:
+	assert(attribute_name in current_base_attributes,
+		"[Player] get_base_attribute: unknown attribute '%s'. " % attribute_name)
 	return current_base_attributes[attribute_name]
 
 
 func set_base_attribute(attribute_name: String, value: float):
 	assert(attribute_name in current_base_attributes,
-		"[Player] set_base_attribute: unknown attribute %s. " % attribute_name)
+		"[Player] set_base_attribute: unknown attribute '%s'. " % attribute_name)
 	current_base_attributes[attribute_name] = value
 
 

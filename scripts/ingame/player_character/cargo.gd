@@ -19,7 +19,11 @@ func _ready():
 			push_error("[Cargo] child '%s' is not a Powder, cannot register", child.get_path())
 			continue
 
+		# Register
 		powders.append(powder)
+
+		# Back reference
+		powder.cargo = self
 
 	powder_burst_or_consumed_count = 0
 
