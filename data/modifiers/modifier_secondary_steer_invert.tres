@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Modifier" load_steps=2 format=3 uid="uid://bj8tuh4wi1mb0"]
+
+[ext_resource type="Script" path="res://scripts/buffs/modifier.gd" id="1_5bno7"]
+
+[resource]
+script = ExtResource("1_5bno7")
+icon_path = ""
+description = "Invert steer direction"
+attribute = "steer_speed"
+operation = 0
+value = -1.0
+lucky_modifier_probability = 0.5

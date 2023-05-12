@@ -63,7 +63,35 @@ func consume():
 		return
 
 	change_state(Enums.PowderState.CONSUMED)
-	current_modifier = null
+	trigger_random_modifier_from(current_modifier)
+
+func trigger_random_modifier_from(modifier: Modifier):
+	if modifier.lucky == null and modifier.worsen == null:
+		push_warning("[Powder] trigger_random_modifier_from: no lucky nor worsen defined on %s " %
+			modifier.resource_path,
+			"so we will just clear the current modifier")
+		current_modifier = null
+		return
+
+	var trigger_lucky_effect: bool
+
+	if modifier.lucky == null:
+		# only worsen, so trigger worsen
+		trigger_lucky_effect = false
+	elif modifier.worsen == null:
+		# only lucky, so trigger lucky
+		trigger_lucky_effect = true
+	else:
+		# both exist, so it's random
+		trigger_lucky_effect = Utils.exclusive_randf() < modifier.lucky_modifier_probability
+
+	if trigger_lucky_effect:
+		# needs access to Player; or just spawn PFX instead
+#		buff_sfx_player.play()
+		current_modifier = modifier.lucky
+	else:
+#		debuff_sfx_player.play()
+		current_modifier = modifier.worsen
 
 func try_take_damage(damage: float):
 	if state != Enums.PowderState.IDLE:

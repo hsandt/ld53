@@ -11,6 +11,8 @@ extends CharacterBody2D
 @export var first_smoke_fx_frame_desync: int = 2
 
 @export var sled_slide_sfx_player: AudioStreamPlayer
+@export var buff_sfx_player: AudioStreamPlayer
+@export var debuff_slide_sfx_player: AudioStreamPlayer
 
 @export var fx_hit_obstacle_prefab: PackedScene
 

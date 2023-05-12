@@ -30,12 +30,8 @@ func _ready():
 	buffs.append(powderpanel5.get_node("buff"))
 	buffs.append(powderpanel6.get_node("buff"))
 
-func add_if_roll(modifier: Modifier):
-	if randf()<modifier.probability:
-		# modulo for safety, would need something cleaner
-		bcount = bcount % buffs.size()
-		buffs[bcount].activate(modifier)
-		bcount+=1
-
 func add(modifier: Modifier):
-	add_if_roll(modifier)
+	# modulo for safety, would need something cleaner
+	bcount = bcount % buffs.size()
+	buffs[bcount].activate(modifier)
+	bcount+=1

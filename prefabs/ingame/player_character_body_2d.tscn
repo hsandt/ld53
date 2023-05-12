@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://4n8e4dswbycl"]
+[gd_scene load_steps=22 format=3 uid="uid://4n8e4dswbycl"]
 
 [ext_resource type="Material" uid="uid://r5m0e65nite5" path="res://materials/player_character_material.tres" id="1_1l63l"]
 [ext_resource type="Script" path="res://scripts/ingame/player_character/player.gd" id="1_2t2x0"]
@@ -11,14 +11,15 @@
 [ext_resource type="Script" path="res://scripts/ingame/player_character/cargo.gd" id="6_dru5e"]
 [ext_resource type="Script" path="res://scripts/ingame/player_character/powder.gd" id="6_vdi8d"]
 [ext_resource type="Texture2D" uid="uid://b3xi3ohlwe8f4" path="res://sprites/keg.png" id="8_5dtp0"]
-[ext_resource type="Resource" uid="uid://c7p5gth3tpo8l" path="res://data/powder/powder_data1.tres" id="9_mwhkn"]
-[ext_resource type="Resource" uid="uid://b0uy7hbs04tad" path="res://data/powder/powder_data2.tres" id="11_7dolm"]
-[ext_resource type="Resource" uid="uid://7vk2lgiot8af" path="res://data/powder/powder_data3.tres" id="12_gwqog"]
+[ext_resource type="Resource" path="res://data/powder/powder_data1.tres" id="9_mwhkn"]
+[ext_resource type="Resource" path="res://data/powder/powder_data2.tres" id="11_7dolm"]
+[ext_resource type="Resource" path="res://data/powder/powder_data3.tres" id="12_gwqog"]
 [ext_resource type="AudioStream" uid="uid://c0nwej5v1btdg" path="res://audio/sfx/sled_slide WIP.ogg" id="12_wu4gh"]
-[ext_resource type="Resource" uid="uid://bpe7dhjxtq3s7" path="res://data/powder/powder_data4.tres" id="13_am5yu"]
-[ext_resource type="Resource" uid="uid://hp287jqswffu" path="res://data/powder/powder_data5.tres" id="14_3f0vo"]
-[ext_resource type="Resource" uid="uid://dpn85byxe11e4" path="res://data/powder/powder_data6.tres" id="15_2xh4w"]
-[ext_resource type="AudioStream" uid="uid://dm2ra3plrjukb" path="res://audio/sfx/spark_hit WIP.ogg" id="17_iu00d"]
+[ext_resource type="Resource" path="res://data/powder/powder_data4.tres" id="13_am5yu"]
+[ext_resource type="Resource" path="res://data/powder/powder_data5.tres" id="14_3f0vo"]
+[ext_resource type="Resource" path="res://data/powder/powder_data6.tres" id="15_2xh4w"]
+[ext_resource type="AudioStream" uid="uid://rxj2j25frlmi" path="res://audio/sfx/buff WIP.ogg" id="20_cqi75"]
+[ext_resource type="AudioStream" uid="uid://dfqveqh6ldxy5" path="res://audio/sfx/debuff WIP.ogg" id="21_3gsrm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6va3q"]
 size = Vector2(128, 56)
@@ -168,7 +169,12 @@ texture = ExtResource("8_5dtp0")
 stream = ExtResource("12_wu4gh")
 bus = &"SFX"
 
-[node name="hurt_sfx" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("17_iu00d")
-volume_db = -5.0
+[node name="buff_sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("20_cqi75")
+volume_db = -10.0
+bus = &"SFX"
+
+[node name="debuff_sfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("21_3gsrm")
+volume_db = -10.0
 bus = &"SFX"
