@@ -2,6 +2,9 @@ class_name Cargo
 extends Node2D
 
 
+## Owning player. Should be set by Player on ready
+var player: Player
+
 ## Cached array of powder children
 var powders: Array[Powder]
 
@@ -81,4 +84,4 @@ func _on_powder_state_changed(previous_state: Enums.PowderState, new_state: Enum
 		powder_burst_or_consumed_count += 1
 
 	if powder_burst_or_consumed_count >= powders.size():
-		GameManager.enter_failure_phase(self)
+		player.start_failure_sequence()

@@ -11,5 +11,5 @@ func _ready():
 
 	in_game_manager = get_tree().get_first_node_in_group(&"in_game_manager")
 
-func _process(delta):
+func _process(_delta):
 	time_label.text = "%.1fs" % in_game_manager.racing_time

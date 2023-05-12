@@ -228,6 +228,18 @@ func hurt(damage):
 	_play_fx_hit_obstacle()
 
 
+func start_success_sequence():
+	in_game_manager.enter_sucess_phase()
+
+	# TODO: play the happy animation here
+
+
+func start_failure_sequence():
+	in_game_manager.enter_failure_phase()
+
+	# TODO: play the crash animation here
+
+
 func _play_fx_hit_obstacle():
 	# FX prefab includes SFX
 	var fx_hit_obstacle = fx_hit_obstacle_prefab.instantiate()

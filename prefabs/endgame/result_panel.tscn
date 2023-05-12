@@ -6,7 +6,7 @@
 [ext_resource type="LabelSettings" uid="uid://baumorb1fn8dr" path="res://themes/label_settings_result_score.tres" id="3_q4mnf"]
 [ext_resource type="Theme" uid="uid://btrmulh3kwmt6" path="res://themes/theme_result_button.tres" id="4_b6yab"]
 
-[node name="ResultPanel" type="Control" node_paths=PackedStringArray("outcome_label", "powder_left_value_label", "powder_types_left_value_label", "replay_button", "back_to_main_menu_button")]
+[node name="ResultPanel" type="Control" node_paths=PackedStringArray("outcome_label", "time_value_label", "powder_left_value_label", "powder_types_left_value_label", "replay_button", "back_to_main_menu_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,6 +15,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_72j1t")
 outcome_label = NodePath("MarginContainer/Control/OutcomePanelContainer/OutcomeLabel")
+time_value_label = NodePath("MarginContainer/Control/ScorePanelContainer/MarginContainer/Control/GridContainer/TimeValueLabel")
 powder_left_value_label = NodePath("MarginContainer/Control/ScorePanelContainer/MarginContainer/Control/GridContainer/PowderLeftValueLabel")
 powder_types_left_value_label = NodePath("MarginContainer/Control/ScorePanelContainer/MarginContainer/Control/GridContainer/PowderTypesLeftValueLabel")
 replay_button = NodePath("MarginContainer/Control/VBoxContainer/ReplayButton")
@@ -95,6 +96,16 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/h_separation = 50
 columns = 2
+
+[node name="TimeLabel" type="Label" parent="MarginContainer/Control/ScorePanelContainer/MarginContainer/Control/GridContainer"]
+layout_mode = 2
+text = "Time"
+label_settings = ExtResource("3_q4mnf")
+
+[node name="TimeValueLabel" type="Label" parent="MarginContainer/Control/ScorePanelContainer/MarginContainer/Control/GridContainer"]
+layout_mode = 2
+text = "99.9s"
+label_settings = ExtResource("3_q4mnf")
 
 [node name="PowderLeftLabel" type="Label" parent="MarginContainer/Control/ScorePanelContainer/MarginContainer/Control/GridContainer"]
 layout_mode = 2

@@ -2,6 +2,7 @@ extends Control
 
 
 @export var outcome_label: Label
+@export var time_value_label: Label
 @export var powder_left_value_label: Label
 @export var powder_types_left_value_label: Label
 @export var replay_button: Button
@@ -19,6 +20,7 @@ func _ready():
 
 	var powder_stats = GameManager.powder_stats
 
+	time_value_label.text = "%.1f" % GameManager.final_racing_time
 	powder_types_left_value_label.text = str(powder_stats[0])
 	powder_left_value_label.text = str(powder_stats[1])
 

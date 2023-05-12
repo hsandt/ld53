@@ -74,3 +74,11 @@ func _on_pause_menu_back_to_main_pressed():
 	player_character.process_mode = Node.PROCESS_MODE_DISABLED
 
 	await GameManager.go_back_to_main_menu()
+
+
+func enter_failure_phase():
+	GameManager.enter_failure_phase(racing_time, player_character.cargo)
+
+
+func enter_success_phase():
+	GameManager.enter_success_phase(racing_time, player_character.cargo)
