@@ -199,6 +199,15 @@ func set_base_attribute(attribute_name: String, value: float):
 	current_base_attributes[attribute_name] = value
 
 
+## Pause all logical nodes (but not visual nodes)
+func pause_logic():
+	cargo.process_mode = Node.PROCESS_MODE_DISABLED
+
+
+func resume_logic():
+	cargo.process_mode = Node.PROCESS_MODE_INHERIT
+
+
 func start_move():
 	sled_slide_sfx_player.play()
 	_should_move = true
