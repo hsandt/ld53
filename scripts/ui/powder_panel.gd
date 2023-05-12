@@ -50,4 +50,4 @@ func _on_button_pressed():
 func _play_explosion_feedback():
 	var explosion_regular = explosion_regular_prefab.instantiate()
 	get_parent().add_child(explosion_regular)
-	explosion_regular.position = explosion_anchor.position
+	explosion_regular.global_position = explosion_anchor.global_position
