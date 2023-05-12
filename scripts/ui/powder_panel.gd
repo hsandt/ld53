@@ -40,15 +40,11 @@ func _on_button_pressed():
 
 	match observed_powder.state:
 		Enums.PowderState.IDLE:
-			push_error("[PowderPanel] _on_button_pressed: observed_powder %s "
-				% observed_powder.get_path(),
-				"is IDLE, so button should not even be enabled")
+			return
 		Enums.PowderState.SPARK:
 			observed_powder.consume()
 		Enums.PowderState.CONSUMED:
-			push_error("[PowderPanel] _on_button_pressed: observed_powder %s "
-				% observed_powder.get_path(),
-				"is CONSUMED, so button should not even be enabled")
+			return
 
 
 func _play_explosion_feedback():
