@@ -46,6 +46,10 @@ func change_state(new_state: Enums.PowderState):
 		push_warning("[Powder] change_state: already in state %s" % new_state)
 
 func burst():
+	if state != Enums.PowderState.IDLE:
+		push_error("[Powder] burst: current state is %s, expected IDLE. Stop." % state)
+		return
+
 	# in case burst happened not due to timeout, clear timer to avoid trying to burst again
 	# later
 	current_time_left_before_burst = 0
@@ -54,7 +58,12 @@ func burst():
 	current_modifier = data.spark_debuff_modifier
 
 func consume():
+	if state != Enums.PowderState.SPARK:
+		push_error("[Powder] burst: current state is %s, expected SPARK. Stop." % state)
+		return
+
 	change_state(Enums.PowderState.CONSUMED)
+	current_modifier = null
 
 func try_take_damage(damage: float):
 	if state != Enums.PowderState.IDLE:
