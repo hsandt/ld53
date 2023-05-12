@@ -104,6 +104,9 @@ func try_take_damage(damage: float):
 
 	var damage_factor = cargo.player.compute_current_attribute(&"damage_factor")
 
+	# Safety clamping
+	damage_factor = max(0.0, damage_factor)
+
 	current_stamina -= damage * damage_factor
 
 	if current_stamina <= 0.0:

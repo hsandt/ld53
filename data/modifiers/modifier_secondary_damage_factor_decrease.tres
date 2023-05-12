@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Modifier" load_steps=2 format=3 uid="uid://b10gbs6vmxyv4"]
+
+[ext_resource type="Script" path="res://scripts/buffs/modifier.gd" id="2_hw4r0"]
+
+[resource]
+script = ExtResource("2_hw4r0")
+icon_path = ""
+description = "Damage -50%"
+attribute = "damage_factor"
+operation = 1
+value = -0.5
+lucky_modifier_probability = 0.5

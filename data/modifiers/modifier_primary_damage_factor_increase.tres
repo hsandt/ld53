@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Modifier" load_steps=4 format=3 uid="uid://cxurh0hv65kk5"]
+
+[ext_resource type="Resource" uid="uid://b10gbs6vmxyv4" path="res://data/modifiers/modifier_secondary_damage_factor_decrease.tres" id="1_3on25"]
+[ext_resource type="Script" path="res://scripts/buffs/modifier.gd" id="2_lgh40"]
+[ext_resource type="Resource" uid="uid://dr3k4bdn7xaep" path="res://data/modifiers/modifier_secondary_damage_factor_increase_lv2.tres" id="3_m0j5n"]
+
+[resource]
+script = ExtResource("2_lgh40")
+icon_path = ""
+description = "Damage +50%"
+attribute = "damage_factor"
+operation = 1
+value = 0.5
+lucky_modifier_probability = 0.5
+worsen = ExtResource("3_m0j5n")
+lucky = ExtResource("1_3on25")
