@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Modifier" load_steps=5 format=3 uid="uid://cot6lrihhy0qv"]
+
+[ext_resource type="Texture2D" uid="uid://bjkbheo2omo7l" path="res://sprites/buff_icons/magenta_star.png" id="1_s0t81"]
+[ext_resource type="Script" path="res://scripts/buffs/modifier.gd" id="2_82fdx"]
+[ext_resource type="Resource" uid="uid://bxb717juojctp" path="res://data/modifiers/modifier_secondary_next_consume_lucky_probability_increase.tres" id="2_clevv"]
+[ext_resource type="Resource" uid="uid://h877dkkhadcf" path="res://data/modifiers/modifier_secondary_next_consume_lucky_probability_decrease_lv2.tres" id="4_e4tch"]
+
+[resource]
+script = ExtResource("2_82fdx")
+icon_texture = ExtResource("1_s0t81")
+description = "Next consume lucky chance -20%"
+attribute = "next_consume_lucky_probability_offset"
+operation = 1
+value = -0.2
+lucky_modifier_probability = 0.5
+worsen = ExtResource("4_e4tch")
+lucky = ExtResource("2_clevv")

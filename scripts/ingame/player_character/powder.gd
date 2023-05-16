@@ -90,7 +90,13 @@ func trigger_random_modifier_from(modifier: Modifier):
 		trigger_lucky_effect = true
 	else:
 		# both exist, so it's random
-		trigger_lucky_effect = Utils.exclusive_randf() < modifier.lucky_modifier_probability
+		var next_consume_lucky_probability_offset = \
+			cargo.player.compute_current_attribute(&"next_consume_lucky_probability_offset")
+
+		var total_lucky_modifier_probability := clampf(modifier.lucky_modifier_probability + next_consume_lucky_probability_offset, 0.0, 1.0)
+		print("total_lucky_modifier_probability: ", total_lucky_modifier_probability)
+
+		trigger_lucky_effect = Utils.exclusive_randf() < total_lucky_modifier_probability
 
 	if trigger_lucky_effect:
 		# needs access to Player; or just spawn PFX instead

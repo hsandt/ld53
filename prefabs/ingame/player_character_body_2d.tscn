@@ -10,7 +10,7 @@
 [ext_resource type="Script" path="res://scripts/ingame/player_character/cargo.gd" id="6_dru5e"]
 [ext_resource type="Script" path="res://scripts/ingame/player_character/powder.gd" id="6_vdi8d"]
 [ext_resource type="Texture2D" uid="uid://b3xi3ohlwe8f4" path="res://sprites/keg.png" id="8_5dtp0"]
-[ext_resource type="Resource" path="res://data/powder/powder_data1.tres" id="9_mwhkn"]
+[ext_resource type="Resource" uid="uid://mg2jmshhem5f" path="res://data/powder/powder_data1.tres" id="9_mwhkn"]
 [ext_resource type="Resource" uid="uid://3q5k5pd4t3bp" path="res://data/powder/powder_data2.tres" id="11_7dolm"]
 [ext_resource type="Resource" path="res://data/powder/powder_data3.tres" id="12_gwqog"]
 [ext_resource type="AudioStream" uid="uid://c0nwej5v1btdg" path="res://audio/sfx/sled_slide WIP.ogg" id="12_wu4gh"]

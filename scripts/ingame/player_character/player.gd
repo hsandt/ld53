@@ -73,6 +73,10 @@ var current_base_attributes := {
 	&"steer_speed": 0.0,
 	# Factor applied to received damage
 	&"damage_factor": 1.0,
+	# Additional probability to trigger lucky modifier on next consume
+	# (if negative, increase probability to trigger worsen modifier)
+	# Final probability is clamped
+	&"next_consume_lucky_probability_offset": 0.0,
 }
 
 var _should_move: bool = false
