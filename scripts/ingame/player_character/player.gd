@@ -96,6 +96,8 @@ var current_base_attributes := {
 	# On powder burst, each powder keg has a certain probability to get locked,
 	# preventing future consume
 	&"individual_powder_lock_probability": 0.0,
+	# Controls camera shake intensity
+	&"camera_shake_intensity": 0.0,
 }
 
 var _should_move: bool = false
