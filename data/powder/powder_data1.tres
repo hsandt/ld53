@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="PowderData" load_steps=3 format=3 uid="uid://mg2jmshhem5f"]
+[gd_resource type="Resource" script_class="PowderData" load_steps=3 format=3 uid="uid://crychb5qd4rta"]
 
 [ext_resource type="Script" path="res://scripts/buffs/powder_data.gd" id="1_u324e"]
-[ext_resource type="Resource" uid="uid://pswttvbwsdpe" path="res://data/modifiers/modifier_primary_individual_powder_immunity_probability_increase.tres" id="2_3tqrc"]
+[ext_resource type="Resource" uid="uid://b08wq3why3q7e" path="res://data/modifiers/modifier_primary_steer_delay_increase.tres" id="2_scun7"]
 
 [resource]
 script = ExtResource("1_u324e")
-spark_debuff_modifier = ExtResource("2_3tqrc")
+spark_debuff_modifier = ExtResource("2_scun7")
 max_stamina = 1.0
 time_before_burst = 10.0

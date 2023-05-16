@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Modifier" load_steps=5 format=3 uid="uid://b08wq3why3q7e"]
+
+[ext_resource type="Texture2D" uid="uid://e5vl1gxyxgkn" path="res://sprites/buff_icons/cyan_wave.png" id="1_t201y"]
+[ext_resource type="Resource" uid="uid://bfl6qcxanifdx" path="res://data/modifiers/modifier_secondary_steer_faster.tres" id="2_fj7ck"]
+[ext_resource type="Script" path="res://scripts/buffs/modifier.gd" id="3_1s76q"]
+[ext_resource type="Resource" uid="uid://bj8tuh4wi1mb0" path="res://data/modifiers/modifier_secondary_steer_invert.tres" id="4_rcfgh"]
+
+[resource]
+script = ExtResource("3_1s76q")
+icon_texture = ExtResource("1_t201y")
+description = "Steer delay +0.5s"
+attribute = "steer_delay"
+operation = 1
+value = 0.5
+lucky_modifier_probability = 0.5
+worsen = ExtResource("4_rcfgh")
+lucky = ExtResource("2_fj7ck")

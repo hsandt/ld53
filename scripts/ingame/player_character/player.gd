@@ -18,9 +18,14 @@ extends CharacterBody2D
 
 @export var fx_hit_obstacle_anchor: Marker2D
 
-@export var acceleration = 1000
-@export var target_base_speed = 1000
-@export var base_steer_speed = 500
+@export var acceleration = 1000.0
+@export var target_base_speed = 1000.0
+
+## Steer delay in seconds: time it takes to reach the target steer speed (including
+## if it is affected by modifiers) from 0
+## If 0, steer speed reaches target steer speed instantly.
+@export var base_steer_delay = 0.0
+@export var base_steer_speed = 500.0
 
 ## Velocity X at which animation speed scale should be 1
 @export_range(1.0, 2000.0) var animation_reference_velocity_x: float = 1000.0
@@ -67,10 +72,15 @@ var current_base_attributes := {
 	# Do not set these values to exported members as default values here,
 	# because we must wait for initialization to be completed, so do it in
 	# _ready instead
+	# For attributes with a trivial base value like 0 or 1, you can set it here
 	# Horizontal speed
 	&"speed": 0.0,
 	# Vertical speed
+	# Base value will be set in _ready from export value
 	&"steer_speed": 0.0,
+	# Time it takes to reach target steer speed
+	# Base value will be set in _ready from export value
+	&"steer_delay": 0.0,
 	# Factor applied to received damage
 	&"damage_factor": 1.0,
 	# Additional probability to trigger lucky modifier on next consume
@@ -123,8 +133,9 @@ func _ready():
 			push_error("[Player] Expected child %s to be an AnimatedSprite2D" %
 				child.get_path())
 
-	set_base_attribute(&"speed", 0)
+	# Set base attribute for attributes that have an exported base value
 	set_base_attribute(&"steer_speed", base_steer_speed)
+	set_base_attribute(&"steer_delay", base_steer_delay)
 
 func _process(_delta):
 	# Play animations faster when character moves faster than reference speed, and vice-versa
@@ -182,12 +193,23 @@ func _physics_process(delta):
 		set_base_attribute(&"speed", new_base_speed)
 
 	# Compute current speed from base and any modifiers
-	var velocity_x = compute_current_attribute(&"speed")
+	var velocity_x := compute_current_attribute(&"speed")
 
-	var velocity_y
+	var velocity_y := velocity.y
 	var vertical_input = Input.get_axis("up", "down")
 	if vertical_input != 0.0:
-		velocity_y = vertical_input * compute_current_attribute(&"steer_speed")
+		var max_steer_speed = compute_current_attribute(&"steer_speed")
+		var target_velocity_y = vertical_input * max_steer_speed
+
+		var steer_delay = compute_current_attribute(&"steer_delay")
+		if steer_delay > 0:
+			# Accel based on current delay and max steer speed
+			# (so we are not too slow when max steer speed increases)
+			var steer_acceleration = max_steer_speed / steer_delay
+			velocity_y = move_toward(velocity_y, target_velocity_y, steer_acceleration * delta)
+		else:
+			# Instant
+			velocity_y = target_velocity_y
 	else:
 		velocity_y = 0.0
 

@@ -4,32 +4,26 @@
 
 [sub_resource type="Resource" id="Resource_c5pj1"]
 script = ExtResource("1_ty5tm")
-icon_path = ""
 description = "double score"
 attribute = "score"
 operation = 0
 value = 2.0
 lucky_modifier_probability = 0.5
-duration = 5.0
 
 [sub_resource type="Resource" id="Resource_ivgkl"]
 script = ExtResource("1_ty5tm")
-icon_path = ""
 description = "Score -30"
 attribute = "score"
 operation = 0
 value = -30.0
 lucky_modifier_probability = 0.5
-duration = 5.0
 
 [resource]
 script = ExtResource("1_ty5tm")
-icon_path = ""
 description = "Score -10"
 attribute = "score"
 operation = 1
 value = -10.0
 lucky_modifier_probability = 0.5
-duration = 5.0
 worsen = SubResource("Resource_ivgkl")
 lucky = SubResource("Resource_c5pj1")
