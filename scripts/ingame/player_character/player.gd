@@ -90,6 +90,9 @@ var current_base_attributes := {
 	# On damage, each powder keg has a certain probability to receive
 	# no damage at all
 	&"individual_powder_immunity_probability": 0.0,
+	# On powder burst, each powder keg has a certain probability to get locked,
+	# preventing future consume
+	&"individual_powder_lock_probability": 0.0,
 }
 
 var _should_move: bool = false

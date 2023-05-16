@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://c03i68p3oqkh2"]
+[gd_scene load_steps=9 format=3 uid="uid://c03i68p3oqkh2"]
 
 [ext_resource type="Script" path="res://scripts/ui/powder_panel.gd" id="1_8dg0n"]
 [ext_resource type="PackedScene" uid="uid://b2td8kx06arn4" path="res://prefabs/ingame/fx/OneShotFX_ExplosionRegular.tscn" id="2_k3aqf"]
 [ext_resource type="SpriteFrames" uid="uid://dwrs2bhosv0et" path="res://animations/powder_panel_sprite_frames.tres" id="3_jit8g"]
+[ext_resource type="Texture2D" uid="uid://be6jblj8fqwbt" path="res://sprites/icons/icon_lock.png" id="5_7u32h"]
 [ext_resource type="Script" path="res://scripts/ui/ModifierHintPanel.gd" id="5_koyt8"]
 [ext_resource type="Texture2D" uid="uid://e5vl1gxyxgkn" path="res://sprites/buff_icons/cyan_wave.png" id="5_rqsqe"]
 [ext_resource type="Script" path="res://scripts/visual/AnimatedSprite2DBrightnessController.gd" id="6_7s2n6"]
@@ -18,11 +19,10 @@ explosion_anchor = NodePath("ExplosionAnchorMarker2D")
 modifier_hint_panel = NodePath("ModifierHintPanel")
 
 [node name="AnimatedSprite2DBrightnessController" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("brighten_timer")]
-position = Vector2(153, 43)
+position = Vector2(169, 43)
 sprite_frames = ExtResource("3_jit8g")
-animation = &"spark"
+animation = &"spark_locked"
 autoplay = "idle"
-frame_progress = 0.997247
 script = ExtResource("6_7s2n6")
 brighten_timer = NodePath("../BrightenTimer")
 
@@ -36,20 +36,22 @@ offset_top = -82.0
 offset_right = 306.0
 offset_bottom = 338.0
 flat = true
+metadata/_edit_lock_ = true
 
 [node name="ExplosionAnchorMarker2D" type="Marker2D" parent="."]
 position = Vector2(150, 115)
 
-[node name="ModifierHintPanel" type="Panel" parent="." node_paths=PackedStringArray("icon", "hint")]
+[node name="ModifierHintPanel" type="Panel" parent="." node_paths=PackedStringArray("icon", "icon_lock", "hint")]
 self_modulate = Color(1, 1, 1, 0.839216)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.0421687
-anchor_top = 0.0331325
-anchor_right = 0.846386
-anchor_bottom = 0.768072
+anchor_left = 0.0963855
+anchor_top = -0.0301205
+anchor_right = 0.900603
+anchor_bottom = 0.704819
 script = ExtResource("5_koyt8")
 icon = NodePath("IconTextureRect")
+icon_lock = NodePath("IconLockTextureRect")
 hint = NodePath("HintLabel")
 metadata/_edit_use_anchors_ = true
 
@@ -63,6 +65,20 @@ offset_right = 32.0
 offset_bottom = 64.0
 grow_horizontal = 2
 texture = ExtResource("5_rqsqe")
+
+[node name="IconLockTextureRect" type="TextureRect" parent="ModifierHintPanel"]
+self_modulate = Color(0.960784, 0.796078, 0.305882, 1)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -152.5
+offset_top = -39.0
+offset_right = -81.5001
+offset_bottom = 67.0
+grow_horizontal = 2
+texture = ExtResource("5_7u32h")
+expand_mode = 1
 
 [node name="HintLabel" type="Label" parent="ModifierHintPanel"]
 layout_mode = 1
@@ -78,5 +94,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

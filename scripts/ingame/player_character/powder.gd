@@ -61,7 +61,21 @@ func burst():
 
 	# Set modifier before calling change_state so HUD can access new modifier
 	current_modifier = data.spark_debuff_modifier
-	change_state(Enums.PowderState.SPARK)
+
+	var new_state
+
+	# Check for lock probability (only > 0 under modifier)
+	var individual_powder_lock_probability: float = \
+		cargo.player.compute_current_attribute(&"individual_powder_lock_probability")
+	individual_powder_lock_probability = clampf(individual_powder_lock_probability, 0.0, 1.0)
+
+	if Utils.exclusive_randf() < individual_powder_lock_probability:
+		# Lock powder (cannot be consumed)
+		new_state = Enums.PowderState.SPARK_LOCKED
+	else:
+		new_state = Enums.PowderState.SPARK
+
+	change_state(new_state)
 
 func consume():
 	if state != Enums.PowderState.SPARK:
@@ -98,7 +112,6 @@ func trigger_random_modifier_from(modifier: Modifier):
 		var total_lucky_modifier_probability := modifier.lucky_modifier_probability + \
 			next_consume_lucky_probability_offset
 		total_lucky_modifier_probability = clampf(total_lucky_modifier_probability, 0.0, 1.0)
-		print("total_lucky_modifier_probability: ", total_lucky_modifier_probability)
 
 		trigger_lucky_effect = Utils.exclusive_randf() < total_lucky_modifier_probability
 
@@ -121,8 +134,8 @@ func try_take_damage(damage: float):
 	var individual_powder_immunity_probability: float = \
 		cargo.player.compute_current_attribute(&"individual_powder_immunity_probability")
 	individual_powder_immunity_probability = clampf(individual_powder_immunity_probability, 0.0, 1.0)
-	print("individual_powder_immunity_probability: ", individual_powder_immunity_probability)
 	if Utils.exclusive_randf() < individual_powder_immunity_probability:
+		# TODO: visual feedback
 		print("Immunity: powder %s takes no damage" % get_path())
 		return
 

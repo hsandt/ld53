@@ -11,7 +11,8 @@ enum GamePhase {
 enum PowderState {
 	IDLE,
 	SPARK,
-	CONSUMED
+	SPARK_LOCKED,
+	CONSUMED,
 }
 
 enum PowderType {

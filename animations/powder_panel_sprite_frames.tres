@@ -33,4 +33,15 @@ animations = [{
 "loop": true,
 "name": &"spark",
 "speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_tq8bf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_kolce")
+}],
+"loop": true,
+"name": &"spark_locked",
+"speed": 5.0
 }]

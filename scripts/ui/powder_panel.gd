@@ -14,6 +14,7 @@ extends Panel
 var powder_state_to_animation := {
 	Enums.PowderState.IDLE: &"idle",
 	Enums.PowderState.SPARK: &"spark",
+	Enums.PowderState.SPARK_LOCKED: &"spark_locked",
 	Enums.PowderState.CONSUMED: &"consumed",
 }
 
@@ -29,6 +30,9 @@ func _ready():
 
 	hide_modifier_hint_panel()
 
+	# Start disabled until state changes
+	button.disabled = true
+
 func register_observed_powder(powder: Powder):
 	observed_powder = powder
 
@@ -37,7 +41,13 @@ func on_powder_state_changed(_previous_state: Enums.PowderState, new_state: Enum
 
 	if new_state == Enums.PowderState.SPARK:
 		show_modifier_hint_panel()
+		button.disabled = false
+	elif new_state == Enums.PowderState.SPARK_LOCKED:
+		# Locked, so keep button disabled
+		show_modifier_hint_panel()
 	elif new_state == Enums.PowderState.CONSUMED:
+		# After consume, cannot press button anymore
+		button.disabled = true
 		_play_explosion_feedback()
 
 		# There should always be a secondary modifier after Consume,
@@ -54,6 +64,8 @@ func _on_button_pressed():
 			return
 		Enums.PowderState.SPARK:
 			observed_powder.consume()
+		Enums.PowderState.SPARK_LOCKED:
+			return
 		Enums.PowderState.CONSUMED:
 			return
 
@@ -70,9 +82,8 @@ func show_modifier_hint_panel():
 		observed_powder.get_path())
 
 	modifier_hint_panel.visible = true
-	modifier_hint_panel.fill_content(observed_powder.current_modifier)
+	modifier_hint_panel.fill_content(observed_powder.current_modifier, observed_powder.state)
 
 
 func hide_modifier_hint_panel():
 	modifier_hint_panel.visible = false
-
