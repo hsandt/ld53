@@ -90,10 +90,14 @@ func trigger_random_modifier_from(modifier: Modifier):
 		trigger_lucky_effect = true
 	else:
 		# both exist, so it's random
-		var next_consume_lucky_probability_offset = \
+		# BUG: type inference fails when using method from another class when
+		# classes reference to each other in a circular way, so enter type manually
+		var next_consume_lucky_probability_offset: float = \
 			cargo.player.compute_current_attribute(&"next_consume_lucky_probability_offset")
 
-		var total_lucky_modifier_probability := clampf(modifier.lucky_modifier_probability + next_consume_lucky_probability_offset, 0.0, 1.0)
+		var total_lucky_modifier_probability := modifier.lucky_modifier_probability + \
+			next_consume_lucky_probability_offset
+		total_lucky_modifier_probability = clampf(total_lucky_modifier_probability, 0.0, 1.0)
 		print("total_lucky_modifier_probability: ", total_lucky_modifier_probability)
 
 		trigger_lucky_effect = Utils.exclusive_randf() < total_lucky_modifier_probability
@@ -110,6 +114,16 @@ func try_take_damage(damage: float):
 	if state != Enums.PowderState.IDLE:
 		# powder has already burst (possibly even be consumed), due to damage
 		# or timeout, so ignore further damage
+		return
+
+	# BUG: type inference fails when using method from another class when
+	# classes reference to each other in a circular way, so enter type manually
+	var individual_powder_immunity_probability: float = \
+		cargo.player.compute_current_attribute(&"individual_powder_immunity_probability")
+	individual_powder_immunity_probability = clampf(individual_powder_immunity_probability, 0.0, 1.0)
+	print("individual_powder_immunity_probability: ", individual_powder_immunity_probability)
+	if Utils.exclusive_randf() < individual_powder_immunity_probability:
+		print("Immunity: powder %s takes no damage" % get_path())
 		return
 
 	var damage_factor = cargo.player.compute_current_attribute(&"damage_factor")

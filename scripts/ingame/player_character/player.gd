@@ -77,6 +77,9 @@ var current_base_attributes := {
 	# (if negative, increase probability to trigger worsen modifier)
 	# Final probability is clamped
 	&"next_consume_lucky_probability_offset": 0.0,
+	# On damage, each powder keg has a certain probability to receive
+	# no damage at all
+	&"individual_powder_immunity_probability": 0.0,
 }
 
 var _should_move: bool = false
@@ -192,7 +195,7 @@ func _physics_process(delta):
 	move_and_slide()
 
 
-func compute_current_attribute(attribute_name: String):
+func compute_current_attribute(attribute_name: String) -> float:
 	var modifier_values := cargo.get_attribute_modifier_factor_and_offset(attribute_name)
 	var modifier_factor := modifier_values[0]
 	var modifier_offset := modifier_values[1]
