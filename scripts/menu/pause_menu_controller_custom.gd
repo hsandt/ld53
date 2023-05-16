@@ -16,8 +16,11 @@ func open_pause_menu():
 	#Stops game and shows pause menu
 	get_tree().paused = true
 	show()
-	resume_game_button.grab_focus()
+	# Make sure to emit signal before grabbing focus to let
+	# other Controls register their last focus if the want to
+	# restore it later
 	emit_signal(&"pause")
+	resume_game_button.grab_focus()
 
 func close_pause_menu():
 	get_tree().paused = false
