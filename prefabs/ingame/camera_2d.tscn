@@ -6,4 +6,4 @@
 position_smoothing_enabled = true
 script = ExtResource("1_mo2ds")
 shake_frequency = 20.0
-stop_shake_duration = 20.0
+stop_shake_duration = 0.05
