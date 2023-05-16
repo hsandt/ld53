@@ -141,8 +141,13 @@ func take_screenshot():
 	var screenshot_filepath = "user://Screenshots".path_join(screenshot_filename)
 
 	# user:// should map to:
-	# Unix: $HOME/.local/share/godot/app_userdata/[AppName] or $HOME/.[AppName]
-	# Windows: Users\[User]\AppData\Roaming\[AppName]
+	# Windows: %APPDATA%\Godot\app_userdata\[project_name] or
+	#          %APPDATA%\[project_name/custom_user_dir_name]
+	# macOS: ~/Library/Application Support/Godot/app_userdata/[project_name] or
+	#        ~/Library/Application Support/[project_name/custom_user_dir_name]
+	# Linux: ~/.local/share/godot/app_userdata/[project_name] or
+	#        ~/.local/share/[project_name/custom_user_dir_name]
+	# See https://docs.godotengine.org/en/4.0/tutorials/io/data_paths.html#accessing-persistent-user-data-user
 	if not DirAccess.dir_exists_absolute("user://Screenshots"):
 		# no Screenshots directory in user dir, make it
 		var err = DirAccess.make_dir_recursive_absolute("user://Screenshots")
