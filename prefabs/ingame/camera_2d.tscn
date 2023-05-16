@@ -5,4 +5,5 @@
 [node name="Camera2D" type="Camera2D"]
 position_smoothing_enabled = true
 script = ExtResource("1_mo2ds")
-shake_frequency = 1.0
+shake_frequency = 20.0
+stop_shake_duration = 20.0
