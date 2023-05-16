@@ -2,6 +2,9 @@ class_name Player
 extends CharacterBody2D
 
 
+## Signal sent when attribute changed (via base or modifier value)
+signal attribute_changed(attribute_name: String)
+
 @export var smoothing_node: Node2D
 @export var animated_sprite_with_brightness_controller: AnimatedSprite2DBrightnessController
 
@@ -238,6 +241,22 @@ func set_base_attribute(attribute_name: String, value: float):
 	assert(attribute_name in current_base_attributes,
 		"[Player] set_base_attribute: unknown attribute '%s'. " % attribute_name)
 	current_base_attributes[attribute_name] = value
+	attribute_changed.emit(attribute_name)
+
+
+## Called *after* modifier was actually changed (store previous modifier
+## and pass it as removed_modifier)
+func on_modifiers_changed(removed_modifier: Modifier, added_modifier: Modifier):
+	if removed_modifier != null:
+		# Some modifier removed, its associated attribute must have changed
+		# Notify this
+		attribute_changed.emit(removed_modifier.attribute)
+	if added_modifier != null and \
+			(removed_modifier == null or added_modifier.attribute != removed_modifier.attribute):
+		# Some modifier added, with a different attribute than the removed one
+		# (or there was no removed one so it's obviously different),
+		# so also notify this attribute value change
+		attribute_changed.emit(added_modifier.attribute)
 
 
 ## Pause all logical nodes (but not visual nodes)

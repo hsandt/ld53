@@ -77,6 +77,9 @@ func burst():
 	# doesn't affect the lock probability for this very change
 	current_modifier = data.spark_debuff_modifier
 
+	# We know that IDLE doesn't have modifier, so previous modifier is null
+	cargo.player.on_modifiers_changed(null, current_modifier)
+
 	change_state(new_state)
 
 func consume():
@@ -85,16 +88,20 @@ func consume():
 		return
 
 	# Set modifier before calling change_state so HUD can access new modifier
-	trigger_random_modifier_from(current_modifier)
+	var random_secondary_modifier = get_random_modifier_from(current_modifier)
+	var previous_modifier = current_modifier
+	current_modifier = random_secondary_modifier
+
+	cargo.player.on_modifiers_changed(previous_modifier, current_modifier)
+
 	change_state(Enums.PowderState.CONSUMED)
 
-func trigger_random_modifier_from(modifier: Modifier):
+func get_random_modifier_from(modifier: Modifier):
 	if modifier.lucky == null and modifier.worsen == null:
 		push_warning("[Powder] trigger_random_modifier_from: no lucky nor worsen defined on %s " %
 			modifier.resource_path,
 			"so we will just clear the current modifier")
-		current_modifier = null
-		return
+		return null
 
 	var trigger_lucky_effect: bool
 
@@ -118,12 +125,9 @@ func trigger_random_modifier_from(modifier: Modifier):
 		trigger_lucky_effect = Utils.exclusive_randf() < total_lucky_modifier_probability
 
 	if trigger_lucky_effect:
-		# needs access to Player; or just spawn PFX instead
-#		buff_sfx_player.play()
-		current_modifier = modifier.lucky
+		return modifier.lucky
 	else:
-#		debuff_sfx_player.play()
-		current_modifier = modifier.worsen
+		return modifier.worsen
 
 func try_take_damage(damage: float):
 	if state != Enums.PowderState.IDLE:
