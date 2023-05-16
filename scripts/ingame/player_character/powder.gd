@@ -59,9 +59,6 @@ func burst():
 	# later
 	current_time_left_before_burst = 0
 
-	# Set modifier before calling change_state so HUD can access new modifier
-	current_modifier = data.spark_debuff_modifier
-
 	var new_state
 
 	# Check for lock probability (only > 0 under modifier)
@@ -74,6 +71,11 @@ func burst():
 		new_state = Enums.PowderState.SPARK_LOCKED
 	else:
 		new_state = Enums.PowderState.SPARK
+
+	# Set modifier before calling change_state so HUD can access new modifier
+	# but after individual_powder_lock_probability check so this very modifier
+	# doesn't affect the lock probability for this very change
+	current_modifier = data.spark_debuff_modifier
 
 	change_state(new_state)
 
