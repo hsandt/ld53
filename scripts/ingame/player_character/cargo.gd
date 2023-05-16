@@ -52,7 +52,7 @@ func hurt(damage: float):
 ## Return an array of [modifier factor, modifier offset] by cumulating
 ## all the modifiers for the passed attribute from all powders for multiply and
 ## add operations respectively
-func get_attribute_modifier_factor_and_offset(attribute_name: String) -> Array[float]:
+func get_attribute_modifier_factor_and_offset(attribute_name: StringName) -> Array[float]:
 	# Initialize cumulated factor and offset with their base value
 	var cumulated_modifier_factor = 1.0
 	var cumulated_modifier_offset = 0.0

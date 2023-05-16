@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 
 ## Signal sent when attribute changed (via base or modifier value)
-signal attribute_changed(attribute_name: String)
+signal attribute_changed(attribute_name: StringName)
 
 @export var smoothing_node: Node2D
 @export var animated_sprite_with_brightness_controller: AnimatedSprite2DBrightnessController
@@ -223,7 +223,7 @@ func _physics_process(delta):
 	move_and_slide()
 
 
-func compute_current_attribute(attribute_name: String) -> float:
+func compute_current_attribute(attribute_name: StringName) -> float:
 	var modifier_values := cargo.get_attribute_modifier_factor_and_offset(attribute_name)
 	var modifier_factor := modifier_values[0]
 	var modifier_offset := modifier_values[1]
@@ -231,13 +231,13 @@ func compute_current_attribute(attribute_name: String) -> float:
 	return modifier_factor * get_base_attribute(attribute_name) + modifier_offset
 
 
-func get_base_attribute(attribute_name: String) -> float:
+func get_base_attribute(attribute_name: StringName) -> float:
 	assert(attribute_name in current_base_attributes,
 		"[Player] get_base_attribute: unknown attribute '%s'. " % attribute_name)
 	return current_base_attributes[attribute_name]
 
 
-func set_base_attribute(attribute_name: String, value: float):
+func set_base_attribute(attribute_name: StringName, value: float):
 	assert(attribute_name in current_base_attributes,
 		"[Player] set_base_attribute: unknown attribute '%s'. " % attribute_name)
 	current_base_attributes[attribute_name] = value
