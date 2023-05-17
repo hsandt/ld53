@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://dcqumcm4vc2x"]
+[gd_scene load_steps=33 format=3 uid="uid://dcqumcm4vc2x"]
 
 [ext_resource type="PackedScene" uid="uid://bcxj2wu4hjq7t" path="res://prefabs/ingame/map_base.tscn" id="1_p1joc"]
 [ext_resource type="PackedScene" uid="uid://clbkj8klm4my3" path="res://prefabs/ingame/obstacle_big.tscn" id="2_dcore"]
@@ -27,7 +27,6 @@
 [ext_resource type="PackedScene" uid="uid://cgal80fcmkp72" path="res://prefabs/ingame/level_blocks/2) medium/m_2_3.tscn" id="25_aoatp"]
 [ext_resource type="PackedScene" uid="uid://blageq74jsfsd" path="res://prefabs/ingame/level_blocks/3) hard/h_1_1_var.tscn" id="26_nexul"]
 [ext_resource type="PackedScene" uid="uid://b2xpo7mkhnn70" path="res://prefabs/ingame/level_blocks/3) hard/h_3_1.tscn" id="27_86fd3"]
-[ext_resource type="Texture2D" uid="uid://dhe6mdl6q78lm" path="res://sprites/bg/BG_Road_1080p.png" id="28_cdfff"]
 [ext_resource type="Texture2D" uid="uid://bwwvc3lhn1t6m" path="res://sprites/bg/BG_Top.PNG" id="30_ffs6n"]
 [ext_resource type="Material" uid="uid://bxigukpv2ox41" path="res://materials/gradient_material.tres" id="31_1r4mq"]
 [ext_resource type="Texture2D" uid="uid://dg3ew6ye7cij4" path="res://sprites/bg/BG_Bottom.PNG" id="31_d78n8"]
@@ -354,7 +353,6 @@ metadata/_edit_lock_ = true
 
 [node name="Floor Full Road Texture" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset" index="1"]
 z_index = -1
-texture = ExtResource("28_cdfff")
 metadata/_edit_lock_ = true
 
 [node name="Floor Playable Area Hint" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset" index="2"]

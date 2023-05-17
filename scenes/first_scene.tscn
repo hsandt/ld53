@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://tx2hmn6o6i8q"]
+[gd_scene load_steps=13 format=3 uid="uid://tx2hmn6o6i8q"]
 
 [ext_resource type="PackedScene" uid="uid://bkxvhy0xyc6my" path="res://prefabs/ingame/in_game_manager.tscn" id="1_i0ea3"]
 [ext_resource type="PackedScene" uid="uid://bigtdfruv4w60" path="res://prefabs/pause_menu_custom.tscn" id="2_afo14"]
@@ -11,9 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://cxmcka11cekmi" path="res://prefabs/ingame/camera_2d.tscn" id="6_cbhgf"]
 [ext_resource type="Shader" path="res://shaders/custom_sprite_shader.gdshader" id="7_ib5jx"]
 [ext_resource type="PackedScene" uid="uid://dcqumcm4vc2x" path="res://prefabs/ingame/map_1.tscn" id="8_srhq4"]
-[ext_resource type="Texture2D" uid="uid://cnud7hlsdnfrm" path="res://sprites/fx/PFX/PFX_Wind_line_246x6.png" id="11_x0js7"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_40g6f"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vjbgd"]
 resource_local_to_scene = true
 shader = ExtResource("7_ib5jx")
 shader_parameter/brightness = 0.0
@@ -57,7 +56,6 @@ position = Vector2(1846, 540)
 emitting = false
 amount = 20
 lifetime = 0.6
-texture = ExtResource("11_x0js7")
 emission_shape = 3
 emission_rect_extents = Vector2(1, 540)
 direction = Vector2(-1, 0)
@@ -68,7 +66,7 @@ initial_velocity_max = 3500.0
 color = Color(1, 1, 1, 0.45098)
 
 [node name="PlayerCharacterBody2D" parent="." instance=ExtResource("3_82xke")]
-material = SubResource("ShaderMaterial_40g6f")
+material = SubResource("ShaderMaterial_vjbgd")
 collision_mask = 65792
 platform_floor_layers = 4294967294
 platform_wall_layers = 256
