@@ -36,8 +36,6 @@ func on_scrolling_center_progress_changed(progression):
 
 
 func add_big_obstacles():
-	var ref = big_obstacle_indicators_parent.get_child(0)
-
 	var map = in_game_manager.map
 	for big_obstacle in map.big_obstacles:
 		var level_progress_big_obstacle_indicator: Control = level_progress_big_obstacle_indicator_prefab.instantiate()
