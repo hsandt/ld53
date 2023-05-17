@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 
 ## Signal sent when attribute changed (via base or modifier value)
-signal attribute_changed(attribute_name: StringName)
+signal attribute_changed(attribute_name: StringName, new_value: float)
 
 @export var smoothing_node: Node2D
 @export var animated_sprite_with_brightness_controller: AnimatedSprite2DBrightnessController
@@ -101,6 +101,8 @@ var current_base_attributes := {
 	&"camera_shake_intensity": 0.0,
 	# Controls how much to play annoying sounds
 	&"annoying_sounds_intensity": 0.0,
+	# Alpha transparency of progress bar
+	&"progress_bar_visibility": 1.0,
 }
 
 var _should_move: bool = false
@@ -267,19 +269,20 @@ func on_modifiers_changed(removed_modifier: Modifier, added_modifier: Modifier):
 ## Call this to notify all entities of attribute change,
 ## including self
 func _notify_attribute_changed(attribute_name: StringName):
+	var new_value = compute_current_attribute(attribute_name)
+
 	# Direct call is simpler than connecting self method
-	_on_attribute_changed(attribute_name)
-	attribute_changed.emit(attribute_name)
+	_on_attribute_changed(attribute_name, new_value)
+	attribute_changed.emit(attribute_name, new_value)
 
 
 ## This handles attribute change directly on self and is called directly in
 ## _notify_attribute_changed so we don't have to connect it to attribute_changed
 ## signal
-func _on_attribute_changed(attribute_name: StringName):
+func _on_attribute_changed(attribute_name: StringName, new_value: float):
 	if attribute_name == &"annoying_sounds_intensity":
-		var annoying_sounds_intensity = compute_current_attribute(&"annoying_sounds_intensity")
-		if annoying_sounds_intensity > 0.0:
-			_start_annoying_sounds(annoying_sounds_intensity)
+		if new_value > 0.0:
+			_start_annoying_sounds(new_value)
 		else:
 			_stop_annoying_sounds()
 

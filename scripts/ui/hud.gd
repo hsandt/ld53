@@ -21,3 +21,5 @@ func _ready():
 	# connect scrolling progress change to level progress callback
 	in_game_manager.scrolling_center.progress_changed.connect(
 		level_progress_bar.on_scrolling_center_progress_changed)
+	in_game_manager.player_character.attribute_changed.connect(
+		level_progress_bar.on_attribute_changed)

@@ -41,9 +41,9 @@ func _ready():
 	in_game_manager = get_tree().get_first_node_in_group(&"in_game_manager")
 	in_game_manager.player_character.attribute_changed.connect(_on_attribute_changed)
 
-func _on_attribute_changed(attribute_name: StringName):
+func _on_attribute_changed(attribute_name: StringName, new_value: float):
 	if attribute_name == &"camera_shake_intensity":
-		var intensity = in_game_manager.player_character.compute_current_attribute(&"camera_shake_intensity")
+		var intensity = new_value
 		if intensity > 0:
 			# Intensity became positive or it was already and changed, so (re)start shake
 			start_shake(intensity, shake_frequency)
