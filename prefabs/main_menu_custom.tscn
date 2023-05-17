@@ -28,7 +28,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 15
 metadata/_edit_group_ = true
-metadata/_edit_use_anchors_ = true
 
 [node name="Title" type="Label" parent="Content"]
 layout_mode = 2

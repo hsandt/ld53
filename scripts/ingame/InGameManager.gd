@@ -42,12 +42,6 @@ func _ready():
 	# wait for intro duration, pausable, physics time
 	await get_tree().create_timer(intro_duration, false, true).timeout
 
-	# For now, there is no intro so start racing immediately, start logic and move
-	# This way, powder timer will actually start with the RACING phase
-	GameManager.game_phase = Enums.GamePhase.RACING
-	player_character.resume_logic()
-	player_character.start_move()
-
 
 func _physics_process(delta):
 	if GameManager.game_phase == Enums.GamePhase.RACING:
@@ -77,6 +71,17 @@ func _on_pause_menu_back_to_main_pressed():
 	player_character.process_mode = Node.PROCESS_MODE_DISABLED
 
 	await GameManager.go_back_to_main_menu()
+
+
+func enter_racing_phase():
+	# For now, there is no intro so start racing immediately, start logic and move
+	# This way, powder timer will actually start with the RACING phase
+	GameManager.game_phase = Enums.GamePhase.RACING
+	player_character.resume_logic()
+	player_character.start_move()
+
+	hud.show_powders_panel()
+	hud.show_level_progress_bar()
 
 
 func enter_failure_phase():
