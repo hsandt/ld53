@@ -15,6 +15,7 @@ func _ready():
 	# then add their indicators
 	await get_tree().process_frame
 	add_big_obstacles()
+	hide_big_obstacles()
 
 
 # Connected from HUD
