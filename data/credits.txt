@@ -22,7 +22,7 @@ Producer & Team manager
 
 [b][font_size=45]Fonts[/font_size][/b]
 
-[font=res://fonts/Comfortaa/Comfortaa-VariableFont_wght.ttf]Comfortaa[/font] (Open Font License)
-[font=res://fonts/Fira_Code/FiraCode-VariableFont_wght.ttf]Fira Code[/font] (Open Font License)
-[font=res://fonts/Lobster_Two/LobsterTwo-Regular.ttf]Lobster Two[/font] (Open Font License)
-[font=res://fonts/Risque/Risque-Regular.ttf]Risque[/font] (Open Font License)[/center]
+[font=res://fonts/Risque/Risque-Regular.ttf]Risque[/font] (Open Font License)
+[font=res://fonts/ABeeZee/ABeeZee-Regular.ttf]ABeeZee[/font] (Open Font License)
+[font=res://fonts/cat_franken_deutsch/CATFranken-Deutsch.ttf]CAT Frankendeutsch[/font] (Open Font License)
+[font=res://fonts/Fira_Code/FiraCode-VariableFont_wght.ttf]Fira Code[/font] (Open Font License)[/center]

@@ -1,7 +1,10 @@
 [gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://6lpf7ir6fyi8"]
 
-[ext_resource type="FontFile" uid="uid://ctqyxwoyjwblp" path="res://fonts/Lobster_Two/LobsterTwo-Bold.ttf" id="1_fgyr6"]
+[ext_resource type="FontFile" uid="uid://irbcjinnmbd0" path="res://fonts/Risque/Risque-Regular.ttf" id="1_411k6"]
 
 [resource]
-font = ExtResource("1_fgyr6")
+font = ExtResource("1_411k6")
 font_size = 150
+font_color = Color(0.258905, 0.421658, 0.251238, 1)
+outline_size = 10
+outline_color = Color(0.172549, 0.137255, 0.0352941, 1)

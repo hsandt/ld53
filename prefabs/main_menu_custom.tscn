@@ -1,11 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://bicer5hvlabr8"]
+[gd_scene load_steps=8 format=3 uid="uid://bicer5hvlabr8"]
 
 [ext_resource type="Script" path="res://scripts/menu/main_menu_controller_custom.gd" id="1_i2sts"]
 [ext_resource type="PackedScene" uid="uid://bin6b2ypkka84" path="res://prefabs/options_menu_custom.tscn" id="2_87k8p"]
 [ext_resource type="LabelSettings" uid="uid://6lpf7ir6fyi8" path="res://themes/label_settings_title.tres" id="2_ayxu5"]
+[ext_resource type="Texture2D" uid="uid://yqqxla7uxm1b" path="res://sprites/bg/main_menu_bg.png" id="2_wbo80"]
 [ext_resource type="LabelSettings" uid="uid://d20dc6wvnojda" path="res://themes/label_settings_subtitle.tres" id="3_bcn68"]
 [ext_resource type="PackedScene" uid="uid://djvedm1ibu5wi" path="res://prefabs/credits_menu.tscn" id="3_wydvs"]
-[ext_resource type="Theme" uid="uid://d2ibmuqmyfsfj" path="res://themes/theme_main_menu_button.tres" id="4_yh14l"]
+[ext_resource type="PackedScene" uid="uid://bhcqiywsbm6rm" path="res://prefabs/main_menu_button.tscn" id="5_33fgt"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -16,87 +17,101 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_i2sts")
 
-[node name="Content" type="VBoxContainer" parent="."]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.408854
-anchor_top = 0.33287
-anchor_right = 0.591146
-anchor_bottom = 0.66713
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 15
-metadata/_edit_group_ = true
+[node name="BackgroundTextureRect" type="TextureRect" parent="."]
+self_modulate = Color(0.854902, 0.980392, 0.847059, 1)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_wbo80")
 
-[node name="Title" type="Label" parent="Content"]
+[node name="TitleMenu" type="Control" parent="."]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Title" type="Label" parent="TitleMenu"]
 layout_mode = 2
+offset_left = 1021.0
+offset_top = 34.0
+offset_right = 1876.0
+offset_bottom = 255.0
 theme_override_font_sizes/font_size = 45
 text = "P.O.W.D.E.R."
 label_settings = ExtResource("2_ayxu5")
 horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="SubTitle" type="Label" parent="Content"]
+[node name="SubTitle" type="Label" parent="TitleMenu"]
 layout_mode = 2
+offset_left = 1018.0
+offset_top = 259.0
+offset_right = 1869.0
+offset_bottom = 476.0
 theme_override_font_sizes/font_size = 45
 text = "Powder On Wild Days Explodes Randomly
 "
 label_settings = ExtResource("3_bcn68")
 horizontal_alignment = 1
+autowrap_mode = 3
 
-[node name="HSeparator" type="HSeparator" parent="Content"]
-custom_minimum_size = Vector2(0, 20)
-layout_mode = 2
-
-[node name="StartGameButton" type="Button" parent="Content"]
+[node name="ButtonContainer" type="VBoxContainer" parent="TitleMenu"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(350, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-theme = ExtResource("4_yh14l")
-theme_override_font_sizes/font_size = 30
-text = "Start"
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.400261
+anchor_top = 0.381945
+anchor_right = 1.13099
+anchor_bottom = 0.91713
+offset_left = 1278.99
+offset_top = 505.722
+offset_right = 1599.76
+offset_bottom = 745.315
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+metadata/_edit_group_ = true
+metadata/_edit_use_anchors_ = true
 
-[node name="OptionsButton" type="Button" parent="Content"]
+[node name="StartGameButton" parent="TitleMenu/ButtonContainer" instance=ExtResource("5_33fgt")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
-size_flags_horizontal = 4
-theme = ExtResource("4_yh14l")
-theme_override_font_sizes/font_size = 30
+
+[node name="OptionsButton" parent="TitleMenu/ButtonContainer" instance=ExtResource("5_33fgt")]
+unique_name_in_owner = true
+layout_mode = 2
 text = "Options"
 
-[node name="CreditsButton" type="Button" parent="Content"]
+[node name="CreditsButton" parent="TitleMenu/ButtonContainer" instance=ExtResource("5_33fgt")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
-size_flags_horizontal = 4
-theme = ExtResource("4_yh14l")
-theme_override_font_sizes/font_size = 30
 text = "Credits"
 
-[node name="QuitButton" type="Button" parent="Content"]
+[node name="QuitButton" parent="TitleMenu/ButtonContainer" instance=ExtResource("5_33fgt")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
-size_flags_horizontal = 4
-theme = ExtResource("4_yh14l")
-theme_override_font_sizes/font_size = 30
-text = "Quit"
+text = "Quit
+"
 
 [node name="OptionsMenu" parent="." instance=ExtResource("2_87k8p")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.538542
+metadata/_edit_use_anchors_ = true
 
 [node name="CreditsMenu" parent="." instance=ExtResource("3_wydvs")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5375
+metadata/_edit_use_anchors_ = true
 
-[connection signal="pressed" from="Content/StartGameButton" to="." method="_on_start_game_button_pressed"]
-[connection signal="pressed" from="Content/OptionsButton" to="." method="open_options"]
-[connection signal="pressed" from="Content/CreditsButton" to="." method="open_credits"]
-[connection signal="pressed" from="Content/QuitButton" to="." method="quit"]
+[connection signal="pressed" from="TitleMenu/ButtonContainer/StartGameButton" to="." method="_on_start_game_button_pressed"]
+[connection signal="pressed" from="TitleMenu/ButtonContainer/OptionsButton" to="." method="open_options"]
+[connection signal="pressed" from="TitleMenu/ButtonContainer/CreditsButton" to="." method="open_credits"]
+[connection signal="pressed" from="TitleMenu/ButtonContainer/QuitButton" to="." method="quit"]
 [connection signal="close" from="OptionsMenu" to="." method="close_options"]
 [connection signal="close" from="CreditsMenu" to="." method="close_credits"]
