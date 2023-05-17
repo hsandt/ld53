@@ -3,8 +3,18 @@ class_name Map extends Node2D
 @export var goal_area : Node2D
 @export var world_boundary : StaticBody2D
 
+var player_character: Player
+var _start_position_x: float
+var _distance_from_goal: float
 
 func _ready():
+	player_character = get_tree().get_first_node_in_group(&"player")
+	_start_position_x = player_character.global_position.x
+
+	# Map should not be offset but to be safe, use global position
+	_start_position_x = player_character.global_position.x
+	_distance_from_goal = goal_area.global_position.x - _start_position_x
+
 	# HACK to work around WorldBoundaryShape2D ceasing effect when farther than 11000px away
 	# (see https://github.com/godotengine/godot/issues/76917):
 	# repeat the boundary every 22000px (since the next boundary will cover the second half)
@@ -22,3 +32,7 @@ func _ready():
 		# Mind i + 1 since the first repetition is after the original
 		repeated_world_boundary.position.x = (i + 1) * 22000
 		world_boundary.get_parent().add_child(repeated_world_boundary)
+
+## Return progress ratio along level from position X
+func compute_progress_ratio(pos_x: float):
+	return (pos_x - _start_position_x) / _distance_from_goal
