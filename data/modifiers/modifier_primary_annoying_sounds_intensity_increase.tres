@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Modifier" load_steps=3 format=3 uid="uid://rjvnv1xrm7vm"]
+
+[ext_resource type="Texture2D" uid="uid://dqppio4xs88o3" path="res://sprites/buff_icons/white_ear.png" id="1_83k1g"]
+[ext_resource type="Script" path="res://scripts/buffs/modifier.gd" id="2_rc61p"]
+
+[resource]
+script = ExtResource("2_rc61p")
+icon_texture = ExtResource("1_83k1g")
+description = "Annoying sounds +1"
+attribute = "annoying_sounds_intensity"
+operation = 1
+value = 1.0
+lucky_modifier_probability = 0.5

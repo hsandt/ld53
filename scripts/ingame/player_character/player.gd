@@ -14,6 +14,7 @@ signal attribute_changed(attribute_name: StringName)
 @export var first_smoke_fx_frame_desync: int = 2
 
 @export var sled_slide_sfx_player: AudioStreamPlayer
+@export var annoying_sounds_sfx_player: AudioStreamPlayer
 @export var buff_sfx_player: AudioStreamPlayer
 @export var debuff_slide_sfx_player: AudioStreamPlayer
 
@@ -98,6 +99,8 @@ var current_base_attributes := {
 	&"individual_powder_lock_probability": 0.0,
 	# Controls camera shake intensity
 	&"camera_shake_intensity": 0.0,
+	# Controls how much to play annoying sounds
+	&"annoying_sounds_intensity": 0.0,
 }
 
 var _should_move: bool = false
@@ -243,7 +246,7 @@ func set_base_attribute(attribute_name: StringName, value: float):
 	assert(attribute_name in current_base_attributes,
 		"[Player] set_base_attribute: unknown attribute '%s'. " % attribute_name)
 	current_base_attributes[attribute_name] = value
-	attribute_changed.emit(attribute_name)
+	_notify_attribute_changed(attribute_name)
 
 
 ## Called *after* modifier was actually changed (store previous modifier
@@ -252,13 +255,33 @@ func on_modifiers_changed(removed_modifier: Modifier, added_modifier: Modifier):
 	if removed_modifier != null:
 		# Some modifier removed, its associated attribute must have changed
 		# Notify this
-		attribute_changed.emit(removed_modifier.attribute)
+		_notify_attribute_changed(removed_modifier.attribute)
 	if added_modifier != null and \
 			(removed_modifier == null or added_modifier.attribute != removed_modifier.attribute):
 		# Some modifier added, with a different attribute than the removed one
 		# (or there was no removed one so it's obviously different),
 		# so also notify this attribute value change
-		attribute_changed.emit(added_modifier.attribute)
+		_notify_attribute_changed(added_modifier.attribute)
+
+
+## Call this to notify all entities of attribute change,
+## including self
+func _notify_attribute_changed(attribute_name: StringName):
+	# Direct call is simpler than connecting self method
+	_on_attribute_changed(attribute_name)
+	attribute_changed.emit(attribute_name)
+
+
+## This handles attribute change directly on self and is called directly in
+## _notify_attribute_changed so we don't have to connect it to attribute_changed
+## signal
+func _on_attribute_changed(attribute_name: StringName):
+	if attribute_name == &"annoying_sounds_intensity":
+		var annoying_sounds_intensity = compute_current_attribute(&"annoying_sounds_intensity")
+		if annoying_sounds_intensity > 0.0:
+			_start_annoying_sounds(annoying_sounds_intensity)
+		else:
+			_stop_annoying_sounds()
 
 
 ## Pause all logical nodes (but not visual nodes)
@@ -304,3 +327,14 @@ func _play_fx_hit_obstacle():
 	var fx_hit_obstacle = fx_hit_obstacle_prefab.instantiate()
 	in_game_manager.level.add_child(fx_hit_obstacle)
 	fx_hit_obstacle.global_position = fx_hit_obstacle_anchor.global_position
+
+
+func _start_annoying_sounds(intensity: float):
+	# Safeguard against bad values to avoid crazy volumes
+	intensity = min(intensity, 1.0)
+	annoying_sounds_sfx_player.volume_db = linear_to_db(intensity)
+	annoying_sounds_sfx_player.play()
+
+
+func _stop_annoying_sounds():
+	annoying_sounds_sfx_player.stop()
