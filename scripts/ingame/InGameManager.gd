@@ -6,6 +6,7 @@ extends Node
 @export var pause_menu: PauseMenu
 @export var screen_fx_canvas_layer: ScreenFXCanvasLayer
 @export var player_character: Player
+@export var map: Map
 @export var intro_duration: float = 1.0
 
 @onready var hud: HUD = %HUD
@@ -22,6 +23,8 @@ func _ready():
 		"[InGameManager] pause_menu is not set on %s" % get_path())
 	assert(player_character != null,
 		"[InGameManager] player_character is not set on %s" % get_path())
+	assert(map != null,
+		"[InGameManager] map is not set on %s" % get_path())
 	assert(hud != null,
 		"[InGameManager] hud not found at %%HUD in same scene as %s" % get_path())
 

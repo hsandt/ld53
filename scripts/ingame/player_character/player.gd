@@ -109,6 +109,9 @@ var current_base_attributes := {
 	&"annoying_sounds_intensity": 0.0,
 	# Alpha transparency of progress bar
 	&"progress_bar_visibility": 1.0,
+	# If true, show big obstacles on level progress bar
+	# Boolean attribute: 0 for false, 1 for true
+	&"progress_bar_show_big_obstacles": 0.0,
 }
 
 var _should_move: bool = false

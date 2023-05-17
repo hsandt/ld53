@@ -1,11 +1,16 @@
 class_name Map extends Node2D
 
-@export var goal_area : Node2D
-@export var world_boundary : StaticBody2D
+@export var goal_area: Node2D
+@export var world_boundary: StaticBody2D
+
+## Damage from which we consider an obstacle to be "big"
+@export var big_obstacle_damage_threshold: float = 3.0
 
 var player_character: Player
 var _start_position_x: float
 var _distance_from_goal: float
+
+var big_obstacles: Array[Obstacle]
 
 func _ready():
 	player_character = get_tree().get_first_node_in_group(&"player")
@@ -36,3 +41,7 @@ func _ready():
 ## Return progress ratio along level from position X
 func compute_progress_ratio(pos_x: float):
 	return (pos_x - _start_position_x) / _distance_from_goal
+
+func register_obstacle_if_big(obstacle: Obstacle):
+	if obstacle.data.damage >= big_obstacle_damage_threshold:
+		big_obstacles.append(obstacle)

@@ -1,3 +1,4 @@
+class_name LevelProgressionCharacterIndicator
 extends TextureRect
 
 @export_range(0, 1) var progression : float = 0

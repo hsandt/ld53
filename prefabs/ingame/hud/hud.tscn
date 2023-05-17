@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/ui/hud.gd" id="1_cbyjf"]
 [ext_resource type="PackedScene" uid="uid://b3cj8qaa1pk0g" path="res://prefabs/ingame/hud/powders_panel.tscn" id="1_dbama"]
-[ext_resource type="PackedScene" uid="uid://bpkn3ndchrsjs" path="res://prefabs/ingame/level_progress_bar.tscn" id="2_5clqd"]
+[ext_resource type="PackedScene" uid="uid://b4g4xt77jodcq" path="res://prefabs/ingame/level_progress_bar.tscn" id="2_5clqd"]
 [ext_resource type="PackedScene" uid="uid://ti4qa4copd3i" path="res://prefabs/ingame/hud/race_timer.tscn" id="4_u8kxe"]
 
 [node name="HUD" type="Control"]
