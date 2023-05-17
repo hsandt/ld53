@@ -53,7 +53,11 @@ func on_powder_state_changed(_previous_state: Enums.PowderState, new_state: Enum
 		# There should always be a secondary modifier after Consume,
 		# but in case we change design to allow empty secondary modifier
 		if observed_powder.current_modifier != null:
+			# Hint panel should already be shown from SPARK state, but call
+			# this again to update content
 			show_modifier_hint_panel()
+		else:
+			hide_modifier_hint_panel()
 
 func _on_button_pressed():
 	if observed_powder == null:
