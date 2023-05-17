@@ -12,7 +12,7 @@ extends Camera2D
 #   intensities
 # - safety checks to avoid infinite loop
 # - update API to Godot 4 (randf_range)
-# - shake frequency is an exported parameter
+# - shake frequency is an exported parameter, added stop_shake_duration
 # - game-specific code for the connection with the rest of the game
 # - amplitude is named "intensity" but it has the same role
 # - dropped support for existing offset (store offsets from different sources
@@ -100,7 +100,6 @@ func _process(delta):
 
 	# Set final offset
 	set_offset(new_offset)
-	print(new_offset)
 
 ## Stop shaking with optional frequency
 ## If frequency > 0, use its inverse as the duration to gradually stop shaking
