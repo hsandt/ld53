@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Modifier" load_steps=3 format=3 uid="uid://bnlduq3us3mnk"]
+
+[ext_resource type="Texture2D" uid="uid://e5vl1gxyxgkn" path="res://sprites/buff_icons/cyan_wave.png" id="1_aqler"]
+[ext_resource type="Script" path="res://scripts/buffs/modifier.gd" id="2_trw1b"]
+
+[resource]
+script = ExtResource("2_trw1b")
+icon_texture = ExtResource("1_aqler")
+description = "Steer decel delay +0.5s"
+attribute = "steer_decel_delay"
+operation = 1
+value = 0.5
+lucky_modifier_probability = 0.5

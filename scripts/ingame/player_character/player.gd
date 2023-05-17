@@ -29,6 +29,9 @@ signal attribute_changed(attribute_name: StringName, new_value: float)
 ## if it is affected by modifiers) from 0
 ## If 0, steer speed reaches target steer speed instantly.
 @export var base_steer_delay = 0.0
+
+@export var base_steer_decel_delay = 0.0
+
 @export var base_steer_speed = 500.0
 
 ## Velocity X at which animation speed scale should be 1
@@ -85,6 +88,9 @@ var current_base_attributes := {
 	# Time it takes to reach target steer speed
 	# Base value will be set in _ready from export value
 	&"steer_delay": 0.0,
+	# Time it takes to reach steer speed = 0 from max steer speed
+	# Base value will be set in _ready from export value
+	&"steer_decel_delay": 0.0,
 	# Factor applied to received damage
 	&"damage_factor": 1.0,
 	# Additional probability to trigger lucky modifier on next consume
@@ -149,6 +155,7 @@ func _ready():
 	# Set base attribute for attributes that have an exported base value
 	set_base_attribute(&"steer_speed", base_steer_speed)
 	set_base_attribute(&"steer_delay", base_steer_delay)
+	set_base_attribute(&"steer_decel_delay", base_steer_decel_delay)
 
 func _process(_delta):
 	# Play animations faster when character moves faster than reference speed, and vice-versa
@@ -210,8 +217,9 @@ func _physics_process(delta):
 
 	var velocity_y := velocity.y
 	var vertical_input = Input.get_axis("up", "down")
+	var max_steer_speed = compute_current_attribute(&"steer_speed")
+
 	if vertical_input != 0.0:
-		var max_steer_speed = compute_current_attribute(&"steer_speed")
 		var target_velocity_y = vertical_input * max_steer_speed
 
 		var steer_delay = compute_current_attribute(&"steer_delay")
@@ -224,7 +232,16 @@ func _physics_process(delta):
 			# Instant
 			velocity_y = target_velocity_y
 	else:
-		velocity_y = 0.0
+		var steer_decel_delay = compute_current_attribute(&"steer_decel_delay")
+		if steer_decel_delay > 0:
+			# Decel based on current decel delay and max steer speed (since it
+			# tells us how much to change speed when decelerating from max speed
+			# to full stop)
+			var steer_deceleration = max_steer_speed / steer_decel_delay
+			velocity_y = move_toward(velocity_y, 0.0, steer_deceleration * delta)
+		else:
+			# Instant
+			velocity_y = 0.0
 
 	velocity = Vector2(velocity_x, velocity_y)
 	move_and_slide()
