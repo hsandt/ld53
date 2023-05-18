@@ -23,8 +23,6 @@ func _ready():
 
 		powder_panels.append(powder_panel)
 
-	focus_first_panel()
-
 	in_game_manager.pause_menu.pause.connect(_on_pause_menu_pause)
 	in_game_manager.pause_menu.resume.connect(_on_pause_menu_resume)
 

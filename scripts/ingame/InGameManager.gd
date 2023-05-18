@@ -83,6 +83,8 @@ func enter_racing_phase():
 	hud.show_powders_panel()
 	hud.show_level_progress_bar()
 
+	hud.powders_panel.focus_first_panel()
+
 
 func enter_failure_phase():
 	GameManager.enter_failure_phase(racing_time, player_character.cargo)
