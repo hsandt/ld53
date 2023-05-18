@@ -121,6 +121,10 @@ var current_base_attributes := {
 var _should_move: bool = false
 var current_boost_level: int = 0
 
+# CHEAT
+var god_mode_enabled: bool = false
+
+
 func _ready():
 	in_game_manager = get_tree().get_first_node_in_group(&"in_game_manager")
 
@@ -390,11 +394,23 @@ func try_decrement_boost_level():
 
 
 func hurt(damage: float):
+	if god_mode_enabled:
+		return
+
 	# Flash for the duration set in Flash Timer
 	animated_sprite_with_brightness_controller.set_brightness_for_duration(hurt_brightness)
 	cargo.hurt(damage)
 	_play_fx_hit_obstacle()
 	try_decrement_boost_level()
+
+
+func toggle_god_mode_enabled():
+	god_mode_enabled = not god_mode_enabled
+	# remember animated sprite is on reparented smoothing_node
+	# and for some reason smoothing_node.modulate doesn't affect the sprite
+	# also we use animated_sprite_with_brightness_controller.modulate,
+	# so set self_modulate instead
+	animated_sprite_with_brightness_controller.self_modulate = Color("#ffff41") if god_mode_enabled else Color.WHITE
 
 
 func start_success_sequence():
