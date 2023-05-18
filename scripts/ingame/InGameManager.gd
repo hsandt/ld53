@@ -73,8 +73,13 @@ func _unhandled_input(event):
 			racing_time_left -= 10.0
 		elif event.is_action_pressed(&"cheat_gain_10s"):
 			racing_time_left += 10.0
-		elif event.is_action_pressed(&"cheat_warp_forward"):
+		# first true is to allow echo to repeat warp quickly
+		# exact modifier check to avoid conflict with cheat_warp_forward2
+		# which should require Shift
+		elif event.is_action_pressed(&"cheat_warp_forward", true, true):
 			player_character.position += 1000.0 * Vector2.RIGHT
+		elif event.is_action_pressed(&"cheat_warp_forward2", true, true):
+			player_character.position += 10000.0 * Vector2.RIGHT
 		elif event.is_action_pressed(&"cheat_toggle_god_mode"):
 			player_character.toggle_god_mode_enabled()
 
