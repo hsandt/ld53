@@ -35,13 +35,6 @@ signal boost_level_changed(new_level: int)
 @export var acceleration = 1000.0
 @export var deceleration = 1000.0
 
-## Steer delay in seconds: time it takes to reach the target steer speed (including
-## if it is affected by modifiers) from 0
-## If 0, steer speed reaches target steer speed instantly.
-@export var base_steer_delay = 0.0
-
-@export var base_steer_decel_delay = 0.0
-
 @export var base_steer_speed = 500.0
 
 ## Velocity X at which animation speed scale should be 1
@@ -97,11 +90,11 @@ var current_base_attributes := {
 	# Base value will be set in _ready from export value
 	&"steer_speed": 0.0,
 	# Time it takes to reach target steer speed
-	# Base value will be set in _ready from export value
-	&"steer_delay": 0.0,
+	&"steer_accel_delay": 0.0,
 	# Time it takes to reach steer speed = 0 from max steer speed
-	# Base value will be set in _ready from export value
 	&"steer_decel_delay": 0.0,
+	# Meta-modifier: contributes to steer_accel_delay and steer_decel_delay
+	&"steer_delay": 0.0,
 	# Factor applied to received damage
 	&"damage_factor": 1.0,
 	# Additional probability to trigger lucky modifier on next consume
@@ -170,8 +163,6 @@ func _ready():
 	# Set base attribute for attributes that have an exported base value
 	set_base_attribute(&"speed", base_speed)
 	set_base_attribute(&"steer_speed", base_steer_speed)
-	set_base_attribute(&"steer_delay", base_steer_delay)
-	set_base_attribute(&"steer_decel_delay", base_steer_decel_delay)
 
 	# Setup local HUD
 	boost_level_indicator.setup(current_boost_level, boost_max_level)
@@ -246,22 +237,24 @@ func _physics_process(delta):
 	if vertical_input != 0.0:
 		var target_velocity_y = vertical_input * max_steer_speed
 
-		var steer_delay = compute_current_attribute(&"steer_delay")
-		if steer_delay > 0:
+		var total_steer_accel_delay = compute_current_attribute(&"steer_accel_delay") + \
+			compute_current_attribute(&"steer_delay")
+		if total_steer_accel_delay > 0:
 			# Accel based on current delay and max steer speed
 			# (so we are not too slow when max steer speed increases)
-			var steer_acceleration = max_steer_speed / steer_delay
+			var steer_acceleration = max_steer_speed / total_steer_accel_delay
 			velocity_y = move_toward(velocity_y, target_velocity_y, steer_acceleration * delta)
 		else:
 			# Instant
 			velocity_y = target_velocity_y
 	else:
-		var steer_decel_delay = compute_current_attribute(&"steer_decel_delay")
-		if steer_decel_delay > 0:
+		var total_steer_decel_delay = compute_current_attribute(&"steer_decel_delay") + \
+			compute_current_attribute(&"steer_delay")
+		if total_steer_decel_delay > 0:
 			# Decel based on current decel delay and max steer speed (since it
 			# tells us how much to change speed when decelerating from max speed
 			# to full stop)
-			var steer_deceleration = max_steer_speed / steer_decel_delay
+			var steer_deceleration = max_steer_speed / total_steer_decel_delay
 			velocity_y = move_toward(velocity_y, 0.0, steer_deceleration * delta)
 		else:
 			# Instant

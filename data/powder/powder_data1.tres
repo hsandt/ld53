@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="PowderData" load_steps=3 format=3 uid="uid://crychb5qd4rta"]
 
 [ext_resource type="Script" path="res://scripts/buffs/powder_data.gd" id="1_u324e"]
-[ext_resource type="Resource" uid="uid://dsmrm1uywu2x7" path="res://data/modifiers/modifier_primary_progress_bar_show_big_obstacles.tres" id="2_mbrht"]
+[ext_resource type="Resource" uid="uid://b08wq3why3q7e" path="res://data/modifiers/modifier_primary_steer_delay_increase.tres" id="2_w6u1o"]
 
 [resource]
 script = ExtResource("1_u324e")
-spark_debuff_modifier = ExtResource("2_mbrht")
+spark_debuff_modifier = ExtResource("2_w6u1o")
 max_stamina = 5.0
 time_before_burst = 40.0

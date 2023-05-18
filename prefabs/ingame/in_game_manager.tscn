@@ -4,3 +4,4 @@
 
 [node name="InGameManager" type="Node" groups=["in_game_manager"]]
 script = ExtResource("1_0xi0f")
+show_new_modifier_hint_duration = 0.0
