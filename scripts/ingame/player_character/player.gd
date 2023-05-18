@@ -278,6 +278,11 @@ func _physics_process(delta):
 		velocity = velocity_x * Vector2.RIGHT
 		move_and_slide()
 
+	# HACK to make sure velocity is correct when processed next frame
+	# (for accel/decel) and in other scripts (like speed lines FX)
+	# since the split move_and_slide above doesn't give the correct velocity
+	velocity = Vector2(velocity_x, velocity_y)
+
 
 func _unhandled_input(event):
 	if event.is_action_pressed(&"boost"):
