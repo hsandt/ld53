@@ -5,6 +5,9 @@ extends CharacterBody2D
 ## Signal sent when attribute changed (via base or modifier value)
 signal attribute_changed(attribute_name: StringName, new_value: float)
 
+## Signal sent when boost level changes
+signal boost_level_changed(new_level: int)
+
 @export var smoothing_node: Node2D
 @export var animated_sprite_with_brightness_controller: AnimatedSprite2DBrightnessController
 
@@ -12,6 +15,9 @@ signal attribute_changed(attribute_name: StringName, new_value: float)
 @export var smoke_fx_parent: Node2D
 
 @export var first_smoke_fx_frame_desync: int = 2
+
+# Local HUD
+@export var boost_level_indicator: BoostLevelIndicator
 
 @export var sled_slide_sfx_player: AudioStreamPlayer
 @export var annoying_sounds_sfx_player: AudioStreamPlayer
@@ -166,6 +172,9 @@ func _ready():
 	set_base_attribute(&"steer_speed", base_steer_speed)
 	set_base_attribute(&"steer_delay", base_steer_delay)
 	set_base_attribute(&"steer_decel_delay", base_steer_decel_delay)
+
+	# Setup local HUD
+	boost_level_indicator.setup(current_boost_level, boost_max_level)
 
 
 func _process(_delta):
@@ -363,19 +372,23 @@ func stop_move():
 	_should_move = false
 
 
-func _update_base_speed():
+func notify_boost_level_changed():
+	# For self, update base speed
 	set_base_attribute(&"speed",
 		base_speed + extra_speed_per_boost_level * current_boost_level)
+
+	# For others, emit signal
+	boost_level_changed.emit(current_boost_level)
 
 func try_boost():
 	if current_boost_level < boost_max_level:
 		current_boost_level += 1
-		_update_base_speed()
+		notify_boost_level_changed()
 
 func try_decrement_boost_level():
 	if current_boost_level > 0:
 		current_boost_level -= 1
-		_update_base_speed()
+		notify_boost_level_changed()
 
 
 func hurt(damage: float):

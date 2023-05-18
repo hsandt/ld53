@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://baf4tgsuugtdo"]
+
+[ext_resource type="Theme" uid="uid://c36u57vtik74o" path="res://themes/theme_hud_boost_level_indicator.tres" id="1_b0d82"]
+
+[node name="BoostLevelIndicator" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_b0d82")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_bottom = 18.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 5.0
+value = 1.0
+show_percentage = false
+metadata/_edit_use_anchors_ = true

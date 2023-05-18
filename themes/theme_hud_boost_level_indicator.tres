@@ -1,0 +1,18 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://c36u57vtik74o"]
+
+[ext_resource type="Texture2D" uid="uid://col5vfvso82a5" path="res://sprites/ui/kenney_ui-pack-rpg-expansion/Customized/gauge_bg.png" id="1_8un38"]
+[ext_resource type="Texture2D" uid="uid://cqagi14svb4xp" path="res://sprites/ui/kenney_ui-pack-rpg-expansion/Customized/gauge_green.png" id="2_7w4i6"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vs2uv"]
+texture = ExtResource("1_8un38")
+texture_margin_left = 9.0
+texture_margin_right = 9.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6848r"]
+texture = ExtResource("2_7w4i6")
+texture_margin_left = 9.0
+texture_margin_right = 9.0
+
+[resource]
+ProgressBar/styles/background = SubResource("StyleBoxTexture_vs2uv")
+ProgressBar/styles/fill = SubResource("StyleBoxTexture_6848r")
