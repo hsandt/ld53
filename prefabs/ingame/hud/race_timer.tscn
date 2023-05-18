@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://ti4qa4copd3i"]
 
 [ext_resource type="Script" path="res://scripts/ui/race_timer.gd" id="1_dbk3p"]
-[ext_resource type="LabelSettings" uid="uid://bxxar55tvcyf1" path="res://themes/label_settings_hud_racing_time.tres" id="2_k2x7y"]
+[ext_resource type="Theme" uid="uid://ddkrt5r71ugh4" path="res://themes/theme_hud_racing_time.tres" id="1_yhpfn"]
 
 [node name="RaceTimer" type="Control" node_paths=PackedStringArray("time_label")]
 layout_mode = 3
@@ -9,8 +9,10 @@ anchor_left = 0.0166667
 anchor_top = 0.025
 anchor_right = 0.196875
 anchor_bottom = 0.0981481
+theme = ExtResource("1_yhpfn")
 script = ExtResource("1_dbk3p")
 time_label = NodePath("TimeLabel")
+negative_time_color = Color(0.952941, 0.47451, 0.427451, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="TimeLabel" type="Label" parent="."]
@@ -18,12 +20,11 @@ layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.0375723
 anchor_top = -0.126582
-anchor_right = 0.656069
-anchor_bottom = 1.25316
+anchor_right = 0.676301
+anchor_bottom = 1.25317
 offset_right = 1.52588e-05
 grow_horizontal = 2
 grow_vertical = 2
-text = "00.0s"
-label_settings = ExtResource("2_k2x7y")
+text = "-0:00"
 horizontal_alignment = 2
 metadata/_edit_use_anchors_ = true

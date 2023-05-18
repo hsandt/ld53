@@ -8,6 +8,8 @@ extends Node
 @export var player_character: Player
 @export var camera: Camera2D
 @export var map: Map
+
+@export var delivery_max_time: float = 180
 @export var intro_duration: float = 1.0
 @export var show_new_modifier_hint_duration: float = 1.0
 
@@ -16,7 +18,7 @@ extends Node
 
 var is_going_back_to_main_menu: bool = false
 
-var racing_time: float
+var racing_time_left: float
 
 ## During RACING phase, set this to true to pause timer
 var is_time_paused: bool
@@ -38,7 +40,7 @@ func _ready():
 
 	# Start in intro game phase, pause logic
 	GameManager.game_phase = Enums.GamePhase.INTRO
-	racing_time = 0.0
+	racing_time_left = delivery_max_time
 
 	# Wait 1 frame so children of player_character are ready
 	await get_tree().physics_frame
@@ -50,7 +52,7 @@ func _ready():
 
 func _physics_process(delta):
 	if GameManager.game_phase == Enums.GamePhase.RACING and not is_time_paused:
-		racing_time += delta
+		racing_time_left -= delta
 
 
 func _unhandled_input(event):
@@ -67,6 +69,10 @@ func _unhandled_input(event):
 	if OS.has_feature("debug"):
 		if event.is_action_pressed(&"cheat_take_damage"):
 			player_character.hurt(5.0)
+		elif event.is_action_pressed(&"cheat_lose_10s"):
+			racing_time_left -= 10.0
+		elif event.is_action_pressed(&"cheat_gain_10s"):
+			racing_time_left += 10.0
 
 
 func _on_pause_menu_back_to_main_pressed():
@@ -96,11 +102,11 @@ func enter_racing_phase():
 
 
 func enter_failure_phase():
-	GameManager.enter_failure_phase(racing_time, player_character.cargo)
+	GameManager.enter_failure_phase(racing_time_left, player_character.cargo)
 
 
 func enter_success_phase():
-	GameManager.enter_success_phase(racing_time, player_character.cargo)
+	GameManager.enter_success_phase(racing_time_left, player_character.cargo)
 
 
 ## Pause in-game elements and HUD interactions (but not Pause menu)
