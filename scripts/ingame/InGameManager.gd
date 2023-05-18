@@ -8,6 +8,7 @@ extends Node
 @export var player_character: Player
 @export var map: Map
 @export var intro_duration: float = 1.0
+@export var show_new_modifier_hint_duration: float = 1.0
 
 @onready var hud: HUD = %HUD
 @onready var scrolling_center: ScrollingCenter = %ScrollingCenter
@@ -15,6 +16,9 @@ extends Node
 var is_going_back_to_main_menu: bool = false
 
 var racing_time: float
+
+## During RACING phase, set this to true to pause timer
+var is_time_paused: bool
 
 func _ready():
 	assert(level != null,
@@ -44,7 +48,7 @@ func _ready():
 
 
 func _physics_process(delta):
-	if GameManager.game_phase == Enums.GamePhase.RACING:
+	if GameManager.game_phase == Enums.GamePhase.RACING and not is_time_paused:
 		racing_time += delta
 
 
@@ -92,3 +96,27 @@ func enter_failure_phase():
 
 func enter_success_phase():
 	GameManager.enter_success_phase(racing_time, player_character.cargo)
+
+
+## Pause in-game elements and HUD interactions (but not Pause menu)
+## Unlike opening Pause menu, this does not pause the whole scene tree
+## so we can keep playing animations on the HUD (we only disable further interactions)
+## and player can even open the Pause menu during this sub-phase
+func pause_ingame_and_interactions():
+	is_time_paused = true
+	player_character.pause()
+	hud.powders_panel.disable_interactions()
+
+func resume_ingame_and_interactions():
+	is_time_paused = false
+	player_character.resume()
+	hud.powders_panel.enable_interactions()
+
+func play_burst_sequence_async(new_modifier: Modifier):
+	pause_ingame_and_interactions()
+	hud.show_new_modifier_hint(new_modifier)
+
+	await get_tree().create_timer(show_new_modifier_hint_duration).timeout
+
+	resume_ingame_and_interactions()
+	hud.hide_new_modifier_hint()

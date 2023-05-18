@@ -37,6 +37,12 @@ func _ready():
 	hide_modifier_hint_panel()
 
 	# Start disabled until state changes
+	disable_interactions()
+
+func enable_interactions():
+	button.disabled = false
+
+func disable_interactions():
 	button.disabled = true
 
 func register_observed_powder(powder: Powder):
@@ -48,13 +54,13 @@ func on_powder_state_changed(_previous_state: Enums.PowderState, new_state: Enum
 	if new_state == Enums.PowderState.SPARK:
 		_play_spark_explosion_feedback()
 		show_modifier_hint_panel()
-		button.disabled = false
+		enable_interactions()
 	elif new_state == Enums.PowderState.SPARK_LOCKED:
 		# Locked, so keep button disabled
 		show_modifier_hint_panel()
 	elif new_state == Enums.PowderState.CONSUMED:
 		# After consume, cannot press button anymore
-		button.disabled = true
+		disable_interactions()
 		_play_consume_explosion_feedback()
 
 		# There should always be a secondary modifier after Consume,

@@ -5,6 +5,7 @@ extends Control
 @onready var powders_panel: PowdersPanel = $PowdersPanel
 @onready var level_progress_bar: LevelProgressBar = $LevelProgressBar
 @onready var tutorial: Tutorial = $Tutorial
+@onready var new_modifier_hint: NewModifierHint = $NewModifierHint
 
 var in_game_manager: InGameManager
 
@@ -27,6 +28,7 @@ func _ready():
 	# hide parts not used for tutorial at first
 	powders_panel.visible = false
 	level_progress_bar.visible = false
+	new_modifier_hint.visible = false
 
 	# show tutorial
 	tutorial.visible = true
@@ -38,3 +40,12 @@ func show_powders_panel():
 
 func show_level_progress_bar():
 	level_progress_bar.visible = true
+
+
+func show_new_modifier_hint(new_modifier: Modifier):
+	new_modifier_hint.visible = true
+	new_modifier_hint.fill_content(new_modifier)
+
+
+func hide_new_modifier_hint():
+	new_modifier_hint.visible = false

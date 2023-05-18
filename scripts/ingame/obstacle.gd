@@ -19,3 +19,13 @@ func _on_body_entered(body):
 	if body.has_method("hurt"):
 		body.hurt(data.damage)
 
+		# Disable collider to prevent further hit (when exiting or re-entering quickly,
+		# or because we paused and resumed whole Player node for Burst sequence)
+		disable_collider()
+
+
+func disable_collider():
+	# We are inside in/out signal so we must defer physics state change
+	set_deferred("monitoring", false)
+	# Optional since we are checking _on_body_entered on this side, but for completion
+	set_deferred("monitorable", false)

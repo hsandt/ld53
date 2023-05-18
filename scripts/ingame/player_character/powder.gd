@@ -8,6 +8,8 @@ signal state_changed(previous_state: Enums.PowderState, new_state: Enums.PowderS
 ## Associated powder data
 @export var data: PowderData
 
+var in_game_manager: InGameManager
+
 ## Owning cargo (set from cargo)
 var cargo: Cargo
 
@@ -26,6 +28,8 @@ var current_time_left_before_burst: float
 
 func _ready():
 	assert(data != null, "[Powder] data is not set on %s" % get_path())
+
+	in_game_manager = get_tree().get_first_node_in_group(&"in_game_manager")
 
 	# no signal for initialization, so set state directly
 	state = Enums.PowderState.IDLE
@@ -81,6 +85,10 @@ func burst():
 	cargo.player.on_modifiers_changed(null, current_modifier)
 
 	change_state(new_state)
+
+	# Play burst sequence (except for PowderPanel animation which is done via signal
+	# in change_state)
+	in_game_manager.play_burst_sequence_async(current_modifier)
 
 func consume():
 	if state != Enums.PowderState.SPARK:

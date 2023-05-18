@@ -43,3 +43,11 @@ func _on_pause_menu_resume():
 	if last_focus_owner != null:
 		# Restore last focused panel button
 		last_focus_owner.grab_focus()
+
+func enable_interactions():
+	for powder_panel in powder_panels:
+		powder_panel.enable_interactions()
+
+func disable_interactions():
+	for powder_panel in powder_panels:
+		powder_panel.disable_interactions()

@@ -66,7 +66,7 @@ signal attribute_changed(attribute_name: StringName, new_value: float)
 var in_game_manager: InGameManager
 
 ## Derived from smoke_fx_parent
-## We can't @export it because of https://github.com/godotengine/g$Smoothing2Dodot/issues/62916
+## We can't @export it because of https://github.com/godotengine/godot/issues/62916
 ## until Godot 4.1
 var smoke_fx_animated_sprites: Array[AnimatedSprite2D]
 
@@ -160,6 +160,7 @@ func _ready():
 	set_base_attribute(&"steer_delay", base_steer_delay)
 	set_base_attribute(&"steer_decel_delay", base_steer_decel_delay)
 
+
 func _process(_delta):
 	# Play animations faster when character moves faster than reference speed, and vice-versa
 	var unclamped_speed_ratio = velocity.x / animation_reference_velocity_x
@@ -250,6 +251,27 @@ func _physics_process(delta):
 	move_and_slide()
 
 
+## Pause logic and visual
+func pause():
+	process_mode = Node.PROCESS_MODE_DISABLED
+	# Remember smoothing_node has been reparented, so pause it too
+	smoothing_node.process_mode = Node.PROCESS_MODE_DISABLED
+
+
+func resume():
+	process_mode = Node.PROCESS_MODE_INHERIT
+	smoothing_node.process_mode = Node.PROCESS_MODE_INHERIT
+
+
+## Pause all logical nodes (but not visual nodes)
+func pause_logic():
+	cargo.process_mode = Node.PROCESS_MODE_DISABLED
+
+
+func resume_logic():
+	cargo.process_mode = Node.PROCESS_MODE_INHERIT
+
+
 func compute_current_attribute(attribute_name: StringName) -> float:
 	var modifier_values := cargo.get_attribute_modifier_factor_and_offset(attribute_name)
 	var modifier_factor := modifier_values[0]
@@ -305,15 +327,6 @@ func _on_attribute_changed(attribute_name: StringName, new_value: float):
 			_start_annoying_sounds(new_value)
 		else:
 			_stop_annoying_sounds()
-
-
-## Pause all logical nodes (but not visual nodes)
-func pause_logic():
-	cargo.process_mode = Node.PROCESS_MODE_DISABLED
-
-
-func resume_logic():
-	cargo.process_mode = Node.PROCESS_MODE_INHERIT
 
 
 func start_move():
