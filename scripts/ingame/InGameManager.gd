@@ -73,6 +73,8 @@ func _unhandled_input(event):
 			racing_time_left -= 10.0
 		elif event.is_action_pressed(&"cheat_gain_10s"):
 			racing_time_left += 10.0
+		elif event.is_action_pressed(&"cheat_warp_forward"):
+			player_character.position += 1000.0 * Vector2.RIGHT
 
 
 func _on_pause_menu_back_to_main_pressed():
