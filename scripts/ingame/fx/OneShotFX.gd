@@ -12,5 +12,8 @@ func _play_sfx():
 
 # Set time before disappearing on FreeTimer
 # It must be at least as long as the SFX and the FX animation
+# Note that we don't react to animation_finished at the moment
+# so we don't auto-clear the last sprite, so we must add an empty frame
+# at the end of each spriteframe animation
 func _on_free_timer_timeout():
 	queue_free()

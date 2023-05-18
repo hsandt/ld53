@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://c03i68p3oqkh2"]
+[gd_scene load_steps=10 format=3 uid="uid://c03i68p3oqkh2"]
 
 [ext_resource type="Script" path="res://scripts/ui/powder_panel.gd" id="1_8dg0n"]
 [ext_resource type="PackedScene" uid="uid://b2td8kx06arn4" path="res://prefabs/ingame/fx/OneShotFX_ExplosionRegular.tscn" id="2_k3aqf"]
+[ext_resource type="PackedScene" uid="uid://b2xc5w13uidet" path="res://prefabs/ingame/fx/OneShotFX_ExplosionMedium.tscn" id="2_xlg8i"]
 [ext_resource type="SpriteFrames" uid="uid://dwrs2bhosv0et" path="res://animations/powder_panel_sprite_frames.tres" id="3_jit8g"]
 [ext_resource type="Texture2D" uid="uid://be6jblj8fqwbt" path="res://sprites/icons/icon_lock.png" id="5_7u32h"]
 [ext_resource type="Script" path="res://scripts/ui/ModifierHintPanel.gd" id="5_koyt8"]
@@ -9,13 +10,15 @@
 [ext_resource type="Script" path="res://scripts/visual/AnimatedSprite2DBrightnessController.gd" id="6_7s2n6"]
 [ext_resource type="LabelSettings" uid="uid://djnk27qxxh71p" path="res://themes/label_settings_hud_modifier_hint.tres" id="6_iyjnn"]
 
-[node name="PowderPanel" type="Panel" node_paths=PackedStringArray("animated_sprite", "explosion_anchor", "modifier_hint_panel")]
+[node name="PowderPanel" type="Panel" node_paths=PackedStringArray("spark_explosion_anchor", "consume_explosion_anchor", "animated_sprite", "modifier_hint_panel")]
 self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(332, 332)
 script = ExtResource("1_8dg0n")
-explosion_regular_prefab = ExtResource("2_k3aqf")
+spark_explosion_prefab = ExtResource("2_xlg8i")
+consume_explosion_prefab = ExtResource("2_k3aqf")
+spark_explosion_anchor = NodePath("SparkExplosionAnchorMarker2D")
+consume_explosion_anchor = NodePath("ConsumeExplosionAnchorMarker2D")
 animated_sprite = NodePath("AnimatedSprite2DBrightnessController")
-explosion_anchor = NodePath("ExplosionAnchorMarker2D")
 modifier_hint_panel = NodePath("ModifierHintPanel")
 
 [node name="AnimatedSprite2DBrightnessController" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("brighten_timer")]
@@ -39,7 +42,10 @@ grow_horizontal = 2
 grow_vertical = 2
 flat = true
 
-[node name="ExplosionAnchorMarker2D" type="Marker2D" parent="."]
+[node name="SparkExplosionAnchorMarker2D" type="Marker2D" parent="."]
+position = Vector2(226, -115)
+
+[node name="ConsumeExplosionAnchorMarker2D" type="Marker2D" parent="."]
 position = Vector2(150, 115)
 
 [node name="ModifierHintPanel" type="Panel" parent="." node_paths=PackedStringArray("icon", "icon_lock", "hint")]

@@ -2,10 +2,13 @@ class_name PowderPanel
 extends Panel
 
 
-@export var explosion_regular_prefab: PackedScene
+@export var spark_explosion_prefab: PackedScene
+@export var consume_explosion_prefab: PackedScene
+
+@export var spark_explosion_anchor: Marker2D
+@export var consume_explosion_anchor: Marker2D
 
 @export var animated_sprite: AnimatedSprite2D
-@export var explosion_anchor: Marker2D
 @export var modifier_hint_panel: ModifierHintPanel
 
 @onready var button: Button = %Button
@@ -22,10 +25,13 @@ var observed_powder: Powder
 
 
 func _ready():
-	assert(explosion_regular_prefab != null, "[Powder] explosion_regular_prefab is not set on %s" % get_path())
+	assert(spark_explosion_prefab != null, "[Powder] spark_explosion_prefab is not set on %s" % get_path())
+	assert(consume_explosion_prefab != null, "[Powder] consume_explosion_prefab is not set on %s" % get_path())
+
+	assert(spark_explosion_anchor != null, "[Powder] spark_explosion_anchor is not set on %s" % get_path())
+	assert(consume_explosion_anchor != null, "[Powder] consume_explosion_anchor is not set on %s" % get_path())
 
 	assert(animated_sprite, "animated_sprite is not set on %s" % get_path())
-	assert(explosion_anchor != null, "[Powder] explosion_anchor is not set on %s" % get_path())
 	assert(modifier_hint_panel != null, "[Powder] modifier_hint_panel is not set on %s" % get_path())
 
 	hide_modifier_hint_panel()
@@ -40,6 +46,7 @@ func on_powder_state_changed(_previous_state: Enums.PowderState, new_state: Enum
 	animated_sprite.animation = powder_state_to_animation[new_state]
 
 	if new_state == Enums.PowderState.SPARK:
+		_play_spark_explosion_feedback()
 		show_modifier_hint_panel()
 		button.disabled = false
 	elif new_state == Enums.PowderState.SPARK_LOCKED:
@@ -48,7 +55,7 @@ func on_powder_state_changed(_previous_state: Enums.PowderState, new_state: Enum
 	elif new_state == Enums.PowderState.CONSUMED:
 		# After consume, cannot press button anymore
 		button.disabled = true
-		_play_explosion_feedback()
+		_play_consume_explosion_feedback()
 
 		# There should always be a secondary modifier after Consume,
 		# but in case we change design to allow empty secondary modifier
@@ -74,10 +81,16 @@ func _on_button_pressed():
 			return
 
 
-func _play_explosion_feedback():
-	var explosion_regular = explosion_regular_prefab.instantiate()
-	get_parent().add_child(explosion_regular)
-	explosion_regular.global_position = explosion_anchor.global_position
+func _play_spark_explosion_feedback():
+	var spark_explosion = spark_explosion_prefab.instantiate()
+	get_parent().add_child(spark_explosion)
+	spark_explosion.global_position = spark_explosion_anchor.global_position
+
+
+func _play_consume_explosion_feedback():
+	var consume_explosion = consume_explosion_prefab.instantiate()
+	get_parent().add_child(consume_explosion)
+	consume_explosion.global_position = consume_explosion_anchor.global_position
 
 
 func show_modifier_hint_panel():

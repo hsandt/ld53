@@ -1,0 +1,50 @@
+[gd_resource type="SpriteFrames" load_steps=11 format=3 uid="uid://dicph1ptboli5"]
+
+[ext_resource type="Texture2D" uid="uid://ds3o04baj3gfn" path="res://sprites/fx/FX_MediumExplosion/MediumExplosion0001.png" id="1_68n25"]
+[ext_resource type="Texture2D" uid="uid://c25ss54xf633v" path="res://sprites/fx/FX_MediumExplosion/MediumExplosion0002.png" id="2_m1x1o"]
+[ext_resource type="Texture2D" uid="uid://cq1wxsuhvylv2" path="res://sprites/fx/FX_MediumExplosion/MediumExplosion0003.png" id="3_ndvbn"]
+[ext_resource type="Texture2D" uid="uid://b0bg7qpwuqdpv" path="res://sprites/fx/FX_MediumExplosion/MediumExplosion0004.png" id="4_pjkjk"]
+[ext_resource type="Texture2D" uid="uid://b6i6n1xwmu4xn" path="res://sprites/fx/FX_MediumExplosion/MediumExplosion0005.png" id="5_bagis"]
+[ext_resource type="Texture2D" uid="uid://dktgp621tb8dx" path="res://sprites/fx/FX_MediumExplosion/MediumExplosion0006.png" id="6_ds360"]
+[ext_resource type="Texture2D" uid="uid://cypcfu0if6dvc" path="res://sprites/fx/FX_MediumExplosion/MediumExplosion0007.png" id="7_wqq63"]
+[ext_resource type="Texture2D" uid="uid://coci3daogcpis" path="res://sprites/fx/FX_MediumExplosion/MediumExplosion0008.png" id="8_8av5e"]
+[ext_resource type="Texture2D" uid="uid://b5lh7pndbaje5" path="res://sprites/fx/FX_MediumExplosion/MediumExplosion0009.png" id="9_rqtmw"]
+[ext_resource type="Texture2D" uid="uid://bccanjism6qii" path="res://sprites/fx/FX_MediumExplosion/MediumExplosion0010.png" id="10_usw3k"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_68n25")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_m1x1o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ndvbn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_pjkjk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_bagis")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ds360")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_wqq63")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_8av5e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_rqtmw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_usw3k")
+}],
+"loop": false,
+"name": &"default",
+"speed": 24.0
+}]
