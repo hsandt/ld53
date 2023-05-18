@@ -75,9 +75,6 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("18_3a4xo")
-}, {
-"duration": 1.0,
-"texture": null
 }],
 "loop": false,
 "name": &"default",
