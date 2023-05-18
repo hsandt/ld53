@@ -15,8 +15,8 @@
 [ext_resource type="Resource" uid="uid://3rtyni2eflqv" path="res://data/powder/powder_data3.tres" id="12_gwqog"]
 [ext_resource type="AudioStream" uid="uid://c0nwej5v1btdg" path="res://audio/sfx/sled_slide WIP.ogg" id="12_wu4gh"]
 [ext_resource type="Resource" uid="uid://bka0gxr0xfx2b" path="res://data/powder/powder_data4.tres" id="13_am5yu"]
-[ext_resource type="Resource" path="res://data/powder/powder_data5.tres" id="14_3f0vo"]
-[ext_resource type="Resource" path="res://data/powder/powder_data6.tres" id="15_2xh4w"]
+[ext_resource type="Resource" uid="uid://ci0kqv3qdl54b" path="res://data/powder/powder_data5.tres" id="14_3f0vo"]
+[ext_resource type="Resource" uid="uid://qxsub2genq4x" path="res://data/powder/powder_data6.tres" id="15_2xh4w"]
 [ext_resource type="AudioStream" uid="uid://ipnorm7ykhe2" path="res://audio/sfx/annoying_sound.ogg" id="18_xtlsu"]
 [ext_resource type="AudioStream" uid="uid://rxj2j25frlmi" path="res://audio/sfx/buff WIP.ogg" id="20_cqi75"]
 [ext_resource type="AudioStream" uid="uid://dfqveqh6ldxy5" path="res://audio/sfx/debuff WIP.ogg" id="21_3gsrm"]
@@ -29,6 +29,8 @@ z_index = 5
 y_sort_enabled = true
 material = ExtResource("1_1l63l")
 motion_mode = 1
+platform_floor_layers = 4294963440
+platform_wall_layers = 256
 script = ExtResource("1_2t2x0")
 smoothing_node = NodePath("Smoothing2D")
 animated_sprite_with_brightness_controller = NodePath("Smoothing2D/AnimatedSprite2DBrightnessController")
