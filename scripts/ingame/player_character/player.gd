@@ -347,7 +347,7 @@ func stop_move():
 	_should_move = false
 
 
-func hurt(damage):
+func hurt(damage: float):
 	# Flash for the duration set in Flash Timer
 	animated_sprite_with_brightness_controller.set_brightness_for_duration(hurt_brightness)
 	cargo.hurt(damage)

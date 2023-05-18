@@ -63,6 +63,10 @@ func _unhandled_input(event):
 	if event.is_action_pressed(&"restart"):
 		get_tree().reload_current_scene()
 
+	if OS.has_feature("debug"):
+		if event.is_action_pressed(&"cheat_take_damage"):
+			player_character.hurt(5.0)
+
 
 func _on_pause_menu_back_to_main_pressed():
 	is_going_back_to_main_menu = true
