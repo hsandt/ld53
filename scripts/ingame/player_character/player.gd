@@ -247,8 +247,16 @@ func _physics_process(delta):
 			# Instant
 			velocity_y = 0.0
 
-	velocity = Vector2(velocity_x, velocity_y)
-	move_and_slide()
+	# Apply vertical and horizontal motion separately to avoid diagonal moving
+	# slide against a wall to add extra contribution to horizontal motion
+
+	if velocity_y != 0.0:
+		velocity = velocity_y * Vector2.DOWN
+		move_and_slide()
+
+	if velocity_x != 0.0:
+		velocity = velocity_x * Vector2.RIGHT
+		move_and_slide()
 
 
 ## Pause logic and visual
