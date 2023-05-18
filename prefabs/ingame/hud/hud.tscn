@@ -30,4 +30,5 @@ layout_mode = 1
 layout_mode = 1
 
 [node name="Tutorial" parent="." instance=ExtResource("5_mllgo")]
+visible = false
 layout_mode = 1

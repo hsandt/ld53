@@ -28,6 +28,9 @@ func _ready():
 	powders_panel.visible = false
 	level_progress_bar.visible = false
 
+	# show tutorial
+	tutorial.visible = true
+
 
 func show_powders_panel():
 	powders_panel.visible = true
