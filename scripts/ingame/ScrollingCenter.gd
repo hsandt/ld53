@@ -10,6 +10,8 @@ signal progress_changed(progression)
 ## Distance to place camera (and screen colliders) ahead of player character
 @export var lookahead_distance: float
 
+@onready var camera: Camera2D = $Camera2D
+
 func _ready():
 	assert(player_character, "player_character is not set on %s" % get_path())
 

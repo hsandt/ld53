@@ -6,6 +6,7 @@ extends Node
 @export var pause_menu: PauseMenu
 @export var screen_fx_canvas_layer: ScreenFXCanvasLayer
 @export var player_character: Player
+@export var camera: Camera2D
 @export var map: Map
 @export var intro_duration: float = 1.0
 @export var show_new_modifier_hint_duration: float = 1.0
@@ -109,18 +110,21 @@ func enter_success_phase():
 func pause_ingame_and_interactions():
 	is_time_paused = true
 	player_character.pause()
+	scrolling_center.process_mode = Node.PROCESS_MODE_DISABLED
 	hud.powders_panel.disable_interactions()
 
 func resume_ingame_and_interactions():
 	is_time_paused = false
 	player_character.resume()
+	scrolling_center.process_mode = Node.PROCESS_MODE_INHERIT
 	hud.powders_panel.enable_interactions()
 
 func play_burst_sequence_async(new_modifier: Modifier):
-	pause_ingame_and_interactions()
-	hud.show_new_modifier_hint(new_modifier)
+	if show_new_modifier_hint_duration > 0:
+		pause_ingame_and_interactions()
+		hud.show_new_modifier_hint(new_modifier)
 
-	await get_tree().create_timer(show_new_modifier_hint_duration).timeout
+		await get_tree().create_timer(show_new_modifier_hint_duration).timeout
 
-	resume_ingame_and_interactions()
-	hud.hide_new_modifier_hint()
+		resume_ingame_and_interactions()
+		hud.hide_new_modifier_hint()
