@@ -23,6 +23,8 @@ signal attribute_changed(attribute_name: StringName, new_value: float)
 @export var fx_hit_obstacle_anchor: Marker2D
 
 @export var base_speed = 1000.0
+@export var boost_max_level = 5
+@export var extra_speed_per_boost_level = 200.0
 
 @export var acceleration = 1000.0
 @export var deceleration = 1000.0
@@ -118,6 +120,7 @@ var current_base_attributes := {
 }
 
 var _should_move: bool = false
+var current_boost_level: int = 0
 
 func _ready():
 	in_game_manager = get_tree().get_first_node_in_group(&"in_game_manager")
@@ -267,6 +270,11 @@ func _physics_process(delta):
 		move_and_slide()
 
 
+func _unhandled_input(event):
+	if event.is_action_pressed(&"boost"):
+		try_boost()
+
+
 ## Pause logic and visual
 func pause():
 	process_mode = Node.PROCESS_MODE_DISABLED
@@ -355,11 +363,27 @@ func stop_move():
 	_should_move = false
 
 
+func _update_base_speed():
+	set_base_attribute(&"speed",
+		base_speed + extra_speed_per_boost_level * current_boost_level)
+
+func try_boost():
+	if current_boost_level < boost_max_level:
+		current_boost_level += 1
+		_update_base_speed()
+
+func try_decrement_boost_level():
+	if current_boost_level > 0:
+		current_boost_level -= 1
+		_update_base_speed()
+
+
 func hurt(damage: float):
 	# Flash for the duration set in Flash Timer
 	animated_sprite_with_brightness_controller.set_brightness_for_duration(hurt_brightness)
 	cargo.hurt(damage)
 	_play_fx_hit_obstacle()
+	try_decrement_boost_level()
 
 
 func start_success_sequence():
