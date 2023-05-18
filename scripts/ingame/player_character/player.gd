@@ -22,8 +22,10 @@ signal attribute_changed(attribute_name: StringName, new_value: float)
 
 @export var fx_hit_obstacle_anchor: Marker2D
 
+@export var base_speed = 1000.0
+
 @export var acceleration = 1000.0
-@export var target_base_speed = 1000.0
+@export var deceleration = 1000.0
 
 ## Steer delay in seconds: time it takes to reach the target steer speed (including
 ## if it is affected by modifiers) from 0
@@ -81,6 +83,7 @@ var current_base_attributes := {
 	# _ready instead
 	# For attributes with a trivial base value like 0 or 1, you can set it here
 	# Horizontal speed
+	# Base value will be set in _ready from export value
 	&"speed": 0.0,
 	# Vertical speed
 	# Base value will be set in _ready from export value
@@ -156,6 +159,7 @@ func _ready():
 				child.get_path())
 
 	# Set base attribute for attributes that have an exported base value
+	set_base_attribute(&"speed", base_speed)
 	set_base_attribute(&"steer_speed", base_steer_speed)
 	set_base_attribute(&"steer_delay", base_steer_delay)
 	set_base_attribute(&"steer_decel_delay", base_steer_decel_delay)
@@ -210,14 +214,18 @@ func _physics_process(delta):
 	if not _should_move:
 		return
 
-	var previous_base_speed = get_base_attribute(&"speed")
-	if previous_base_speed < target_base_speed:
-		# Accelerate until top speed
-		var new_base_speed = min(previous_base_speed + delta * acceleration, target_base_speed)
-		set_base_attribute(&"speed", new_base_speed)
+	var velocity_x := velocity.x
 
-	# Compute current speed from base and any modifiers
-	var velocity_x := compute_current_attribute(&"speed")
+	# Compute target speed including modifiers
+	var target_speed = compute_current_attribute(&"speed")
+	if velocity_x < target_speed:
+		# Accelerate toward target speed
+		velocity_x = move_toward(velocity_x, target_speed,
+			delta * acceleration)
+	elif velocity_x > target_speed:
+		# Decelerate toward target speed
+		velocity_x = move_toward(velocity_x, target_speed,
+			delta * deceleration)
 
 	var velocity_y := velocity.y
 	var vertical_input = Input.get_axis("up", "down")
