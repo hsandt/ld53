@@ -8,8 +8,6 @@
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = ExtResource("2_5jpvd")
-frame = 9
-frame_progress = 1.0
 offset = Vector2(-5, -15)
 
 [node name="AudioStreamPlayer" parent="." index="1"]
