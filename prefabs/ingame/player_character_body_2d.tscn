@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://baf4tgsuugtdo" path="res://prefabs/ingame/hud/boost_level_indicator.tscn" id="8_oeyns"]
 [ext_resource type="Script" path="res://scripts/ui/boost_level_indicator.gd" id="9_h2sti"]
 [ext_resource type="Resource" uid="uid://crychb5qd4rta" path="res://data/powder/powder_data1.tres" id="9_mwhkn"]
-[ext_resource type="Resource" uid="uid://3q5k5pd4t3bp" path="res://data/powder/powder_data2.tres" id="11_7dolm"]
+[ext_resource type="Resource" uid="uid://bt5uo12x2ig65" path="res://data/powder/powder_data2.tres" id="11_7dolm"]
 [ext_resource type="Resource" uid="uid://3rtyni2eflqv" path="res://data/powder/powder_data3.tres" id="12_gwqog"]
 [ext_resource type="AudioStream" uid="uid://c0nwej5v1btdg" path="res://audio/sfx/sled_slide WIP.ogg" id="12_wu4gh"]
 [ext_resource type="Resource" uid="uid://bka0gxr0xfx2b" path="res://data/powder/powder_data4.tres" id="13_am5yu"]

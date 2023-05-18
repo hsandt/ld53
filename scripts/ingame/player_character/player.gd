@@ -116,6 +116,8 @@ var current_base_attributes := {
 	# If true, show big obstacles on level progress bar
 	# Boolean attribute: 0 for false, 1 for true
 	&"progress_bar_show_big_obstacles": 0.0,
+	# Number of seconds of interval between progress bar updates
+	&"progress_bar_lag": 0.0,
 }
 
 var _should_move: bool = false
