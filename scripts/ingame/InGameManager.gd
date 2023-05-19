@@ -11,7 +11,8 @@ extends Node
 
 @export var delivery_max_time: float = 180
 @export var intro_duration: float = 1.0
-@export var show_new_modifier_hint_duration: float = 1.0
+@export var burst_sequence_pause_duration: float = 1.0
+@export var burst_sequence_show_new_modifier_hint_duration: float = 1.0
 
 @onready var hud: HUD = %HUD
 @onready var scrolling_center: ScrollingCenter = %ScrollingCenter
@@ -135,11 +136,17 @@ func resume_ingame_and_interactions():
 	hud.powders_panel.enable_interactions()
 
 func play_burst_sequence_async(new_modifier: Modifier):
-	if show_new_modifier_hint_duration > 0:
+	# don't await this sub-sequence, let it run in the wild in parallel to
+	# the pause sequence since we don't care about when it ends (during or after
+	# the pause)
+	show_new_modifier_hint_async(new_modifier)
+
+	if burst_sequence_pause_duration > 0:
 		pause_ingame_and_interactions()
-		hud.show_new_modifier_hint(new_modifier)
-
-		await get_tree().create_timer(show_new_modifier_hint_duration).timeout
-
+		await get_tree().create_timer(burst_sequence_pause_duration).timeout
 		resume_ingame_and_interactions()
-		hud.hide_new_modifier_hint()
+
+func show_new_modifier_hint_async(new_modifier: Modifier):
+	hud.show_new_modifier_hint(new_modifier)
+	await get_tree().create_timer(burst_sequence_show_new_modifier_hint_duration).timeout
+	hud.hide_new_modifier_hint()
