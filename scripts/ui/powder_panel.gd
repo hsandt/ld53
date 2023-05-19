@@ -9,7 +9,6 @@ extends Panel
 @export var consume_explosion_anchor: Marker2D
 
 @export var animated_sprite: AnimatedSprite2D
-@export var icon_texture_rect: ModifierHintPanel
 @export var modifier_hint_panel: ModifierHintPanel
 
 @onready var button: Button = %Button
@@ -116,13 +115,15 @@ func _play_consume_explosion_feedback():
 func show_future_modifier_icon():
 	assert(observed_powder.state == Enums.PowderState.IDLE,
 		"[PowderPanel] show_future_modifier_icon: future modifier is only for IDLE state")
-	modifier_hint_panel.show_icon(observed_powder.data.spark_debuff_modifier)
+	# active: false
+	modifier_hint_panel.show_icon(observed_powder.data.spark_debuff_modifier, false)
 
 
 func show_current_modifier_icon():
 	assert(observed_powder.state != Enums.PowderState.IDLE,
 		"[PowderPanel] show_current_modifier_icon: future modifier is not for IDLE state")
-	modifier_hint_panel.show_icon(observed_powder.current_modifier)
+	# active: true
+	modifier_hint_panel.show_icon(observed_powder.current_modifier, true)
 
 
 func hide_modifier_icon():

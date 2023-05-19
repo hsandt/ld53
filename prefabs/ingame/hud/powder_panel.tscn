@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c03i68p3oqkh2"]
+[gd_scene load_steps=12 format=3 uid="uid://c03i68p3oqkh2"]
 
 [ext_resource type="Script" path="res://scripts/ui/powder_panel.gd" id="1_8dg0n"]
 [ext_resource type="PackedScene" uid="uid://b2td8kx06arn4" path="res://prefabs/ingame/fx/OneShotFX_ExplosionRegular.tscn" id="2_k3aqf"]
@@ -7,9 +7,10 @@
 [ext_resource type="Script" path="res://scripts/ui/ModifierHintPanel.gd" id="5_koyt8"]
 [ext_resource type="Script" path="res://scripts/visual/AnimatedSprite2DBrightnessController.gd" id="6_7s2n6"]
 [ext_resource type="LabelSettings" uid="uid://djnk27qxxh71p" path="res://themes/label_settings_hud_modifier_hint.tres" id="6_iyjnn"]
+[ext_resource type="Texture2D" uid="uid://ccjml2bd02bq0" path="res://sprites/icons/rounded_square80.png" id="7_30e35"]
 [ext_resource type="Theme" uid="uid://b3m6giw1r7111" path="res://themes/theme_hud_powder_panel.tres" id="7_mavx3"]
+[ext_resource type="Texture2D" uid="uid://bp2keqeaibtao" path="res://sprites/icons/Icon_SteerDecayAcc_SuperDebuff.png" id="8_hhd1s"]
 [ext_resource type="Texture2D" uid="uid://paa0t2hn1sgv" path="res://sprites/hud/HUD_KegLock_Cropped.png" id="8_tgidq"]
-[ext_resource type="Texture2D" uid="uid://keli66761yg" path="res://sprites/icons/Icon_DisplayNegative_SuperDebuff.png" id="10_7s68r"]
 
 [node name="PowderPanel" type="Panel" node_paths=PackedStringArray("spark_explosion_anchor", "consume_explosion_anchor", "animated_sprite", "modifier_hint_panel")]
 self_modulate = Color(1, 1, 1, 0)
@@ -60,6 +61,22 @@ grow_horizontal = 2
 texture = ExtResource("8_tgidq")
 metadata/_edit_use_anchors_ = true
 
+[node name="IconActiveTextureRect" type="NinePatchRect" parent="."]
+self_modulate = Color(1, 0.996078, 0.560784, 0.568627)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25
+anchor_top = 0.0451807
+anchor_right = 0.746988
+anchor_bottom = 0.5
+offset_bottom = -1.52588e-05
+texture = ExtResource("7_30e35")
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+metadata/_edit_use_anchors_ = true
+
 [node name="IconTextureRect" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = -1
@@ -70,10 +87,11 @@ anchor_bottom = 0.506024
 offset_right = 10.4699
 offset_bottom = 7.13857
 grow_horizontal = 2
-texture = ExtResource("10_7s68r")
+texture = ExtResource("8_hhd1s")
 metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
 
-[node name="ModifierHintPanel" type="Panel" parent="." node_paths=PackedStringArray("icon", "icon_lock", "hint")]
+[node name="ModifierHintPanel" type="Panel" parent="." node_paths=PackedStringArray("icon", "icon_active", "icon_lock", "hint")]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.0421687
@@ -83,6 +101,7 @@ anchor_bottom = 1.01506
 theme = ExtResource("7_mavx3")
 script = ExtResource("5_koyt8")
 icon = NodePath("../IconTextureRect")
+icon_active = NodePath("../IconActiveTextureRect")
 icon_lock = NodePath("../IconLockTextureRect")
 hint = NodePath("MarginContainer/HintLabel")
 metadata/_edit_use_anchors_ = true
