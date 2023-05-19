@@ -1,13 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://ch6p14onhqdd1"]
+[gd_scene load_steps=7 format=3 uid="uid://ch6p14onhqdd1"]
 
 [ext_resource type="Script" path="res://scripts/ui/hud.gd" id="1_cbyjf"]
 [ext_resource type="PackedScene" uid="uid://b3cj8qaa1pk0g" path="res://prefabs/ingame/hud/powders_panel.tscn" id="1_dbama"]
 [ext_resource type="PackedScene" uid="uid://b4g4xt77jodcq" path="res://prefabs/ingame/level_progress_bar.tscn" id="2_5clqd"]
 [ext_resource type="PackedScene" uid="uid://ti4qa4copd3i" path="res://prefabs/ingame/hud/race_timer.tscn" id="4_u8kxe"]
 [ext_resource type="PackedScene" uid="uid://d0tsvq2db1mtv" path="res://prefabs/ingame/hud/tutorial.tscn" id="5_mllgo"]
-[ext_resource type="Texture2D" uid="uid://cw48344uon1ep" path="res://sprites/hud/parchment.png" id="6_7rt38"]
-[ext_resource type="Script" path="res://scripts/ui/NewModifierHint.gd" id="6_b4qxn"]
-[ext_resource type="LabelSettings" uid="uid://dxm3xuprr5cnl" path="res://themes/label_settings_hud_new_modifier_hint.tres" id="7_cgj1a"]
+[ext_resource type="PackedScene" uid="uid://d153qg87qimgs" path="res://prefabs/ingame/hud/new_modifier_hint.tscn" id="6_al6dn"]
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -36,63 +34,5 @@ layout_mode = 1
 visible = false
 layout_mode = 1
 
-[node name="NewModifierHint" type="Control" parent="." node_paths=PackedStringArray("new_modifier_header_label", "new_modifier_name_label")]
+[node name="NewModifierHint" parent="." instance=ExtResource("6_al6dn")]
 layout_mode = 1
-anchor_left = 0.358333
-anchor_top = 0.241667
-anchor_right = 0.622917
-anchor_bottom = 0.663889
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("6_b4qxn")
-new_modifier_header_label = NodePath("TextureRect/Content/NewModifierHeaderLabel")
-new_modifier_name_label = NodePath("TextureRect/Content/NewModifierNameLabel")
-metadata/_edit_use_anchors_ = true
-
-[node name="TextureRect" type="TextureRect" parent="NewModifierHint"]
-self_modulate = Color(1, 1, 1, 0.615686)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("6_7rt38")
-expand_mode = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="Content" type="Control" parent="NewModifierHint/TextureRect"]
-layout_mode = 1
-anchor_left = 0.181102
-anchor_top = 0.221491
-anchor_right = 0.78937
-anchor_bottom = 0.807018
-grow_horizontal = 2
-grow_vertical = 2
-metadata/_edit_use_anchors_ = true
-
-[node name="NewModifierHeaderLabel" type="Label" parent="NewModifierHint/TextureRect/Content"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 0.184116
-grow_horizontal = 2
-grow_vertical = 2
-text = "New effect!"
-label_settings = ExtResource("7_cgj1a")
-horizontal_alignment = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="NewModifierNameLabel" type="Label" parent="NewModifierHint/TextureRect/Content"]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.314607
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "[Effect Description on multiple lines]"
-label_settings = ExtResource("7_cgj1a")
-horizontal_alignment = 1
-autowrap_mode = 3
-metadata/_edit_use_anchors_ = true
