@@ -8,8 +8,8 @@
 [node name="NewModifierHint" type="Control" node_paths=PackedStringArray("new_modifier_header_label", "new_modifier_name_label", "bubble_polygon")]
 layout_mode = 3
 anchor_left = 0.358333
-anchor_top = 0.241667
-anchor_right = 0.629167
+anchor_top = 0.235185
+anchor_right = 0.611979
 anchor_bottom = 0.506481
 grow_horizontal = 2
 grow_vertical = 2
@@ -17,14 +17,13 @@ script = ExtResource("1_vf8ts")
 new_modifier_header_label = NodePath("Content/NewModifierHeaderLabel")
 new_modifier_name_label = NodePath("Content/NewModifierNameLabel")
 bubble_polygon = NodePath("Polygon2DWithOutline")
-bubble_polygon_queue_point_index = 22
-bubble_polygon_queue_cut_distance = 200.0
+bubble_polygon_queue_point_index = 28
 metadata/_edit_use_anchors_ = true
 
 [node name="Polygon2DWithOutline" type="Polygon2D" parent="."]
 position = Vector2(288, 120)
 scale = Vector2(1.29086, 1.64948)
-polygon = PackedVector2Array(-70.4957, -69.7188, -81.3412, -40.0125, -144.865, -55.775, -126.273, -27.8875, -199.092, -32.7375, -152.612, -5.45625, -222.333, 1.21249, -159.584, 18.1875, -221.558, 33.3437, -146.414, 40.6188, -180.5, 65.475, -115.427, 55.775, -127.047, 85.4812, -67.397, 69.7187, -48.8047, 102.456, -15.4935, 72.75, 30.9871, 93.3625, 41.058, 69.1125, 100.708, 83.0563, 76.6932, 52.7438, 100.708, 52.7438, 81.3412, 26.0687, 280.433, 6.66875, 79.7919, -5.45625, 90.6374, -27.2812, 56.5515, -23.6438, 67.397, -56.9875, 28.6631, -44.2563, 3.87341, -73.9625, -27.1137, -49.1062)
+polygon = PackedVector2Array(-79.0172, -58.8063, -75.1437, -33.95, -144.865, -55.775, -126.273, -27.8875, -199.092, -32.7375, -152.612, -5.45625, -222.333, 1.21249, -159.584, 18.1875, -221.558, 33.3437, -146.414, 40.6188, -180.5, 65.475, -115.427, 55.775, -127.047, 85.4812, -67.397, 69.7187, -48.8047, 102.456, -15.4935, 72.75, 30.9871, 93.3625, 41.058, 69.1125, 100.708, 83.0563, 76.6932, 52.7438, 130.921, 47.8938, 81.3412, 26.0687, 150.288, 13.3375, 79.7919, -5.45625, 113.878, -24.8563, 54.2275, -19.4, 79.0172, -44.2563, 13.1696, -32.7375, 11.6202, -158.231, -20.9163, -35.1625)
 script = ExtResource("2_blhib")
 
 [node name="TextureRect OLD" type="TextureRect" parent="."]
