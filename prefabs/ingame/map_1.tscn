@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://dcqumcm4vc2x"]
+[gd_scene load_steps=55 format=3 uid="uid://dcqumcm4vc2x"]
 
 [ext_resource type="PackedScene" uid="uid://bcxj2wu4hjq7t" path="res://prefabs/ingame/map_base.tscn" id="1_p1joc"]
 [ext_resource type="PackedScene" uid="uid://clbkj8klm4my3" path="res://prefabs/ingame/obstacle_big.tscn" id="2_dcore"]
@@ -29,11 +29,8 @@
 [ext_resource type="PackedScene" uid="uid://b2xpo7mkhnn70" path="res://prefabs/ingame/level_blocks/3) hard/h_3_1.tscn" id="27_86fd3"]
 [ext_resource type="Texture2D" uid="uid://uv15b31dadt2" path="res://sprites/bg/TreeA.png" id="29_rxrkn"]
 [ext_resource type="Texture2D" uid="uid://dv26ju5cg6l4p" path="res://sprites/bg/TreeB.png" id="30_3e0yu"]
-[ext_resource type="Texture2D" uid="uid://bwwvc3lhn1t6m" path="res://sprites/bg/BG_Top.PNG" id="30_ffs6n"]
 [ext_resource type="Material" uid="uid://bxigukpv2ox41" path="res://materials/gradient_material.tres" id="31_1r4mq"]
-[ext_resource type="Texture2D" uid="uid://dg3ew6ye7cij4" path="res://sprites/bg/BG_Bottom.PNG" id="31_d78n8"]
 [ext_resource type="Texture2D" uid="uid://d0kejmmkajrrm" path="res://sprites/bg/TreeC.png" id="31_un84x"]
-[ext_resource type="Texture2D" uid="uid://c7bwiauwee4lq" path="res://sprites/ref/POWDER_Mockup_Colored2_reference_frame.png" id="31_yq6g8"]
 [ext_resource type="Texture2D" uid="uid://c5nioqki5nm0q" path="res://sprites/bg/SnowBase.png" id="32_mleuc"]
 [ext_resource type="Texture2D" uid="uid://bu3jv5moslime" path="res://sprites/bg/RockA.png" id="33_vmgh1"]
 [ext_resource type="Texture2D" uid="uid://b087b6rl8b6lg" path="res://sprites/bg/RockB.png" id="34_rwhsr"]
@@ -66,7 +63,6 @@ y_sort_enabled = true
 world_boundary = NodePath("WorldBoundaryStaticBody2D")
 
 [node name="Obstacles" parent="." index="0"]
-visible = false
 y_sort_enabled = true
 
 [node name="LevelArea_Part1" type="Node2D" parent="Obstacles" index="0"]
@@ -370,15 +366,7 @@ position = Vector2(239700, 0)
 [node name="E1_2_VAR" parent="Obstacles/LevelArea_Part3" index="19" instance=ExtResource("7_qi00t")]
 position = Vector2(239000, 0)
 
-[node name="Trees Top OLD" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset" index="0"]
-visible = false
-modulate = Color(0.607843, 0.662745, 0.372549, 1)
-position = Vector2(0, -427)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("30_ffs6n")
-metadata/_edit_lock_ = true
-
-[node name="Top" type="Node2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset" index="1"]
+[node name="Top" type="Node2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset" index="0"]
 
 [node name="SnowBase" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Top" index="0"]
 position = Vector2(0, -372)
@@ -646,7 +634,7 @@ position = Vector2(-20.7144, -503.571)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("52_kgrpa")
 
-[node name="Floor" type="Node2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset" index="2"]
+[node name="Floor" type="Node2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset" index="1"]
 
 [node name="Floor Full Rectangle" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Floor" index="0"]
 modulate = Color(0.85098, 0.85098, 0.85098, 1)
@@ -865,22 +853,12 @@ position = Vector2(915, 192)
 scale = Vector2(0.8, 0.8)
 texture = ExtResource("52_kgrpa")
 
-[node name="Trees Bottom OLD" type="Sprite2D" parent="ParallaxForeground/ParallaxLayer Foreground/Offset" index="0"]
-visible = false
-modulate = Color(0.717647, 0.678431, 0.286275, 1)
-self_modulate = Color(1, 1, 1, 0.443137)
-z_index = 17
-position = Vector2(0, 417)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("31_d78n8")
-metadata/_edit_lock_ = true
-
-[node name="SnowBase" type="Sprite2D" parent="ParallaxForeground/ParallaxLayer Foreground/Offset" index="1"]
+[node name="SnowBase" type="Sprite2D" parent="ParallaxForeground/ParallaxLayer Foreground/Offset" index="0"]
 position = Vector2(-4, 366)
 scale = Vector2(-0.5, -0.5)
 texture = ExtResource("32_mleuc")
 
-[node name="Trees" type="Node2D" parent="ParallaxForeground/ParallaxLayer Foreground/Offset" index="2"]
+[node name="Trees" type="Node2D" parent="ParallaxForeground/ParallaxLayer Foreground/Offset" index="1"]
 position = Vector2(194, 494)
 
 [node name="TreeA" type="Sprite2D" parent="ParallaxForeground/ParallaxLayer Foreground/Offset/Trees" index="0"]
@@ -928,7 +906,7 @@ position = Vector2(679, 5)
 scale = Vector2(0.9, 0.9)
 texture = ExtResource("31_un84x")
 
-[node name="Rocks" type="Node2D" parent="ParallaxForeground/ParallaxLayer Foreground/Offset" index="3"]
+[node name="Rocks" type="Node2D" parent="ParallaxForeground/ParallaxLayer Foreground/Offset" index="2"]
 position = Vector2(0, -86)
 
 [node name="RockA" type="Sprite2D" parent="ParallaxForeground/ParallaxLayer Foreground/Offset/Rocks" index="0"]
@@ -946,7 +924,7 @@ position = Vector2(-2489, 528)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("35_hh2yk")
 
-[node name="Foliage" type="Node2D" parent="ParallaxForeground/ParallaxLayer Foreground/Offset" index="4"]
+[node name="Foliage" type="Node2D" parent="ParallaxForeground/ParallaxLayer Foreground/Offset" index="3"]
 position = Vector2(0, -86)
 
 [node name="FoliageA" type="Sprite2D" parent="ParallaxForeground/ParallaxLayer Foreground/Offset/Foliage" index="0"]
@@ -969,7 +947,7 @@ position = Vector2(768, 497)
 scale = Vector2(0.9, 0.9)
 texture = ExtResource("43_a3wov")
 
-[node name="Snow" type="Node2D" parent="ParallaxForeground/ParallaxLayer Foreground/Offset" index="5"]
+[node name="Snow" type="Node2D" parent="ParallaxForeground/ParallaxLayer Foreground/Offset" index="4"]
 position = Vector2(0, -86)
 
 [node name="SnowA" type="Sprite2D" parent="ParallaxForeground/ParallaxLayer Foreground/Offset/Snow" index="0"]
@@ -1037,11 +1015,3 @@ shape = SubResource("WorldBoundaryShape2D_4ljo6")
 [node name="WorldBoundaryBottomCollisionShape2D" type="CollisionShape2D" parent="WorldBoundaryStaticBody2D" index="1"]
 position = Vector2(0, 349)
 shape = SubResource("WorldBoundaryShape2D_421ki")
-
-[node name="Ref" type="Sprite2D" parent="." index="6"]
-visible = false
-self_modulate = Color(1, 1, 1, 0.486275)
-position = Vector2(960, 0)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("31_yq6g8")
-metadata/_edit_lock_ = true
