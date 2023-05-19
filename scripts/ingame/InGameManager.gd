@@ -9,7 +9,10 @@ extends Node
 @export var camera: Camera2D
 @export var map: Map
 
-@export var delivery_max_time: float = 180
+@export var delivery_max_time: float = 180.0
+## Min time tolerated to end delivery
+## Normally 0, we tolerate negative numbers!
+@export var delivery_timer_limit: float = 0.0
 @export var intro_duration: float = 1.0
 @export var burst_sequence_pause_duration: float = 1.0
 @export var burst_sequence_show_new_modifier_hint_duration: float = 1.0
@@ -52,8 +55,12 @@ func _ready():
 
 
 func _physics_process(delta):
+	# we use physics process for timer just because it's more accurate
+	# and will match player motion
 	if GameManager.game_phase == Enums.GamePhase.RACING and not is_time_paused:
 		racing_time_left -= delta
+		if racing_time_left < delivery_timer_limit:
+			player_character.start_failure_sequence()
 
 
 func _unhandled_input(event):

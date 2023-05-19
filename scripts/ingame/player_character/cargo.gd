@@ -88,4 +88,5 @@ func _on_powder_state_changed(previous_state: Enums.PowderState, new_state: Enum
 		powder_burst_or_consumed_count += 1
 
 	if powder_burst_or_consumed_count >= powders.size():
-		player.start_failure_sequence()
+		# no failure anymore
+		pass
