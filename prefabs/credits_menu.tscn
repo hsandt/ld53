@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://djvedm1ibu5wi"]
+[gd_scene load_steps=3 format=3 uid="uid://djvedm1ibu5wi"]
 
 [ext_resource type="Script" path="res://scripts/menu/credits_menu_controller.gd" id="1_jv2fy"]
-[ext_resource type="Texture2D" uid="uid://d0vvv3dcec8mu" path="res://sprites/white_square_1x1.png" id="2_popdk"]
 [ext_resource type="Theme" uid="uid://cls7a0y3pf2n7" path="res://themes/theme_main_menu.tres" id="5_qngxy"]
 
 [node name="CreditsMenu" type="Control" node_paths=PackedStringArray("credits_label")]
@@ -11,6 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("5_qngxy")
 script = ExtResource("1_jv2fy")
 credits_file_path = "res://data/credits.txt"
 credits_label = NodePath("MarginContainer/TextureRect/VBoxContainer/ScrollContainer/Credits RichTextLabel")
@@ -27,15 +27,12 @@ theme_override_constants/margin_top = 25
 theme_override_constants/margin_right = 25
 theme_override_constants/margin_bottom = 25
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
+[node name="TextureRect" type="PanelContainer" parent="MarginContainer"]
 self_modulate = Color(1, 1, 1, 0.866667)
 layout_mode = 2
-texture = ExtResource("2_popdk")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/TextureRect"]
 layout_mode = 2
-anchor_right = 1.0
-anchor_bottom = 1.0
 metadata/_edit_use_anchors_ = true
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/TextureRect/VBoxContainer"]
@@ -47,7 +44,6 @@ theme = ExtResource("5_qngxy")
 [node name="Credits RichTextLabel" type="RichTextLabel" parent="MarginContainer/TextureRect/VBoxContainer/ScrollContainer"]
 custom_minimum_size = Vector2(838, 900)
 layout_mode = 2
-theme = ExtResource("5_qngxy")
 bbcode_enabled = true
 text = "[center]Dynamically loaded from res://data/credits.txt
 Test [b]bold[/b][/center]

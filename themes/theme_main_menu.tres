@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=36 format=3 uid="uid://cls7a0y3pf2n7"]
+[gd_resource type="Theme" load_steps=37 format=3 uid="uid://cls7a0y3pf2n7"]
 
 [ext_resource type="Texture2D" uid="uid://b25ss5fgnurta" path="res://sprites/ui/kenney_ui-pack-rpg-expansion/PNG/buttonLong_beige.png" id="1_h3ul4"]
 [ext_resource type="Texture2D" uid="uid://dthe3po5io1h8" path="res://sprites/ui/kenney_ui-pack-rpg-expansion/PNG/buttonLong_beige_pressed.png" id="2_phk2w"]
@@ -11,7 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://43q6shrjxr5b" path="res://sprites/ui/kenney_ui-pack-rpg-expansion/PNG/iconCircle_blue.png" id="8_hen7o"]
 [ext_resource type="Texture2D" uid="uid://ffsk5p3jwuuk" path="res://sprites/ui/kenney_ui-pack-rpg-expansion/PNG/iconCircle_beige.png" id="9_pdsw5"]
 [ext_resource type="FontFile" uid="uid://dm3h7hd5bjtar" path="res://fonts/ABeeZee/ABeeZee-Regular.ttf" id="10_1fog4"]
-[ext_resource type="Texture2D" uid="uid://tftlhp71s887" path="res://sprites/ui/kenney_ui-pack-rpg-expansion/PNG/panel_beige.png" id="10_g50m8"]
+[ext_resource type="Texture2D" uid="uid://ca80gcneifgao" path="res://sprites/ui/kenney_ui-pack-rpg-expansion/PNG/panel_beigeLight.png" id="10_iqsft"]
 [ext_resource type="FontVariation" uid="uid://ca78iyj5nf7l8" path="res://themes/font_variation_risque.tres" id="13_cn27m"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eb3kf"]
@@ -128,6 +128,14 @@ expand_margin_top = 2.0
 expand_margin_right = 2.0
 expand_margin_bottom = 2.0
 
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_jotjc"]
+content_margin_left = 4.0
+content_margin_top = 0.0
+content_margin_right = 4.0
+content_margin_bottom = 0.0
+color = Color(0.373327, 0.307242, 0.116499, 1)
+thickness = 5
+
 [sub_resource type="Image" id="Image_hpuo6"]
 data = {
 "data": PackedByteArray(255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 64, 255, 255, 255, 64, 255, 255, 255, 0),
@@ -177,7 +185,7 @@ corner_radius_bottom_left = 4
 corner_detail = 6
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6n8je"]
-texture = ExtResource("10_g50m8")
+texture = ExtResource("10_iqsft")
 texture_margin_left = 7.0
 texture_margin_top = 7.0
 texture_margin_right = 7.0
@@ -228,7 +236,7 @@ content_margin_left = 4.0
 content_margin_top = 0.0
 content_margin_right = 4.0
 content_margin_bottom = 0.0
-bg_color = Color(0.443137, 0.67451, 0.431373, 0.784314)
+bg_color = Color(0.372549, 0.305882, 0.117647, 0.784314)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
@@ -282,6 +290,7 @@ CheckBox/styles/hover = SubResource("StyleBoxEmpty_bchy3")
 CheckBox/styles/hover_pressed = SubResource("StyleBoxEmpty_bchy3")
 CheckBox/styles/normal = SubResource("StyleBoxEmpty_bchy3")
 CheckBox/styles/pressed = SubResource("StyleBoxEmpty_bchy3")
+HSeparator/styles/separator = SubResource("StyleBoxLine_jotjc")
 HSlider/constants/grabber_offset = 0
 HSlider/icons/grabber = ExtResource("7_3u074")
 HSlider/icons/grabber_disabled = ExtResource("8_hen7o")
