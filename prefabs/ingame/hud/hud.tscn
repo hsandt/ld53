@@ -26,6 +26,13 @@ anchor_top = 0.0
 anchor_bottom = 0.0
 grow_vertical = 1
 
+[node name="NewModifierHint" parent="." instance=ExtResource("6_al6dn")]
+layout_mode = 1
+anchor_left = -0.00989583
+anchor_top = 0.744444
+anchor_right = 0.24375
+anchor_bottom = 1.01574
+
 [node name="PowdersPanel" parent="." instance=ExtResource("1_dbama")]
 unique_name_in_owner = true
 layout_mode = 1
@@ -33,10 +40,3 @@ layout_mode = 1
 [node name="Tutorial" parent="." instance=ExtResource("5_mllgo")]
 visible = false
 layout_mode = 1
-
-[node name="NewModifierHint" parent="." instance=ExtResource("6_al6dn")]
-layout_mode = 1
-anchor_left = -0.00989583
-anchor_top = 0.744444
-anchor_right = 0.24375
-anchor_bottom = 1.01574

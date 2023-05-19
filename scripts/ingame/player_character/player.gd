@@ -119,6 +119,8 @@ var current_base_attributes := {
 	&"progress_bar_show_big_obstacles": 0.0,
 	# Number of seconds of interval between progress bar updates
 	&"progress_bar_lag": 0.0,
+	# Alpha transparency of race timer
+	&"race_timer_visibility": 1.0,
 }
 
 var _should_move: bool = false

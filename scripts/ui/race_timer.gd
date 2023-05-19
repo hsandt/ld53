@@ -1,3 +1,4 @@
+class_name RaceTimer
 extends Control
 
 
@@ -45,3 +46,9 @@ func _process(_delta):
 
 	# Format: "(-)m:ss"
 	time_label.text = "%s%s" % [sign_prefix, abs_time_text]
+
+
+# Connected from HUD
+func on_attribute_changed(attribute_name: StringName, new_value: float):
+	if attribute_name == &"race_timer_visibility":
+		modulate.a = new_value

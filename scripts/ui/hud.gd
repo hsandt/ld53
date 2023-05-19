@@ -2,10 +2,11 @@ class_name HUD
 extends Control
 
 
-@onready var powders_panel: PowdersPanel = $PowdersPanel
+@onready var race_timer: RaceTimer = $RaceTimer
 @onready var level_progress_bar: LevelProgressBar = $LevelProgressBar
-@onready var tutorial: Tutorial = $Tutorial
 @onready var new_modifier_hint: NewModifierHint = $NewModifierHint
+@onready var powders_panel: PowdersPanel = $PowdersPanel
+@onready var tutorial: Tutorial = $Tutorial
 
 var in_game_manager: InGameManager
 
@@ -24,6 +25,8 @@ func _ready():
 		level_progress_bar.on_scrolling_center_progress_changed)
 	in_game_manager.player_character.attribute_changed.connect(
 		level_progress_bar.on_attribute_changed)
+	in_game_manager.player_character.attribute_changed.connect(
+		race_timer.on_attribute_changed)
 
 	# hide parts not used for tutorial at first
 	powders_panel.visible = false
