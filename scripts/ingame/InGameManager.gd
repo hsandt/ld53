@@ -143,10 +143,12 @@ func play_burst_sequence_async(new_modifier: Modifier):
 
 	if burst_sequence_pause_duration > 0:
 		pause_ingame_and_interactions()
-		await get_tree().create_timer(burst_sequence_pause_duration).timeout
+		# process_always: false so sequence pauses with Pause Menu
+		await get_tree().create_timer(burst_sequence_pause_duration, false).timeout
 		resume_ingame_and_interactions()
 
 func show_new_modifier_hint_async(new_modifier: Modifier):
 	hud.show_new_modifier_hint(new_modifier)
-	await get_tree().create_timer(burst_sequence_show_new_modifier_hint_duration).timeout
+	# process_always: false so sub-sequence pauses with Pause Menu
+	await get_tree().create_timer(burst_sequence_show_new_modifier_hint_duration, false).timeout
 	hud.hide_new_modifier_hint()
