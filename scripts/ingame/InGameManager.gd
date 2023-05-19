@@ -77,9 +77,10 @@ func _unhandled_input(event):
 	if OS.has_feature("debug"):
 		if event.is_action_pressed(&"cheat_take_damage"):
 			player_character.hurt(5.0)
-		elif event.is_action_pressed(&"cheat_lose_10s"):
+		# true is to allow echo to repeat warp quickly
+		elif event.is_action_pressed(&"cheat_lose_10s", true):
 			racing_time_left -= 10.0
-		elif event.is_action_pressed(&"cheat_gain_10s"):
+		elif event.is_action_pressed(&"cheat_gain_10s", true):
 			racing_time_left += 10.0
 		# first true is to allow echo to repeat warp quickly
 		# exact modifier check to avoid conflict with cheat_warp_forward2
