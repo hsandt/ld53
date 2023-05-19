@@ -8,7 +8,7 @@
 [resource]
 script = ExtResource("3_uodku")
 icon_texture = ExtResource("1_rr4np")
-description = "Powder lock probability chance +50%"
+description = "The powders are locked !"
 attribute = "individual_powder_lock_probability"
 operation = 1
 value = 0.5

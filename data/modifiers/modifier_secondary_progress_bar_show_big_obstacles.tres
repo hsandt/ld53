@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("3_ffpm1")
 icon_texture = ExtResource("1_xfwjf")
-description = "Show big obstacles"
+description = "Nice infos !"
 attribute = "progress_bar_show_big_obstacles"
 operation = 1
 value = 1.0

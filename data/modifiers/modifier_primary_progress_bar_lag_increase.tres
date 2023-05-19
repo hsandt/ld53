@@ -8,10 +8,10 @@
 [resource]
 script = ExtResource("2_jn4lh")
 icon_texture = ExtResource("1_vm5gs")
-description = "Progress bar lag"
+description = "The HUD looks weird"
 attribute = "progress_bar_lag"
 operation = 1
-value = 15.0
+value = 45.0
 lucky_modifier_probability = 0.5
 worsen = ExtResource("4_1ago4")
 lucky = ExtResource("2_hdcba")

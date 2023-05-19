@@ -8,7 +8,7 @@
 [resource]
 script = ExtResource("2_82fdx")
 icon_texture = ExtResource("1_lo56o")
-description = "Next consume lucky chance -20%"
+description = "I feel unlucky.."
 attribute = "next_consume_lucky_probability_offset"
 operation = 1
 value = -0.2

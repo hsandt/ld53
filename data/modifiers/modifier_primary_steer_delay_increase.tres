@@ -8,10 +8,10 @@
 [resource]
 script = ExtResource("3_1s76q")
 icon_texture = ExtResource("1_2sd2j")
-description = "Steer delay +0.5s"
+description = "So slippery !!"
 attribute = "steer_delay"
 operation = 1
-value = 0.5
+value = 0.4
 lucky_modifier_probability = 0.5
 worsen = ExtResource("4_rcfgh")
 lucky = ExtResource("2_fj7ck")

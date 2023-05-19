@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("2_rc61p")
 icon_texture = ExtResource("1_uuspc")
-description = "Annoying sounds +1"
+description = "Make it stoop"
 attribute = "annoying_sounds_intensity"
 operation = 1
 value = 1.0

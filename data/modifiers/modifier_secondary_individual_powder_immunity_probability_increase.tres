@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("3_uj8yj")
 icon_texture = ExtResource("1_8113l")
-description = "Each powder gets immunity chance +50%"
+description = "Looks like I may survive this"
 attribute = "individual_powder_immunity_probability"
 operation = 1
 value = 0.5

@@ -8,10 +8,10 @@
 [resource]
 script = ExtResource("2_4t4sc")
 icon_texture = ExtResource("1_e3273")
-description = "Speed +50%"
+description = "Wheeeee"
 attribute = "speed"
 operation = 1
-value = 500.0
+value = 200.0
 lucky_modifier_probability = 0.5
 worsen = ExtResource("3_g3ygq")
 lucky = ExtResource("1_r4irx")

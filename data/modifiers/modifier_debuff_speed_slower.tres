@@ -13,7 +13,7 @@ lucky_modifier_probability = 0.5
 
 [sub_resource type="Resource" id="Resource_54gr4"]
 script = ExtResource("1_646oa")
-description = "Input inverted."
+description = "What da hell ??"
 attribute = "steer_speed"
 operation = 0
 value = -1.0
@@ -22,7 +22,7 @@ lucky_modifier_probability = 0.5
 [resource]
 script = ExtResource("1_646oa")
 icon_texture = ExtResource("1_u2vjo")
-description = "Vertical speed * 0.5"
+description = "Feels kinda slow.."
 attribute = "speed"
 operation = 0
 value = 0.5

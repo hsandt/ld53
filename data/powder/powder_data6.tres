@@ -7,4 +7,4 @@
 script = ExtResource("1_07xjm")
 spark_debuff_modifier = ExtResource("2_yrcj2")
 max_stamina = 25.0
-time_before_burst = 160.0
+time_before_burst = -1.0
