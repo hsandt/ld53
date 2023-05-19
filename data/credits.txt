@@ -11,6 +11,9 @@ Programmer
 [b]r0nk[/b]
 Programmer
 
+[b]Rayan[/b]
+Programmer
+
 [b]Stephen Cromwell "IcySoap"[/b]
 Composer/Sound Designer
 
@@ -19,6 +22,11 @@ Artist & Animator
 
 [b]Noémie[/b]
 Producer & Team manager
+
+[b][font_size=45]Free assets[/font_size][/b]
+
+UI pack: RPG extension by Kenney Vleugels (www.kenney.nl) (CC0)
+Old parchment from https://publicdomainvectors.org/ (Public domain)
 
 [b][font_size=45]Fonts[/font_size][/b]
 
