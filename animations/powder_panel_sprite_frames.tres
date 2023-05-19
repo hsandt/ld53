@@ -1,9 +1,9 @@
-[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://dwrs2bhosv0et"]
+[gd_resource type="SpriteFrames" load_steps=5 format=3]
 
-[ext_resource type="Texture2D" uid="uid://jma52qmq27uo" path="res://sprites/hud/HUD_Keg_Destroyed (2).png" id="1_kyqq8"]
-[ext_resource type="Texture2D" uid="uid://biw1hy5ggcf21" path="res://sprites/hud/HUD_Keg_Idle (2).png" id="3_xbh2a"]
-[ext_resource type="Texture2D" uid="uid://cf06x6yquhmlm" path="res://sprites/hud/HUD_Keg_Spark1 (2).png" id="4_qlhhq"]
-[ext_resource type="Texture2D" uid="uid://fscrw4j8tjyx" path="res://sprites/hud/HUD_Keg_Spark2 (2).png" id="5_t5vou"]
+[ext_resource type="Texture2D" uid="uid://jma52qmq27uo" path="res://sprites/hud/HUD_Keg_Destroyed.png" id="1_kyqq8"]
+[ext_resource type="Texture2D" uid="uid://biw1hy5ggcf21" path="res://sprites/hud/HUD_Keg_Idle.png" id="3_xbh2a"]
+[ext_resource type="Texture2D" uid="uid://cf06x6yquhmlm" path="res://sprites/hud/HUD_Keg_Spark1.png" id="4_qlhhq"]
+[ext_resource type="Texture2D" uid="uid://fscrw4j8tjyx" path="res://sprites/hud/HUD_Keg_Spark2.png" id="5_t5vou"]
 
 [resource]
 animations = [{

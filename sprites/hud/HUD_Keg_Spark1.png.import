@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b6u233srvgy6t"
-path="res://.godot/imported/HUD__0004_Keg_Spark4.png-38d1a80eadd8d1cfe46cc16e576bfcc0.ctex"
+uid="uid://cf06x6yquhmlm"
+path="res://.godot/imported/HUD_Keg_Spark1.png-07612380b53080fd3119e437a711619f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/hud/HUD__0004_Keg_Spark4.png"
-dest_files=["res://.godot/imported/HUD__0004_Keg_Spark4.png-38d1a80eadd8d1cfe46cc16e576bfcc0.ctex"]
+source_file="res://sprites/hud/HUD_Keg_Spark1.png"
+dest_files=["res://.godot/imported/HUD_Keg_Spark1.png-07612380b53080fd3119e437a711619f.ctex"]
 
 [params]
 

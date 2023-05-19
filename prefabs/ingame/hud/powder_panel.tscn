@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/ui/powder_panel.gd" id="1_8dg0n"]
 [ext_resource type="PackedScene" uid="uid://b2td8kx06arn4" path="res://prefabs/ingame/fx/OneShotFX_ExplosionRegular.tscn" id="2_k3aqf"]
 [ext_resource type="PackedScene" uid="uid://b2xc5w13uidet" path="res://prefabs/ingame/fx/OneShotFX_ExplosionMedium.tscn" id="2_xlg8i"]
-[ext_resource type="SpriteFrames" uid="uid://dwrs2bhosv0et" path="res://animations/powder_panel_sprite_frames.tres" id="3_jit8g"]
+[ext_resource type="SpriteFrames" path="res://animations/powder_panel_sprite_frames.tres" id="3_jit8g"]
 [ext_resource type="Script" path="res://scripts/ui/ModifierHintPanel.gd" id="5_koyt8"]
 [ext_resource type="Texture2D" uid="uid://e5vl1gxyxgkn" path="res://sprites/buff_icons/cyan_wave.png" id="5_rqsqe"]
 [ext_resource type="Script" path="res://scripts/visual/AnimatedSprite2DBrightnessController.gd" id="6_7s2n6"]

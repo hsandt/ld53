@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://jma52qmq27uo"
-path="res://.godot/imported/HUD_Keg_Destroyed (2).png-630efa82df9eb5ae7fe3aee782aff901.ctex"
+path="res://.godot/imported/HUD_Keg_Destroyed.png-a2b37cbabc67afd1f47080a81b2cf895.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/hud/HUD_Keg_Destroyed (2).png"
-dest_files=["res://.godot/imported/HUD_Keg_Destroyed (2).png-630efa82df9eb5ae7fe3aee782aff901.ctex"]
+source_file="res://sprites/hud/HUD_Keg_Destroyed.png"
+dest_files=["res://.godot/imported/HUD_Keg_Destroyed.png-a2b37cbabc67afd1f47080a81b2cf895.ctex"]
 
 [params]
 
