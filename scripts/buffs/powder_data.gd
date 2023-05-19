@@ -7,7 +7,7 @@ extends Resource
 ## Initial and max stamina
 @export var max_stamina: float = 10.0
 
-## Time before auto-burst. If 0, it is not used.
+## Time before auto-burst. If 0 or negative, it is not used.
 @export var time_before_burst: float = 0.0
 
 #@export var name: String
