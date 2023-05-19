@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dpsojog231lgq" path="res://prefabs/ingame/obstacle.tscn" id="1_mx18n"]
 [ext_resource type="Resource" uid="uid://btijldh6l8ge8" path="res://data/obstacles/obstacle_data_big.tres" id="2_qpg8n"]
-[ext_resource type="Texture2D" uid="uid://di302u2c7b4nj" path="res://sprites/obstacles/Obstacle_Large_Log.png" id="3_umh7o"]
+[ext_resource type="Texture2D" uid="uid://cscks3v5r1ulk" path="res://sprites/obstacles/Obstacle_Large_Log_color.png" id="3_8kgsh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wsgx6"]
 resource_local_to_scene = true
@@ -16,5 +16,6 @@ shape = SubResource("RectangleShape2D_wsgx6")
 
 [node name="Obstacle" parent="." index="1"]
 modulate = Color(0.854902, 0.635294, 0.513726, 1)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_umh7o")
+position = Vector2(-8.875, 0.258926)
+scale = Vector2(0.51936, 0.51936)
+texture = ExtResource("3_8kgsh")
