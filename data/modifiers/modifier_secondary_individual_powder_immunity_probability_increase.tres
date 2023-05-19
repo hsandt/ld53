@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="Modifier" load_steps=3 format=3 uid="uid://pswttvbwsdpe"]
 
-[ext_resource type="Texture2D" uid="uid://bjkbheo2omo7l" path="res://sprites/buff_icons/magenta_star.png" id="1_1uo4l"]
+[ext_resource type="Texture2D" uid="uid://c8ev3swf6dlqu" path="res://sprites/icons/Icon_Resistance_Buff.png" id="1_8113l"]
 [ext_resource type="Script" path="res://scripts/buffs/modifier.gd" id="3_uj8yj"]
 
 [resource]
 script = ExtResource("3_uj8yj")
-icon_texture = ExtResource("1_1uo4l")
+icon_texture = ExtResource("1_8113l")
 description = "Each powder gets immunity chance +50%"
 attribute = "individual_powder_immunity_probability"
 operation = 1

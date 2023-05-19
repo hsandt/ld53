@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="Modifier" load_steps=3 format=3 uid="uid://bxb717juojctp"]
 
-[ext_resource type="Texture2D" uid="uid://bjkbheo2omo7l" path="res://sprites/buff_icons/magenta_star.png" id="1_3d70g"]
+[ext_resource type="Texture2D" uid="uid://bqdjsplqlg53s" path="res://sprites/icons/Icon_Clover_Buff.png" id="1_1dl07"]
 [ext_resource type="Script" path="res://scripts/buffs/modifier.gd" id="3_v86ri"]
 
 [resource]
 script = ExtResource("3_v86ri")
-icon_texture = ExtResource("1_3d70g")
+icon_texture = ExtResource("1_1dl07")
 description = "Next consume lucky chance +50%"
 attribute = "next_consume_lucky_probability_offset"
 operation = 1

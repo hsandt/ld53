@@ -1,13 +1,13 @@
 [gd_resource type="Resource" script_class="Modifier" load_steps=5 format=3 uid="uid://ci1jyc8243o5g"]
 
-[ext_resource type="Texture2D" uid="uid://bdtilpq8osdsl" path="res://sprites/buff_icons/gold_spiral.png" id="1_2i70k"]
+[ext_resource type="Texture2D" uid="uid://drw72gccisl2n" path="res://sprites/icons/Icon_DisplayNegative_Debuff.png" id="1_vm5gs"]
 [ext_resource type="Resource" uid="uid://dsmrm1uywu2x7" path="res://data/modifiers/modifier_secondary_progress_bar_show_big_obstacles.tres" id="2_hdcba"]
 [ext_resource type="Script" path="res://scripts/buffs/modifier.gd" id="2_jn4lh"]
 [ext_resource type="Resource" uid="uid://bav7oxkxbt0li" path="res://data/modifiers/modifier_secondary_progress_bar_visibility_0.tres" id="4_1ago4"]
 
 [resource]
 script = ExtResource("2_jn4lh")
-icon_texture = ExtResource("1_2i70k")
+icon_texture = ExtResource("1_vm5gs")
 description = "Progress bar lag"
 attribute = "progress_bar_lag"
 operation = 1

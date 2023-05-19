@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="Modifier" load_steps=3 format=3 uid="uid://dsmrm1uywu2x7"]
 
-[ext_resource type="Texture2D" uid="uid://bdtilpq8osdsl" path="res://sprites/buff_icons/gold_spiral.png" id="1_pwa74"]
+[ext_resource type="Texture2D" uid="uid://d171qouajcris" path="res://sprites/icons/Icon_DisplayNegative_Buff.png" id="1_xfwjf"]
 [ext_resource type="Script" path="res://scripts/buffs/modifier.gd" id="3_ffpm1"]
 
 [resource]
 script = ExtResource("3_ffpm1")
-icon_texture = ExtResource("1_pwa74")
+icon_texture = ExtResource("1_xfwjf")
 description = "Show big obstacles"
 attribute = "progress_bar_show_big_obstacles"
 operation = 1

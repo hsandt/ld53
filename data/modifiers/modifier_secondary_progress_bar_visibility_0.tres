@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="Modifier" load_steps=3 format=3 uid="uid://bav7oxkxbt0li"]
 
-[ext_resource type="Texture2D" uid="uid://bdtilpq8osdsl" path="res://sprites/buff_icons/gold_spiral.png" id="1_fxlqd"]
+[ext_resource type="Texture2D" uid="uid://keli66761yg" path="res://sprites/icons/Icon_DisplayNegative_SuperDebuff.png" id="1_xhcd1"]
 [ext_resource type="Script" path="res://scripts/buffs/modifier.gd" id="2_t7xua"]
 
 [resource]
 script = ExtResource("2_t7xua")
-icon_texture = ExtResource("1_fxlqd")
+icon_texture = ExtResource("1_xhcd1")
 description = "No progress bar"
 attribute = "progress_bar_visibility"
 operation = 0

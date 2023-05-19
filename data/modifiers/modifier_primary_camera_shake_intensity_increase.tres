@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="Modifier" load_steps=3 format=3 uid="uid://c5y1x1hopp4wp"]
 
-[ext_resource type="Texture2D" uid="uid://b5d35m852wwbg" path="res://sprites/buff_icons/black_eye.png" id="1_y8qad"]
+[ext_resource type="Texture2D" uid="uid://dlk20pmk1ixyb" path="res://sprites/icons/Icon_CameraEye_Debuff.png" id="1_ydkgw"]
 [ext_resource type="Script" path="res://scripts/buffs/modifier.gd" id="3_vv2sw"]
 
 [resource]
 script = ExtResource("3_vv2sw")
-icon_texture = ExtResource("1_y8qad")
+icon_texture = ExtResource("1_ydkgw")
 description = "Camera shake +10"
 attribute = "camera_shake_intensity"
 operation = 1

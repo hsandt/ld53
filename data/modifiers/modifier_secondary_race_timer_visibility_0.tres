@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="Modifier" load_steps=3 format=3 uid="uid://bcy7twdqoox0k"]
 
-[ext_resource type="Texture2D" uid="uid://bdtilpq8osdsl" path="res://sprites/buff_icons/gold_spiral.png" id="1_el0e0"]
+[ext_resource type="Texture2D" uid="uid://drw72gccisl2n" path="res://sprites/icons/Icon_DisplayNegative_Debuff.png" id="1_nxh22"]
 [ext_resource type="Script" path="res://scripts/buffs/modifier.gd" id="2_uxj5s"]
 
 [resource]
 script = ExtResource("2_uxj5s")
-icon_texture = ExtResource("1_el0e0")
+icon_texture = ExtResource("1_nxh22")
 description = "No race timer"
 attribute = "race_timer_visibility"
 operation = 0
