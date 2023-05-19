@@ -16,6 +16,10 @@ func open_pause_menu():
 	#Stops game and shows pause menu
 	get_tree().paused = true
 	show()
+
+	# Hide options menu in case it was visible in scene for testing
+	options_menu.hide()
+
 	# Make sure to emit signal before grabbing focus to let
 	# other Controls register their last focus if the want to
 	# restore it later
