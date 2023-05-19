@@ -42,9 +42,14 @@ annoying_sounds_sfx_player = NodePath("AnnoyingSoundsAudioStreamPlayer")
 fx_hit_obstacle_prefab = ExtResource("3_uc2vh")
 fx_hit_obstacle_anchor = NodePath("FXHitObstacleAnchorMarker2D")
 speech_bubble_queue_anchor = NodePath("SpeechBubbleQueueAnchorMarker2D")
+base_speed = 1500.0
+acceleration = 1500.0
+deceleration = 1500.0
+base_steer_speed = 700.0
 smoke_fx_min_unclamped_speed_ratio = 0.3
 smoke_fx_max_scale_factor = 1.2
-smoke_fx_max_speed_scale = 1.5
+smoke_fx_max_speed_scale = 1.8
+speed_lines_min_speed = 1700.0
 
 [node name="Smoothing2D" type="Node2D" parent="."]
 y_sort_enabled = true
