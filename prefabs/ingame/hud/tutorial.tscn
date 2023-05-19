@@ -1,91 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://d0tsvq2db1mtv"]
+[gd_scene load_steps=4 format=3 uid="uid://d0tsvq2db1mtv"]
 
 [ext_resource type="Script" path="res://scripts/ui/Tutorial.gd" id="1_sct8k"]
 [ext_resource type="Texture2D" uid="uid://cw48344uon1ep" path="res://sprites/hud/parchment.png" id="2_hm4k1"]
 [ext_resource type="Theme" uid="uid://b0ra3dkimgey1" path="res://themes/theme_hud_tutorial.tres" id="3_i0wax"]
-[ext_resource type="Texture2D" uid="uid://brabod0t57ver" path="res://sprites/ui/kenney_ui-pack-rpg-expansion/PNG/buttonSquare_beige.png" id="4_yrl2x"]
-[ext_resource type="Texture2D" uid="uid://dku6ynhglp0x2" path="res://sprites/ui/kenney_ui-pack-rpg-expansion/PNG/buttonSquare_beige_pressed.png" id="5_y88qe"]
-[ext_resource type="FontFile" uid="uid://fqr6oqxbrqpc" path="res://fonts/cat_franken_deutsch/CATFranken-Deutsch.ttf" id="6_wjg0m"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eb3kf"]
-texture = ExtResource("4_yrl2x")
-texture_margin_left = 7.0
-texture_margin_top = 7.0
-texture_margin_right = 7.0
-texture_margin_bottom = 11.0
-expand_margin_top = 4.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m4ws1"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(1, 1, 1, 0)
-draw_center = false
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
-expand_margin_left = 5.0
-expand_margin_top = 9.0
-expand_margin_right = 5.0
-expand_margin_bottom = 5.0
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ijywi"]
-texture = ExtResource("4_yrl2x")
-texture_margin_left = 7.0
-texture_margin_top = 7.0
-texture_margin_right = 7.0
-texture_margin_bottom = 11.0
-expand_margin_top = 4.0
-modulate_color = Color(0.745098, 0.745098, 0.745098, 1)
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uq6cb"]
-texture = ExtResource("4_yrl2x")
-texture_margin_left = 7.0
-texture_margin_top = 7.0
-texture_margin_right = 7.0
-texture_margin_bottom = 11.0
-expand_margin_top = 4.0
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8h1ak"]
-texture = ExtResource("5_y88qe")
-texture_margin_left = 7.0
-texture_margin_top = 7.0
-texture_margin_right = 7.0
-texture_margin_bottom = 7.0
-modulate_color = Color(0.745098, 0.745098, 0.745098, 1)
-
-[sub_resource type="Theme" id="Theme_b1sxw"]
-default_font = ExtResource("6_wjg0m")
-default_font_size = 40
-Button/colors/font_color = Color(0.172549, 0.137255, 0.0352941, 1)
-Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
-Button/colors/font_focus_color = Color(0.172549, 0.137255, 0.0352941, 1)
-Button/colors/font_hover_color = Color(0.172549, 0.137255, 0.0352941, 1)
-Button/colors/font_hover_pressed_color = Color(0.172549, 0.137255, 0.0352941, 1)
-Button/colors/font_outline_color = Color(1, 1, 1, 1)
-Button/colors/font_pressed_color = Color(0.172549, 0.137255, 0.0352941, 1)
-Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
-Button/colors/icon_focus_color = Color(1, 1, 1, 1)
-Button/colors/icon_hover_color = Color(1, 1, 1, 1)
-Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
-Button/colors/icon_normal_color = Color(1, 1, 1, 1)
-Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
-Button/constants/h_separation = 2
-Button/constants/outline_size = 0
-Button/styles/disabled = SubResource("StyleBoxTexture_eb3kf")
-Button/styles/focus = SubResource("StyleBoxFlat_m4ws1")
-Button/styles/hover = SubResource("StyleBoxTexture_ijywi")
-Button/styles/normal = SubResource("StyleBoxTexture_uq6cb")
-Button/styles/pressed = SubResource("StyleBoxTexture_8h1ak")
-RichTextLabel/colors/default_color = Color(0.172549, 0.137255, 0.0352941, 1)
-RichTextLabel/constants/line_separation = 0
 
 [node name="Tutorial" type="Control" node_paths=PackedStringArray("accept_button")]
 layout_mode = 3
@@ -94,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("3_i0wax")
 script = ExtResource("1_sct8k")
 accept_button = NodePath("TextureRect/AcceptButton")
 
@@ -117,7 +35,6 @@ anchor_right = 0.835269
 anchor_bottom = 0.471296
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("3_i0wax")
 text = "Holla! Thou hast been requisited by the kingdom to deliver fruit powder kegs from the P.O.W.D.E.R. factory to surrounding towns.
 
 Please undertake to bestow the kegs in an timely manner, \"boosting\" as many times as necessary."
@@ -132,7 +49,6 @@ anchor_right = 0.776135
 anchor_bottom = 0.810185
 grow_horizontal = 2
 grow_vertical = 2
-theme = SubResource("Theme_b1sxw")
 text = "Fathom"
 metadata/_edit_use_anchors_ = true
 

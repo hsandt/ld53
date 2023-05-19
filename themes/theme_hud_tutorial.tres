@@ -1,16 +1,18 @@
 [gd_resource type="Theme" load_steps=9 format=3 uid="uid://b0ra3dkimgey1"]
 
-[ext_resource type="Texture2D" uid="uid://brabod0t57ver" path="res://sprites/ui/kenney_ui-pack-rpg-expansion/PNG/buttonSquare_beige.png" id="1_gfu4c"]
-[ext_resource type="Texture2D" uid="uid://dku6ynhglp0x2" path="res://sprites/ui/kenney_ui-pack-rpg-expansion/PNG/buttonSquare_beige_pressed.png" id="2_phbjr"]
+[ext_resource type="Texture2D" uid="uid://b25ss5fgnurta" path="res://sprites/ui/kenney_ui-pack-rpg-expansion/PNG/buttonLong_beige.png" id="1_bphnd"]
+[ext_resource type="Texture2D" uid="uid://dthe3po5io1h8" path="res://sprites/ui/kenney_ui-pack-rpg-expansion/PNG/buttonLong_beige_pressed.png" id="2_byne0"]
 [ext_resource type="FontFile" uid="uid://fqr6oqxbrqpc" path="res://fonts/cat_franken_deutsch/CATFranken-Deutsch.ttf" id="3_3qjqh"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eb3kf"]
-texture = ExtResource("1_gfu4c")
+texture = ExtResource("1_bphnd")
 texture_margin_left = 7.0
 texture_margin_top = 7.0
 texture_margin_right = 7.0
 texture_margin_bottom = 11.0
 expand_margin_top = 4.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m4ws1"]
 content_margin_left = 4.0
@@ -34,28 +36,34 @@ expand_margin_right = 5.0
 expand_margin_bottom = 5.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ijywi"]
-texture = ExtResource("1_gfu4c")
+texture = ExtResource("1_bphnd")
 texture_margin_left = 7.0
 texture_margin_top = 7.0
 texture_margin_right = 7.0
 texture_margin_bottom = 11.0
 expand_margin_top = 4.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
 modulate_color = Color(0.745098, 0.745098, 0.745098, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uq6cb"]
-texture = ExtResource("1_gfu4c")
+texture = ExtResource("1_bphnd")
 texture_margin_left = 7.0
 texture_margin_top = 7.0
 texture_margin_right = 7.0
 texture_margin_bottom = 11.0
 expand_margin_top = 4.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8h1ak"]
-texture = ExtResource("2_phbjr")
+texture = ExtResource("2_byne0")
 texture_margin_left = 7.0
 texture_margin_top = 7.0
 texture_margin_right = 7.0
 texture_margin_bottom = 7.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
 modulate_color = Color(0.745098, 0.745098, 0.745098, 1)
 
 [resource]
