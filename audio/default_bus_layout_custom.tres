@@ -7,6 +7,7 @@ resource_name = "LowPassFilter"
 resource_name = "HighPassFilter"
 
 [resource]
+bus/0/volume_db = -80.0
 bus/1/name = &"SFX"
 bus/1/solo = false
 bus/1/mute = false

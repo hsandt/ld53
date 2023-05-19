@@ -12,7 +12,7 @@
 [ext_resource type="Shader" path="res://shaders/custom_sprite_shader.gdshader" id="7_ib5jx"]
 [ext_resource type="PackedScene" uid="uid://dcqumcm4vc2x" path="res://prefabs/ingame/map_1.tscn" id="8_srhq4"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_g7ikd"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_b44yf"]
 resource_local_to_scene = true
 shader = ExtResource("7_ib5jx")
 shader_parameter/brightness = 0.0
@@ -27,6 +27,7 @@ pause_menu = NodePath("../HUDCanvasLayer/PauseMenu")
 screen_fx_canvas_layer = NodePath("../ScreenFXCanvasLayer")
 player_character = NodePath("../PlayerCharacterBody2D")
 map = NodePath("../Map1")
+delivery_max_time = 250.0
 
 [node name="MusicStreamPlayer" type="AudioStreamPlayer" parent="."]
 process_mode = 3
@@ -67,9 +68,13 @@ initial_velocity_max = 3500.0
 color = Color(1, 1, 1, 0.45098)
 
 [node name="PlayerCharacterBody2D" parent="." instance=ExtResource("3_82xke")]
-material = SubResource("ShaderMaterial_g7ikd")
+material = SubResource("ShaderMaterial_b44yf")
 collision_mask = 65792
 platform_floor_layers = 4294967294
+base_speed = 1500.0
+acceleration = 1500.0
+deceleration = 1500.0
+base_steer_speed = 700.0
 smoke_fx_max_speed_scale = 1.8
 metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
@@ -79,7 +84,7 @@ unique_name_in_owner = true
 script = ExtResource("6_b3o2y")
 player_character = NodePath("../PlayerCharacterBody2D")
 map = NodePath("../Map1")
-lookahead_distance = 800.0
+lookahead_distance = 900.0
 
 [node name="Camera2D" parent="ScrollingCenter" instance=ExtResource("6_cbhgf")]
 
