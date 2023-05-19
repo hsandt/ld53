@@ -8,8 +8,8 @@
 layout_mode = 3
 anchor_left = 0.358333
 anchor_top = 0.241667
-anchor_right = 0.571875
-anchor_bottom = 0.428704
+anchor_right = 0.629167
+anchor_bottom = 0.506481
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_vf8ts")
@@ -26,23 +26,24 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_o025l")
-stretch_mode = 2
+expand_mode = 1
 
 [node name="Content" type="Control" parent="TextureRect"]
 layout_mode = 1
-anchor_left = 0.181102
-anchor_top = 0.221491
-anchor_right = 0.78937
-anchor_bottom = 0.807018
+anchor_left = 0.2475
+anchor_top = 0.274359
+anchor_right = 0.7475
+anchor_bottom = 0.733333
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="NewModifierHeaderLabel" type="Label" parent="TextureRect/Content"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
-anchor_bottom = 0.184116
+anchor_bottom = 0.388522
 grow_horizontal = 2
 grow_vertical = 2
 text = "New effect!"
@@ -52,14 +53,13 @@ metadata/_edit_use_anchors_ = true
 
 [node name="NewModifierNameLabel" type="Label" parent="TextureRect/Content"]
 layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.314607
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "[Effect Description on multiple lines]"
+text = "[Description on two lines]"
 label_settings = ExtResource("3_5ctqo")
 horizontal_alignment = 1
+vertical_alignment = 1
 autowrap_mode = 3
-metadata/_edit_use_anchors_ = true
