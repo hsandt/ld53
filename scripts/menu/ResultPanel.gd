@@ -5,11 +5,16 @@ extends Control
 @export var time_value_label: Label
 @export var powder_left_value_label: Label
 @export var powder_types_left_value_label: Label
+@export var total_score_label: Label
+@export var total_score_value_label: Label
 @export var replay_button: Button
 @export var back_to_main_menu_button: Button
 
 @export var outcome_text_success: String
 @export var outcome_text_failure: String
+
+@export var base_powder_multiplier: float = 1.0
+@export var remaining_time_multiplier: float = 1.0
 
 
 func _ready():
@@ -25,9 +30,15 @@ func _ready():
 			"Filling with fallback stats for testing")
 		powder_stats = [9, 99]
 
-	time_value_label.text = "%.1f" % GameManager.final_racing_time
-	powder_types_left_value_label.text = str(powder_stats[0])
-	powder_left_value_label.text = str(powder_stats[1])
+	time_value_label.text = RaceTimer.time_to_format(GameManager.final_racing_time)
+
+	var powder_types_left = powder_stats[0]
+	var powder_left = powder_stats[1]
+	powder_types_left_value_label.text = str(powder_types_left)
+	powder_left_value_label.text = str(powder_left)
+
+	var total_score = _compute_final_score(GameManager.final_racing_time, powder_stats)
+	total_score_value_label.text = str(total_score)
 
 	replay_button.grab_focus()
 
@@ -54,3 +65,22 @@ func _on_back_to_main_menu_button_pressed():
 	_disable_all_buttons()
 
 	GameManager.go_back_to_main_menu()
+
+
+func _compute_final_score(final_racing_time: float, powder_stats: Array) -> int:
+	if GameManager.game_phase == Enums.GamePhase.SUCCESS:
+		# Only consider floored time (like the one displayed)
+		# If late (negative time) you can even get a negative contribution
+		# and negative score!
+		var floored_time = floori(final_racing_time)
+
+	#	var powder_types_left = powder_stats[0]
+		var powder_left = powder_stats[1]
+
+		var total_score = floori(powder_left * \
+			(base_powder_multiplier + remaining_time_multiplier * floored_time))
+		return total_score
+	else:
+		# if we delivered too late, powder left doesn't matter
+		# and time left is irrelevant, score is just 0
+		return 0

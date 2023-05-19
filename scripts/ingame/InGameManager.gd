@@ -59,7 +59,10 @@ func _physics_process(delta):
 	# and will match player motion
 	if GameManager.game_phase == Enums.GamePhase.RACING and not is_time_paused:
 		racing_time_left -= delta
-		if racing_time_left < delivery_timer_limit:
+		if racing_time_left <= delivery_timer_limit:
+			# avoid time falling a bit below e.g. if limit is 0:00
+			# don't show -0:01 nor use it to compute final score
+			racing_time_left = delivery_timer_limit
 			player_character.start_failure_sequence()
 
 
@@ -87,8 +90,12 @@ func _unhandled_input(event):
 		# which should require Shift
 		elif event.is_action_pressed(&"cheat_warp_forward", true, true):
 			player_character.position += 1000.0 * Vector2.RIGHT
+			if player_character.global_position > map.goal_area.global_position:
+				player_character.global_position = map.goal_area.global_position
 		elif event.is_action_pressed(&"cheat_warp_forward2", true, true):
 			player_character.position += 10000.0 * Vector2.RIGHT
+			if player_character.global_position > map.goal_area.global_position:
+				player_character.global_position = map.goal_area.global_position
 		elif event.is_action_pressed(&"cheat_toggle_god_mode"):
 			player_character.toggle_god_mode_enabled()
 

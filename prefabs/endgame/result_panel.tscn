@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://biov5pqyvllyy"]
+[gd_scene load_steps=5 format=3 uid="uid://biov5pqyvllyy"]
 
 [ext_resource type="Script" path="res://scripts/menu/ResultPanel.gd" id="1_72j1t"]
 [ext_resource type="Texture2D" uid="uid://num53150s11" path="res://sprites/bg/result_bg.png" id="1_hijyu"]
 [ext_resource type="Theme" uid="uid://cls7a0y3pf2n7" path="res://themes/theme_main_menu.tres" id="1_j3ub4"]
+[ext_resource type="FontVariation" uid="uid://c8l3whxhmudu8" path="res://themes/font_variation_risque_bold.tres" id="4_lp7fc"]
 
-[node name="ResultPanel" type="Control" node_paths=PackedStringArray("outcome_label", "time_value_label", "powder_left_value_label", "powder_types_left_value_label", "replay_button", "back_to_main_menu_button")]
+[node name="ResultPanel" type="Control" node_paths=PackedStringArray("outcome_label", "time_value_label", "powder_left_value_label", "powder_types_left_value_label", "total_score_label", "total_score_value_label", "replay_button", "back_to_main_menu_button")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -17,6 +18,8 @@ outcome_label = NodePath("MarginContainer/Control/OutcomePanelContainer/MarginCo
 time_value_label = NodePath("MarginContainer/Control/ScorePanelContainer/MarginContainer/GridContainer/TimeValueLabel")
 powder_left_value_label = NodePath("MarginContainer/Control/ScorePanelContainer/MarginContainer/GridContainer/PowderLeftValueLabel")
 powder_types_left_value_label = NodePath("MarginContainer/Control/ScorePanelContainer/MarginContainer/GridContainer/PowderTypesLeftValueLabel")
+total_score_label = NodePath("MarginContainer/Control/ScorePanelContainer/MarginContainer/GridContainer/TotalScoreLabel")
+total_score_value_label = NodePath("MarginContainer/Control/ScorePanelContainer/MarginContainer/GridContainer/TotalScoreValueLabel")
 replay_button = NodePath("MarginContainer/Control/VBoxContainer/ReplayButton")
 back_to_main_menu_button = NodePath("MarginContainer/Control/VBoxContainer/BackToMainMenuButton")
 outcome_text_success = "Delivery succeeded!"
@@ -113,6 +116,18 @@ text = "Powder types left"
 layout_mode = 2
 theme_override_font_sizes/font_size = 60
 text = "2"
+
+[node name="TotalScoreLabel" type="Label" parent="MarginContainer/Control/ScorePanelContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_lp7fc")
+theme_override_font_sizes/font_size = 60
+text = "Total score"
+
+[node name="TotalScoreValueLabel" type="Label" parent="MarginContainer/Control/ScorePanelContainer/MarginContainer/GridContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_lp7fc")
+theme_override_font_sizes/font_size = 60
+text = "99"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Control"]
 layout_mode = 1

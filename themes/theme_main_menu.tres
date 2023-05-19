@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=35 format=3 uid="uid://cls7a0y3pf2n7"]
+[gd_resource type="Theme" load_steps=36 format=3 uid="uid://cls7a0y3pf2n7"]
 
 [ext_resource type="Texture2D" uid="uid://b25ss5fgnurta" path="res://sprites/ui/kenney_ui-pack-rpg-expansion/PNG/buttonLong_beige.png" id="1_h3ul4"]
 [ext_resource type="Texture2D" uid="uid://dthe3po5io1h8" path="res://sprites/ui/kenney_ui-pack-rpg-expansion/PNG/buttonLong_beige_pressed.png" id="2_phk2w"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://ffsk5p3jwuuk" path="res://sprites/ui/kenney_ui-pack-rpg-expansion/PNG/iconCircle_beige.png" id="9_pdsw5"]
 [ext_resource type="FontFile" uid="uid://dm3h7hd5bjtar" path="res://fonts/ABeeZee/ABeeZee-Regular.ttf" id="10_1fog4"]
 [ext_resource type="Texture2D" uid="uid://tftlhp71s887" path="res://sprites/ui/kenney_ui-pack-rpg-expansion/PNG/panel_beige.png" id="10_g50m8"]
+[ext_resource type="FontVariation" uid="uid://ca78iyj5nf7l8" path="res://themes/font_variation_risque.tres" id="13_cn27m"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eb3kf"]
 texture = ExtResource("1_h3ul4")
@@ -235,7 +236,7 @@ corner_radius_bottom_left = 10
 corner_detail = 6
 
 [resource]
-default_font = ExtResource("3_s06tw")
+default_font = ExtResource("13_cn27m")
 default_font_size = 40
 Button/colors/font_color = Color(0.172549, 0.137255, 0.0352941, 1)
 Button/colors/font_disabled_color = Color(0.172549, 0.137255, 0.0352941, 0.501961)

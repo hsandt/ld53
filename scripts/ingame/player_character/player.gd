@@ -419,7 +419,7 @@ func toggle_god_mode_enabled():
 
 
 func start_success_sequence():
-	in_game_manager.enter_sucess_phase()
+	in_game_manager.enter_success_phase()
 
 	# TODO: play the happy animation here
 

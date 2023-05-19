@@ -1,0 +1,6 @@
+[gd_resource type="FontVariation" load_steps=2 format=3 uid="uid://ca78iyj5nf7l8"]
+
+[ext_resource type="FontFile" uid="uid://irbcjinnmbd0" path="res://fonts/Risque/Risque-Regular.ttf" id="1_5qbg0"]
+
+[resource]
+base_font = ExtResource("1_5qbg0")
