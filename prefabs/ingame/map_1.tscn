@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://dcqumcm4vc2x"]
+[gd_scene load_steps=58 format=3 uid="uid://dcqumcm4vc2x"]
 
 [ext_resource type="PackedScene" uid="uid://bcxj2wu4hjq7t" path="res://prefabs/ingame/map_base.tscn" id="1_p1joc"]
 [ext_resource type="PackedScene" uid="uid://clbkj8klm4my3" path="res://prefabs/ingame/obstacle_big.tscn" id="2_dcore"]
@@ -27,9 +27,34 @@
 [ext_resource type="PackedScene" uid="uid://cgal80fcmkp72" path="res://prefabs/ingame/level_blocks/2) medium/m_2_3.tscn" id="25_aoatp"]
 [ext_resource type="PackedScene" uid="uid://blageq74jsfsd" path="res://prefabs/ingame/level_blocks/3) hard/h_1_1_var.tscn" id="26_nexul"]
 [ext_resource type="PackedScene" uid="uid://b2xpo7mkhnn70" path="res://prefabs/ingame/level_blocks/3) hard/h_3_1.tscn" id="27_86fd3"]
+[ext_resource type="Texture2D" uid="uid://uv15b31dadt2" path="res://sprites/bg/TreeA.png" id="29_rxrkn"]
+[ext_resource type="Texture2D" uid="uid://dv26ju5cg6l4p" path="res://sprites/bg/TreeB.png" id="30_3e0yu"]
 [ext_resource type="Texture2D" uid="uid://bwwvc3lhn1t6m" path="res://sprites/bg/BG_Top.PNG" id="30_ffs6n"]
 [ext_resource type="Material" uid="uid://bxigukpv2ox41" path="res://materials/gradient_material.tres" id="31_1r4mq"]
 [ext_resource type="Texture2D" uid="uid://dg3ew6ye7cij4" path="res://sprites/bg/BG_Bottom.PNG" id="31_d78n8"]
+[ext_resource type="Texture2D" uid="uid://d0kejmmkajrrm" path="res://sprites/bg/TreeC.png" id="31_un84x"]
+[ext_resource type="Texture2D" uid="uid://c7bwiauwee4lq" path="res://sprites/ref/POWDER_Mockup_Colored2_reference_frame.png" id="31_yq6g8"]
+[ext_resource type="Texture2D" uid="uid://c5nioqki5nm0q" path="res://sprites/bg/SnowBase.png" id="32_mleuc"]
+[ext_resource type="Texture2D" uid="uid://bu3jv5moslime" path="res://sprites/bg/RockA.png" id="33_vmgh1"]
+[ext_resource type="Texture2D" uid="uid://b087b6rl8b6lg" path="res://sprites/bg/RockB.png" id="34_rwhsr"]
+[ext_resource type="Texture2D" uid="uid://bcvl3fevt4vyl" path="res://sprites/bg/RockC.png" id="35_hh2yk"]
+[ext_resource type="Texture2D" uid="uid://b544aq8uw76ub" path="res://sprites/bg/RockD.png" id="36_8y2w2"]
+[ext_resource type="Texture2D" uid="uid://bs2lkea4a5rdw" path="res://sprites/bg/RockE.png" id="37_l7yht"]
+[ext_resource type="Texture2D" uid="uid://c3hvskebyq0bv" path="res://sprites/bg/RockF.png" id="38_nueg4"]
+[ext_resource type="Texture2D" uid="uid://c8q6r3pgr40dp" path="res://sprites/bg/RockG.png" id="39_i8gfx"]
+[ext_resource type="Texture2D" uid="uid://cyyjb5krpipid" path="res://sprites/bg/Foliage1.png" id="40_2qun4"]
+[ext_resource type="Texture2D" uid="uid://cc84cn8fgr8n" path="res://sprites/bg/Foliage2.png" id="41_wrq34"]
+[ext_resource type="Texture2D" uid="uid://dslauev6e0wkb" path="res://sprites/bg/Foliage3.png" id="42_1m8wx"]
+[ext_resource type="Texture2D" uid="uid://dyfdjwox84jte" path="res://sprites/bg/Foliage4.png" id="43_a3wov"]
+[ext_resource type="Texture2D" uid="uid://cay6fok1p32g1" path="res://sprites/bg/Foliage5.png" id="44_cyv78"]
+[ext_resource type="Texture2D" uid="uid://div2lmqqqqear" path="res://sprites/bg/Foliage6.png" id="45_m561i"]
+[ext_resource type="Texture2D" uid="uid://b2aknormhxanu" path="res://sprites/bg/SnowA.png" id="46_dp4no"]
+[ext_resource type="Texture2D" uid="uid://cj87v2heegelq" path="res://sprites/bg/SnowB.png" id="47_2sfcd"]
+[ext_resource type="Texture2D" uid="uid://bwwwl6x4kctop" path="res://sprites/bg/SnowC.png" id="48_o5kyc"]
+[ext_resource type="Texture2D" uid="uid://bojpv21irgoif" path="res://sprites/bg/SnowD.png" id="49_7va6a"]
+[ext_resource type="Texture2D" uid="uid://6fy2eksa10fc" path="res://sprites/bg/SnowE.png" id="50_52hpg"]
+[ext_resource type="Texture2D" uid="uid://dim7eunnm0j2w" path="res://sprites/bg/SnowF.png" id="51_elwue"]
+[ext_resource type="Texture2D" uid="uid://b0hnv8kebb4tk" path="res://sprites/bg/SnowG.png" id="52_kgrpa"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_4ljo6"]
 normal = Vector2(0, 1)
@@ -41,6 +66,7 @@ y_sort_enabled = true
 world_boundary = NodePath("WorldBoundaryStaticBody2D")
 
 [node name="Obstacles" parent="." index="0"]
+visible = false
 y_sort_enabled = true
 
 [node name="LevelArea_Part1" type="Node2D" parent="Obstacles" index="0"]
@@ -344,37 +370,719 @@ position = Vector2(239700, 0)
 [node name="E1_2_VAR" parent="Obstacles/LevelArea_Part3" index="19" instance=ExtResource("7_qi00t")]
 position = Vector2(239000, 0)
 
-[node name="Floor Full Rectangle" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset" index="0"]
-modulate = Color(0.85098, 0.85098, 0.85098, 1)
-z_index = -1
-scale = Vector2(1920, 1080)
-texture = ExtResource("5_1yeif")
-metadata/_edit_lock_ = true
-
-[node name="Floor Full Road Texture" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset" index="1"]
-z_index = -1
-metadata/_edit_lock_ = true
-
-[node name="Floor Playable Area Hint" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset" index="2"]
-modulate = Color(0.392157, 0.258824, 0.145098, 0.168627)
-scale = Vector2(1920, 700)
-texture = ExtResource("5_1yeif")
-metadata/_edit_lock_ = true
-
-[node name="Trees Top" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset" index="3"]
+[node name="Trees Top OLD" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset" index="0"]
+visible = false
 modulate = Color(0.607843, 0.662745, 0.372549, 1)
 position = Vector2(0, -427)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("30_ffs6n")
 metadata/_edit_lock_ = true
 
-[node name="Trees Bottom" type="Sprite2D" parent="ParallaxForeground/ParallaxLayer Foreground/Offset" index="0"]
+[node name="Top" type="Node2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset" index="1"]
+
+[node name="SnowBase" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Top" index="0"]
+position = Vector2(0, -372)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("32_mleuc")
+
+[node name="Trees" type="Node2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Top" index="1"]
+
+[node name="TreeA" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Top/Trees" index="0"]
+position = Vector2(-779, -483)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("29_rxrkn")
+
+[node name="TreeA2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Top/Trees" index="1"]
+position = Vector2(-348, -489)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("29_rxrkn")
+
+[node name="TreeA3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Top/Trees" index="2"]
+position = Vector2(93, -509)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("29_rxrkn")
+
+[node name="TreeA4" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Top/Trees" index="3"]
+position = Vector2(494, -503)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("29_rxrkn")
+
+[node name="TreeA5" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Top/Trees" index="4"]
+position = Vector2(884, -482)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("29_rxrkn")
+
+[node name="TreeB" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Top/Trees" index="5"]
+position = Vector2(-910, -516)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("30_3e0yu")
+
+[node name="TreeB2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Top/Trees" index="6"]
+position = Vector2(-206, -501)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("30_3e0yu")
+
+[node name="TreeB3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Top/Trees" index="7"]
+position = Vector2(236, -488)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("30_3e0yu")
+
+[node name="TreeB4" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Top/Trees" index="8"]
+position = Vector2(629, -485)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("30_3e0yu")
+
+[node name="TreeB5" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Top/Trees" index="9"]
+position = Vector2(-486, -518)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("30_3e0yu")
+
+[node name="TreeC" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Top/Trees" index="10"]
+position = Vector2(-632, -496)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("31_un84x")
+
+[node name="TreeC2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Top/Trees" index="11"]
+position = Vector2(-61, -486)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("31_un84x")
+
+[node name="TreeC3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Top/Trees" index="12"]
+position = Vector2(371, -468)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("31_un84x")
+
+[node name="TreeC4" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Top/Trees" index="13"]
+position = Vector2(759, -509)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("31_un84x")
+
+[node name="Rocks" type="Node2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Top" index="2"]
+
+[node name="RockA" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Top/Rocks" index="0"]
+position = Vector2(-689, -403)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("33_vmgh1")
+
+[node name="RockA2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Top/Rocks" index="1"]
+position = Vector2(173, -399)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("33_vmgh1")
+
+[node name="RockB" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Top/Rocks" index="2"]
+position = Vector2(-149, -391)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("34_rwhsr")
+
+[node name="RockB2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Top/Rocks" index="3"]
+position = Vector2(708, -394)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("34_rwhsr")
+
+[node name="RockC" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Top/Rocks" index="4"]
+position = Vector2(-830, -393)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("35_hh2yk")
+
+[node name="RockC2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Top/Rocks" index="5"]
+position = Vector2(-323, -387)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("35_hh2yk")
+
+[node name="RockD" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Top/Rocks" index="6"]
+position = Vector2(-465, -412)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("36_8y2w2")
+
+[node name="RockD2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Top/Rocks" index="7"]
+position = Vector2(549, -420)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("36_8y2w2")
+
+[node name="RockE" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Top/Rocks" index="8"]
+position = Vector2(-708, -461)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("37_l7yht")
+
+[node name="RockE2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Top/Rocks" index="9"]
+position = Vector2(10, -452)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("37_l7yht")
+
+[node name="RockF" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Top/Rocks" index="10"]
+position = Vector2(-565, -514)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("38_nueg4")
+
+[node name="RockF2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Top/Rocks" index="11"]
+position = Vector2(150, -485)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("38_nueg4")
+
+[node name="RockG" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Top/Rocks" index="12"]
+position = Vector2(-836, -517)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("39_i8gfx")
+
+[node name="RockG2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Top/Rocks" index="13"]
+position = Vector2(-117, -518)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("39_i8gfx")
+
+[node name="RockG3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Top/Rocks" index="14"]
+position = Vector2(434, -478)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("39_i8gfx")
+
+[node name="Foliage" type="Node2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Top" index="3"]
+
+[node name="FoliageA" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Top/Foliage" index="0"]
+position = Vector2(30, -411)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("40_2qun4")
+
+[node name="FoliageA2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Top/Foliage" index="1"]
+position = Vector2(803, -414)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("40_2qun4")
+
+[node name="FoliageB" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Top/Foliage" index="2"]
+position = Vector2(482, -398)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("41_wrq34")
+
+[node name="FoliageC" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Top/Foliage" index="3"]
+position = Vector2(-608, -389)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("42_1m8wx")
+
+[node name="FoliageC2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Top/Foliage" index="4"]
+position = Vector2(-409, -386)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("42_1m8wx")
+
+[node name="FoliageD" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Top/Foliage" index="5"]
+position = Vector2(-412, -513)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("43_a3wov")
+
+[node name="FoliageD2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Top/Foliage" index="6"]
+position = Vector2(174, -508)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("43_a3wov")
+
+[node name="FoliageE" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Top/Foliage" index="7"]
+position = Vector2(-706, -508)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("44_cyv78")
+
+[node name="FoliageE2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Top/Foliage" index="8"]
+position = Vector2(-270, -400)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("44_cyv78")
+
+[node name="FoliageF" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Top/Foliage" index="9"]
+position = Vector2(-280, -524)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("45_m561i")
+
+[node name="FoliageF2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Top/Foliage" index="10"]
+position = Vector2(418, -521)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("45_m561i")
+
+[node name="Snow" type="Node2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Top" index="4"]
+
+[node name="SnowA" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Top/Snow" index="0"]
+position = Vector2(-931, -416)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("46_dp4no")
+
+[node name="SnowA2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Top/Snow" index="1"]
+position = Vector2(-536, -407)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("46_dp4no")
+
+[node name="SnowA3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Top/Snow" index="2"]
+position = Vector2(99, -396)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("46_dp4no")
+
+[node name="SnowA4" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Top/Snow" index="3"]
+position = Vector2(310, -511)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("46_dp4no")
+
+[node name="SnowA5" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Top/Snow" index="4"]
+position = Vector2(532, -399)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("46_dp4no")
+
+[node name="SnowB" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Top/Snow" index="5"]
+position = Vector2(-425, -494)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("47_2sfcd")
+
+[node name="SnowB2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Top/Snow" index="6"]
+position = Vector2(4, -522)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("47_2sfcd")
+
+[node name="SnowB3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Top/Snow" index="7"]
+position = Vector2(568, -522)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("47_2sfcd")
+
+[node name="SnowC" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Top/Snow" index="8"]
+position = Vector2(-228, -397)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("48_o5kyc")
+
+[node name="SnowC2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Top/Snow" index="9"]
+position = Vector2(284, -401)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("48_o5kyc")
+
+[node name="SnowD" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Top/Snow" index="10"]
+position = Vector2(-567, -473)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("49_7va6a")
+
+[node name="SnowD2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Top/Snow" index="11"]
+position = Vector2(-133, -466)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("49_7va6a")
+
+[node name="SnowD3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Top/Snow" index="12"]
+position = Vector2(687, -520)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("49_7va6a")
+
+[node name="SnowE" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Top/Snow" index="13"]
+position = Vector2(-887, -399)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("50_52hpg")
+
+[node name="SnowE2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Top/Snow" index="14"]
+position = Vector2(-674, -387)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("50_52hpg")
+
+[node name="SnowE3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Top/Snow" index="15"]
+position = Vector2(-436, -430)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("50_52hpg")
+
+[node name="SnowE4" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Top/Snow" index="16"]
+position = Vector2(-279, -483)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("50_52hpg")
+
+[node name="SnowE5" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Top/Snow" index="17"]
+position = Vector2(18, -474)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("50_52hpg")
+
+[node name="SnowE6" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Top/Snow" index="18"]
+position = Vector2(449, -412)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("50_52hpg")
+
+[node name="SnowE7" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Top/Snow" index="19"]
+position = Vector2(783, -394)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("50_52hpg")
+
+[node name="SnowE8" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Top/Snow" index="20"]
+position = Vector2(571, -461)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("50_52hpg")
+
+[node name="SnowF" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Top/Snow" index="21"]
+position = Vector2(188, -531)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("51_elwue")
+
+[node name="SnowF2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Top/Snow" index="22"]
+position = Vector2(827, -520)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("51_elwue")
+
+[node name="SnowG" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Top/Snow" index="23"]
+position = Vector2(-729, -529)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("52_kgrpa")
+
+[node name="SnowG2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Top/Snow" index="24"]
+position = Vector2(-147, -528)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("52_kgrpa")
+
+[node name="SnowG3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Top/Snow" index="25"]
+position = Vector2(934, -526)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("52_kgrpa")
+
+[node name="Floor" type="Node2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset" index="2"]
+
+[node name="Floor Full Rectangle" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Floor" index="0"]
+modulate = Color(0.85098, 0.85098, 0.85098, 1)
+z_index = -1
+scale = Vector2(1920, 1080)
+texture = ExtResource("5_1yeif")
+metadata/_edit_lock_ = true
+
+[node name="Floor Full Road Texture" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Floor" index="1"]
+z_index = -1
+metadata/_edit_lock_ = true
+
+[node name="Floor Playable Area Hint" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Floor" index="2"]
+visible = false
+modulate = Color(0.392157, 0.258824, 0.145098, 0.168627)
+scale = Vector2(1920, 700)
+texture = ExtResource("5_1yeif")
+metadata/_edit_lock_ = true
+
+[node name="Foliage" type="Node2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Floor" index="3"]
+
+[node name="FoliageA" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Floor/Foliage" index="0"]
+position = Vector2(-800, -223)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("40_2qun4")
+
+[node name="FoliageA2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Floor/Foliage" index="1"]
+position = Vector2(-591, 277)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("40_2qun4")
+
+[node name="FoliageB" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Floor/Foliage" index="2"]
+position = Vector2(-747, 147)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("41_wrq34")
+
+[node name="FoliageB2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Floor/Foliage" index="3"]
+position = Vector2(15, -109)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("41_wrq34")
+
+[node name="FoliageC" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Floor/Foliage" index="4"]
+position = Vector2(-505, -99)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("42_1m8wx")
+
+[node name="FoliageC2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Floor/Foliage" index="5"]
+position = Vector2(381, -211)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("42_1m8wx")
+
+[node name="FoliageD" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Floor/Foliage" index="6"]
+position = Vector2(154, 250)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("43_a3wov")
+
+[node name="FoliageD2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Floor/Foliage" index="7"]
+position = Vector2(781, -257)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("43_a3wov")
+
+[node name="FoliageE" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Floor/Foliage" index="8"]
+position = Vector2(-215, 70)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("44_cyv78")
+
+[node name="FoliageE2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Floor/Foliage" index="9"]
+position = Vector2(919, -91)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("44_cyv78")
+
+[node name="FoliageF" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Floor/Foliage" index="10"]
+position = Vector2(-243, -220)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("45_m561i")
+
+[node name="FoliageF2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Floor/Foliage" index="11"]
+position = Vector2(754, 199)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("45_m561i")
+
+[node name="FoliageF3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Floor/Foliage" index="12"]
+position = Vector2(328, 46)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("45_m561i")
+
+[node name="Snow" type="Node2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Floor" index="4"]
+
+[node name="SnowA" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Floor/Snow" index="0"]
+position = Vector2(-654, -151)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("46_dp4no")
+
+[node name="SnowA2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Floor/Snow" index="1"]
+position = Vector2(176, -71)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("46_dp4no")
+
+[node name="SnowA3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Floor/Snow" index="2"]
+position = Vector2(-428, 113)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("46_dp4no")
+
+[node name="SnowA4" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Floor/Snow" index="3"]
+position = Vector2(409, 139)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("46_dp4no")
+
+[node name="SnowA5" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Floor/Snow" index="4"]
+position = Vector2(547, -150)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("46_dp4no")
+
+[node name="SnowB" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Floor/Snow" index="5"]
+position = Vector2(-584, 68)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("47_2sfcd")
+
+[node name="SnowB2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Floor/Snow" index="6"]
+position = Vector2(-104, 193)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("47_2sfcd")
+
+[node name="SnowB3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Floor/Snow" index="7"]
+position = Vector2(-1, -230)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("47_2sfcd")
+
+[node name="SnowC" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Floor/Snow" index="8"]
+position = Vector2(572, 226)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("48_o5kyc")
+
+[node name="SnowC2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Floor/Snow" index="9"]
+position = Vector2(-435, -247)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("48_o5kyc")
+
+[node name="SnowD" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Floor/Snow" index="10"]
+position = Vector2(-847, -37)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("49_7va6a")
+
+[node name="SnowD2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Floor/Snow" index="11"]
+position = Vector2(-322, 240)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("49_7va6a")
+
+[node name="SnowD3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Floor/Snow" index="12"]
+position = Vector2(530, 69)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("49_7va6a")
+
+[node name="SnowE" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Floor/Snow" index="13"]
+position = Vector2(839, 49)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("50_52hpg")
+
+[node name="SnowE2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Floor/Snow" index="14"]
+position = Vector2(682, 125)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("50_52hpg")
+
+[node name="SnowE3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Floor/Snow" index="15"]
+position = Vector2(81, 121)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("50_52hpg")
+
+[node name="SnowE4" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Floor/Snow" index="16"]
+position = Vector2(-275, -87)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("50_52hpg")
+
+[node name="SnowE5" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Floor/Snow" index="17"]
+position = Vector2(-673, -285)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("50_52hpg")
+
+[node name="SnowE6" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Floor/Snow" index="18"]
+position = Vector2(-859, 223)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("50_52hpg")
+
+[node name="SnowE7" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Floor/Snow" index="19"]
+position = Vector2(-52, 259)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("50_52hpg")
+
+[node name="SnowE8" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Floor/Snow" index="20"]
+position = Vector2(653, -101)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("50_52hpg")
+
+[node name="SnowF" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Floor/Snow" index="21"]
+position = Vector2(-125, -65)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("51_elwue")
+
+[node name="SnowF2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Floor/Snow" index="22"]
+position = Vector2(223, -199)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("51_elwue")
+
+[node name="SnowG" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Floor/Snow" index="23"]
+position = Vector2(246, 192)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("52_kgrpa")
+
+[node name="SnowG2" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Floor/Snow" index="24"]
+position = Vector2(403, 263)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("52_kgrpa")
+
+[node name="SnowG3" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Floor/Snow" index="25"]
+position = Vector2(915, 192)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("52_kgrpa")
+
+[node name="Trees Bottom OLD" type="Sprite2D" parent="ParallaxForeground/ParallaxLayer Foreground/Offset" index="0"]
+visible = false
 modulate = Color(0.717647, 0.678431, 0.286275, 1)
+self_modulate = Color(1, 1, 1, 0.443137)
 z_index = 17
 position = Vector2(0, 417)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("31_d78n8")
 metadata/_edit_lock_ = true
+
+[node name="SnowBase" type="Sprite2D" parent="ParallaxForeground/ParallaxLayer Foreground/Offset" index="1"]
+position = Vector2(-4, 366)
+scale = Vector2(-0.5, -0.5)
+texture = ExtResource("32_mleuc")
+
+[node name="Trees" type="Node2D" parent="ParallaxForeground/ParallaxLayer Foreground/Offset" index="2"]
+position = Vector2(194, 1216)
+
+[node name="TreeA" type="Sprite2D" parent="ParallaxForeground/ParallaxLayer Foreground/Offset/Trees" index="0"]
+position = Vector2(-848, -802.65)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("29_rxrkn")
+
+[node name="TreeA2" type="Sprite2D" parent="ParallaxForeground/ParallaxLayer Foreground/Offset/Trees" index="1"]
+position = Vector2(-206, -791)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("29_rxrkn")
+
+[node name="TreeA3" type="Sprite2D" parent="ParallaxForeground/ParallaxLayer Foreground/Offset/Trees" index="2"]
+position = Vector2(467, -795)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("29_rxrkn")
+
+[node name="TreeB" type="Sprite2D" parent="ParallaxForeground/ParallaxLayer Foreground/Offset/Trees" index="3"]
+position = Vector2(-1053, -768.65)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("30_3e0yu")
+
+[node name="TreeB3" type="Sprite2D" parent="ParallaxForeground/ParallaxLayer Foreground/Offset/Trees" index="4"]
+position = Vector2(245.6, -798.65)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("30_3e0yu")
+
+[node name="TreeB2" type="Sprite2D" parent="ParallaxForeground/ParallaxLayer Foreground/Offset/Trees" index="5"]
+position = Vector2(-419, -767)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("30_3e0yu")
+
+[node name="TreeC" type="Sprite2D" parent="ParallaxForeground/ParallaxLayer Foreground/Offset/Trees" index="6"]
+position = Vector2(-634, -793)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("31_un84x")
+
+[node name="TreeC2" type="Sprite2D" parent="ParallaxForeground/ParallaxLayer Foreground/Offset/Trees" index="7"]
+position = Vector2(17.5999, -799.65)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("31_un84x")
+
+[node name="TreeC3" type="Sprite2D" parent="ParallaxForeground/ParallaxLayer Foreground/Offset/Trees" index="8"]
+position = Vector2(679, -779)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("31_un84x")
+
+[node name="Rocks" type="Node2D" parent="ParallaxForeground/ParallaxLayer Foreground/Offset" index="3"]
+position = Vector2(0, -86)
+
+[node name="RockA" type="Sprite2D" parent="ParallaxForeground/ParallaxLayer Foreground/Offset/Rocks" index="0"]
+position = Vector2(554, 492)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("33_vmgh1")
+
+[node name="RockB" type="Sprite2D" parent="ParallaxForeground/ParallaxLayer Foreground/Offset/Rocks" index="1"]
+position = Vector2(101, 523)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("34_rwhsr")
+
+[node name="RockC" type="Sprite2D" parent="ParallaxForeground/ParallaxLayer Foreground/Offset/Rocks" index="2"]
+position = Vector2(-2489, 528)
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("35_hh2yk")
+
+[node name="Foliage" type="Node2D" parent="ParallaxForeground/ParallaxLayer Foreground/Offset" index="4"]
+position = Vector2(0, -86)
+
+[node name="FoliageA" type="Sprite2D" parent="ParallaxForeground/ParallaxLayer Foreground/Offset/Foliage" index="0"]
+position = Vector2(-124, 504)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("40_2qun4")
+
+[node name="FoliageB" type="Sprite2D" parent="ParallaxForeground/ParallaxLayer Foreground/Offset/Foliage" index="1"]
+position = Vector2(-764, 479)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("41_wrq34")
+
+[node name="FoliageC" type="Sprite2D" parent="ParallaxForeground/ParallaxLayer Foreground/Offset/Foliage" index="2"]
+position = Vector2(-331, 493)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("42_1m8wx")
+
+[node name="FoliageD" type="Sprite2D" parent="ParallaxForeground/ParallaxLayer Foreground/Offset/Foliage" index="3"]
+position = Vector2(768, 497)
+scale = Vector2(0.9, 0.9)
+texture = ExtResource("43_a3wov")
+
+[node name="Snow" type="Node2D" parent="ParallaxForeground/ParallaxLayer Foreground/Offset" index="5"]
+position = Vector2(0, -86)
+
+[node name="SnowA" type="Sprite2D" parent="ParallaxForeground/ParallaxLayer Foreground/Offset/Snow" index="0"]
+position = Vector2(-543.2, 482.8)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("46_dp4no")
+
+[node name="SnowB" type="Sprite2D" parent="ParallaxForeground/ParallaxLayer Foreground/Offset/Snow" index="1"]
+position = Vector2(98.8, 486.8)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("47_2sfcd")
+
+[node name="SnowC" type="Sprite2D" parent="ParallaxForeground/ParallaxLayer Foreground/Offset/Snow" index="2"]
+position = Vector2(558.8, 463.8)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("48_o5kyc")
+
+[node name="SnowD" type="Sprite2D" parent="ParallaxForeground/ParallaxLayer Foreground/Offset/Snow" index="3"]
+position = Vector2(327.8, 532.8)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("49_7va6a")
+
+[node name="SnowE" type="Sprite2D" parent="ParallaxForeground/ParallaxLayer Foreground/Offset/Snow" index="4"]
+position = Vector2(-744.2, 531.8)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("50_52hpg")
+
+[node name="SnowG2" type="Sprite2D" parent="ParallaxForeground/ParallaxLayer Foreground/Offset/Snow" index="5"]
+position = Vector2(-147.2, -528.2)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("52_kgrpa")
+
+[node name="SnowG3" type="Sprite2D" parent="ParallaxForeground/ParallaxLayer Foreground/Offset/Snow" index="6"]
+position = Vector2(933.8, -526.2)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("52_kgrpa")
 
 [node name="GoalArea2D" parent="." index="3"]
 position = Vector2(240000, 0)
@@ -394,6 +1102,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("5_1yeif")
+metadata/_edit_lock_ = true
 
 [node name="WorldBoundaryStaticBody2D" type="StaticBody2D" parent="." index="5"]
 collision_layer = 256
@@ -405,3 +1114,11 @@ shape = SubResource("WorldBoundaryShape2D_4ljo6")
 [node name="WorldBoundaryBottomCollisionShape2D" type="CollisionShape2D" parent="WorldBoundaryStaticBody2D" index="1"]
 position = Vector2(0, 349)
 shape = SubResource("WorldBoundaryShape2D_421ki")
+
+[node name="Ref" type="Sprite2D" parent="." index="6"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.486275)
+position = Vector2(960, 0)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("31_yq6g8")
+metadata/_edit_lock_ = true
