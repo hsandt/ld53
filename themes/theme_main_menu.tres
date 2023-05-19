@@ -7,9 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://c7av020whpgd4" path="res://sprites/ui/kenney_ui-pack-rpg-expansion/Customized/checkbox_black_on_beige_checked_disabled.png" id="4_dg8jo"]
 [ext_resource type="Texture2D" uid="uid://cl8uhpnn5nk01" path="res://sprites/ui/kenney_ui-pack-rpg-expansion/Customized/checkbox_black_on_beige_unchecked.png" id="5_m3wwu"]
 [ext_resource type="Texture2D" uid="uid://cokuobqq7fv62" path="res://sprites/ui/kenney_ui-pack-rpg-expansion/Customized/checkbox_black_on_beige_unchecked_disabled.png" id="6_4u52o"]
-[ext_resource type="Texture2D" uid="uid://dgxolhc3pd13c" path="res://sprites/ui/kenney_ui-pack-rpg-expansion/PNG/iconCircle_grey.png" id="7_3u074"]
-[ext_resource type="Texture2D" uid="uid://43q6shrjxr5b" path="res://sprites/ui/kenney_ui-pack-rpg-expansion/PNG/iconCircle_blue.png" id="8_hen7o"]
-[ext_resource type="Texture2D" uid="uid://ffsk5p3jwuuk" path="res://sprites/ui/kenney_ui-pack-rpg-expansion/PNG/iconCircle_beige.png" id="9_pdsw5"]
+[ext_resource type="Texture2D" uid="uid://crhni7p5l0nur" path="res://sprites/ui/kenney_ui-pack-rpg-expansion/PNG/arrowBrown_right.png" id="7_3eeup"]
+[ext_resource type="Texture2D" uid="uid://bdees0g1cd78f" path="res://sprites/ui/kenney_ui-pack-rpg-expansion/PNG/arrowSilver_right.png" id="8_l5a4m"]
+[ext_resource type="Texture2D" uid="uid://44crypkn8ffe" path="res://sprites/ui/kenney_ui-pack-rpg-expansion/PNG/arrowBlue_right.png" id="9_ebssk"]
 [ext_resource type="FontFile" uid="uid://dm3h7hd5bjtar" path="res://fonts/ABeeZee/ABeeZee-Regular.ttf" id="10_1fog4"]
 [ext_resource type="Texture2D" uid="uid://ca80gcneifgao" path="res://sprites/ui/kenney_ui-pack-rpg-expansion/PNG/panel_beigeLight.png" id="10_iqsft"]
 [ext_resource type="FontVariation" uid="uid://ca78iyj5nf7l8" path="res://themes/font_variation_risque.tres" id="13_cn27m"]
@@ -292,9 +292,9 @@ CheckBox/styles/normal = SubResource("StyleBoxEmpty_bchy3")
 CheckBox/styles/pressed = SubResource("StyleBoxEmpty_bchy3")
 HSeparator/styles/separator = SubResource("StyleBoxLine_jotjc")
 HSlider/constants/grabber_offset = 0
-HSlider/icons/grabber = ExtResource("7_3u074")
-HSlider/icons/grabber_disabled = ExtResource("8_hen7o")
-HSlider/icons/grabber_highlight = ExtResource("9_pdsw5")
+HSlider/icons/grabber = ExtResource("9_ebssk")
+HSlider/icons/grabber_disabled = ExtResource("8_l5a4m")
+HSlider/icons/grabber_highlight = ExtResource("7_3eeup")
 HSlider/icons/tick = SubResource("ImageTexture_33ojb")
 HSlider/styles/grabber_area = SubResource("StyleBoxFlat_qaxrc")
 HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_tvh1m")
