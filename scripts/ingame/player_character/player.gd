@@ -27,6 +27,7 @@ signal boost_level_changed(new_level: int)
 @export var fx_hit_obstacle_prefab: PackedScene
 
 @export var fx_hit_obstacle_anchor: Marker2D
+@export var speech_bubble_queue_anchor: Marker2D
 
 @export var base_speed = 1000.0
 @export var boost_max_level = 5
