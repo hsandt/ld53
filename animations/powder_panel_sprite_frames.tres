@@ -1,15 +1,15 @@
 [gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://dwrs2bhosv0et"]
 
-[ext_resource type="Texture2D" uid="uid://b1bdlsppvrrqx" path="res://sprites/hud/HUD__0007_Keg_Destroyed.png" id="1_s1074"]
-[ext_resource type="Texture2D" uid="uid://fkkus6hs8i7f" path="res://sprites/hud/HUD__0000_Keg_Idle.png" id="2_fgn3c"]
-[ext_resource type="Texture2D" uid="uid://crbtpwi8b027t" path="res://sprites/hud/HUD__0001_Keg_Spark1.png" id="3_tq8bf"]
-[ext_resource type="Texture2D" uid="uid://b6u233srvgy6t" path="res://sprites/hud/HUD__0004_Keg_Spark4.png" id="4_kolce"]
+[ext_resource type="Texture2D" uid="uid://jma52qmq27uo" path="res://sprites/hud/HUD_Keg_Destroyed (2).png" id="1_kyqq8"]
+[ext_resource type="Texture2D" uid="uid://biw1hy5ggcf21" path="res://sprites/hud/HUD_Keg_Idle (2).png" id="3_xbh2a"]
+[ext_resource type="Texture2D" uid="uid://cf06x6yquhmlm" path="res://sprites/hud/HUD_Keg_Spark1 (2).png" id="4_qlhhq"]
+[ext_resource type="Texture2D" uid="uid://fscrw4j8tjyx" path="res://sprites/hud/HUD_Keg_Spark2 (2).png" id="5_t5vou"]
 
 [resource]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_s1074")
+"texture": ExtResource("1_kyqq8")
 }],
 "loop": true,
 "name": &"consumed",
@@ -17,7 +17,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_fgn3c")
+"texture": ExtResource("3_xbh2a")
 }],
 "loop": true,
 "name": &"idle",
@@ -25,10 +25,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_tq8bf")
+"texture": ExtResource("4_qlhhq")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_kolce")
+"texture": ExtResource("5_t5vou")
 }],
 "loop": true,
 "name": &"spark",
@@ -36,10 +36,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_tq8bf")
+"texture": ExtResource("4_qlhhq")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_kolce")
+"texture": ExtResource("5_t5vou")
 }],
 "loop": true,
 "name": &"spark_locked",

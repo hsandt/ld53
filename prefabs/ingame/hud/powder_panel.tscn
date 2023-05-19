@@ -4,11 +4,11 @@
 [ext_resource type="PackedScene" uid="uid://b2td8kx06arn4" path="res://prefabs/ingame/fx/OneShotFX_ExplosionRegular.tscn" id="2_k3aqf"]
 [ext_resource type="PackedScene" uid="uid://b2xc5w13uidet" path="res://prefabs/ingame/fx/OneShotFX_ExplosionMedium.tscn" id="2_xlg8i"]
 [ext_resource type="SpriteFrames" uid="uid://dwrs2bhosv0et" path="res://animations/powder_panel_sprite_frames.tres" id="3_jit8g"]
-[ext_resource type="Texture2D" uid="uid://be6jblj8fqwbt" path="res://sprites/icons/icon_lock.png" id="5_7u32h"]
 [ext_resource type="Script" path="res://scripts/ui/ModifierHintPanel.gd" id="5_koyt8"]
 [ext_resource type="Texture2D" uid="uid://e5vl1gxyxgkn" path="res://sprites/buff_icons/cyan_wave.png" id="5_rqsqe"]
 [ext_resource type="Script" path="res://scripts/visual/AnimatedSprite2DBrightnessController.gd" id="6_7s2n6"]
 [ext_resource type="LabelSettings" uid="uid://djnk27qxxh71p" path="res://themes/label_settings_hud_modifier_hint.tres" id="6_iyjnn"]
+[ext_resource type="Texture2D" uid="uid://paa0t2hn1sgv" path="res://sprites/hud/HUD_KegLock_Cropped.png" id="8_tgidq"]
 
 [node name="PowderPanel" type="Panel" node_paths=PackedStringArray("spark_explosion_anchor", "consume_explosion_anchor", "animated_sprite", "modifier_hint_panel")]
 self_modulate = Color(1, 1, 1, 0)
@@ -22,9 +22,9 @@ animated_sprite = NodePath("AnimatedSprite2DBrightnessController")
 modifier_hint_panel = NodePath("ModifierHintPanel")
 
 [node name="AnimatedSprite2DBrightnessController" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("brighten_timer")]
-position = Vector2(169, 43)
+position = Vector2(158, 57)
 sprite_frames = ExtResource("3_jit8g")
-animation = &"spark_locked"
+animation = &"idle"
 autoplay = "idle"
 script = ExtResource("6_7s2n6")
 brighten_timer = NodePath("../BrightenTimer")
@@ -74,18 +74,16 @@ grow_horizontal = 2
 texture = ExtResource("5_rqsqe")
 
 [node name="IconLockTextureRect" type="TextureRect" parent="ModifierHintPanel"]
-self_modulate = Color(0.960784, 0.796078, 0.305882, 1)
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -152.5
-offset_top = -39.0
-offset_right = -81.5001
-offset_bottom = 67.0
+offset_left = 29.4999
+offset_top = -106.0
+offset_right = 152.5
+offset_bottom = 42.0
 grow_horizontal = 2
-texture = ExtResource("5_7u32h")
-expand_mode = 1
+texture = ExtResource("8_tgidq")
 
 [node name="HintLabel" type="Label" parent="ModifierHintPanel"]
 layout_mode = 1
