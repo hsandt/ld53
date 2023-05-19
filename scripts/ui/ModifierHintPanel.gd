@@ -12,9 +12,19 @@ func _ready():
 	assert(hint != null, "[ModifierHintPanel] hint is not set on %s" % get_path())
 
 
-func fill_content(modifier: Modifier, state: Enums.PowderState):
+func show_icon(modifier: Modifier):
+	icon.visible = true
 	icon.texture = modifier.icon_texture
+
+func hide_icon():
+	icon.visible = false
+
+func show_hint_text(modifier: Modifier):
+	hint.visible = true
 	hint.text = modifier.description
 
-	var locked = state == Enums.PowderState.SPARK_LOCKED
-	icon_lock.visible = locked
+func hide_hint_text():
+	hint.visible = false
+
+func set_lock_visible(visibility: bool):
+	icon_lock.visible = visibility

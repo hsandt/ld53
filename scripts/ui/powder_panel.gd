@@ -9,6 +9,7 @@ extends Panel
 @export var consume_explosion_anchor: Marker2D
 
 @export var animated_sprite: AnimatedSprite2D
+@export var icon_texture_rect: ModifierHintPanel
 @export var modifier_hint_panel: ModifierHintPanel
 
 @onready var button: Button = %Button
@@ -34,6 +35,9 @@ func _ready():
 	assert(animated_sprite, "animated_sprite is not set on %s" % get_path())
 	assert(modifier_hint_panel != null, "[Powder] modifier_hint_panel is not set on %s" % get_path())
 
+	# Wait for powder registration to show future icon
+	hide_modifier_icon()
+	hide_lock()
 	hide_modifier_hint_panel()
 
 	# Start disabled until state changes
@@ -48,15 +52,23 @@ func disable_interactions():
 func register_observed_powder(powder: Powder):
 	observed_powder = powder
 
+	# Start showing just future modifier icon to give an idea to player what
+	# may happen on Spark
+	# Normally we only register when IDLE, else call below will assert
+	show_future_modifier_icon()
+
 func on_powder_state_changed(_previous_state: Enums.PowderState, new_state: Enums.PowderState):
 	animated_sprite.animation = powder_state_to_animation[new_state]
 
 	if new_state == Enums.PowderState.SPARK:
 		_play_spark_explosion_feedback()
+		show_current_modifier_icon()
 		show_modifier_hint_panel()
 		enable_interactions()
 	elif new_state == Enums.PowderState.SPARK_LOCKED:
 		# Locked, so keep button disabled
+		show_current_modifier_icon()
+		show_lock()
 		show_modifier_hint_panel()
 	elif new_state == Enums.PowderState.CONSUMED:
 		# After consume, cannot press button anymore
@@ -68,8 +80,10 @@ func on_powder_state_changed(_previous_state: Enums.PowderState, new_state: Enum
 		if observed_powder.current_modifier != null:
 			# Hint panel should already be shown from SPARK state, but call
 			# this again to update content
+			show_current_modifier_icon()
 			show_modifier_hint_panel()
 		else:
+			hide_modifier_icon()
 			hide_modifier_hint_panel()
 
 func _on_button_pressed():
@@ -99,13 +113,37 @@ func _play_consume_explosion_feedback():
 	consume_explosion.global_position = consume_explosion_anchor.global_position
 
 
+func show_future_modifier_icon():
+	assert(observed_powder.state == Enums.PowderState.IDLE,
+		"[PowderPanel] show_future_modifier_icon: future modifier is only for IDLE state")
+	modifier_hint_panel.show_icon(observed_powder.data.spark_debuff_modifier)
+
+
+func show_current_modifier_icon():
+	assert(observed_powder.state != Enums.PowderState.IDLE,
+		"[PowderPanel] show_current_modifier_icon: future modifier is not for IDLE state")
+	modifier_hint_panel.show_icon(observed_powder.current_modifier)
+
+
+func hide_modifier_icon():
+	modifier_hint_panel.hide_icon()
+
+
+func show_lock():
+	modifier_hint_panel.set_lock_visible(true)
+
+
+func hide_lock():
+	modifier_hint_panel.set_lock_visible(false)
+
+
 func show_modifier_hint_panel():
 	assert(observed_powder.current_modifier != null,
 		"[PowderPanel] show_modifier_hint_panel: no current modifier on observed_powder %s" %
 		observed_powder.get_path())
 
 	modifier_hint_panel.visible = true
-	modifier_hint_panel.fill_content(observed_powder.current_modifier, observed_powder.state)
+	modifier_hint_panel.show_hint_text(observed_powder.current_modifier)
 
 
 func hide_modifier_hint_panel():
