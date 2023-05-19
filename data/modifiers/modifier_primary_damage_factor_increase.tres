@@ -8,7 +8,7 @@
 [resource]
 script = ExtResource("2_lgh40")
 icon_texture = ExtResource("1_ydocn")
-description = "Damage +50%"
+description = "Next hit gonna hurt"
 attribute = "damage_factor"
 operation = 1
 value = 0.5

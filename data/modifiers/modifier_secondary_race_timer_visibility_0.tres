@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("2_uxj5s")
 icon_texture = ExtResource("1_nxh22")
-description = "No race timer"
+description = "Where did the timer go ??"
 attribute = "race_timer_visibility"
 operation = 0
 value = 0.0

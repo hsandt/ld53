@@ -8,7 +8,7 @@
 [resource]
 script = ExtResource("2_4t4sc")
 icon_texture = ExtResource("1_e3273")
-description = "Speed +50%"
+description = "Wheeeee"
 attribute = "speed"
 operation = 1
 value = 500.0

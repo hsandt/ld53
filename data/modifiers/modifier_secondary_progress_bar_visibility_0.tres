@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("2_t7xua")
 icon_texture = ExtResource("1_xhcd1")
-description = "No progress bar"
+description = "Where did the bar go ??"
 attribute = "progress_bar_visibility"
 operation = 0
 value = 0.0
