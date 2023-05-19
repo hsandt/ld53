@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bin6b2ypkka84"]
+[gd_scene load_steps=9 format=3 uid="uid://bin6b2ypkka84"]
 
 [ext_resource type="Script" path="res://addons/EasyMenus/Scripts/options_menu_controller.gd" id="1_fg5gl"]
 [ext_resource type="Script" path="res://addons/EasyMenus/Scripts/follow_focus_center.gd" id="2_mgdso"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://dyfwp0vhgfjd7" path="res://addons/EasyMenus/Nodes/slider_w_labels.tscn" id="3_nstew"]
 [ext_resource type="Script" path="res://addons/EasyMenus/Scripts/option_button_input_propagator.gd" id="4_4kub1"]
 [ext_resource type="PackedScene" uid="uid://cqniig2ks0xs2" path="res://addons/EasyMenus/Nodes/gamepad_closable.tscn" id="5_nl5i3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tg31v"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x77mt"]
 
@@ -43,7 +45,7 @@ transition_time = 0.15
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/TextureRect/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = 15
+theme_override_constants/separation = 5
 
 [node name="OptionsTitle" type="Label" parent="MarginContainer/TextureRect/ScrollContainer/VBoxContainer"]
 layout_mode = 2
@@ -60,6 +62,7 @@ theme_override_constants/separation = 10
 layout_mode = 2
 theme_override_constants/margin_left = 100
 theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 10
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/TextureRect/ScrollContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
@@ -89,8 +92,10 @@ max_value = 1.0
 step = 0.1
 
 [node name="HSeparator2" type="HSeparator" parent="MarginContainer/TextureRect/ScrollContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
-theme_override_constants/separation = 10
+theme_override_constants/separation = 5
+theme_override_styles/separator = SubResource("StyleBoxEmpty_tg31v")
 
 [node name="FullscreenCheckButton OLD" type="CheckButton" parent="MarginContainer/TextureRect/ScrollContainer/VBoxContainer"]
 unique_name_in_owner = true
@@ -224,7 +229,7 @@ script = ExtResource("4_4kub1")
 
 [node name="HSeparator3" type="HSeparator" parent="MarginContainer/TextureRect/ScrollContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 50
+theme_override_constants/separation = 20
 theme_override_styles/separator = SubResource("StyleBoxEmpty_x77mt")
 
 [node name="BackButton" type="Button" parent="MarginContainer/TextureRect/ScrollContainer/VBoxContainer"]
