@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("3_vv2sw")
 icon_texture = ExtResource("1_ydkgw")
-description = "I feel sick.."
+description = "I feel sick..."
 attribute = "camera_shake_intensity"
 operation = 1
 value = 10.0

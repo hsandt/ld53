@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("2_2xv7a")
 icon_texture = ExtResource("1_copfn")
-description = "Next hig gonna REALLY hurt"
+description = "Next hit gonna REALLY hurt"
 attribute = "damage_factor"
 operation = 1
 value = 1.0

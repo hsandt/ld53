@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_5bno7")
 icon_texture = ExtResource("1_w7qvr")
-description = "What da hell ??"
+description = "What da hell??"
 attribute = "steer_speed"
 operation = 0
 value = -1.0

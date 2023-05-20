@@ -8,7 +8,7 @@
 [resource]
 script = ExtResource("2_trw1b")
 icon_texture = ExtResource("1_2pty8")
-description = "So slippery !!"
+description = "So slippery!!"
 attribute = "steer_decel_delay"
 operation = 1
 value = 0.4

@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("2_hw4r0")
 icon_texture = ExtResource("1_dotcx")
-description = "Try to hit me now !"
+description = "Try to hit me now!"
 attribute = "damage_factor"
 operation = 1
 value = -0.5

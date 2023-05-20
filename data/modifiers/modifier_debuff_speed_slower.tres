@@ -22,7 +22,7 @@ lucky_modifier_probability = 0.5
 [resource]
 script = ExtResource("1_646oa")
 icon_texture = ExtResource("1_u2vjo")
-description = "Feels kinda slow.."
+description = "Feels kinda slow..."
 attribute = "speed"
 operation = 0
 value = 0.5

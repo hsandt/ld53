@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("3_v86ri")
 icon_texture = ExtResource("1_1dl07")
-description = "I feel very LUCKY !"
+description = "I feel very LUCKY!"
 attribute = "next_consume_lucky_probability_offset"
 operation = 1
 value = 0.5
