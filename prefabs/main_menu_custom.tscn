@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/menu/main_menu_controller_custom.gd" id="1_i2sts"]
 [ext_resource type="PackedScene" uid="uid://bin6b2ypkka84" path="res://prefabs/options_menu_custom.tscn" id="2_87k8p"]
 [ext_resource type="LabelSettings" uid="uid://6lpf7ir6fyi8" path="res://themes/label_settings_title.tres" id="2_ayxu5"]
-[ext_resource type="Texture2D" uid="uid://yqqxla7uxm1b" path="res://sprites/bg/main_menu_bg.png" id="2_wbo80"]
+[ext_resource type="Texture2D" uid="uid://bd6swnwud6dc" path="res://sprites/menu_bg/BG_main_menu.png" id="2_xfo8n"]
 [ext_resource type="LabelSettings" uid="uid://d20dc6wvnojda" path="res://themes/label_settings_subtitle.tres" id="3_bcn68"]
 [ext_resource type="PackedScene" uid="uid://djvedm1ibu5wi" path="res://prefabs/credits_menu.tscn" id="3_wydvs"]
 [ext_resource type="PackedScene" uid="uid://bhcqiywsbm6rm" path="res://prefabs/main_menu_button.tscn" id="5_33fgt"]
@@ -19,10 +19,16 @@ script = ExtResource("1_i2sts")
 
 [node name="BackgroundTextureRect" type="TextureRect" parent="."]
 self_modulate = Color(0.854902, 0.980392, 0.847059, 1)
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("2_wbo80")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.0368652
+offset_right = 38.0369
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_xfo8n")
+expand_mode = 3
 
 [node name="TitleMenu" type="Control" parent="."]
 unique_name_in_owner = true
