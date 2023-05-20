@@ -13,7 +13,14 @@ extends Control
 @export var outcome_text_success: String
 @export var outcome_text_failure: String
 
-@export var base_powder_multiplier: float = 1.0
+## Base powder value to multiply by time (with its own base)
+## so we have some score > 0 even when no powder left
+@export var base_powder_value: float = 1.0
+@export var powder_multiplier: float = 1.0
+
+## Base remaining time value to multiply by powder left (with its own base)
+## so we have some score > 0 even when no time left
+@export var base_remaining_time_value: float = 1.0
 @export var remaining_time_multiplier: float = 1.0
 
 
@@ -77,8 +84,8 @@ func _compute_final_score(final_racing_time: float, powder_stats: Array) -> int:
 	#	var powder_types_left = powder_stats[0]
 		var powder_left = powder_stats[1]
 
-		var total_score = floori(powder_left * \
-			(base_powder_multiplier + remaining_time_multiplier * floored_time))
+		var total_score = floori((base_powder_value + powder_left * powder_multiplier) * \
+			(base_remaining_time_value + floored_time * remaining_time_multiplier))
 		return total_score
 	else:
 		# if we delivered too late, powder left doesn't matter
