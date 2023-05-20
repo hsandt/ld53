@@ -418,13 +418,19 @@ func toggle_god_mode_enabled():
 	animated_sprite_with_brightness_controller.self_modulate = Color("#ffff41") if god_mode_enabled else Color.WHITE
 
 
-func start_success_sequence():
+func try_start_success_sequence():
+	if GameManager.game_phase != Enums.GamePhase.RACING:
+		return
+
 	in_game_manager.enter_success_phase()
 
 	# TODO: play the happy animation here
 
 
 func start_failure_sequence():
+	if GameManager.game_phase != Enums.GamePhase.RACING:
+		return
+
 	in_game_manager.enter_failure_phase()
 
 	# TODO: play the crash animation here
