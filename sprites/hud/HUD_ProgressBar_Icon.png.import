@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0hgwpvaucvba"
-path="res://.godot/imported/HUD_ProgressIcon.PNG-7ce631bf9fd50c80ae9c9cd49e0133fd.ctex"
+uid="uid://bgakicbt2bi7l"
+path="res://.godot/imported/HUD_ProgressBar_Icon.png-87c425fb0fadcd61977efafc2bc023e8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/hud/HUD_ProgressIcon.PNG"
-dest_files=["res://.godot/imported/HUD_ProgressIcon.PNG-7ce631bf9fd50c80ae9c9cd49e0133fd.ctex"]
+source_file="res://sprites/hud/HUD_ProgressBar_Icon.png"
+dest_files=["res://.godot/imported/HUD_ProgressBar_Icon.png-87c425fb0fadcd61977efafc2bc023e8.ctex"]
 
 [params]
 
