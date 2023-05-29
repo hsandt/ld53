@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Modifier" load_steps=3 format=3 uid="uid://bfl6qcxanifdx"]
+
+[ext_resource type="Script" path="res://scripts/buffs/modifier.gd" id="1_enwhq"]
+[ext_resource type="Texture2D" uid="uid://doba4v4bjss61" path="res://sprites/icons/Icon_SteerDecayAcc_Buff.png" id="1_nohk0"]
+
+[resource]
+script = ExtResource("1_enwhq")
+icon_texture = ExtResource("1_nohk0")
+description = "Upgrade to Maserati!"
+attribute = "steer_speed"
+operation = 1
+value = 250.0
+lucky_modifier_probability = 0.5

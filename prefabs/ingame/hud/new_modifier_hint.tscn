@@ -1,0 +1,79 @@
+[gd_scene load_steps=5 format=3 uid="uid://d153qg87qimgs"]
+
+[ext_resource type="Script" path="res://scripts/ui/NewModifierHint.gd" id="1_vf8ts"]
+[ext_resource type="Script" path="res://scripts/visual/Polygon2DWithOutline.gd" id="2_blhib"]
+[ext_resource type="Texture2D" uid="uid://chs13fnhcvv6l" path="res://sprites/hud/speech_bubble.png" id="2_o025l"]
+[ext_resource type="LabelSettings" uid="uid://dxm3xuprr5cnl" path="res://themes/label_settings_hud_new_modifier_hint.tres" id="3_5ctqo"]
+
+[node name="NewModifierHint" type="Control" node_paths=PackedStringArray("new_modifier_header_label", "new_modifier_name_label", "bubble_polygon")]
+layout_mode = 3
+anchor_left = 0.358333
+anchor_top = 0.235185
+anchor_right = 0.611979
+anchor_bottom = 0.506481
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vf8ts")
+new_modifier_header_label = NodePath("Content/NewModifierHeaderLabel")
+new_modifier_name_label = NodePath("Content/NewModifierNameLabel")
+bubble_polygon = NodePath("Polygon2DWithOutline")
+bubble_polygon_queue_point_index = 28
+metadata/_edit_use_anchors_ = true
+
+[node name="Polygon2DWithOutline" type="Polygon2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.909804)
+position = Vector2(288, 120)
+scale = Vector2(1.29086, 1.64948)
+polygon = PackedVector2Array(-79.0172, -58.8063, -75.1437, -33.95, -144.865, -55.775, -126.273, -27.8875, -199.092, -32.7375, -152.612, -5.45625, -222.333, 1.21249, -159.584, 18.1875, -221.558, 33.3437, -146.414, 40.6188, -180.5, 65.475, -115.427, 55.775, -127.047, 85.4812, -67.397, 69.7187, -48.8047, 102.456, -15.4935, 72.75, 30.9871, 93.3625, 41.058, 69.1125, 100.708, 83.0563, 76.6932, 52.7438, 130.921, 47.8938, 81.3412, 26.0687, 150.288, 13.3375, 79.7919, -5.45625, 113.878, -24.8563, 54.2275, -19.4, 79.0172, -44.2563, 13.1696, -32.7375, 11.6202, -158.231, -20.9163, -35.1625)
+script = ExtResource("2_blhib")
+
+[node name="TextureRect OLD" type="TextureRect" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.639216)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_o025l")
+expand_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Content" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.2475
+anchor_top = 0.274359
+anchor_right = 0.7475
+anchor_bottom = 0.733333
+offset_left = 1.52588e-05
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="NewModifierHeaderLabel" type="Label" parent="Content"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.388522
+grow_horizontal = 2
+grow_vertical = 2
+text = "New effect!"
+label_settings = ExtResource("3_5ctqo")
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="NewModifierNameLabel" type="Label" parent="Content"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "[Description on two lines]"
+label_settings = ExtResource("3_5ctqo")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+metadata/_edit_use_anchors_ = true

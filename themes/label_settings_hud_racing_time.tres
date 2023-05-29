@@ -1,0 +1,9 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://bxxar55tvcyf1"]
+
+[ext_resource type="FontFile" uid="uid://td874rrwvks5" path="res://fonts/Fira_Code/FiraCode-VariableFont_wght.ttf" id="1_5iwgu"]
+
+[resource]
+font = ExtResource("1_5iwgu")
+font_size = 80
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)

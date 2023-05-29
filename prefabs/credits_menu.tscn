@@ -1,14 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://djvedm1ibu5wi"]
+[gd_scene load_steps=3 format=3 uid="uid://djvedm1ibu5wi"]
 
 [ext_resource type="Script" path="res://scripts/menu/credits_menu_controller.gd" id="1_jv2fy"]
-[ext_resource type="Theme" uid="uid://ccl8f1knd33xp" path="res://themes/theme_credits_text.tres" id="3_36vwa"]
-[ext_resource type="FontFile" uid="uid://jc3sjkv4y04y" path="res://fonts/Comfortaa/Comfortaa-VariableFont_wght.ttf" id="4_2uyo8"]
-
-[sub_resource type="FontVariation" id="FontVariation_4rygk"]
-base_font = ExtResource("4_2uyo8")
-variation_opentype = {
-2003265652: 700
-}
+[ext_resource type="Theme" uid="uid://cls7a0y3pf2n7" path="res://themes/theme_main_menu.tres" id="5_qngxy"]
 
 [node name="CreditsMenu" type="Control" node_paths=PackedStringArray("credits_label")]
 layout_mode = 3
@@ -17,9 +10,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("5_qngxy")
 script = ExtResource("1_jv2fy")
 credits_file_path = "res://data/credits.txt"
-credits_label = NodePath("MarginContainer/VBoxContainer/ScrollContainer/Credits RichTextLabel")
+credits_label = NodePath("MarginContainer/TextureRect/VBoxContainer/ScrollContainer/Credits RichTextLabel")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -33,19 +27,23 @@ theme_override_constants/margin_top = 25
 theme_override_constants/margin_right = 25
 theme_override_constants/margin_bottom = 25
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="TextureRect" type="PanelContainer" parent="MarginContainer"]
+self_modulate = Color(1, 1, 1, 0.866667)
 layout_mode = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/TextureRect"]
+layout_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/TextureRect/VBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(1870, 900)
+custom_minimum_size = Vector2(838, 900)
 layout_mode = 2
+theme = ExtResource("5_qngxy")
 
-[node name="Credits RichTextLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/ScrollContainer"]
-custom_minimum_size = Vector2(1870, 900)
+[node name="Credits RichTextLabel" type="RichTextLabel" parent="MarginContainer/TextureRect/VBoxContainer/ScrollContainer"]
+custom_minimum_size = Vector2(838, 900)
 layout_mode = 2
-theme = ExtResource("3_36vwa")
-theme_override_fonts/bold_font = SubResource("FontVariation_4rygk")
 bbcode_enabled = true
 text = "[center]Dynamically loaded from res://data/credits.txt
 Test [b]bold[/b][/center]
@@ -53,17 +51,18 @@ Test [b]bold[/b][/center]
 fit_content = true
 scroll_active = false
 
-[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/TextureRect/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 50
 
-[node name="BackButton" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="BackButton" type="Button" parent="MarginContainer/TextureRect/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
+theme = ExtResource("5_qngxy")
 theme_override_font_sizes/font_size = 25
 text = "Back"
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/BackButton" to="." method="go_back"]
+[connection signal="pressed" from="MarginContainer/TextureRect/VBoxContainer/BackButton" to="." method="go_back"]

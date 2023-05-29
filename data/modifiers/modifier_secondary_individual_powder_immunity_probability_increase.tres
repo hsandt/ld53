@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Modifier" load_steps=3 format=3 uid="uid://pswttvbwsdpe"]
+
+[ext_resource type="Texture2D" uid="uid://c8ev3swf6dlqu" path="res://sprites/icons/Icon_Resistance_Buff.png" id="1_8113l"]
+[ext_resource type="Script" path="res://scripts/buffs/modifier.gd" id="3_uj8yj"]
+
+[resource]
+script = ExtResource("3_uj8yj")
+icon_texture = ExtResource("1_8113l")
+description = "Looks like I may survive this"
+attribute = "individual_powder_immunity_probability"
+operation = 1
+value = 0.5
+lucky_modifier_probability = 0.5

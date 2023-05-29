@@ -1,0 +1,22 @@
+[gd_resource type="SpriteFrames" load_steps=4 format=3 uid="uid://5ig0yl1i82q2"]
+
+[ext_resource type="Texture2D" uid="uid://bhj80yft2sg8o" path="res://sprites/fx/FX_Shrapnel/FX_Shrapnel0001.png" id="1_g76xq"]
+[ext_resource type="Texture2D" uid="uid://dehmeyjxi30ob" path="res://sprites/fx/FX_Shrapnel/FX_Shrapnel0002.png" id="2_68jhr"]
+[ext_resource type="Texture2D" uid="uid://cy7ne01yjc2gu" path="res://sprites/fx/FX_Shrapnel/FX_Shrapnel0003.png" id="3_24wmp"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_g76xq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_68jhr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_24wmp")
+}],
+"loop": false,
+"name": &"default",
+"speed": 12.0
+}]

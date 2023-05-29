@@ -1,9 +1,10 @@
-[gd_resource type="Resource" script_class="PowderData" load_steps=3 format=3 uid="uid://b0uy7hbs04tad"]
+[gd_resource type="Resource" script_class="PowderData" load_steps=3 format=3 uid="uid://bt5uo12x2ig65"]
 
 [ext_resource type="Script" path="res://scripts/buffs/powder_data.gd" id="1_dgxh2"]
-[ext_resource type="Resource" uid="uid://hqgedus288jo" path="res://data/modifiers/modifier_debuff_obstacle_damage_increase.tres" id="2_x1y1t"]
+[ext_resource type="Resource" uid="uid://ci1jyc8243o5g" path="res://data/modifiers/modifier_primary_progress_bar_lag_increase.tres" id="2_3qrwp"]
 
 [resource]
 script = ExtResource("1_dgxh2")
-spark_debuff_modifier = ExtResource("2_x1y1t")
-max_stamina = 2.0
+spark_debuff_modifier = ExtResource("2_3qrwp")
+max_stamina = 10.0
+time_before_burst = 70.0

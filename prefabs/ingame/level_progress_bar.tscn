@@ -1,16 +1,17 @@
-[gd_scene load_steps=8 format=3 uid="uid://bpkn3ndchrsjs"]
+[gd_scene load_steps=9 format=3 uid="uid://b4g4xt77jodcq"]
 
 [ext_resource type="Script" path="res://prefabs/ingame/level_progress_bar.gd" id="1_yr0b8"]
 [ext_resource type="Texture2D" uid="uid://c0hgwpvaucvba" path="res://sprites/hud/HUD_ProgressIcon.PNG" id="3_oxbvg"]
-[ext_resource type="Script" path="res://scripts/ui/progression_ui.gd" id="4_jxsh6"]
+[ext_resource type="Script" path="res://scripts/ui/level_progression_character_indicator.gd" id="5_7c22j"]
 [ext_resource type="Texture2D" uid="uid://cu0usklrg1bpg" path="res://sprites/hud/HUD_ProgressBar_Fill.png" id="5_41mjy"]
 [ext_resource type="Texture2D" uid="uid://clkqa0oqj75ea" path="res://sprites/hud/HUD_ProgressBar_Frame.png" id="6_o7poi"]
+[ext_resource type="PackedScene" uid="uid://ry23hl6ahg6h" path="res://prefabs/ingame/hud/level_progress_big_obstacle_indicator.tscn" id="6_qc2r0"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_hv01k"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_renjf"]
 
-[node name="LevelProgressBar" type="Control"]
+[node name="LevelProgressBar" type="Control" node_paths=PackedStringArray("character_indicator", "big_obstacle_indicators_parent")]
 layout_mode = 3
 anchors_preset = 7
 anchor_left = 0.5
@@ -22,6 +23,9 @@ grow_vertical = 0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_yr0b8")
+level_progress_big_obstacle_indicator_prefab = ExtResource("6_qc2r0")
+character_indicator = NodePath("Frame/IndicatorsParent/Character")
+big_obstacle_indicators_parent = NodePath("Frame/IndicatorsParent/BigObstacleIndicatorsParent")
 
 [node name="Fill" type="TextureRect" parent="."]
 self_modulate = Color(0.329412, 0.678431, 0.772549, 1)
@@ -51,7 +55,7 @@ grow_horizontal = 2
 texture = ExtResource("6_o7poi")
 expand_mode = 3
 
-[node name="Control" type="Control" parent="Frame"]
+[node name="IndicatorsParent" type="Control" parent="Frame"]
 layout_mode = 1
 anchor_left = 0.457
 anchor_top = 0.5
@@ -64,7 +68,18 @@ offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Character" type="TextureRect" parent="Frame/Control"]
+[node name="BigObstacleIndicatorsParent" type="Control" parent="Frame/IndicatorsParent"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LevelProgressBigObstacleIndicator (Demo)" parent="Frame/IndicatorsParent/BigObstacleIndicatorsParent" instance=ExtResource("6_qc2r0")]
+visible = false
+
+[node name="Character" type="TextureRect" parent="Frame/IndicatorsParent"]
 self_modulate = Color(0.443137, 0.67451, 0.431373, 1)
 material = SubResource("CanvasItemMaterial_renjf")
 layout_mode = 1
@@ -73,10 +88,10 @@ anchor_left = 0.054
 anchor_top = 0.327
 anchor_right = 0.054
 anchor_bottom = 0.327
-offset_left = -38.664
-offset_top = -32.7
-offset_right = 351.336
-offset_bottom = 294.3
+offset_left = -41.3979
+offset_top = -36.7
+offset_right = 348.602
+offset_bottom = 290.3
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("3_oxbvg")
-script = ExtResource("4_jxsh6")
+script = ExtResource("5_7c22j")

@@ -2,6 +2,9 @@ class_name Cargo
 extends Node2D
 
 
+## Owning player. Should be set by Player on ready
+var player: Player
+
 ## Cached array of powder children
 var powders: Array[Powder]
 
@@ -16,7 +19,11 @@ func _ready():
 			push_error("[Cargo] child '%s' is not a Powder, cannot register", child.get_path())
 			continue
 
+		# Register
 		powders.append(powder)
+
+		# Back reference
+		powder.cargo = self
 
 	powder_burst_or_consumed_count = 0
 
@@ -45,7 +52,7 @@ func hurt(damage: float):
 ## Return an array of [modifier factor, modifier offset] by cumulating
 ## all the modifiers for the passed attribute from all powders for multiply and
 ## add operations respectively
-func get_attribute_modifier_factor_and_offset(attribute_name: String) -> Array[float]:
+func get_attribute_modifier_factor_and_offset(attribute_name: StringName) -> Array[float]:
 	# Initialize cumulated factor and offset with their base value
 	var cumulated_modifier_factor = 1.0
 	var cumulated_modifier_offset = 0.0
@@ -81,4 +88,5 @@ func _on_powder_state_changed(previous_state: Enums.PowderState, new_state: Enum
 		powder_burst_or_consumed_count += 1
 
 	if powder_burst_or_consumed_count >= powders.size():
-		GameManager.enter_failure_phase(self)
+		# no failure anymore
+		pass

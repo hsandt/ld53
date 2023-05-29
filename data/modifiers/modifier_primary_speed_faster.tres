@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Modifier" load_steps=5 format=3 uid="uid://dghtj0tch86j5"]
+
+[ext_resource type="Texture2D" uid="uid://bap31x2ylvgrm" path="res://sprites/icons/Icon_Boost_Buff.png" id="1_e3273"]
+[ext_resource type="Resource" uid="uid://bfl6qcxanifdx" path="res://data/modifiers/modifier_secondary_steer_faster.tres" id="1_r4irx"]
+[ext_resource type="Script" path="res://scripts/buffs/modifier.gd" id="2_4t4sc"]
+[ext_resource type="Resource" uid="uid://bj8tuh4wi1mb0" path="res://data/modifiers/modifier_secondary_steer_invert.tres" id="3_g3ygq"]
+
+[resource]
+script = ExtResource("2_4t4sc")
+icon_texture = ExtResource("1_e3273")
+description = "Wheeeee"
+attribute = "speed"
+operation = 1
+value = 200.0
+lucky_modifier_probability = 0.5
+worsen = ExtResource("3_g3ygq")
+lucky = ExtResource("1_r4irx")

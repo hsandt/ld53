@@ -7,7 +7,7 @@ signal resume
 signal back_to_main_pressed
 
 # Children
-@onready var content : VBoxContainer = $%Content
+@onready var panel_container : Control = $%PanelContainer
 @onready var options_menu : Control = $%OptionsMenu
 @onready var resume_game_button: Button = $%ResumeGameButton
 
@@ -16,8 +16,15 @@ func open_pause_menu():
 	#Stops game and shows pause menu
 	get_tree().paused = true
 	show()
-	resume_game_button.grab_focus()
+
+	# Hide options menu in case it was visible in scene for testing
+	options_menu.hide()
+
+	# Make sure to emit signal before grabbing focus to let
+	# other Controls register their last focus if the want to
+	# restore it later
 	emit_signal(&"pause")
+	resume_game_button.grab_focus()
 
 func close_pause_menu():
 	get_tree().paused = false
@@ -29,14 +36,14 @@ func _on_resume_game_button_pressed():
 
 
 func _on_options_button_pressed():
-	content.hide()
+	panel_container.hide()
 	options_menu.show()
 	options_menu.on_open()
 
 
 func _on_options_menu_close():
 	options_menu.hide()
-	content.show()
+	panel_container.show()
 	resume_game_button.grab_focus()
 
 func _on_quit_button_pressed():

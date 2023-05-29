@@ -31,6 +31,9 @@ extends Node
 ## Current game phase
 var game_phase: Enums.GamePhase = Enums.GamePhase.MAIN_MENU
 
+## Final racing time
+var final_racing_time: float
+
 ## Powder stats [idle_powder_count, total_powder_stamina] on game session end to show in result
 var powder_stats: Array
 
@@ -55,18 +58,20 @@ func go_back_to_main_menu():
 		back_to_main_menu_fade_out_speed, back_to_main_menu_fade_in_speed)
 
 
-func enter_failure_phase(cargo: Cargo):
+func enter_failure_phase(racing_time: float, cargo: Cargo):
 	game_phase = Enums.GamePhase.FAILURE
 
 	# Store result before changing scene
+	final_racing_time = racing_time
 	powder_stats = cargo.get_powder_stats()
 
 	enter_result_scene()
 
-func enter_success_phase(cargo: Cargo):
+func enter_success_phase(racing_time: float, cargo: Cargo):
 	game_phase = Enums.GamePhase.SUCCESS
 
 	# Store result before changing scene
+	final_racing_time = racing_time
 	powder_stats = cargo.get_powder_stats()
 
 	enter_result_scene()

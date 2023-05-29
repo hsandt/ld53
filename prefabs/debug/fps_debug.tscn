@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://ilw4fn8ru2pb"]
+
+[ext_resource type="Script" path="res://scripts/debug/FPSDebug.gd" id="1_5ms7s"]
+
+[node name="HBoxContainer - FPS" type="HBoxContainer" node_paths=PackedStringArray("label_fps_number")]
+offset_left = 3.0
+offset_right = 88.0
+offset_bottom = 28.0
+script = ExtResource("1_5ms7s")
+label_fps_number = NodePath("Label FPS Number")
+metadata/_edit_group_ = true
+metadata/_edit_lock_ = true
+
+[node name="Label FPS" type="Label" parent="."]
+layout_mode = 2
+size_flags_vertical = 0
+text = "FPS:"
+
+[node name="Label FPS Number" type="Label" parent="."]
+layout_mode = 2
+size_flags_vertical = 0
+text = "00"

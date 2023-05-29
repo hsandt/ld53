@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Modifier" load_steps=5 format=3 uid="uid://ch2r4wu76hpep"]
+
+[ext_resource type="Texture2D" uid="uid://b6xrqp7wd0pxi" path="res://sprites/icons/Icon_Lock_Debuff.png" id="1_rr4np"]
+[ext_resource type="Resource" uid="uid://bxb717juojctp" path="res://data/modifiers/modifier_secondary_next_consume_lucky_probability_increase.tres" id="2_xry3d"]
+[ext_resource type="Script" path="res://scripts/buffs/modifier.gd" id="3_uodku"]
+[ext_resource type="Resource" uid="uid://h877dkkhadcf" path="res://data/modifiers/modifier_secondary_next_consume_lucky_probability_decrease_lv2.tres" id="4_xthny"]
+
+[resource]
+script = ExtResource("3_uodku")
+icon_texture = ExtResource("1_rr4np")
+description = "The powders are locked!"
+attribute = "individual_powder_lock_probability"
+operation = 1
+value = 0.5
+lucky_modifier_probability = 0.5
+worsen = ExtResource("4_xthny")
+lucky = ExtResource("2_xry3d")

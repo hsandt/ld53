@@ -11,6 +11,9 @@ Programmer
 [b]r0nk[/b]
 Programmer
 
+[b]Rayan[/b]
+Programmer
+
 [b]Stephen Cromwell "IcySoap"[/b]
 Composer/Sound Designer
 
@@ -20,8 +23,14 @@ Artist & Animator
 [b]Noémie[/b]
 Producer & Team manager
 
+[b][font_size=45]Free assets[/font_size][/b]
+
+UI pack: RPG extension by Kenney Vleugels (www.kenney.nl) (CC0)
+Old parchment from https://publicdomainvectors.org/ (Public domain)
+
 [b][font_size=45]Fonts[/font_size][/b]
 
-[font=res://fonts/Comfortaa/Comfortaa-VariableFont_wght.ttf]Comfortaa[/font] (Open Font License)
-[font=res://fonts/Lobster_Two/LobsterTwo-Regular.ttf]Lobster Two[/font] (Open Font License)
-[font=res://fonts/Risque/Risque-Regular.ttf]Risque[/font] (Open Font License)[/center]
+[font=res://fonts/Risque/Risque-Regular.ttf]Risque[/font] (Open Font License)
+[font=res://fonts/ABeeZee/ABeeZee-Regular.ttf]ABeeZee[/font] (Open Font License)
+[font=res://fonts/cat_franken_deutsch/CATFranken-Deutsch.ttf]CAT Frankendeutsch[/font] (Open Font License)
+[font=res://fonts/Fira_Code/FiraCode-VariableFont_wght.ttf]Fira Code[/font] (Open Font License)[/center]

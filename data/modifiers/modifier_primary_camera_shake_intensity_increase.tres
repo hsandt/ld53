@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Modifier" load_steps=3 format=3 uid="uid://c5y1x1hopp4wp"]
+
+[ext_resource type="Texture2D" uid="uid://dlk20pmk1ixyb" path="res://sprites/icons/Icon_CameraEye_Debuff.png" id="1_ydkgw"]
+[ext_resource type="Script" path="res://scripts/buffs/modifier.gd" id="3_vv2sw"]
+
+[resource]
+script = ExtResource("3_vv2sw")
+icon_texture = ExtResource("1_ydkgw")
+description = "I feel sick..."
+attribute = "camera_shake_intensity"
+operation = 1
+value = 10.0
+lucky_modifier_probability = 0.5

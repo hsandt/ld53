@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 
 title="POWDER"
-all_platforms=(windows osx linux web)
+all_platforms=(windows macos linux web)
 godot_bin="godot4.0.2_stable"
 godoticon_path="scripts/editor/godoticon"
 
 usage() {
-  echo "Export game for Windows, OSX, Linux and Web with specified version.
+  echo "Export game for Windows, macOS, Linux and Web with specified version.
 
 Requirements
 - current working directory must be project root
@@ -22,7 +22,7 @@ CURRENTLY DISABLED until https://github.com/pkowal1982/godoticon/issues/2 is fix
 
 ARGUMENTS
   VERSION               Version number, without the 'v'. Ex: '3.1.2'
-  TARGET                Target platform: 'windows', 'osx', 'linux', 'web' or 'all'
+  TARGET                Target platform: 'windows', 'macos', 'linux', 'web' or 'all'
 "
 }
 
@@ -65,7 +65,7 @@ export_release() {
   # Remove any existing folder to avoid leftover files if title changed since
   rm -rf "$folder/"
   mkdir -p "$folder"
-  "$godot_bin" --no-window --export-release "$preset" "$target_path"
+  "$godot_bin" --no-window --export-release --quiet "$preset" "$target_path"
 
   # CURRENTLY DISABLED until https://github.com/pkowal1982/godoticon/issues/2 is fixed:
   # if [[ "$replace_icon" == true ]]; then
@@ -92,9 +92,9 @@ export_platform_release() {
       target="${title}.x86_64"
       replace_icon=false
       ;;
-    osx )
+    macos )
       preset="macOS"
-      platform_titlecase="OSX"
+      platform_titlecase="macOS"
       target="${title}.zip"
       replace_icon=false
       ;;
@@ -121,11 +121,11 @@ export_platform_release() {
   # Enter the version folder, which is the parent folder of the platform subfolders
   # This is important to zip subfolders without copying the whole hierarchy from cwd
   # See https://superuser.com/questions/119649/avoid-unwanted-path-in-zip-file/119661#119661
-  # It's optional for OSX where we only copy a file
+  # It's optional for macOS where we only copy a file
   pushd "$version_folder"
 
-    if [[ "$platform" == "osx" ]]; then
-      # For OSX, Godot already zips the .app, so we just copy it to the outside folder
+    if [[ "$platform" == "macos" ]]; then
+      # For macOS, Godot already zips the .app, so we just copy it to the outside folder
       # and rename it to full name with version and platformer, so all zips are in the
       # same folder with the same naming convention, ready for the next step
       #(copy to Drive and/or upload to itch.io)
@@ -133,11 +133,10 @@ export_platform_release() {
       cp "${subfolder}/${title}.zip" "${subfolder}.zip"
     else
       echo "Zipping..."
-      pushd "$version_folder"
-        zip_path="${subfolder}.zip"
-        # delete existing one to be safe
-        rm -f "$zip_path"
-        zip -r "$zip_path" "$subfolder"
+      zip_path="${subfolder}.zip"
+      # delete existing one to be safe
+      rm -f "$zip_path"
+      zip -r "$zip_path" "$subfolder"
     fi
 
   popd

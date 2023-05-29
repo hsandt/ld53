@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Modifier" load_steps=3 format=3 uid="uid://bav7oxkxbt0li"]
+
+[ext_resource type="Texture2D" uid="uid://keli66761yg" path="res://sprites/icons/Icon_DisplayNegative_SuperDebuff.png" id="1_xhcd1"]
+[ext_resource type="Script" path="res://scripts/buffs/modifier.gd" id="2_t7xua"]
+
+[resource]
+script = ExtResource("2_t7xua")
+icon_texture = ExtResource("1_xhcd1")
+description = "Where did the bar go??"
+attribute = "progress_bar_visibility"
+operation = 0
+value = 0.0
+lucky_modifier_probability = 0.5

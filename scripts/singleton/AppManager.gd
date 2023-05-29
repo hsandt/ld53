@@ -8,9 +8,13 @@ extends Node
 ##   app_prev_resolution
 ##   app_next_resolution
 ##   app_toggle_fullscreen
+##   app_toggle_debug_fps
 ##   app_take_screenshot
 ##   app_exit
 
+
+## Control showing current FPS
+@export var fps_control: Control
 
 ## If true, auto-switch to fullscreen on standalone game start
 @export var auto_fullscreen_in_standalone: bool = false
@@ -23,16 +27,23 @@ extends Node
 		Vector2i(3840, 2160),
 	]
 
+var config = ConfigFile.new()
+
 var current_preset_resolution_index = -1
 
 
 func _ready():
+	assert(fps_control != null,	"[InGameManager] fps_control is not set on %s" % get_path())
+
 	if DisplayServer.window_get_mode() not in \
 			[DisplayServer.WINDOW_MODE_FULLSCREEN, DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN] and \
 			auto_fullscreen_in_standalone:
 		if OS.has_feature("standalone"):
 			print("[AppManager] Playing standalone game with auto-fullscreen ON, enabling fullscreen")
 			call_deferred(&"toggle_fullscreen")
+
+	# Show FPS by default in editor/debug exports. Else, wait for user to toggle it.
+	fps_control.visible = OS.has_feature("debug")
 
 
 func _unhandled_input(event: InputEvent):
@@ -45,6 +56,8 @@ func _unhandled_input(event: InputEvent):
 
 	if event.is_action_pressed(&"app_toggle_fullscreen"):
 		toggle_fullscreen()
+	if event.is_action_pressed(&"app_toggle_debug_fps"):
+		toggle_debug_fps()
 
 	if event.is_action_pressed(&"app_take_screenshot"):
 		take_screenshot()
@@ -89,16 +102,32 @@ func change_resolution(delta: int):
 
 	print("[AppManager] Changed to preset resolution: %s" % new_preset_resolution)
 
-
 func toggle_fullscreen():
+	var new_window_mode: DisplayServer.WindowMode
+
 	# For debug, borderless window is enough
 	if DisplayServer.window_get_mode() not in \
 			[DisplayServer.WINDOW_MODE_FULLSCREEN, DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN]:
-		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
-		print("[AppManager] Toggled fullscreen: WINDOW_MODE_FULLSCREEN")
+		new_window_mode = DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN
+		print("[AppManager] Toggle fullscreen: WINDOW_MODE_EXCLUSIVE_FULLSCREEN")
 	else:
-		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
-		print("[AppManager] Toggled fullscreen: WINDOW_MODE_WINDOWED")
+		new_window_mode = DisplayServer.WINDOW_MODE_WINDOWED
+		print("[AppManager] Toggle fullscreen: WINDOW_MODE_WINDOWED")
+
+	DisplayServer.window_set_mode(new_window_mode)
+
+	config.set_value(OptionsConstants.section_name, OptionsConstants.fullscreen_key_name,
+		new_window_mode == DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
+	config.save(OptionsConstants.config_file_name)
+
+	print("[AppManager] Saved fullscreen mode to user options config")
+
+
+func toggle_debug_fps():
+	var new_value = not fps_control.visible
+	fps_control.visible = new_value
+
+	print("[AppManager] Toggle FPS in debug overlay: %s" % new_value)
 
 
 func take_screenshot():
@@ -112,8 +141,13 @@ func take_screenshot():
 	var screenshot_filepath = "user://Screenshots".path_join(screenshot_filename)
 
 	# user:// should map to:
-	# Unix: $HOME/.local/share/godot/app_userdata/[AppName] or $HOME/.[AppName]
-	# Windows: Users\[User]\AppData\Roaming\[AppName]
+	# Windows: %APPDATA%\Godot\app_userdata\[project_name] or
+	#          %APPDATA%\[project_name/custom_user_dir_name]
+	# macOS: ~/Library/Application Support/Godot/app_userdata/[project_name] or
+	#        ~/Library/Application Support/[project_name/custom_user_dir_name]
+	# Linux: ~/.local/share/godot/app_userdata/[project_name] or
+	#        ~/.local/share/[project_name/custom_user_dir_name]
+	# See https://docs.godotengine.org/en/4.0/tutorials/io/data_paths.html#accessing-persistent-user-data-user
 	if not DirAccess.dir_exists_absolute("user://Screenshots"):
 		# no Screenshots directory in user dir, make it
 		var err = DirAccess.make_dir_recursive_absolute("user://Screenshots")

@@ -1,9 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://n87nhvob85pn"]
+[gd_scene load_steps=12 format=3 uid="uid://n87nhvob85pn"]
 
 [ext_resource type="Texture2D" uid="uid://b7vutp6ly7tx6" path="res://sprites/cooldown_circle.png" id="1_7tibs"]
 [ext_resource type="Script" path="res://scripts/buffs/buff.gd" id="1_1562j"]
 [ext_resource type="Texture2D" uid="uid://b5d35m852wwbg" path="res://sprites/buff_icons/black_eye.png" id="2_whe62"]
-[ext_resource type="PackedScene" uid="uid://rvie2lk2ka6u" path="res://prefabs/ingame/fx/explosion.tscn" id="2_xi3r8"]
 [ext_resource type="Script" path="res://scripts/buffs/progress_bar.gd" id="3_kh3ky"]
 [ext_resource type="AudioStream" uid="uid://bg6cv3it1gsjq" path="res://audio/sfx/ui_click_1 WIP.ogg" id="4_0nxpa"]
 [ext_resource type="AudioStream" uid="uid://s0k6nyen83su" path="res://audio/sfx/spark_loop_ver2.ogg" id="6_0ukab"]
@@ -26,7 +25,6 @@ offset_top = 14.0
 offset_right = 63.0
 offset_bottom = 54.0
 script = ExtResource("1_1562j")
-explosion_prefab = ExtResource("2_xi3r8")
 
 [node name="icon" type="Sprite2D" parent="."]
 position = Vector2(17, 20)

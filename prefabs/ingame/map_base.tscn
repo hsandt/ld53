@@ -7,7 +7,6 @@
 size = Vector2(100, 1080)
 
 [node name="Map" type="Node2D" node_paths=PackedStringArray("goal_area")]
-position = Vector2(0, -1)
 script = ExtResource("1_thn8l")
 goal_area = NodePath("GoalArea2D")
 metadata/_edit_lock_ = true

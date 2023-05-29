@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://ry23hl6ahg6h"]
+
+[ext_resource type="Texture2D" uid="uid://bwj3dkn8435rt" path="res://sprites/hud/icon_warning.png" id="1_kl4qn"]
+[ext_resource type="Script" path="res://scripts/ui/level_progression_character_indicator.gd" id="2_d7xlo"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_0qe6t"]
+
+[node name="LevelProgressBigObstacleIndicator" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 97.0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource("CanvasItemMaterial_0qe6t")
+layout_mode = 0
+offset_left = -15.0
+offset_top = 7.0
+offset_right = 285.0
+offset_bottom = 297.0
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_kl4qn")
+stretch_mode = 5
+script = ExtResource("2_d7xlo")

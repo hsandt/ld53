@@ -31,7 +31,7 @@ extends AnimatedSprite2D
 
 # Initial state
 
-var initial_brightness: bool
+var initial_brightness: float
 var initial_modulate: Color
 
 
@@ -66,7 +66,7 @@ func initialize():
 
 	if shader_material:
 		initial_brightness = shader_material.get_shader_parameter("brightness")
-		initial_modulate = shader_material.get_shader_parameter("modulate")
+		initial_modulate = modulate
 
 func setup():
 	override_brightness = false
@@ -81,7 +81,7 @@ func setup():
 	# so _process will not clear brightness/modulate, so do clear it now
 	if shader_material:
 		shader_material.set_shader_parameter("brightness", initial_brightness)
-		shader_material.set_shader_parameter("modulate", initial_modulate)
+		modulate = initial_modulate
 
 
 func _process(_delta):
@@ -90,16 +90,18 @@ func _process(_delta):
 			shader_material.set_shader_parameter("brightness", target_brightness)
 	elif was_overriding_brightness:
 		if shader_material:
-			shader_material.set_shader_parameter("brightness", 0)
+			# Revert to initial value for consistency with setup
+			shader_material.set_shader_parameter("brightness", initial_brightness)
 
 	was_overriding_brightness = override_brightness
 
 	if override_modulate:
 		if shader_material:
-			shader_material.set_shader_parameter("modulate", target_modulate)
+			modulate = target_modulate
 	elif was_overriding_modulate:
 		if shader_material:
-			shader_material.set_shader_parameter("modulate", Color.WHITE)
+			# Revert to initial value for consistency with setup
+			modulate = initial_modulate
 
 	was_overriding_modulate = override_modulate
 

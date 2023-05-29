@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://tx2hmn6o6i8q"]
+[gd_scene load_steps=14 format=3 uid="uid://tx2hmn6o6i8q"]
 
 [ext_resource type="PackedScene" uid="uid://bkxvhy0xyc6my" path="res://prefabs/ingame/in_game_manager.tscn" id="1_i0ea3"]
 [ext_resource type="PackedScene" uid="uid://bigtdfruv4w60" path="res://prefabs/pause_menu_custom.tscn" id="2_afo14"]
@@ -6,16 +6,29 @@
 [ext_resource type="PackedScene" uid="uid://4n8e4dswbycl" path="res://prefabs/ingame/player_character_body_2d.tscn" id="3_82xke"]
 [ext_resource type="Script" path="res://scripts/audio/MusicStreamPlayer.gd" id="3_a3gc7"]
 [ext_resource type="PackedScene" uid="uid://ch6p14onhqdd1" path="res://prefabs/ingame/hud/hud.tscn" id="4_mq5bu"]
+[ext_resource type="Script" path="res://scripts/fx/ScreenFXCanvasLayer.gd" id="6_7b4ou"]
 [ext_resource type="Script" path="res://scripts/ingame/ScrollingCenter.gd" id="6_b3o2y"]
 [ext_resource type="PackedScene" uid="uid://cxmcka11cekmi" path="res://prefabs/ingame/camera_2d.tscn" id="6_cbhgf"]
+[ext_resource type="Shader" path="res://shaders/custom_sprite_shader.gdshader" id="7_ib5jx"]
+[ext_resource type="Texture2D" uid="uid://cnud7hlsdnfrm" path="res://sprites/fx/PFX/PFX_Wind_line_246x6.png" id="7_q3srr"]
 [ext_resource type="PackedScene" uid="uid://dcqumcm4vc2x" path="res://prefabs/ingame/map_1.tscn" id="8_srhq4"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t2di3"]
+resource_local_to_scene = true
+shader = ExtResource("7_ib5jx")
+shader_parameter/brightness = 0.0
+
 [node name="Level" type="Node2D"]
+y_sort_enabled = true
 metadata/_edit_horizontal_guides_ = [-349.0, 350.0]
 
-[node name="InGameManager" parent="." node_paths=PackedStringArray("pause_menu", "player_character") instance=ExtResource("1_i0ea3")]
+[node name="InGameManager" parent="." node_paths=PackedStringArray("level", "pause_menu", "screen_fx_canvas_layer", "player_character", "map") instance=ExtResource("1_i0ea3")]
+level = NodePath("..")
 pause_menu = NodePath("../HUDCanvasLayer/PauseMenu")
+screen_fx_canvas_layer = NodePath("../ScreenFXCanvasLayer")
 player_character = NodePath("../PlayerCharacterBody2D")
+map = NodePath("../Map1")
+delivery_max_time = 250.0
 
 [node name="MusicStreamPlayer" type="AudioStreamPlayer" parent="."]
 process_mode = 3
@@ -30,14 +43,37 @@ layer = 5
 
 [node name="HUD" parent="HUDCanvasLayer" instance=ExtResource("4_mq5bu")]
 unique_name_in_owner = true
+metadata/_edit_use_anchors_ = true
 
 [node name="PauseMenu" parent="HUDCanvasLayer" instance=ExtResource("2_afo14")]
+visible = false
+metadata/_edit_use_anchors_ = true
+
+[node name="ScreenFXCanvasLayer" type="CanvasLayer" parent="." node_paths=PackedStringArray("speed_lines_pfx")]
+layer = 4
+script = ExtResource("6_7b4ou")
+speed_lines_pfx = NodePath("CPUParticles2D")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="ScreenFXCanvasLayer"]
+position = Vector2(1846, 540)
+emitting = false
+amount = 20
+lifetime = 0.6
+texture = ExtResource("7_q3srr")
+emission_shape = 3
+emission_rect_extents = Vector2(1, 540)
+direction = Vector2(-1, 0)
+spread = 0.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 2500.0
+initial_velocity_max = 3500.0
+color = Color(1, 1, 1, 0.45098)
 
 [node name="PlayerCharacterBody2D" parent="." instance=ExtResource("3_82xke")]
+material = SubResource("ShaderMaterial_t2di3")
 collision_mask = 65792
 platform_floor_layers = 4294967294
-platform_wall_layers = 256
-half_extent_y = 290
+metadata/_edit_group_ = true
 metadata/_edit_lock_ = true
 
 [node name="ScrollingCenter" type="Node2D" parent="." node_paths=PackedStringArray("player_character", "map")]
@@ -45,7 +81,7 @@ unique_name_in_owner = true
 script = ExtResource("6_b3o2y")
 player_character = NodePath("../PlayerCharacterBody2D")
 map = NodePath("../Map1")
-lookahead_distance = 500.0
+lookahead_distance = 900.0
 
 [node name="Camera2D" parent="ScrollingCenter" instance=ExtResource("6_cbhgf")]
 

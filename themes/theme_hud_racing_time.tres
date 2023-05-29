@@ -1,0 +1,10 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://ddkrt5r71ugh4"]
+
+[ext_resource type="FontFile" uid="uid://td874rrwvks5" path="res://fonts/Fira_Code/FiraCode-VariableFont_wght.ttf" id="1_kfj1k"]
+
+[resource]
+default_font = ExtResource("1_kfj1k")
+default_font_size = 80
+Label/colors/font_outline_color = Color(0.172549, 0.137255, 0.0352941, 1)
+Label/constants/outline_size = 10
+Label/constants/shadow_outline_size = 1

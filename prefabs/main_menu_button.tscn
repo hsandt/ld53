@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhcqiywsbm6rm"]
+
+[ext_resource type="Theme" uid="uid://cls7a0y3pf2n7" path="res://themes/theme_main_menu.tres" id="1_qtx8c"]
+
+[node name="MainMenuButton" type="Button"]
+custom_minimum_size = Vector2(350, 0)
+size_flags_horizontal = 4
+theme = ExtResource("1_qtx8c")
+theme_override_font_sizes/font_size = 30
+text = "Start"

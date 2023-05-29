@@ -1,29 +1,33 @@
-[gd_scene load_steps=5 format=3 uid="uid://c03i68p3oqkh2"]
+[gd_scene load_steps=12 format=3 uid="uid://c03i68p3oqkh2"]
 
 [ext_resource type="Script" path="res://scripts/ui/powder_panel.gd" id="1_8dg0n"]
-[ext_resource type="PackedScene" uid="uid://n87nhvob85pn" path="res://scripts/buffs/buff.tscn" id="2_pfr15"]
-[ext_resource type="SpriteFrames" uid="uid://dwrs2bhosv0et" path="res://animations/powder_panel_sprite_frames.tres" id="3_jit8g"]
+[ext_resource type="PackedScene" uid="uid://b2td8kx06arn4" path="res://prefabs/ingame/fx/OneShotFX_ExplosionRegular.tscn" id="2_k3aqf"]
+[ext_resource type="PackedScene" uid="uid://b2xc5w13uidet" path="res://prefabs/ingame/fx/OneShotFX_ExplosionMedium.tscn" id="2_xlg8i"]
+[ext_resource type="SpriteFrames" path="res://animations/powder_panel_sprite_frames.tres" id="3_jit8g"]
+[ext_resource type="Script" path="res://scripts/ui/ModifierHintPanel.gd" id="5_koyt8"]
 [ext_resource type="Script" path="res://scripts/visual/AnimatedSprite2DBrightnessController.gd" id="6_7s2n6"]
+[ext_resource type="LabelSettings" uid="uid://djnk27qxxh71p" path="res://themes/label_settings_hud_modifier_hint.tres" id="6_iyjnn"]
+[ext_resource type="Texture2D" uid="uid://ccjml2bd02bq0" path="res://sprites/icons/rounded_square80.png" id="7_30e35"]
+[ext_resource type="Theme" uid="uid://b3m6giw1r7111" path="res://themes/theme_hud_powder_panel.tres" id="7_mavx3"]
+[ext_resource type="Texture2D" uid="uid://bp2keqeaibtao" path="res://sprites/icons/Icon_SteerDecayAcc_SuperDebuff.png" id="8_hhd1s"]
+[ext_resource type="Texture2D" uid="uid://paa0t2hn1sgv" path="res://sprites/hud/HUD_KegLock_Cropped.png" id="8_tgidq"]
 
-[node name="PowderPanel" type="Panel" node_paths=PackedStringArray("animated_sprite")]
+[node name="PowderPanel" type="Panel" node_paths=PackedStringArray("spark_explosion_anchor", "consume_explosion_anchor", "animated_sprite", "modifier_hint_panel")]
 self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(332, 332)
 script = ExtResource("1_8dg0n")
+spark_explosion_prefab = ExtResource("2_xlg8i")
+consume_explosion_prefab = ExtResource("2_k3aqf")
+spark_explosion_anchor = NodePath("SparkExplosionAnchorMarker2D")
+consume_explosion_anchor = NodePath("ConsumeExplosionAnchorMarker2D")
 animated_sprite = NodePath("AnimatedSprite2DBrightnessController")
-
-[node name="buff" parent="." instance=ExtResource("2_pfr15")]
-offset_left = -29.0
-offset_top = 97.0
-offset_right = 11.0
-offset_bottom = 137.0
-scale = Vector2(2.41221, 4.01272)
+modifier_hint_panel = NodePath("ModifierHintPanel")
 
 [node name="AnimatedSprite2DBrightnessController" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("brighten_timer")]
-position = Vector2(153, 43)
+position = Vector2(158, 57)
 sprite_frames = ExtResource("3_jit8g")
-animation = &"spark"
+animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.997247
 script = ExtResource("6_7s2n6")
 brighten_timer = NodePath("../BrightenTimer")
 
@@ -31,11 +35,93 @@ brighten_timer = NodePath("../BrightenTimer")
 
 [node name="Button" type="Button" parent="."]
 unique_name_in_owner = true
-layout_mode = 0
-offset_left = -9.0
-offset_top = -82.0
-offset_right = 306.0
-offset_bottom = 338.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -77.0
+grow_horizontal = 2
+grow_vertical = 2
 flat = true
+
+[node name="SparkExplosionAnchorMarker2D" type="Marker2D" parent="."]
+position = Vector2(226, -115)
+
+[node name="ConsumeExplosionAnchorMarker2D" type="Marker2D" parent="."]
+position = Vector2(150, 115)
+
+[node name="IconLockTextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.587349
+anchor_top = -0.349398
+anchor_right = 0.957831
+anchor_bottom = 0.0963855
+grow_horizontal = 2
+texture = ExtResource("8_tgidq")
+metadata/_edit_use_anchors_ = true
+
+[node name="IconActiveTextureRect" type="NinePatchRect" parent="."]
+self_modulate = Color(1, 0.996078, 0.560784, 0.568627)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25
+anchor_top = 0.0451807
+anchor_right = 0.746988
+anchor_bottom = 0.5
+offset_bottom = -1.52588e-05
+texture = ExtResource("7_30e35")
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+metadata/_edit_use_anchors_ = true
+
+[node name="IconTextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.23494
+anchor_top = 0.0301205
+anchor_right = 0.710843
+anchor_bottom = 0.506024
+offset_right = 10.4699
+offset_bottom = 7.13857
+grow_horizontal = 2
+texture = ExtResource("8_hhd1s")
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
+
+[node name="ModifierHintPanel" type="Panel" parent="." node_paths=PackedStringArray("icon", "icon_active", "icon_lock", "hint")]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0421687
+anchor_top = 0.51506
+anchor_right = 0.975904
+anchor_bottom = 1.01506
+theme = ExtResource("7_mavx3")
+script = ExtResource("5_koyt8")
+icon = NodePath("../IconTextureRect")
+icon_active = NodePath("../IconActiveTextureRect")
+icon_lock = NodePath("../IconLockTextureRect")
+hint = NodePath("MarginContainer/HintLabel")
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="ModifierHintPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HintLabel" type="Label" parent="ModifierHintPanel/MarginContainer"]
+layout_mode = 2
+text = "Wow, I feel dizzy right now..."
+label_settings = ExtResource("6_iyjnn")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
+metadata/_edit_lock_ = true
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

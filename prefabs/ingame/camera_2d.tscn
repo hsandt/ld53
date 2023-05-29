@@ -1,4 +1,9 @@
-[gd_scene format=3 uid="uid://cxmcka11cekmi"]
+[gd_scene load_steps=2 format=3 uid="uid://cxmcka11cekmi"]
+
+[ext_resource type="Script" path="res://scripts/ingame/camera/custom_camera_2d.gd" id="1_mo2ds"]
 
 [node name="Camera2D" type="Camera2D"]
 position_smoothing_enabled = true
+script = ExtResource("1_mo2ds")
+shake_frequency = 20.0
+stop_shake_duration = 0.05

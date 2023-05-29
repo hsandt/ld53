@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://b2td8kx06arn4"]
+
+[ext_resource type="PackedScene" uid="uid://rvie2lk2ka6u" path="res://prefabs/ingame/fx/OneShotFX.tscn" id="1_ir6bx"]
+[ext_resource type="SpriteFrames" uid="uid://isj6h70puhob" path="res://animations/fx_explosion_regular_sprite_frames.tres" id="2_hrnn1"]
+[ext_resource type="AudioStream" uid="uid://bynbjdvf5yk4v" path="res://audio/sfx/explosion_1 WIP.ogg" id="3_lunau"]
+
+[node name="OneShotFX_ExplosionRegular" instance=ExtResource("1_ir6bx")]
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = ExtResource("2_hrnn1")
+offset = Vector2(0, -40)
+
+[node name="AudioStreamPlayer" parent="." index="1"]
+stream = ExtResource("3_lunau")

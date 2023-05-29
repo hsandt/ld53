@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://djnk27qxxh71p"]
+
+[ext_resource type="FontFile" uid="uid://irbcjinnmbd0" path="res://fonts/Risque/Risque-Regular.ttf" id="1_xvxhs"]
+
+[resource]
+font = ExtResource("1_xvxhs")
+font_size = 44
+font_color = Color(0.172549, 0.137255, 0.0352941, 1)

@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Modifier" load_steps=3 format=3 uid="uid://b10gbs6vmxyv4"]
+
+[ext_resource type="Texture2D" uid="uid://c8ev3swf6dlqu" path="res://sprites/icons/Icon_Resistance_Buff.png" id="1_dotcx"]
+[ext_resource type="Script" path="res://scripts/buffs/modifier.gd" id="2_hw4r0"]
+
+[resource]
+script = ExtResource("2_hw4r0")
+icon_texture = ExtResource("1_dotcx")
+description = "Try to hit me now!"
+attribute = "damage_factor"
+operation = 1
+value = -0.5
+lucky_modifier_probability = 0.5
