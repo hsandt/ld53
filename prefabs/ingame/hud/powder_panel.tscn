@@ -33,17 +33,6 @@ brighten_timer = NodePath("../BrightenTimer")
 
 [node name="BrightenTimer" type="Timer" parent="."]
 
-[node name="Button" type="Button" parent="."]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -77.0
-grow_horizontal = 2
-grow_vertical = 2
-flat = true
-
 [node name="SparkExplosionAnchorMarker2D" type="Marker2D" parent="."]
 position = Vector2(226, -115)
 
@@ -123,5 +112,16 @@ vertical_alignment = 1
 autowrap_mode = 3
 metadata/_edit_use_anchors_ = true
 metadata/_edit_lock_ = true
+
+[node name="Button" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -77.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
