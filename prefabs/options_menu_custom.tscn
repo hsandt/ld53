@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bin6b2ypkka84"]
+[gd_scene load_steps=10 format=3 uid="uid://bin6b2ypkka84"]
 
 [ext_resource type="Script" path="res://addons/EasyMenus/Scripts/options_menu_controller.gd" id="1_fg5gl"]
 [ext_resource type="Script" path="res://addons/EasyMenus/Scripts/follow_focus_center.gd" id="2_mgdso"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dyfwp0vhgfjd7" path="res://addons/EasyMenus/Nodes/slider_w_labels.tscn" id="3_nstew"]
 [ext_resource type="Script" path="res://addons/EasyMenus/Scripts/option_button_input_propagator.gd" id="4_4kub1"]
 [ext_resource type="PackedScene" uid="uid://cqniig2ks0xs2" path="res://addons/EasyMenus/Nodes/gamepad_closable.tscn" id="5_nl5i3"]
+[ext_resource type="Script" path="res://scripts/ui/ButtonWithCustomCursor.gd" id="7_cai07"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tg31v"]
 
@@ -112,6 +113,7 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 4
+mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 25
 text = "Fullscreen"
 
@@ -132,6 +134,7 @@ custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 tooltip_text = "Syncs Games Frame Rate with Displays Refresh Rate"
+mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 25
 text = "V-Sync"
 
@@ -240,6 +243,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 8
 theme_override_font_sizes/font_size = 25
 text = "Back"
+script = ExtResource("7_cai07")
 
 [connection signal="value_changed" from="MarginContainer/TextureRect/ScrollContainer/VBoxContainer/MarginContainer/VBoxContainer/SFXVolumeSlider" to="." method="_on_sfx_volume_slider_value_changed"]
 [connection signal="value_changed" from="MarginContainer/TextureRect/ScrollContainer/VBoxContainer/MarginContainer/VBoxContainer/MusicVolumeSlider" to="." method="_on_music_volume_slider_value_changed"]

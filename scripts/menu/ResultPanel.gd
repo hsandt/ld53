@@ -7,8 +7,8 @@ extends Control
 @export var powder_types_left_value_label: Label
 @export var total_score_label: Label
 @export var total_score_value_label: Label
-@export var replay_button: Button
-@export var back_to_main_menu_button: Button
+@export var replay_button: ButtonWithCustomCursor
+@export var back_to_main_menu_button: ButtonWithCustomCursor
 
 @export var outcome_text_success: String
 @export var outcome_text_failure: String
@@ -51,13 +51,13 @@ func _ready():
 
 
 func _disable_all_buttons():
-	replay_button.disabled = true
-	back_to_main_menu_button.disabled = true
+	replay_button.disable_interactions()
+	back_to_main_menu_button.disable_interactions()
 
 
 func _enable_all_buttons():
-	replay_button.disabled = false
-	back_to_main_menu_button.disabled = false
+	replay_button.enable_interactions()
+	back_to_main_menu_button.enable_interactions()
 
 
 func _on_replay_button_pressed():

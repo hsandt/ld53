@@ -11,7 +11,7 @@ extends Panel
 @export var animated_sprite: AnimatedSprite2D
 @export var modifier_hint_panel: ModifierHintPanel
 
-@onready var button: Button = %Button
+@onready var button: ButtonWithCustomCursor = %Button
 
 
 var powder_state_to_animation := {
@@ -43,12 +43,10 @@ func _ready():
 	disable_interactions()
 
 func enable_interactions():
-	button.disabled = false
-	button.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
+	button.enable_interactions()
 
 func disable_interactions():
-	button.disabled = true
-	button.mouse_default_cursor_shape = Control.CURSOR_ARROW
+	button.disable_interactions()
 
 func register_observed_powder(powder: Powder):
 	observed_powder = powder

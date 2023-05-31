@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c03i68p3oqkh2"]
+[gd_scene load_steps=13 format=3 uid="uid://c03i68p3oqkh2"]
 
 [ext_resource type="Script" path="res://scripts/ui/powder_panel.gd" id="1_8dg0n"]
 [ext_resource type="PackedScene" uid="uid://b2td8kx06arn4" path="res://prefabs/ingame/fx/OneShotFX_ExplosionRegular.tscn" id="2_k3aqf"]
@@ -11,6 +11,7 @@
 [ext_resource type="Theme" uid="uid://b3m6giw1r7111" path="res://themes/theme_hud_powder_panel.tres" id="7_mavx3"]
 [ext_resource type="Texture2D" uid="uid://bp2keqeaibtao" path="res://sprites/icons/Icon_SteerDecayAcc_SuperDebuff.png" id="8_hhd1s"]
 [ext_resource type="Texture2D" uid="uid://paa0t2hn1sgv" path="res://sprites/hud/HUD_KegLock_Cropped.png" id="8_tgidq"]
+[ext_resource type="Script" path="res://scripts/ui/ButtonWithCustomCursor.gd" id="12_b6aw0"]
 
 [node name="PowderPanel" type="Panel" node_paths=PackedStringArray("spark_explosion_anchor", "consume_explosion_anchor", "animated_sprite", "modifier_hint_panel")]
 self_modulate = Color(1, 1, 1, 0)
@@ -123,5 +124,6 @@ offset_top = -77.0
 grow_horizontal = 2
 grow_vertical = 2
 flat = true
+script = ExtResource("12_b6aw0")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

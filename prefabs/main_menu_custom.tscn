@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bicer5hvlabr8"]
+[gd_scene load_steps=9 format=3 uid="uid://bicer5hvlabr8"]
 
 [ext_resource type="Script" path="res://scripts/menu/main_menu_controller_custom.gd" id="1_i2sts"]
 [ext_resource type="PackedScene" uid="uid://bin6b2ypkka84" path="res://prefabs/options_menu_custom.tscn" id="2_87k8p"]
@@ -7,6 +7,7 @@
 [ext_resource type="LabelSettings" uid="uid://d20dc6wvnojda" path="res://themes/label_settings_subtitle.tres" id="3_bcn68"]
 [ext_resource type="PackedScene" uid="uid://djvedm1ibu5wi" path="res://prefabs/credits_menu.tscn" id="3_wydvs"]
 [ext_resource type="PackedScene" uid="uid://bhcqiywsbm6rm" path="res://prefabs/main_menu_button.tscn" id="5_33fgt"]
+[ext_resource type="Script" path="res://scripts/ui/ButtonWithCustomCursor.gd" id="6_dkrgj"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -82,22 +83,26 @@ metadata/_edit_use_anchors_ = true
 [node name="StartGameButton" parent="TitleMenu/ButtonContainer" instance=ExtResource("5_33fgt")]
 unique_name_in_owner = true
 layout_mode = 2
+script = ExtResource("6_dkrgj")
 
 [node name="OptionsButton" parent="TitleMenu/ButtonContainer" instance=ExtResource("5_33fgt")]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Options"
+script = ExtResource("6_dkrgj")
 
 [node name="CreditsButton" parent="TitleMenu/ButtonContainer" instance=ExtResource("5_33fgt")]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Credits"
+script = ExtResource("6_dkrgj")
 
 [node name="QuitButton" parent="TitleMenu/ButtonContainer" instance=ExtResource("5_33fgt")]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Quit
 "
+script = ExtResource("6_dkrgj")
 
 [node name="OptionsMenu" parent="." instance=ExtResource("2_87k8p")]
 unique_name_in_owner = true

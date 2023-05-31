@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://biov5pqyvllyy"]
+[gd_scene load_steps=6 format=3 uid="uid://biov5pqyvllyy"]
 
 [ext_resource type="Script" path="res://scripts/menu/ResultPanel.gd" id="1_72j1t"]
 [ext_resource type="Texture2D" uid="uid://num53150s11" path="res://sprites/bg/result_bg.png" id="1_hijyu"]
 [ext_resource type="Theme" uid="uid://cls7a0y3pf2n7" path="res://themes/theme_main_menu.tres" id="1_j3ub4"]
 [ext_resource type="FontVariation" uid="uid://c8l3whxhmudu8" path="res://themes/font_variation_risque_bold.tres" id="4_lp7fc"]
+[ext_resource type="Script" path="res://scripts/ui/ButtonWithCustomCursor.gd" id="5_hjriy"]
 
 [node name="ResultPanel" type="Control" node_paths=PackedStringArray("outcome_label", "time_value_label", "powder_left_value_label", "powder_types_left_value_label", "total_score_label", "total_score_value_label", "replay_button", "back_to_main_menu_button")]
 layout_mode = 3
@@ -142,11 +143,13 @@ metadata/_edit_use_anchors_ = true
 [node name="ReplayButton" type="Button" parent="MarginContainer/Control/VBoxContainer"]
 layout_mode = 2
 text = "Replay"
+script = ExtResource("5_hjriy")
 metadata/_edit_use_anchors_ = true
 
 [node name="BackToMainMenuButton" type="Button" parent="MarginContainer/Control/VBoxContainer"]
 layout_mode = 2
 text = "Back to Main Menu"
+script = ExtResource("5_hjriy")
 metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="MarginContainer/Control/VBoxContainer/ReplayButton" to="." method="_on_replay_button_pressed"]

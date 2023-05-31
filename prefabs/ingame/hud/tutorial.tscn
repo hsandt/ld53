@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://d0tsvq2db1mtv"]
+[gd_scene load_steps=6 format=3 uid="uid://d0tsvq2db1mtv"]
 
 [ext_resource type="Script" path="res://scripts/ui/Tutorial.gd" id="1_sct8k"]
 [ext_resource type="Texture2D" uid="uid://cw48344uon1ep" path="res://sprites/hud/parchment.png" id="2_hm4k1"]
 [ext_resource type="Theme" uid="uid://b0ra3dkimgey1" path="res://themes/theme_hud_tutorial.tres" id="3_i0wax"]
 [ext_resource type="FontVariation" uid="uid://ca78iyj5nf7l8" path="res://themes/font_variation_risque.tres" id="4_l3536"]
+[ext_resource type="Script" path="res://scripts/ui/ButtonWithCustomCursor.gd" id="5_130b0"]
 
 [node name="Tutorial" type="Control" node_paths=PackedStringArray("accept_button")]
 layout_mode = 3
@@ -69,6 +70,7 @@ anchor_bottom = 0.810185
 grow_horizontal = 2
 grow_vertical = 2
 text = "I fathom!"
+script = ExtResource("5_130b0")
 metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="TextureRect/AcceptButton" to="." method="_on_button_pressed_accept"]
