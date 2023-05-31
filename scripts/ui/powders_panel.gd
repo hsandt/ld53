@@ -32,6 +32,11 @@ func _ready():
 	_current_focused_panel_index = -1
 
 func _unhandled_input(event: InputEvent):
+	if GameManager.game_phase != Enums.GamePhase.RACING:
+		# Prevent powder panel navigation outside RACING to avoid e.g.
+		# losing focus from Tutorial button
+		return
+
 	if event.is_action_pressed(&"prev_powder"):
 		focus_previous_panel()
 	elif event.is_action_pressed(&"next_powder"):
