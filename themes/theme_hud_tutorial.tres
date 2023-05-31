@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://b25ss5fgnurta" path="res://sprites/ui/kenney_ui-pack-rpg-expansion/PNG/buttonLong_beige.png" id="1_bphnd"]
 [ext_resource type="Texture2D" uid="uid://dthe3po5io1h8" path="res://sprites/ui/kenney_ui-pack-rpg-expansion/PNG/buttonLong_beige_pressed.png" id="2_byne0"]
-[ext_resource type="FontFile" uid="uid://fqr6oqxbrqpc" path="res://fonts/cat_franken_deutsch/CATFranken-Deutsch.ttf" id="3_3qjqh"]
+[ext_resource type="FontVariation" uid="uid://ca78iyj5nf7l8" path="res://themes/font_variation_risque.tres" id="3_0ws6c"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eb3kf"]
 texture = ExtResource("1_bphnd")
@@ -67,7 +67,7 @@ axis_stretch_vertical = 1
 modulate_color = Color(0.745098, 0.745098, 0.745098, 1)
 
 [resource]
-default_font = ExtResource("3_3qjqh")
+default_font = ExtResource("3_0ws6c")
 default_font_size = 40
 Button/colors/font_color = Color(0.172549, 0.137255, 0.0352941, 1)
 Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
@@ -89,5 +89,8 @@ Button/styles/focus = SubResource("StyleBoxFlat_m4ws1")
 Button/styles/hover = SubResource("StyleBoxTexture_ijywi")
 Button/styles/normal = SubResource("StyleBoxTexture_uq6cb")
 Button/styles/pressed = SubResource("StyleBoxTexture_8h1ak")
+Label/colors/font_color = Color(0.172549, 0.137255, 0.0352941, 1)
+Label/colors/font_outline_color = Color(1, 1, 1, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 0)
 RichTextLabel/colors/default_color = Color(0.172549, 0.137255, 0.0352941, 1)
-RichTextLabel/constants/line_separation = 0
+RichTextLabel/constants/line_separation = 10
