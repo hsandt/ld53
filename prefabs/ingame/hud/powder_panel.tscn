@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c03i68p3oqkh2"]
+[gd_scene load_steps=15 format=3 uid="uid://c03i68p3oqkh2"]
 
 [ext_resource type="Script" path="res://scripts/ui/powder_panel.gd" id="1_8dg0n"]
 [ext_resource type="PackedScene" uid="uid://b2td8kx06arn4" path="res://prefabs/ingame/fx/OneShotFX_ExplosionRegular.tscn" id="2_k3aqf"]
@@ -6,7 +6,6 @@
 [ext_resource type="SpriteFrames" path="res://animations/powder_panel_sprite_frames.tres" id="3_jit8g"]
 [ext_resource type="Shader" path="res://shaders/outline_shader.gdshader" id="4_exg4m"]
 [ext_resource type="Script" path="res://scripts/ui/ModifierHintPanel.gd" id="5_koyt8"]
-[ext_resource type="LabelSettings" uid="uid://djnk27qxxh71p" path="res://themes/label_settings_hud_modifier_hint.tres" id="6_iyjnn"]
 [ext_resource type="Script" path="res://scripts/visual/AnimatedSprite2DWithOutline.gd" id="6_t7gsy"]
 [ext_resource type="Texture2D" uid="uid://ccjml2bd02bq0" path="res://sprites/icons/rounded_square80.png" id="7_30e35"]
 [ext_resource type="Theme" uid="uid://b3m6giw1r7111" path="res://themes/theme_hud_powder_panel.tres" id="7_mavx3"]
@@ -54,9 +53,9 @@ position = Vector2(150, 115)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.587349
-anchor_top = -0.349398
+anchor_top = -0.379518
 anchor_right = 0.957831
-anchor_bottom = 0.0963855
+anchor_bottom = 0.0662651
 grow_horizontal = 2
 texture = ExtResource("8_tgidq")
 metadata/_edit_use_anchors_ = true
@@ -66,9 +65,9 @@ self_modulate = Color(1, 0.996078, 0.560784, 0.568627)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.25
-anchor_top = 0.0451807
+anchor_top = -0.0210844
 anchor_right = 0.746988
-anchor_bottom = 0.5
+anchor_bottom = 0.433735
 offset_bottom = -1.52588e-05
 texture = ExtResource("7_30e35")
 patch_margin_left = 12
@@ -81,23 +80,22 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.23494
-anchor_top = 0.0301205
+anchor_top = -0.0361446
 anchor_right = 0.710843
-anchor_bottom = 0.506024
+anchor_bottom = 0.439759
 offset_right = 10.4699
 offset_bottom = 7.13857
 grow_horizontal = 2
 texture = ExtResource("8_hhd1s")
 metadata/_edit_use_anchors_ = true
-metadata/_edit_lock_ = true
 
 [node name="ModifierHintPanel" type="Panel" parent="." node_paths=PackedStringArray("icon", "icon_active", "icon_lock", "hint")]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.0421687
-anchor_top = 0.51506
-anchor_right = 0.975904
-anchor_bottom = 1.01506
+anchor_left = 0.00903614
+anchor_top = 0.451807
+anchor_right = 0.987952
+anchor_bottom = 0.987952
 theme = ExtResource("7_mavx3")
 script = ExtResource("5_koyt8")
 icon = NodePath("../IconTextureRect")
@@ -116,8 +114,7 @@ grow_vertical = 2
 
 [node name="HintLabel" type="Label" parent="ModifierHintPanel/MarginContainer"]
 layout_mode = 2
-text = "Wow, I feel dizzy right now..."
-label_settings = ExtResource("6_iyjnn")
+text = "Next hit gonna REALLY hurt"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
