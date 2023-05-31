@@ -44,9 +44,11 @@ func _ready():
 
 func enable_interactions():
 	button.disabled = false
+	button.mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND
 
 func disable_interactions():
 	button.disabled = true
+	button.mouse_default_cursor_shape = Control.CURSOR_ARROW
 
 func register_observed_powder(powder: Powder):
 	observed_powder = powder
