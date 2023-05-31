@@ -28,6 +28,9 @@ var powder_state_to_animation := {
 
 var observed_powder: Powder
 
+## True when mouse is hovering button (has entered, not exited)
+var is_button_hovered: bool
+
 
 func _ready():
 	assert(spark_explosion_prefab != null, "[Powder] spark_explosion_prefab is not set on %s" % get_path())
@@ -46,6 +49,24 @@ func _ready():
 
 	# Start disabled until state changes
 	disable_interactions()
+
+	is_button_hovered = false
+
+
+func _process(_delta):
+	# Focus has priority over hover in terms of feedback
+	if not button.has_focus():
+		# Update outline based on hover state
+		# Doing this in _process is more reliable as it covers the case where
+		# user keeps mouse over a keg and navigates with directional input:
+		# the keg will still be outlined after navigation crosses hovered keg
+		if is_button_hovered:
+			animated_sprite.set_outline_color(sprite_hover_outline_color)
+			animated_sprite.set_outline_thickness(sprite_hover_outline_thickness)
+		else:
+			animated_sprite.reset_outline_color()
+			animated_sprite.reset_outline_thickness()
+
 
 func enable_interactions():
 	button.enable_interactions()
@@ -170,15 +191,9 @@ func _on_button_focus_exited():
 
 ## Connected via signal in inspector
 func _on_button_mouse_entered():
-	# Focus has priority over hover in terms of feedback
-	if not button.has_focus():
-		animated_sprite.set_outline_color(sprite_hover_outline_color)
-		animated_sprite.set_outline_thickness(sprite_hover_outline_thickness)
+	is_button_hovered = true
 
 
 ## Connected via signal in inspector
 func _on_button_mouse_exited():
-	# Focus has priority over hover in terms of feedback
-	if not button.has_focus():
-		animated_sprite.reset_outline_color()
-		animated_sprite.reset_outline_thickness()
+	is_button_hovered = false
