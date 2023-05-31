@@ -6,7 +6,6 @@ extends Node
 @export var pause_menu: PauseMenu
 @export var screen_fx_canvas_layer: ScreenFXCanvasLayer
 @export var player_character: Player
-@export var camera: Camera2D
 @export var map: Map
 
 @export var delivery_max_time: float = 180.0
@@ -20,12 +19,14 @@ extends Node
 @onready var hud: HUD = %HUD
 @onready var scrolling_center: ScrollingCenter = %ScrollingCenter
 
-var is_going_back_to_main_menu: bool = false
+var is_going_back_to_main_menu: bool
 
 var racing_time_left: float
 
 ## During RACING phase, set this to true to pause timer
 var is_time_paused: bool
+
+var _should_restart: bool
 
 func _ready():
 	assert(level != null,
@@ -39,12 +40,17 @@ func _ready():
 	assert(hud != null,
 		"[InGameManager] hud not found at %%HUD in same scene as %s" % get_path())
 
+	is_going_back_to_main_menu = false
+
 	# Hide pause menu
 	pause_menu.visible = false
 
 	# Start in intro game phase, pause logic
 	GameManager.game_phase = Enums.GamePhase.INTRO
 	racing_time_left = delivery_max_time
+
+	is_time_paused = false
+	_should_restart = false
 
 	# Wait 1 frame so children of player_character are ready
 	await get_tree().physics_frame
@@ -66,6 +72,11 @@ func _physics_process(delta):
 			player_character.try_start_failure_sequence()
 
 
+func _process(_delta):
+	if _should_restart:
+		restart_level_immediate()
+
+
 func _unhandled_input(event):
 	if event.is_action_pressed(&"pause"):
 		if not pause_menu.visible:
@@ -75,7 +86,7 @@ func _unhandled_input(event):
 		# this on their side
 
 	if event.is_action_pressed(&"restart"):
-		get_tree().reload_current_scene()
+		restart_level()
 
 	if OS.has_feature("debug"):
 		if event.is_action_pressed(&"cheat_take_damage"):
@@ -111,6 +122,22 @@ func _on_pause_menu_back_to_main_pressed():
 	player_character.process_mode = Node.PROCESS_MODE_DISABLED
 
 	await GameManager.go_back_to_main_menu()
+
+
+func _on_pause_menu_restart_pressed():
+	restart_level()
+
+
+func restart_level():
+	# Following the example in
+	# https://docs.godotengine.org/en/latest/tutorials/scripting/singletons_autoload.html
+	# we defer changing scene to avoid deleting nodes required by code currently running
+	# It turns out this works well even with direct call
+	call_deferred("restart_level_immediate")
+
+
+func restart_level_immediate():
+	get_tree().reload_current_scene()
 
 
 func enter_racing_phase():

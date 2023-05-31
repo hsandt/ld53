@@ -4,6 +4,7 @@ extends Control
 
 signal pause
 signal resume
+signal restart_pressed
 signal back_to_main_pressed
 
 # Children
@@ -46,13 +47,24 @@ func _on_options_menu_close():
 	panel_container.show()
 	resume_game_button.grab_focus()
 
-func _on_quit_button_pressed():
-	get_tree().quit()
+
+func _on_restart_button_pressed():
+	# Closing the pause menu itself is not important,
+	# but resuming game time is, or we'll be stuck after scene load
+	close_pause_menu()
+	emit_signal(&"restart_pressed")
 
 
 func _on_back_to_menu_button_pressed():
+	# Closing the pause menu itself is not important,
+	# but resuming game time is, or we'll be stuck after scene load
 	close_pause_menu()
 	emit_signal(&"back_to_main_pressed")
+
+
+func _on_quit_button_pressed():
+	get_tree().quit()
+
 
 func _unhandled_input(event):
 	if event.is_action_pressed(&"pause") and visible and !options_menu.visible:
