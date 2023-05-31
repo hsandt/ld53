@@ -1,17 +1,27 @@
-[gd_scene load_steps=13 format=3 uid="uid://c03i68p3oqkh2"]
+[gd_scene load_steps=16 format=3 uid="uid://c03i68p3oqkh2"]
 
 [ext_resource type="Script" path="res://scripts/ui/powder_panel.gd" id="1_8dg0n"]
 [ext_resource type="PackedScene" uid="uid://b2td8kx06arn4" path="res://prefabs/ingame/fx/OneShotFX_ExplosionRegular.tscn" id="2_k3aqf"]
 [ext_resource type="PackedScene" uid="uid://b2xc5w13uidet" path="res://prefabs/ingame/fx/OneShotFX_ExplosionMedium.tscn" id="2_xlg8i"]
 [ext_resource type="SpriteFrames" path="res://animations/powder_panel_sprite_frames.tres" id="3_jit8g"]
+[ext_resource type="Shader" path="res://shaders/outline_shader.gdshader" id="4_exg4m"]
 [ext_resource type="Script" path="res://scripts/ui/ModifierHintPanel.gd" id="5_koyt8"]
-[ext_resource type="Script" path="res://scripts/visual/AnimatedSprite2DBrightnessController.gd" id="6_7s2n6"]
 [ext_resource type="LabelSettings" uid="uid://djnk27qxxh71p" path="res://themes/label_settings_hud_modifier_hint.tres" id="6_iyjnn"]
+[ext_resource type="Script" path="res://scripts/visual/AnimatedSprite2DWithOutline.gd" id="6_t7gsy"]
 [ext_resource type="Texture2D" uid="uid://ccjml2bd02bq0" path="res://sprites/icons/rounded_square80.png" id="7_30e35"]
 [ext_resource type="Theme" uid="uid://b3m6giw1r7111" path="res://themes/theme_hud_powder_panel.tres" id="7_mavx3"]
 [ext_resource type="Texture2D" uid="uid://bp2keqeaibtao" path="res://sprites/icons/Icon_SteerDecayAcc_SuperDebuff.png" id="8_hhd1s"]
 [ext_resource type="Texture2D" uid="uid://paa0t2hn1sgv" path="res://sprites/hud/HUD_KegLock_Cropped.png" id="8_tgidq"]
 [ext_resource type="Script" path="res://scripts/ui/ButtonWithCustomCursor.gd" id="12_b6aw0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0227t"]
+resource_local_to_scene = true
+shader = ExtResource("4_exg4m")
+shader_parameter/outline_color = Color(1, 1, 1, 1)
+shader_parameter/outline_thickness = 0.0
+shader_parameter/add_margins = true
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rnfmc"]
 
 [node name="PowderPanel" type="Panel" node_paths=PackedStringArray("spark_explosion_anchor", "consume_explosion_anchor", "animated_sprite", "modifier_hint_panel")]
 self_modulate = Color(1, 1, 1, 0)
@@ -21,16 +31,16 @@ spark_explosion_prefab = ExtResource("2_xlg8i")
 consume_explosion_prefab = ExtResource("2_k3aqf")
 spark_explosion_anchor = NodePath("SparkExplosionAnchorMarker2D")
 consume_explosion_anchor = NodePath("ConsumeExplosionAnchorMarker2D")
-animated_sprite = NodePath("AnimatedSprite2DBrightnessController")
+animated_sprite = NodePath("AnimatedSprite2DWithOutline")
 modifier_hint_panel = NodePath("ModifierHintPanel")
 
-[node name="AnimatedSprite2DBrightnessController" type="AnimatedSprite2D" parent="." node_paths=PackedStringArray("brighten_timer")]
+[node name="AnimatedSprite2DWithOutline" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_0227t")
 position = Vector2(158, 57)
 sprite_frames = ExtResource("3_jit8g")
 animation = &"idle"
 autoplay = "idle"
-script = ExtResource("6_7s2n6")
-brighten_timer = NodePath("../BrightenTimer")
+script = ExtResource("6_t7gsy")
 
 [node name="BrightenTimer" type="Timer" parent="."]
 
@@ -123,7 +133,12 @@ anchor_bottom = 1.0
 offset_top = -77.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/focus = SubResource("StyleBoxEmpty_rnfmc")
 flat = true
 script = ExtResource("12_b6aw0")
 
+[connection signal="focus_entered" from="Button" to="." method="_on_button_focus_entered"]
+[connection signal="focus_exited" from="Button" to="." method="_on_button_focus_exited"]
+[connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

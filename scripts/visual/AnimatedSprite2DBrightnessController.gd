@@ -1,9 +1,7 @@
 class_name AnimatedSprite2DBrightnessController
 extends AnimatedSprite2D
-## This script allows us to set shader parameters "brightness" and "modulate"
+## This script allows us to set shader parameters "brightness" and native modulate
 ## on the animated sprite material, which should use the shader custom_sprite_shader.gdshader.
-## The reason we don't use the native CanvasItem modulate is that it won't work
-## with our custom shader, which defines a custom "modulate" parameter with the same effect.
 
 
 ## Timer used to change brightness for a given duration
@@ -14,18 +12,18 @@ extends AnimatedSprite2D
 ## You can set this to true via code of animation
 @export var override_brightness: bool
 
-## When update_brightness is true, this is used to update the shader material
+## When override_brightness is true, this is used to update the shader material
 ## brightness parameter
 ## You can set this to true via code of animation
 @export var target_brightness: float
 
-## When true, update material custom modulate to match state variable every frame
+## When true, update modulate to match state variable every frame
 ## When false, reset modulate
 ## You can set this to true via code of animation
 @export var override_modulate: bool
 
-## When update_brightness is true, this is used to update the shader material
-## custom modulate parameter
+## When override_modulate is true, this is used to update the shader material
+## modulate
 ## You can set this to true via code of animation
 @export var target_modulate: Color
 

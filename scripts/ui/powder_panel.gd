@@ -8,10 +8,15 @@ extends Panel
 @export var spark_explosion_anchor: Marker2D
 @export var consume_explosion_anchor: Marker2D
 
-@export var animated_sprite: AnimatedSprite2D
+@export var animated_sprite: AnimatedSprite2DWithOutline
 @export var modifier_hint_panel: ModifierHintPanel
 
 @onready var button: ButtonWithCustomCursor = %Button
+
+@export var sprite_hover_outline_color: Color = Color(1.0, 1.0, 1.0, 0.5)
+@export var sprite_hover_outline_thickness: float = 6.0
+@export var sprite_focus_outline_color: Color = Color(1.0, 1.0, 1.0, 1.0)
+@export var sprite_focus_outline_thickness: float = 6.0
 
 
 var powder_state_to_animation := {
@@ -149,3 +154,31 @@ func show_modifier_hint_panel():
 
 func hide_modifier_hint_panel():
 	modifier_hint_panel.visible = false
+
+
+## Connected via signal in inspector
+func _on_button_focus_entered():
+	animated_sprite.set_outline_color(sprite_focus_outline_color)
+	animated_sprite.set_outline_thickness(sprite_focus_outline_thickness)
+
+
+## Connected via signal in inspector
+func _on_button_focus_exited():
+	animated_sprite.reset_outline_color()
+	animated_sprite.reset_outline_thickness()
+
+
+## Connected via signal in inspector
+func _on_button_mouse_entered():
+	# Focus has priority over hover in terms of feedback
+	if not button.has_focus():
+		animated_sprite.set_outline_color(sprite_hover_outline_color)
+		animated_sprite.set_outline_thickness(sprite_hover_outline_thickness)
+
+
+## Connected via signal in inspector
+func _on_button_mouse_exited():
+	# Focus has priority over hover in terms of feedback
+	if not button.has_focus():
+		animated_sprite.reset_outline_color()
+		animated_sprite.reset_outline_thickness()
