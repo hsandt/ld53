@@ -36,6 +36,16 @@ func _unhandled_input(event: InputEvent):
 		focus_previous_panel()
 	elif event.is_action_pressed(&"next_powder"):
 		focus_next_panel()
+	elif event.is_action_pressed(&"ui_left"):
+		# only entered if native UI has not caught event, for leftmost panel
+		# try to focus previous panel, it will cycle to the rightmost panel
+		# See https://github.com/godotengine/godot-proposals/issues/6992
+		# Alternative B
+		focus_previous_panel()
+	elif event.is_action_pressed(&"ui_right"):
+		# only entered if native UI has not caught event, for rightmost panel
+		# try to focus next panel, it will cycle to the leftmost panel
+		focus_next_panel()
 
 func focus_first_panel():
 	# Focus first panel button
