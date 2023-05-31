@@ -1,10 +1,10 @@
 [gd_resource type="Resource" script_class="PowderData" load_steps=3 format=3 uid="uid://qxsub2genq4x"]
 
 [ext_resource type="Script" path="res://scripts/buffs/powder_data.gd" id="1_07xjm"]
-[ext_resource type="Resource" uid="uid://bcy7twdqoox0k" path="res://data/modifiers/modifier_secondary_race_timer_visibility_0.tres" id="2_yrcj2"]
+[ext_resource type="Resource" uid="uid://c5y1x1hopp4wp" path="res://data/modifiers/modifier_primary_camera_shake_intensity_increase.tres" id="2_6qjfk"]
 
 [resource]
 script = ExtResource("1_07xjm")
-spark_debuff_modifier = ExtResource("2_yrcj2")
+spark_debuff_modifier = ExtResource("2_6qjfk")
 max_stamina = 25.0
 time_before_burst = -1.0
