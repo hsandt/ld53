@@ -63,7 +63,7 @@ func _physics_process(delta):
 			# avoid time falling a bit below e.g. if limit is 0:00
 			# don't show -0:01 nor use it to compute final score
 			racing_time_left = delivery_timer_limit
-			player_character.start_failure_sequence()
+			player_character.try_start_failure_sequence()
 
 
 func _unhandled_input(event):

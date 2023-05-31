@@ -427,7 +427,7 @@ func try_start_success_sequence():
 	# TODO: play the happy animation here
 
 
-func start_failure_sequence():
+func try_start_failure_sequence():
 	if GameManager.game_phase != Enums.GamePhase.RACING:
 		return
 
