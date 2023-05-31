@@ -19,7 +19,6 @@ grow_vertical = 2
 script = ExtResource("1_i2sts")
 
 [node name="BackgroundTextureRect" type="TextureRect" parent="."]
-self_modulate = Color(0.854902, 0.980392, 0.847059, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

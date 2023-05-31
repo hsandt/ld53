@@ -637,7 +637,6 @@ texture = ExtResource("52_kgrpa")
 [node name="Floor" type="Node2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset" index="1"]
 
 [node name="Floor Full Rectangle" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Floor" index="0"]
-modulate = Color(0.85098, 0.85098, 0.85098, 1)
 z_index = -1
 scale = Vector2(1920, 1080)
 texture = ExtResource("5_1yeif")
