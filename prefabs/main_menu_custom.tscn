@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bicer5hvlabr8"]
+[gd_scene load_steps=10 format=3 uid="uid://bicer5hvlabr8"]
 
 [ext_resource type="Theme" uid="uid://cls7a0y3pf2n7" path="res://themes/theme_main_menu.tres" id="1_3xif0"]
 [ext_resource type="Script" path="res://scripts/menu/main_menu_controller_custom.gd" id="1_i2sts"]
@@ -8,6 +8,7 @@
 [ext_resource type="LabelSettings" uid="uid://d20dc6wvnojda" path="res://themes/label_settings_subtitle.tres" id="3_bcn68"]
 [ext_resource type="PackedScene" uid="uid://djvedm1ibu5wi" path="res://prefabs/credits_menu.tscn" id="3_wydvs"]
 [ext_resource type="PackedScene" uid="uid://bhcqiywsbm6rm" path="res://prefabs/main_menu_button.tscn" id="5_33fgt"]
+[ext_resource type="LabelSettings" uid="uid://cm1fr4agoqkst" path="res://themes/label_settings_version.tres" id="6_rha1b"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -39,41 +40,52 @@ offset_bottom = 40.0
 
 [node name="Title" type="Label" parent="TitleMenu"]
 layout_mode = 2
-offset_left = 1021.0
-offset_top = 34.0
-offset_right = 1876.0
-offset_bottom = 255.0
+anchor_left = 25.525
+anchor_top = 1.125
+anchor_right = 46.9
+anchor_bottom = 5.55
 theme_override_font_sizes/font_size = 45
 text = "P.O.W.D.E.R."
 label_settings = ExtResource("2_ayxu5")
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="SubTitle" type="Label" parent="TitleMenu"]
 layout_mode = 2
-offset_left = 1018.0
-offset_top = 259.0
-offset_right = 1869.0
-offset_bottom = 476.0
+anchor_left = 25.425
+anchor_top = 7.4
+anchor_right = 46.7
+anchor_bottom = 12.825
 theme_override_font_sizes/font_size = 45
 text = "Powder On Wild Days Explodes Randomly
 "
 label_settings = ExtResource("3_bcn68")
 horizontal_alignment = 1
 autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="Version" type="Label" parent="TitleMenu"]
+layout_mode = 2
+anchor_left = 44.775
+anchor_top = 5.075
+anchor_right = 47.85
+anchor_bottom = 6.75
+text = "v1.1
+"
+label_settings = ExtResource("6_rha1b")
+horizontal_alignment = 1
+autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
 
 [node name="ButtonContainer" type="VBoxContainer" parent="TitleMenu"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.400261
-anchor_top = 0.381945
-anchor_right = 1.13099
-anchor_bottom = 0.91713
-offset_left = 1278.99
-offset_top = 505.722
-offset_right = 1599.76
-offset_bottom = 745.315
+anchor_left = 31.65
+anchor_top = 15.4
+anchor_right = 42.575
+anchor_bottom = 23.525
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 15
