@@ -1,10 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://bhcqiywsbm6rm"]
+[gd_scene load_steps=3 format=3 uid="uid://bhcqiywsbm6rm"]
 
-[ext_resource type="Theme" uid="uid://cls7a0y3pf2n7" path="res://themes/theme_main_menu.tres" id="1_qtx8c"]
+[ext_resource type="Script" path="res://scripts/ui/ButtonWithCustomCursor.gd" id="1_0hh7v"]
+[ext_resource type="AudioStream" uid="uid://bg6cv3it1gsjq" path="res://audio/sfx/ui_confirm.ogg" id="2_cj8o8"]
 
-[node name="MainMenuButton" type="Button"]
+[node name="MenuButton" type="Button" node_paths=PackedStringArray("sfx_click_player")]
 custom_minimum_size = Vector2(350, 0)
-size_flags_horizontal = 4
-theme = ExtResource("1_qtx8c")
-theme_override_font_sizes/font_size = 30
-text = "Start"
+text = "TODO"
+script = ExtResource("1_0hh7v")
+sfx_click_player = NodePath("SFXClickPlayer")
+
+[node name="SFXClickPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_cj8o8")
+bus = &"SFX"
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

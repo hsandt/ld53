@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dl3i0r1d60n1q"
-path="res://.godot/imported/icon_48x48.png-d72aedf9c96d6728c86c22474c8afb87.ctex"
+uid="uid://cf8ygriar3ytd"
+path="res://.godot/imported/PFX_Positive.png-4f0f458b4a9fa865e8ac43c353ea91e6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://icon_48x48.png"
-dest_files=["res://.godot/imported/icon_48x48.png-d72aedf9c96d6728c86c22474c8afb87.ctex"]
+source_file="res://sprites/fx/PFX/PFX_Positive.png"
+dest_files=["res://.godot/imported/PFX_Positive.png-4f0f458b4a9fa865e8ac43c353ea91e6.ctex"]
 
 [params]
 

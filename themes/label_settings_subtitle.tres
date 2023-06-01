@@ -4,7 +4,7 @@
 
 [resource]
 font = ExtResource("1_rfgpq")
-font_size = 80
+font_size = 90
 font_color = Color(0.835294, 0.623529, 0.47451, 1)
 outline_size = 10
 outline_color = Color(0.172549, 0.137255, 0.0352941, 1)

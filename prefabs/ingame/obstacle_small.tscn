@@ -15,7 +15,6 @@ data = ExtResource("2_fgigx")
 shape = SubResource("RectangleShape2D_pxr24")
 
 [node name="Obstacle" parent="." index="1"]
-modulate = Color(0.960784, 0.717647, 0.517647, 1)
 position = Vector2(-0.780396, -1.50001)
 scale = Vector2(0.608309, 0.608309)
 texture = ExtResource("3_iba4h")

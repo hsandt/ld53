@@ -1,6 +1,7 @@
-[gd_resource type="Theme" load_steps=3 format=3 uid="uid://b3m6giw1r7111"]
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://b3m6giw1r7111"]
 
 [ext_resource type="Texture2D" uid="uid://ca80gcneifgao" path="res://sprites/ui/kenney_ui-pack-rpg-expansion/PNG/panel_beigeLight.png" id="1_1p5qf"]
+[ext_resource type="FontVariation" uid="uid://ca78iyj5nf7l8" path="res://themes/font_variation_risque.tres" id="1_r3rsf"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r2j5n"]
 texture = ExtResource("1_1p5qf")
@@ -11,6 +12,9 @@ texture_margin_bottom = 7.0
 modulate_color = Color(1, 1, 1, 0.858824)
 
 [resource]
+Label/colors/font_color = Color(0.172549, 0.137255, 0.0352941, 1)
+Label/font_sizes/font_size = 52
+Label/fonts/font = ExtResource("1_r3rsf")
 MarginContainer/constants/margin_bottom = 10
 MarginContainer/constants/margin_left = 10
 MarginContainer/constants/margin_right = 10

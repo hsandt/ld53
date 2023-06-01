@@ -8,10 +8,15 @@ extends Panel
 @export var spark_explosion_anchor: Marker2D
 @export var consume_explosion_anchor: Marker2D
 
-@export var animated_sprite: AnimatedSprite2D
+@export var animated_sprite: AnimatedSprite2DWithOutline
 @export var modifier_hint_panel: ModifierHintPanel
 
-@onready var button: Button = %Button
+@onready var button: ButtonWithCustomCursor = %Button
+
+@export var sprite_hover_outline_color: Color = Color(1.0, 1.0, 1.0, 0.5)
+@export var sprite_hover_outline_thickness: float = 6.0
+@export var sprite_focus_outline_color: Color = Color(1.0, 1.0, 1.0, 1.0)
+@export var sprite_focus_outline_thickness: float = 6.0
 
 
 var powder_state_to_animation := {
@@ -22,6 +27,9 @@ var powder_state_to_animation := {
 }
 
 var observed_powder: Powder
+
+## True when mouse is hovering button (has entered, not exited)
+var is_button_hovered: bool
 
 
 func _ready():
@@ -42,11 +50,29 @@ func _ready():
 	# Start disabled until state changes
 	disable_interactions()
 
+	is_button_hovered = false
+
+
+func _process(_delta):
+	# Focus has priority over hover in terms of feedback
+	if not button.has_focus():
+		# Update outline based on hover state
+		# Doing this in _process is more reliable as it covers the case where
+		# user keeps mouse over a keg and navigates with directional input:
+		# the keg will still be outlined after navigation crosses hovered keg
+		if is_button_hovered:
+			animated_sprite.set_outline_color(sprite_hover_outline_color)
+			animated_sprite.set_outline_thickness(sprite_hover_outline_thickness)
+		else:
+			animated_sprite.reset_outline_color()
+			animated_sprite.reset_outline_thickness()
+
+
 func enable_interactions():
-	button.disabled = false
+	button.enable_interactions()
 
 func disable_interactions():
-	button.disabled = true
+	button.disable_interactions()
 
 func register_observed_powder(powder: Powder):
 	observed_powder = powder
@@ -149,3 +175,25 @@ func show_modifier_hint_panel():
 
 func hide_modifier_hint_panel():
 	modifier_hint_panel.visible = false
+
+
+## Connected via signal in inspector
+func _on_button_focus_entered():
+	animated_sprite.set_outline_color(sprite_focus_outline_color)
+	animated_sprite.set_outline_thickness(sprite_focus_outline_thickness)
+
+
+## Connected via signal in inspector
+func _on_button_focus_exited():
+	animated_sprite.reset_outline_color()
+	animated_sprite.reset_outline_thickness()
+
+
+## Connected via signal in inspector
+func _on_button_mouse_entered():
+	is_button_hovered = true
+
+
+## Connected via signal in inspector
+func _on_button_mouse_exited():
+	is_button_hovered = false

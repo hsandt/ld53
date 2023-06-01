@@ -1,10 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://n87nhvob85pn"]
+[gd_scene load_steps=12 format=3 uid="uid://0jpktiapu6tp"]
 
 [ext_resource type="Texture2D" uid="uid://b7vutp6ly7tx6" path="res://sprites/cooldown_circle.png" id="1_7tibs"]
 [ext_resource type="Script" path="res://scripts/buffs/buff.gd" id="1_1562j"]
 [ext_resource type="Texture2D" uid="uid://b5d35m852wwbg" path="res://sprites/buff_icons/black_eye.png" id="2_whe62"]
 [ext_resource type="Script" path="res://scripts/buffs/progress_bar.gd" id="3_kh3ky"]
-[ext_resource type="AudioStream" uid="uid://bg6cv3it1gsjq" path="res://audio/sfx/ui_click_1 WIP.ogg" id="4_0nxpa"]
+[ext_resource type="AudioStream" uid="uid://bg6cv3it1gsjq" path="res://audio/sfx/ui_confirm.ogg" id="5_eynoo"]
 [ext_resource type="AudioStream" uid="uid://s0k6nyen83su" path="res://audio/sfx/spark_loop_ver2.ogg" id="6_0ukab"]
 [ext_resource type="AudioStream" uid="uid://dm2ra3plrjukb" path="res://audio/sfx/spark_hit WIP.ogg" id="6_ru8gr"]
 [ext_resource type="AudioStream" uid="uid://rxj2j25frlmi" path="res://audio/sfx/buff WIP.ogg" id="7_47n0n"]
@@ -67,7 +67,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_qbw68")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ied63")
 
 [node name="ui_click_sfx" type="AudioStreamPlayer" parent="spark_button"]
-stream = ExtResource("4_0nxpa")
+stream = ExtResource("5_eynoo")
 bus = &"SFX"
 
 [node name="spark_loop_sfx" type="AudioStreamPlayer" parent="."]

@@ -14,6 +14,9 @@ signal boost_level_changed(new_level: int)
 ## Parent of smoke FX animated sprites
 @export var smoke_fx_parent: Node2D
 
+## Boost FX
+@export var boost_fx: OneShotFX
+
 @export var first_smoke_fx_frame_desync: int = 2
 
 # Local HUD
@@ -390,6 +393,7 @@ func notify_boost_level_changed():
 func try_boost():
 	if current_boost_level < boost_max_level:
 		current_boost_level += 1
+		_play_fx_boost()
 		notify_boost_level_changed()
 
 func try_decrement_boost_level():
@@ -427,7 +431,7 @@ func try_start_success_sequence():
 	# TODO: play the happy animation here
 
 
-func start_failure_sequence():
+func try_start_failure_sequence():
 	if GameManager.game_phase != Enums.GamePhase.RACING:
 		return
 
@@ -441,6 +445,13 @@ func _play_fx_hit_obstacle():
 	var fx_hit_obstacle = fx_hit_obstacle_prefab.instantiate()
 	in_game_manager.level.add_child(fx_hit_obstacle)
 	fx_hit_obstacle.global_position = fx_hit_obstacle_anchor.global_position
+
+
+func _play_fx_boost():
+	# Unlike FX Hit Obstacle, FX Boost is reusable, so it's prepared
+	# in the scene and we just call play when we need it
+	# FX prefab includes SFX
+	boost_fx.play()
 
 
 func _start_annoying_sounds(intensity: float):

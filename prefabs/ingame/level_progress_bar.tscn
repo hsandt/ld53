@@ -1,7 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://b4g4xt77jodcq"]
+[gd_scene load_steps=9 format=3 uid="uid://bl1pfltkdqm37"]
 
 [ext_resource type="Script" path="res://prefabs/ingame/level_progress_bar.gd" id="1_yr0b8"]
-[ext_resource type="Texture2D" uid="uid://c0hgwpvaucvba" path="res://sprites/hud/HUD_ProgressIcon.PNG" id="3_oxbvg"]
+[ext_resource type="Texture2D" uid="uid://bgakicbt2bi7l" path="res://sprites/hud/HUD_ProgressBar_Icon.png" id="5_7c4bv"]
 [ext_resource type="Script" path="res://scripts/ui/level_progression_character_indicator.gd" id="5_7c22j"]
 [ext_resource type="Texture2D" uid="uid://cu0usklrg1bpg" path="res://sprites/hud/HUD_ProgressBar_Fill.png" id="5_41mjy"]
 [ext_resource type="Texture2D" uid="uid://clkqa0oqj75ea" path="res://sprites/hud/HUD_ProgressBar_Frame.png" id="6_o7poi"]
@@ -80,7 +80,6 @@ grow_vertical = 2
 visible = false
 
 [node name="Character" type="TextureRect" parent="Frame/IndicatorsParent"]
-self_modulate = Color(0.443137, 0.67451, 0.431373, 1)
 material = SubResource("CanvasItemMaterial_renjf")
 layout_mode = 1
 anchors_preset = -1
@@ -88,10 +87,11 @@ anchor_left = 0.054
 anchor_top = 0.327
 anchor_right = 0.054
 anchor_bottom = 0.327
-offset_left = -41.3979
-offset_top = -36.7
-offset_right = 348.602
-offset_bottom = 290.3
+offset_left = -30.3979
+offset_top = -26.7
+offset_right = 237.602
+offset_bottom = 218.3
 scale = Vector2(0.2, 0.2)
-texture = ExtResource("3_oxbvg")
+texture = ExtResource("5_7c4bv")
+stretch_mode = 5
 script = ExtResource("5_7c22j")

@@ -2,10 +2,10 @@ class_name MainMenu
 extends Control
 signal start_game_pressed
 
-@onready var start_game_button: Button = $%StartGameButton
-@onready var options_button: Control = $%OptionsButton
-@onready var credits_button: Control = $%CreditsButton
-@onready var quit_button: Control = $%QuitButton
+@onready var start_game_button: ButtonWithCustomCursor = $%StartGameButton
+@onready var options_button: ButtonWithCustomCursor = $%OptionsButton
+@onready var credits_button: ButtonWithCustomCursor = $%CreditsButton
+@onready var quit_button: ButtonWithCustomCursor = $%QuitButton
 
 @onready var title_menu: Control = $%TitleMenu
 @onready var options_menu: Control = $%OptionsMenu
@@ -23,16 +23,16 @@ func _ready():
 		quit_button.visible = false
 
 func disable_all_buttons():
-	start_game_button.disabled = true
-	options_button.disabled = true
-	credits_button.disabled = true
-	quit_button.disabled = true
+	start_game_button.disable_interactions()
+	options_button.disable_interactions()
+	credits_button.disable_interactions()
+	quit_button.disable_interactions()
 
 func enable_all_buttons():
-	start_game_button.disabled = false
-	options_button.disabled = false
-	credits_button.disabled = false
-	quit_button.disabled = false
+	start_game_button.enable_interactions()
+	options_button.enable_interactions()
+	credits_button.enable_interactions()
+	quit_button.enable_interactions()
 
 func quit():
 	get_tree().quit()

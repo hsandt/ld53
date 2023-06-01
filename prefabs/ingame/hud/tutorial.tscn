@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/ui/Tutorial.gd" id="1_sct8k"]
 [ext_resource type="Texture2D" uid="uid://cw48344uon1ep" path="res://sprites/hud/parchment.png" id="2_hm4k1"]
 [ext_resource type="Theme" uid="uid://b0ra3dkimgey1" path="res://themes/theme_hud_tutorial.tres" id="3_i0wax"]
-[ext_resource type="FontVariation" uid="uid://ca78iyj5nf7l8" path="res://themes/font_variation_risque.tres" id="4_l3536"]
+[ext_resource type="PackedScene" uid="uid://bhcqiywsbm6rm" path="res://prefabs/main_menu_button.tscn" id="4_nc3k3"]
 
 [node name="Tutorial" type="Control" node_paths=PackedStringArray("accept_button")]
 layout_mode = 3
@@ -27,19 +27,20 @@ grow_vertical = 2
 texture = ExtResource("2_hm4k1")
 metadata/_edit_use_anchors_ = true
 
-[node name="RichTextLabel" type="RichTextLabel" parent="TextureRect"]
+[node name="RichTextLabel" type="Label" parent="TextureRect"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.137276
 anchor_top = 0.213889
 anchor_right = 0.835269
-anchor_bottom = 0.553704
+anchor_bottom = 0.527778
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/normal_font_size = 45
+theme_override_font_sizes/font_size = 35
 text = "Holla! Thou hast been requisited by the kingdom to deliver fruit powder kegs from the P.O.W.D.E.R. factory to surrounding towns.
 
 Please undertake to bestow the kegs in an timely manner, \"boosting\" as many times as necessary."
+autowrap_mode = 3
 metadata/_edit_use_anchors_ = true
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="TextureRect"]
@@ -51,7 +52,7 @@ anchor_right = 0.835269
 anchor_bottom = 0.710185
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/normal_font = ExtResource("4_l3536")
+theme_override_constants/line_separation = 0
 theme_override_font_sizes/normal_font_size = 30
 text = "- WZ/S or Up/Down: steer
 - AQ/D or Left/Right: select previous/next keg
@@ -59,16 +60,17 @@ text = "- WZ/S or Up/Down: steer
 - Shift/B/right button: boost (up to 5 times)"
 metadata/_edit_use_anchors_ = true
 
-[node name="AcceptButton" type="Button" parent="TextureRect"]
+[node name="AcceptButton" parent="TextureRect" instance=ExtResource("4_nc3k3")]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.194298
-anchor_top = 0.736111
-anchor_right = 0.776135
-anchor_bottom = 0.810185
-grow_horizontal = 2
-grow_vertical = 2
+anchor_left = 0.194
+anchor_top = 0.736
+anchor_right = 0.776
+anchor_bottom = 0.81
+offset_left = 0.281998
+offset_top = 0.119995
+offset_right = 0.127991
+offset_bottom = 0.200012
 text = "I fathom!"
-metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="TextureRect/AcceptButton" to="." method="_on_button_pressed_accept"]

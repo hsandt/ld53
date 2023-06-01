@@ -33,8 +33,9 @@ func _ready():
 	level_progress_bar.visible = false
 	new_modifier_hint.visible = false
 
-	# show tutorial
-	tutorial.visible = true
+	# show tutorial after 1 frame, to make sure other focusable controls
+	# (PowderPanel) have been disabled so we don't lose initial button focus
+	tutorial.call_deferred(&"set_visible", true)
 
 
 func show_powders_panel():
