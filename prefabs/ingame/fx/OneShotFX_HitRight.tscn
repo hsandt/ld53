@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjrfu7kaslbpu"]
+
+[ext_resource type="PackedScene" uid="uid://rvie2lk2ka6u" path="res://prefabs/ingame/fx/OneShotFX.tscn" id="1_0umjv"]
+[ext_resource type="SpriteFrames" uid="uid://dvim1k4matal6" path="res://animations/fx_hit_right_sprite_frames.tres" id="2_cn37d"]
+[ext_resource type="AudioStream" uid="uid://dm2ra3plrjukb" path="res://audio/sfx/spark_hit WIP.ogg" id="3_myypq"]
+
+[node name="OneShotFX_HitObstacle" instance=ExtResource("1_0umjv")]
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+scale = Vector2(0.5, 0.5)
+sprite_frames = ExtResource("2_cn37d")
+frame = 5
+frame_progress = 1.0
+offset = Vector2(50, 0)
+
+[node name="AudioStreamPlayer" parent="." index="1"]
+stream = ExtResource("3_myypq")
