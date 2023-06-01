@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bigtdfruv4w60"]
+[gd_scene load_steps=5 format=3 uid="uid://bigtdfruv4w60"]
 
 [ext_resource type="Theme" uid="uid://cls7a0y3pf2n7" path="res://themes/theme_main_menu.tres" id="1_g5fq4"]
 [ext_resource type="Script" path="res://scripts/menu/pause_menu_controller_custom.gd" id="1_tl63u"]
 [ext_resource type="PackedScene" uid="uid://bin6b2ypkka84" path="res://prefabs/options_menu_custom.tscn" id="2_nm2cw"]
+[ext_resource type="PackedScene" uid="uid://bhcqiywsbm6rm" path="res://prefabs/main_menu_button.tscn" id="3_7dtux"]
 
 [node name="PauseMenu" type="Control"]
 process_mode = 3
@@ -29,67 +30,57 @@ unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.38
-anchor_top = 0.288889
+anchor_top = 0.219908
 anchor_right = 0.62
-anchor_bottom = 0.687963
-offset_bottom = 6.10352e-05
+anchor_bottom = 0.756945
+offset_top = 74.5
+offset_bottom = -74.5
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="Content" type="VBoxContainer" parent="PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="Content" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 20
 metadata/_edit_lock_ = true
 
-[node name="PauseMenuLabel" type="Label" parent="PanelContainer/Content"]
+[node name="PauseMenuLabel" type="Label" parent="PanelContainer/MarginContainer/Content"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 45
 text = "Pause Menu"
 horizontal_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="PanelContainer/Content"]
+[node name="HSeparator" type="HSeparator" parent="PanelContainer/MarginContainer/Content"]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 
-[node name="ResumeGameButton" type="Button" parent="PanelContainer/Content"]
+[node name="ResumeGameButton" parent="PanelContainer/MarginContainer/Content" instance=ExtResource("3_7dtux")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 30
 text = "Resume"
 
-[node name="OptionsButton" type="Button" parent="PanelContainer/Content"]
-custom_minimum_size = Vector2(350, 0)
+[node name="OptionsButton" parent="PanelContainer/MarginContainer/Content" instance=ExtResource("3_7dtux")]
 layout_mode = 2
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 30
 text = "Options"
 
-[node name="RestartButton" type="Button" parent="PanelContainer/Content"]
-custom_minimum_size = Vector2(350, 0)
+[node name="RestartButton" parent="PanelContainer/MarginContainer/Content" instance=ExtResource("3_7dtux")]
 layout_mode = 2
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 30
 text = "Restart"
 
-[node name="BackToMenuButton" type="Button" parent="PanelContainer/Content"]
-custom_minimum_size = Vector2(350, 0)
+[node name="BackToMenuButton" parent="PanelContainer/MarginContainer/Content" instance=ExtResource("3_7dtux")]
 layout_mode = 2
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 30
 text = "Back to Main Menu"
 
-[node name="QuitButton" type="Button" parent="PanelContainer/Content"]
-custom_minimum_size = Vector2(350, 0)
+[node name="QuitButton" parent="PanelContainer/MarginContainer/Content" instance=ExtResource("3_7dtux")]
 layout_mode = 2
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 30
 text = "Quit"
 
 [node name="OptionsMenu" parent="." instance=ExtResource("2_nm2cw")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.35
@@ -98,11 +89,11 @@ anchor_right = 0.65
 anchor_bottom = 0.739815
 metadata/_edit_use_anchors_ = true
 
-[connection signal="pressed" from="PanelContainer/Content/ResumeGameButton" to="." method="_on_resume_game_button_pressed"]
-[connection signal="pressed" from="PanelContainer/Content/OptionsButton" to="." method="_on_options_button_pressed"]
-[connection signal="pressed" from="PanelContainer/Content/RestartButton" to="." method="_on_restart_button_pressed"]
-[connection signal="pressed" from="PanelContainer/Content/BackToMenuButton" to="." method="_on_back_to_menu_button_pressed"]
-[connection signal="pressed" from="PanelContainer/Content/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/Content/ResumeGameButton" to="." method="_on_resume_game_button_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/Content/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/Content/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/Content/BackToMenuButton" to="." method="_on_back_to_menu_button_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/Content/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="close" from="OptionsMenu" to="." method="_on_options_menu_close"]
 
 [editable path="OptionsMenu"]
