@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://djvedm1ibu5wi"]
 
 [ext_resource type="Script" path="res://scripts/menu/credits_menu_controller.gd" id="1_jv2fy"]
-[ext_resource type="Script" path="res://scripts/ui/ButtonWithCustomCursor.gd" id="3_ywb35"]
+[ext_resource type="PackedScene" uid="uid://bhcqiywsbm6rm" path="res://prefabs/main_menu_button.tscn" id="3_1kf3b"]
 [ext_resource type="Theme" uid="uid://cls7a0y3pf2n7" path="res://themes/theme_main_menu.tres" id="5_qngxy"]
 
 [node name="CreditsMenu" type="Control" node_paths=PackedStringArray("credits_label")]
@@ -56,15 +56,11 @@ scroll_active = false
 layout_mode = 2
 theme_override_constants/separation = 50
 
-[node name="BackButton" type="Button" parent="MarginContainer/TextureRect/VBoxContainer"]
+[node name="BackButton" parent="MarginContainer/TextureRect/VBoxContainer" instance=ExtResource("3_1kf3b")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 8
-theme = ExtResource("5_qngxy")
 theme_override_font_sizes/font_size = 25
 text = "Back"
-script = ExtResource("3_ywb35")
 
 [connection signal="pressed" from="MarginContainer/TextureRect/VBoxContainer/BackButton" to="." method="go_back"]

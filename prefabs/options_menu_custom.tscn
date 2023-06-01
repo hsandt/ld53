@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dyfwp0vhgfjd7" path="res://addons/EasyMenus/Nodes/slider_w_labels.tscn" id="3_nstew"]
 [ext_resource type="Script" path="res://addons/EasyMenus/Scripts/option_button_input_propagator.gd" id="4_4kub1"]
 [ext_resource type="PackedScene" uid="uid://cqniig2ks0xs2" path="res://addons/EasyMenus/Nodes/gamepad_closable.tscn" id="5_nl5i3"]
-[ext_resource type="Script" path="res://scripts/ui/ButtonWithCustomCursor.gd" id="7_cai07"]
+[ext_resource type="PackedScene" uid="uid://bhcqiywsbm6rm" path="res://prefabs/main_menu_button.tscn" id="7_e6qin"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tg31v"]
 
@@ -235,15 +235,12 @@ layout_mode = 2
 theme_override_constants/separation = 20
 theme_override_styles/separator = SubResource("StyleBoxEmpty_x77mt")
 
-[node name="BackButton" type="Button" parent="MarginContainer/TextureRect/ScrollContainer/VBoxContainer"]
+[node name="BackButton" parent="MarginContainer/TextureRect/ScrollContainer/VBoxContainer" instance=ExtResource("7_e6qin")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(350, 0)
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 8
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 30
 text = "Back"
-script = ExtResource("7_cai07")
 
 [connection signal="value_changed" from="MarginContainer/TextureRect/ScrollContainer/VBoxContainer/MarginContainer/VBoxContainer/SFXVolumeSlider" to="." method="_on_sfx_volume_slider_value_changed"]
 [connection signal="value_changed" from="MarginContainer/TextureRect/ScrollContainer/VBoxContainer/MarginContainer/VBoxContainer/MusicVolumeSlider" to="." method="_on_music_volume_slider_value_changed"]

@@ -3,10 +3,11 @@
 [ext_resource type="Script" path="res://scripts/ui/ButtonWithCustomCursor.gd" id="1_0hh7v"]
 [ext_resource type="AudioStream" uid="uid://bg6cv3it1gsjq" path="res://audio/sfx/ui_confirm.ogg" id="2_cj8o8"]
 
-[node name="MenuButton" type="Button"]
+[node name="MenuButton" type="Button" node_paths=PackedStringArray("sfx_click_player")]
 custom_minimum_size = Vector2(350, 0)
 text = "TODO"
 script = ExtResource("1_0hh7v")
+sfx_click_player = NodePath("SFXClickPlayer")
 
 [node name="SFXClickPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_cj8o8")

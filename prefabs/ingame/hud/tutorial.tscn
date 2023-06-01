@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/ui/Tutorial.gd" id="1_sct8k"]
 [ext_resource type="Texture2D" uid="uid://cw48344uon1ep" path="res://sprites/hud/parchment.png" id="2_hm4k1"]
 [ext_resource type="Theme" uid="uid://b0ra3dkimgey1" path="res://themes/theme_hud_tutorial.tres" id="3_i0wax"]
-[ext_resource type="Script" path="res://scripts/ui/ButtonWithCustomCursor.gd" id="5_130b0"]
+[ext_resource type="PackedScene" uid="uid://bhcqiywsbm6rm" path="res://prefabs/main_menu_button.tscn" id="4_nc3k3"]
 
 [node name="Tutorial" type="Control" node_paths=PackedStringArray("accept_button")]
 layout_mode = 3
@@ -60,17 +60,17 @@ text = "- WZ/S or Up/Down: steer
 - Shift/B/right button: boost (up to 5 times)"
 metadata/_edit_use_anchors_ = true
 
-[node name="AcceptButton" type="Button" parent="TextureRect"]
+[node name="AcceptButton" parent="TextureRect" instance=ExtResource("4_nc3k3")]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.194298
-anchor_top = 0.736111
-anchor_right = 0.776135
-anchor_bottom = 0.810185
-grow_horizontal = 2
-grow_vertical = 2
+anchor_left = 0.194
+anchor_top = 0.736
+anchor_right = 0.776
+anchor_bottom = 0.81
+offset_left = 0.281998
+offset_top = 0.119995
+offset_right = 0.127991
+offset_bottom = 0.200012
 text = "I fathom!"
-script = ExtResource("5_130b0")
-metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="TextureRect/AcceptButton" to="." method="_on_button_pressed_accept"]
