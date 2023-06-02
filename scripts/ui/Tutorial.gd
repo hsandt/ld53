@@ -9,7 +9,7 @@ extends Control
 # Prepare list of button icons, this allows us to iterate with simple replace
 # Ultimately, a regex pattern matching would be more generic and allow us
 # to pass any button name as long as an image exists, but would be longer to code
-@export var button_names: Array[String] = ["Dpad_Left", "Dpad_Right", "Dpad_Up", "Dpad_Down", "A", "B", "X", "Y", "L", "R"]
+@export var button_names: Array[String] = ["Dpad_Left", "Dpad_Right", "Dpad_Up", "Dpad_Down", "A", "B", "X", "Y", "LB", "RB"]
 
 var in_game_manager: InGameManager
 

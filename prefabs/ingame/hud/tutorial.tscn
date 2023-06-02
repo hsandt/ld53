@@ -16,7 +16,7 @@ grow_vertical = 2
 theme = ExtResource("3_i0wax")
 script = ExtResource("1_sct8k")
 accept_button = NodePath("TextureRect/AcceptButton")
-content_label = NodePath("TextureRect/GamepadScrollable/ContentLabel")
+content_label = NodePath("TextureRect/GamepadScrollable/ContentRichTextLabel")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
@@ -40,7 +40,7 @@ anchor_bottom = 0.778738
 script = ExtResource("4_n7a6l")
 metadata/_edit_use_anchors_ = true
 
-[node name="ContentLabel" type="RichTextLabel" parent="TextureRect/GamepadScrollable"]
+[node name="ContentRichTextLabel" type="RichTextLabel" parent="TextureRect/GamepadScrollable"]
 custom_minimum_size = Vector2(920, 940)
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 30
@@ -56,7 +56,7 @@ We trained a lot doing this with Dad when we were kids, but I suppose you could 
 
 You have 6 powder kegs. After taking some damage or waiting a certain time, they still start to SPARK, and their smoke may have weird effects on your brain and driving.
 You can CONSUME sparking powder at any time to stop the smoke, but it will trigger an extreme effect instead, good or bad.
-- select a powder keg with {Dpad_Left}/{Dpad_Right} or {L}/{R} and consume it with {A}
+- select a powder keg with {Dpad_Left}/{Dpad_Right} or {LB}/{RB} and consume it with {A}
 - or just click on it [img width=60]res://sprites/icons/Xelu_Free_Controller&Key_Prompts/Keyboard & Mouse/Light/Mouse_Left_Key_Light.png[/img]
 
 Your brother, Smelly
