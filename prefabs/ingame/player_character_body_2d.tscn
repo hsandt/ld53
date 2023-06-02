@@ -47,6 +47,7 @@ fx_hit_obstacle_prefab = ExtResource("3_uc2vh")
 fx_hit_obstacle_anchor = NodePath("FXHitObstacleAnchorMarker2D")
 speech_bubble_queue_anchor = NodePath("SpeechBubbleQueueAnchorMarker2D")
 base_speed = 1300.0
+boost_abs_extra_lookahead_distance = 400.0
 acceleration = 1300.0
 deceleration = 1300.0
 base_steer_speed = 700.0

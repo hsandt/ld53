@@ -35,6 +35,8 @@ signal boost_level_changed(new_level: int)
 @export var base_speed = 1000.0
 @export var boost_max_level = 5
 @export var extra_speed_per_boost_level = 200.0
+@export var boost_abs_extra_lookahead_distance = 200.0
+@export var boost_extra_lookahead_duration_before_dampen = 1.0
 
 @export var acceleration = 1000.0
 @export var deceleration = 1000.0
@@ -398,7 +400,7 @@ func notify_boost_level_changed():
 func try_boost():
 	if current_boost_level < boost_max_level:
 		current_boost_level += 1
-		_play_fx_boost()
+		_play_boost_feedback()
 		notify_boost_level_changed()
 
 func try_decrement_boost_level():
@@ -451,6 +453,16 @@ func _play_fx_hit_obstacle():
 	in_game_manager.level.add_child(fx_hit_obstacle)
 	fx_hit_obstacle.global_position = fx_hit_obstacle_anchor.global_position
 
+
+func _play_boost_feedback():
+	# FX
+	_play_fx_boost()
+
+	# Camera
+	# Remember to oppose sign to make camera go more backward so we have the impression
+	# that player character goes more forward
+	in_game_manager.scrolling_center.set_extra_lookahead_distance_with_dampen(
+		-boost_abs_extra_lookahead_distance, boost_extra_lookahead_duration_before_dampen)
 
 func _play_fx_boost():
 	# Unlike FX Hit Obstacle, FX Boost is reusable, so it's prepared
