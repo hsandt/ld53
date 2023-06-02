@@ -128,6 +128,7 @@ var current_base_attributes := {
 
 var _should_move: bool = false
 var current_boost_level: int = 0
+var _is_logic_only_paused: bool = false
 
 # CHEAT
 var god_mode_enabled: bool = false
@@ -290,8 +291,9 @@ func _physics_process(delta):
 
 
 func _unhandled_input(event):
-	if event.is_action_pressed(&"boost"):
-		try_boost()
+	if not _is_logic_only_paused:
+		if event.is_action_pressed(&"boost"):
+			try_boost()
 
 
 ## Pause logic and visual
@@ -309,10 +311,13 @@ func resume():
 ## Pause all logical nodes (but not visual nodes)
 func pause_logic():
 	cargo.process_mode = Node.PROCESS_MODE_DISABLED
+	# Flag is useful to prevent actions during Tutorial phase
+	_is_logic_only_paused = true
 
 
 func resume_logic():
 	cargo.process_mode = Node.PROCESS_MODE_INHERIT
+	_is_logic_only_paused = false
 
 
 func compute_current_attribute(attribute_name: StringName) -> float:
