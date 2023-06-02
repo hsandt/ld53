@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://addons/EasyMenus/Scripts/options_menu_controller.gd" id="1_fg5gl"]
 [ext_resource type="Script" path="res://addons/EasyMenus/Scripts/follow_focus_center.gd" id="2_mgdso"]
-[ext_resource type="Theme" uid="uid://cls7a0y3pf2n7" path="res://themes/theme_main_menu.tres" id="3_df0ir"]
+[ext_resource type="Theme" uid="uid://c447wx63g133f" path="res://themes/theme_main_menu.tres" id="3_df0ir"]
 [ext_resource type="PackedScene" uid="uid://dyfwp0vhgfjd7" path="res://addons/EasyMenus/Nodes/slider_w_labels.tscn" id="3_nstew"]
 [ext_resource type="Script" path="res://addons/EasyMenus/Scripts/option_button_input_propagator.gd" id="4_4kub1"]
 [ext_resource type="PackedScene" uid="uid://cqniig2ks0xs2" path="res://addons/EasyMenus/Nodes/gamepad_closable.tscn" id="5_nl5i3"]
