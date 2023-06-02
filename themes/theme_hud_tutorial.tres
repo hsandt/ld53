@@ -1,8 +1,13 @@
-[gd_resource type="Theme" load_steps=9 format=3 uid="uid://b0ra3dkimgey1"]
+[gd_resource type="Theme" load_steps=15 format=3 uid="uid://b0ra3dkimgey1"]
 
 [ext_resource type="Texture2D" uid="uid://b25ss5fgnurta" path="res://sprites/ui/kenney_ui-pack-rpg-expansion/PNG/buttonLong_beige.png" id="1_bphnd"]
 [ext_resource type="Texture2D" uid="uid://dthe3po5io1h8" path="res://sprites/ui/kenney_ui-pack-rpg-expansion/PNG/buttonLong_beige_pressed.png" id="2_byne0"]
 [ext_resource type="FontVariation" uid="uid://ca78iyj5nf7l8" path="res://themes/font_variation_risque.tres" id="3_0ws6c"]
+[ext_resource type="StyleBox" uid="uid://bj14u121mx7rh" path="res://themes/style_box_flat_vscrollbar_grabber.tres" id="3_pjpd7"]
+[ext_resource type="StyleBox" uid="uid://nwjeka4wit7x" path="res://themes/style_box_flat_vscrollbar_grabber_highlight.tres" id="4_8vabj"]
+[ext_resource type="StyleBox" uid="uid://cegcogh7clhg2" path="res://themes/style_box_flat_vscrollbar_grabber_pressed.tres" id="5_0id7q"]
+[ext_resource type="StyleBox" uid="uid://dvpdmson458ru" path="res://themes/style_box_flat_vscrollbar_grabber_scroll.tres" id="6_iq1xr"]
+[ext_resource type="StyleBox" uid="uid://bex3uxk08h2bk" path="res://themes/style_box_flat_vscrollbar_grabber_scroll_focus.tres" id="7_lenb5"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eb3kf"]
 texture = ExtResource("1_bphnd")
@@ -66,6 +71,8 @@ axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 modulate_color = Color(0.745098, 0.745098, 0.745098, 1)
 
+[sub_resource type="ImageTexture" id="ImageTexture_6ffrd"]
+
 [resource]
 default_font = ExtResource("3_0ws6c")
 default_font_size = 40
@@ -94,3 +101,14 @@ Label/colors/font_outline_color = Color(1, 1, 1, 1)
 Label/colors/font_shadow_color = Color(0, 0, 0, 0)
 RichTextLabel/colors/default_color = Color(0.172549, 0.137255, 0.0352941, 1)
 RichTextLabel/constants/line_separation = 10
+VScrollBar/icons/decrement = SubResource("ImageTexture_6ffrd")
+VScrollBar/icons/decrement_highlight = SubResource("ImageTexture_6ffrd")
+VScrollBar/icons/decrement_pressed = SubResource("ImageTexture_6ffrd")
+VScrollBar/icons/increment = SubResource("ImageTexture_6ffrd")
+VScrollBar/icons/increment_highlight = SubResource("ImageTexture_6ffrd")
+VScrollBar/icons/increment_pressed = SubResource("ImageTexture_6ffrd")
+VScrollBar/styles/grabber = ExtResource("3_pjpd7")
+VScrollBar/styles/grabber_highlight = ExtResource("4_8vabj")
+VScrollBar/styles/grabber_pressed = ExtResource("5_0id7q")
+VScrollBar/styles/scroll = ExtResource("6_iq1xr")
+VScrollBar/styles/scroll_focus = ExtResource("7_lenb5")
