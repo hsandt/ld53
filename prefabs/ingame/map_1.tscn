@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://dcqumcm4vc2x"]
+[gd_scene load_steps=57 format=3 uid="uid://dcqumcm4vc2x"]
 
 [ext_resource type="PackedScene" uid="uid://bcxj2wu4hjq7t" path="res://prefabs/ingame/map_base.tscn" id="1_p1joc"]
 [ext_resource type="PackedScene" uid="uid://clbkj8klm4my3" path="res://prefabs/ingame/obstacle_big.tscn" id="2_dcore"]
@@ -51,7 +51,11 @@
 [ext_resource type="Texture2D" uid="uid://bojpv21irgoif" path="res://sprites/bg/SnowD.png" id="49_7va6a"]
 [ext_resource type="Texture2D" uid="uid://6fy2eksa10fc" path="res://sprites/bg/SnowE.png" id="50_52hpg"]
 [ext_resource type="Texture2D" uid="uid://dim7eunnm0j2w" path="res://sprites/bg/SnowF.png" id="51_elwue"]
+[ext_resource type="Script" path="res://scripts/ingame/GoalArea2D.gd" id="52_611qf"]
 [ext_resource type="Texture2D" uid="uid://b0hnv8kebb4tk" path="res://sprites/bg/SnowG.png" id="52_kgrpa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_duqwo"]
+size = Vector2(100, 1080)
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_4ljo6"]
 normal = Vector2(0, 1)
@@ -985,13 +989,22 @@ scale = Vector2(0.8, 0.8)
 texture = ExtResource("52_kgrpa")
 
 [node name="GoalArea2D" parent="." index="3"]
-position = Vector2(240000, 0)
+position = Vector2(90000, 0)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" parent="GoalArea2D" index="0"]
 position = Vector2(0, 0)
 
-[node name="ScreenOverlayCanvasLayer" type="CanvasLayer" parent="." index="4"]
+[node name="GoalArea2D BACKUP Area 3 END" type="Area2D" parent="." index="4"]
+position = Vector2(240000, 0)
+collision_layer = 65536
+script = ExtResource("52_611qf")
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GoalArea2D BACKUP Area 3 END" index="0"]
+shape = SubResource("RectangleShape2D_duqwo")
+
+[node name="ScreenOverlayCanvasLayer" type="CanvasLayer" parent="." index="5"]
 layer = 3
 
 [node name="GradientTextureRect" type="TextureRect" parent="ScreenOverlayCanvasLayer" index="0"]
@@ -1004,7 +1017,7 @@ grow_vertical = 2
 texture = ExtResource("5_1yeif")
 metadata/_edit_lock_ = true
 
-[node name="WorldBoundaryStaticBody2D" type="StaticBody2D" parent="." index="5"]
+[node name="WorldBoundaryStaticBody2D" type="StaticBody2D" parent="." index="6"]
 collision_layer = 256
 
 [node name="WorldBoundaryTopCollisionShape2D" type="CollisionShape2D" parent="WorldBoundaryStaticBody2D" index="0"]
@@ -1014,3 +1027,5 @@ shape = SubResource("WorldBoundaryShape2D_4ljo6")
 [node name="WorldBoundaryBottomCollisionShape2D" type="CollisionShape2D" parent="WorldBoundaryStaticBody2D" index="1"]
 position = Vector2(0, 349)
 shape = SubResource("WorldBoundaryShape2D_421ki")
+
+[connection signal="body_entered" from="GoalArea2D BACKUP Area 3 END" to="GoalArea2D BACKUP Area 3 END" method="_on_body_entered" flags=18]

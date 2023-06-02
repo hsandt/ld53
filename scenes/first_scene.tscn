@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://cnud7hlsdnfrm" path="res://sprites/fx/PFX/PFX_Wind_line_246x6.png" id="7_q3srr"]
 [ext_resource type="PackedScene" uid="uid://dcqumcm4vc2x" path="res://prefabs/ingame/map_1.tscn" id="8_srhq4"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_prf5j"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ecpdj"]
 resource_local_to_scene = true
 shader = ExtResource("7_ib5jx")
 shader_parameter/brightness = 0.0
@@ -28,7 +28,7 @@ pause_menu = NodePath("../HUDCanvasLayer/PauseMenu")
 screen_fx_canvas_layer = NodePath("../ScreenFXCanvasLayer")
 player_character = NodePath("../PlayerCharacterBody2D")
 map = NodePath("../Map1")
-delivery_max_time = 250.0
+delivery_max_time = 70.0
 
 [node name="MusicStreamPlayer" type="AudioStreamPlayer" parent="."]
 process_mode = 3
@@ -70,7 +70,7 @@ initial_velocity_max = 3500.0
 color = Color(1, 1, 1, 0.45098)
 
 [node name="PlayerCharacterBody2D" parent="." instance=ExtResource("3_82xke")]
-material = SubResource("ShaderMaterial_prf5j")
+material = SubResource("ShaderMaterial_ecpdj")
 collision_mask = 65792
 platform_floor_layers = 4294967294
 metadata/_edit_group_ = true
