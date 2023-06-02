@@ -52,7 +52,7 @@ static func split_time_in_sign_minutes_seconds(racing_time_left: float):
 	return [signf(racing_time_left), abs_minutes, abs_seconds]
 
 
-static func time_to_format(racing_time_left: float):
+static func time_to_format(racing_time_left: float) -> String:
 	var split_time_info = split_time_in_sign_minutes_seconds(racing_time_left)
 	var abs_minutes = split_time_info[1]
 	var abs_seconds = split_time_info[2]
