@@ -60,7 +60,7 @@ speed_lines_min_speed = 1700.0
 [node name="Smoothing2D" type="Node2D" parent="."]
 y_sort_enabled = true
 script = ExtResource("3_vbvgt")
-flags = 31
+target = NodePath("..")
 
 [node name="AnimatedSprite2DBrightnessController" type="AnimatedSprite2D" parent="Smoothing2D" node_paths=PackedStringArray("brighten_timer")]
 modulate = Color(0.662395, 0.882034, 0.648641, 1)

@@ -141,26 +141,6 @@ func _ready():
 
 	cargo.player = self
 
-	# To make Y sort work, we have disabled global out on the Smoothing2D node,
-	# but then we must move it outside the PlayerCharacter root and target it
-	# from the outside
-	# See https://github.com/lawnjelly/smoothing-addon#y-sort-in-2d
-
-	# First, let's switch to global Z index if needed as reparent will break it
-	# if PlayerCharacter has its own Z index != 0 and we use relative Z index
-	if smoothing_node.z_as_relative:
-		var global_z_index = Utils.get_absolute_z_index(smoothing_node)
-		smoothing_node.z_as_relative = false
-		smoothing_node.z_index = global_z_index
-
-	# Second, let's explicitly target the Player Character as it won't be a
-	# parent anymore
-	smoothing_node.target = get_path()
-
-	# Finally, reparent the smoothing node to outer node level
-	# Since we are processing children in _ready, defer this to end of frame
-	smoothing_node.reparent.call_deferred(in_game_manager.level)
-
 	for child in smoke_fx_parent.get_children():
 		var animated_sprite = child as AnimatedSprite2D
 		if animated_sprite:
