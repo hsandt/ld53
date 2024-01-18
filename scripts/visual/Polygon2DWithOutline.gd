@@ -20,8 +20,8 @@ func _process(_delta: float):
 ## Renamed from set_color to avoid this error:
 ## > The method "set_color" overrides a method from native class "Polygon2D".
 ## > This won't be called by the engine and may not work as expected. (Warning treated as error.)
-func set_outline_color(color):
-	OutLine = color
+func set_outline_color(new_color):
+	OutLine = new_color
 	queue_redraw()
 
 func set_width(new_width):
