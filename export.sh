@@ -3,7 +3,9 @@
 title="POWDER"
 all_platforms=(windows macos linux web)
 godot_bin="godot4.0.2_stable"
-godoticon_path="scripts/editor/godoticon"
+# CURRENTLY DISABLED until https://github.com/pkowal1982/godoticon/issues/2 is fixed
+# For now, set icon and rcedit in Godot project/editor settings for Windows icon as suggested in the official doc
+# godoticon_path="scripts/editor/godoticon"
 
 usage() {
   echo "Export game for Windows, macOS, Linux and Web with specified version.
@@ -67,7 +69,7 @@ export_release() {
   mkdir -p "$folder"
   "$godot_bin" --no-window --export-release --quiet "$preset" "$target_path"
 
-  # CURRENTLY DISABLED until https://github.com/pkowal1982/godoticon/issues/2 is fixed:
+  # CURRENTLY DISABLED until https://github.com/pkowal1982/godoticon/issues/2 is fixed
   # if [[ "$replace_icon" == true ]]; then
   #   "$godot_bin" -s "$godoticon_path/CreateIcon.gd" generated_icon.ico icon_16x16.png icon_32x32.png icon_48x48.png icon_64x64.png icon_128x128.png icon_256x256.png
   #   "$godot_bin" -s "$godoticon_path/ReplaceIcon.gd" generated_icon.ico "$target_path"
