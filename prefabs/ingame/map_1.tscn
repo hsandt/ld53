@@ -1028,4 +1028,4 @@ shape = SubResource("WorldBoundaryShape2D_4ljo6")
 position = Vector2(0, 349)
 shape = SubResource("WorldBoundaryShape2D_421ki")
 
-[connection signal="body_entered" from="GoalArea2D BACKUP Area 3 END" to="GoalArea2D BACKUP Area 3 END" method="_on_body_entered" flags=18]
+[connection signal="body_entered" from="GoalArea2D BACKUP Area 3 END" to="GoalArea2D BACKUP Area 3 END" method="_on_body_entered"]
