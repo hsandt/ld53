@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bicer5hvlabr8"]
+[gd_scene load_steps=11 format=3 uid="uid://bicer5hvlabr8"]
 
 [ext_resource type="Theme" uid="uid://c447wx63g133f" path="res://themes/theme_main_menu.tres" id="1_3xif0"]
 [ext_resource type="Script" path="res://scripts/menu/main_menu_controller_custom.gd" id="1_i2sts"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://djvedm1ibu5wi" path="res://prefabs/credits_menu.tscn" id="3_wydvs"]
 [ext_resource type="PackedScene" uid="uid://bhcqiywsbm6rm" path="res://prefabs/main_menu_button.tscn" id="5_33fgt"]
 [ext_resource type="LabelSettings" uid="uid://cm1fr4agoqkst" path="res://themes/label_settings_version.tres" id="6_rha1b"]
+[ext_resource type="Script" path="res://scripts/ui/version_text.gd" id="7_w0enp"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -71,10 +72,11 @@ anchor_left = 44.775
 anchor_top = 5.075
 anchor_right = 47.85
 anchor_bottom = 6.75
-text = "v1.2"
+text = "v?.?"
 label_settings = ExtResource("6_rha1b")
 horizontal_alignment = 1
 autowrap_mode = 3
+script = ExtResource("7_w0enp")
 metadata/_edit_use_anchors_ = true
 
 [node name="ButtonContainer" type="VBoxContainer" parent="TitleMenu"]
