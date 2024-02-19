@@ -71,8 +71,7 @@ anchor_left = 44.775
 anchor_top = 5.075
 anchor_right = 47.85
 anchor_bottom = 6.75
-text = "v1.1
-"
+text = "v1.2"
 label_settings = ExtResource("6_rha1b")
 horizontal_alignment = 1
 autowrap_mode = 3
