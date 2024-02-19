@@ -2,7 +2,8 @@
 
 title="POWDER"
 all_platforms=(windows macos linux web)
-godot_bin="godot4.0.2_stable"
+godot_bin="godot4.2.1_stable"
+export_folder="Export"
 # CURRENTLY DISABLED until https://github.com/pkowal1982/godoticon/issues/2 is fixed
 # For now, set icon and rcedit in Godot project/editor settings for Windows icon as suggested in the official doc
 # godoticon_path="scripts/editor/godoticon"
@@ -12,7 +13,7 @@ usage() {
 
 Requirements
 - current working directory must be project root
-- godot4.0.2_stable must be in PATH
+- godot4.2.1_stable must be in PATH
 - export_presets.cfg file must be at project root (from editor using Project > Export dialog)
 - export templates must be installed locally (on Linux, in ~/.local/share/godot/export_templates/VERSION)
 CURRENTLY DISABLED until https://github.com/pkowal1982/godoticon/issues/2 is fixed:
@@ -113,7 +114,7 @@ export_platform_release() {
       ;;
   esac
 
-  version_folder="Export/v$version"
+  version_folder="$export_folder/v$version"
   subfolder="$title v$version - $platform_titlecase"
   folder_path="$version_folder/$title v$version - $platform_titlecase"
 
@@ -143,6 +144,12 @@ export_platform_release() {
 
   popd
 }
+
+# Create .gdignore in export_folder if needed, so Godot doesn't scan exported files
+mkdir -p "$export_folder"
+if ! [[ -f "$export_folder/.gdignore" ]] ; then
+    touch "$export_folder/.gdignore"
+fi
 
 if [[ "$target" == "all" ]]; then
   platforms=("${all_platforms[*]}")
