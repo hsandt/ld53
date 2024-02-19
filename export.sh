@@ -2,7 +2,7 @@
 
 title="POWDER"
 all_platforms=(windows macos linux web)
-godot_bin="godot4.0.2_stable"
+godot_bin="godot4.2.1_stable"
 # CURRENTLY DISABLED until https://github.com/pkowal1982/godoticon/issues/2 is fixed
 # For now, set icon and rcedit in Godot project/editor settings for Windows icon as suggested in the official doc
 # godoticon_path="scripts/editor/godoticon"
@@ -12,7 +12,7 @@ usage() {
 
 Requirements
 - current working directory must be project root
-- godot4.0.2_stable must be in PATH
+- godot4.2.1_stable must be in PATH
 - export_presets.cfg file must be at project root (from editor using Project > Export dialog)
 - export templates must be installed locally (on Linux, in ~/.local/share/godot/export_templates/VERSION)
 CURRENTLY DISABLED until https://github.com/pkowal1982/godoticon/issues/2 is fixed:
