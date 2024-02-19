@@ -11,8 +11,9 @@ config_version=5
 [application]
 
 config/name="POWDER"
+config/version="1.2"
 run/main_scene="res://scenes/main_menu_scene.tscn"
-config/features=PackedStringArray("4.0", "GL Compatibility")
+config/features=PackedStringArray("4.2", "GL Compatibility")
 run/max_fps=60
 config/icon="res://icon_256.png"
 config/macos_native_icon="res://icon.icns"

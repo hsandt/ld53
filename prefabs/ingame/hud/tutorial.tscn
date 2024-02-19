@@ -1,11 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://d0tsvq2db1mtv"]
+[gd_scene load_steps=6 format=3 uid="uid://d0tsvq2db1mtv"]
 
 [ext_resource type="Script" path="res://scripts/ui/Tutorial.gd" id="1_sct8k"]
 [ext_resource type="Texture2D" uid="uid://cw48344uon1ep" path="res://sprites/hud/parchment.png" id="2_hm4k1"]
 [ext_resource type="Theme" uid="uid://b0ra3dkimgey1" path="res://themes/theme_hud_tutorial.tres" id="3_i0wax"]
+[ext_resource type="Script" path="res://scripts/menu/gamepad_scrollable.gd" id="4_n7a6l"]
 [ext_resource type="PackedScene" uid="uid://bhcqiywsbm6rm" path="res://prefabs/main_menu_button.tscn" id="4_nc3k3"]
 
-[node name="Tutorial" type="Control" node_paths=PackedStringArray("accept_button")]
+[node name="Tutorial" type="Control" node_paths=PackedStringArray("accept_button", "content_label")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -15,62 +16,65 @@ grow_vertical = 2
 theme = ExtResource("3_i0wax")
 script = ExtResource("1_sct8k")
 accept_button = NodePath("TextureRect/AcceptButton")
+content_label = NodePath("TextureRect/GamepadScrollable/ContentRichTextLabel")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.254167
-anchor_right = 0.747396
-anchor_bottom = 1.0
+anchor_left = 0.166667
+anchor_top = -0.210185
+anchor_right = 0.889583
+anchor_bottom = 1.18333
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_hm4k1")
 metadata/_edit_use_anchors_ = true
 
-[node name="RichTextLabel" type="Label" parent="TextureRect"]
+[node name="GamepadScrollable" type="ScrollContainer" parent="TextureRect"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.137276
-anchor_top = 0.213889
-anchor_right = 0.835269
-anchor_bottom = 0.527778
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 35
-text = "Holla! Thou hast been requisited by the kingdom to deliver fruit powder kegs from the P.O.W.D.E.R. factory to surrounding towns.
-
-Please undertake to bestow the kegs in an timely manner, \"boosting\" as many times as necessary."
-autowrap_mode = 3
+anchor_left = 0.159222
+anchor_top = 0.216611
+anchor_right = 0.827811
+anchor_bottom = 0.778739
+script = ExtResource("4_n7a6l")
 metadata/_edit_use_anchors_ = true
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="TextureRect"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.151003
-anchor_top = 0.572222
-anchor_right = 0.835269
-anchor_bottom = 0.710185
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/line_separation = 0
+[node name="ContentRichTextLabel" type="RichTextLabel" parent="TextureRect/GamepadScrollable"]
+custom_minimum_size = Vector2(928, 846)
+layout_mode = 2
 theme_override_font_sizes/normal_font_size = 30
-text = "- WZ/S or Up/Down: steer
-- AQ/D or Left/Right: select previous/next keg
-- Click/Space/Enter/down button: consume spark
-- Shift/B/right button: boost (up to 5 times)"
+bbcode_enabled = true
+text = "Dear Sniffy,
+
+Thank you for accepting to handle the Powder delivery this week. You know I've been having some health issues since I inhaled a little too much Powder last time.
+
+We trained a lot doing this with Dad when we were kids, but I suppose you could use a good refresher for this mission:
+- you have {time} to finish the delivery
+- avoid obstacles with {Dpad_Up} / {Dpad_Down}
+- boost with {B} (right button)
+
+You have 6 powder kegs. After taking some damage or waiting a certain time, they still start to SPARK, and their smoke may have weird effects on your brain and driving.
+You can CONSUME sparking powder at any time to stop the smoke, but it will trigger an extreme effect instead, good or bad.
+- select a powder keg with {Dpad_Left}/{Dpad_Right} or {LB}/{RB} and consume it with {A}
+- or just click on it [img width=60]res://sprites/icons/Xelu_Free_Controller&Key_Prompts/Keyboard & Mouse/Light/Mouse_Left_Key_Light.png[/img]
+
+Your brother, Smelly
+
+P.S.: don't forget your mask, it will greatly reduce the effect of Powder."
+fit_content = true
+scroll_active = false
 metadata/_edit_use_anchors_ = true
 
 [node name="AcceptButton" parent="TextureRect" instance=ExtResource("4_nc3k3")]
+custom_minimum_size = Vector2(0, 0)
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.194
-anchor_top = 0.736
-anchor_right = 0.776
-anchor_bottom = 0.81
-offset_left = 0.281998
-offset_top = 0.119995
-offset_right = 0.127991
-offset_bottom = 0.200012
-text = "I fathom!"
+anchor_left = 0.909942
+anchor_top = 0.754153
+anchor_right = 1.11383
+anchor_bottom = 0.811296
+text = "Start delivery!"
+metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="TextureRect/AcceptButton" to="." method="_on_button_pressed_accept"]

@@ -79,36 +79,38 @@ func _process(_delta):
 
 func _unhandled_input(event):
 	if event.is_action_pressed(&"pause"):
-		if not pause_menu.visible:
+		if not pause_menu.visible and can_open_pause_menu():
 			pause_menu.accept_event()
 			pause_menu.open_pause_menu()
 		# no need to close else, as pause_menu_controller_custom.gd is handling
 		# this on their side
 
 	if event.is_action_pressed(&"restart"):
-		restart_level()
+		if can_restart():
+			restart_level()
 
 	if OS.has_feature("debug"):
-		if event.is_action_pressed(&"cheat_take_damage"):
-			player_character.hurt(5.0)
-		# true is to allow echo to repeat warp quickly
-		elif event.is_action_pressed(&"cheat_lose_10s", true):
-			racing_time_left -= 10.0
-		elif event.is_action_pressed(&"cheat_gain_10s", true):
-			racing_time_left += 10.0
-		# first true is to allow echo to repeat warp quickly
-		# exact modifier check to avoid conflict with cheat_warp_forward2
-		# which should require Shift
-		elif event.is_action_pressed(&"cheat_warp_forward", true, true):
-			player_character.position += 1000.0 * Vector2.RIGHT
-			if player_character.global_position > map.goal_area.global_position:
-				player_character.global_position = map.goal_area.global_position
-		elif event.is_action_pressed(&"cheat_warp_forward2", true, true):
-			player_character.position += 10000.0 * Vector2.RIGHT
-			if player_character.global_position > map.goal_area.global_position:
-				player_character.global_position = map.goal_area.global_position
-		elif event.is_action_pressed(&"cheat_toggle_god_mode"):
-			player_character.toggle_god_mode_enabled()
+		if can_cheat():
+			if event.is_action_pressed(&"cheat_take_damage"):
+				player_character.hurt(5.0)
+			# true is to allow echo to repeat warp quickly
+			elif event.is_action_pressed(&"cheat_lose_10s", true):
+				racing_time_left -= 10.0
+			elif event.is_action_pressed(&"cheat_gain_10s", true):
+				racing_time_left += 10.0
+			# first true is to allow echo to repeat warp quickly
+			# exact modifier check to avoid conflict with cheat_warp_forward2
+			# which should require Shift
+			elif event.is_action_pressed(&"cheat_warp_forward", true, true):
+				player_character.position += 1000.0 * Vector2.RIGHT
+				if player_character.global_position > map.goal_area.global_position:
+					player_character.global_position = map.goal_area.global_position
+			elif event.is_action_pressed(&"cheat_warp_forward2", true, true):
+				player_character.position += 10000.0 * Vector2.RIGHT
+				if player_character.global_position > map.goal_area.global_position:
+					player_character.global_position = map.goal_area.global_position
+			elif event.is_action_pressed(&"cheat_toggle_god_mode"):
+				player_character.toggle_god_mode_enabled()
 
 
 func _on_pause_menu_back_to_main_pressed():
@@ -126,6 +128,18 @@ func _on_pause_menu_back_to_main_pressed():
 
 func _on_pause_menu_restart_pressed():
 	restart_level()
+
+
+func can_open_pause_menu():
+	return GameManager.game_phase == Enums.GamePhase.RACING and not is_going_back_to_main_menu
+
+
+func can_restart():
+	return GameManager.game_phase == Enums.GamePhase.RACING and not is_going_back_to_main_menu
+
+
+func can_cheat():
+	return GameManager.game_phase == Enums.GamePhase.RACING and not is_going_back_to_main_menu
 
 
 func restart_level():

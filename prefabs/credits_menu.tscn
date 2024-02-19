@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://djvedm1ibu5wi"]
+[gd_scene load_steps=5 format=3 uid="uid://djvedm1ibu5wi"]
 
 [ext_resource type="Script" path="res://scripts/menu/credits_menu_controller.gd" id="1_jv2fy"]
 [ext_resource type="PackedScene" uid="uid://bhcqiywsbm6rm" path="res://prefabs/main_menu_button.tscn" id="3_1kf3b"]
-[ext_resource type="Theme" uid="uid://cls7a0y3pf2n7" path="res://themes/theme_main_menu.tres" id="5_qngxy"]
+[ext_resource type="Script" path="res://scripts/menu/gamepad_scrollable.gd" id="3_s0rs2"]
+[ext_resource type="Theme" uid="uid://c447wx63g133f" path="res://themes/theme_main_menu.tres" id="5_qngxy"]
 
 [node name="CreditsMenu" type="Control" node_paths=PackedStringArray("credits_label")]
 layout_mode = 3
@@ -40,7 +41,7 @@ metadata/_edit_use_anchors_ = true
 unique_name_in_owner = true
 custom_minimum_size = Vector2(838, 900)
 layout_mode = 2
-theme = ExtResource("5_qngxy")
+script = ExtResource("3_s0rs2")
 
 [node name="Credits RichTextLabel" type="RichTextLabel" parent="MarginContainer/TextureRect/VBoxContainer/ScrollContainer"]
 custom_minimum_size = Vector2(838, 900)

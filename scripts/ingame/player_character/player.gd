@@ -35,6 +35,8 @@ signal boost_level_changed(new_level: int)
 @export var base_speed = 1000.0
 @export var boost_max_level = 5
 @export var extra_speed_per_boost_level = 200.0
+@export var boost_abs_extra_lookahead_distance = 200.0
+@export var boost_extra_lookahead_duration_before_dampen = 1.0
 
 @export var acceleration = 1000.0
 @export var deceleration = 1000.0
@@ -128,6 +130,7 @@ var current_base_attributes := {
 
 var _should_move: bool = false
 var current_boost_level: int = 0
+var _is_logic_only_paused: bool = false
 
 # CHEAT
 var god_mode_enabled: bool = false
@@ -137,26 +140,6 @@ func _ready():
 	in_game_manager = get_tree().get_first_node_in_group(&"in_game_manager")
 
 	cargo.player = self
-
-	# To make Y sort work, we have disabled global out on the Smoothing2D node,
-	# but then we must move it outside the PlayerCharacter root and target it
-	# from the outside
-	# See https://github.com/lawnjelly/smoothing-addon#y-sort-in-2d
-
-	# First, let's switch to global Z index if needed as reparent will break it
-	# if PlayerCharacter has its own Z index != 0 and we use relative Z index
-	if smoothing_node.z_as_relative:
-		var global_z_index = Utils.get_absolute_z_index(smoothing_node)
-		smoothing_node.z_as_relative = false
-		smoothing_node.z_index = global_z_index
-
-	# Second, let's explicitly target the Player Character as it won't be a
-	# parent anymore
-	smoothing_node.target = get_path()
-
-	# Finally, reparent the smoothing node to outer node level
-	# Since we are processing children in _ready, defer this to end of frame
-	smoothing_node.reparent.call_deferred(in_game_manager.level)
 
 	for child in smoke_fx_parent.get_children():
 		var animated_sprite = child as AnimatedSprite2D
@@ -290,8 +273,9 @@ func _physics_process(delta):
 
 
 func _unhandled_input(event):
-	if event.is_action_pressed(&"boost"):
-		try_boost()
+	if not _is_logic_only_paused:
+		if event.is_action_pressed(&"boost"):
+			try_boost()
 
 
 ## Pause logic and visual
@@ -309,10 +293,13 @@ func resume():
 ## Pause all logical nodes (but not visual nodes)
 func pause_logic():
 	cargo.process_mode = Node.PROCESS_MODE_DISABLED
+	# Flag is useful to prevent actions during Tutorial phase
+	_is_logic_only_paused = true
 
 
 func resume_logic():
 	cargo.process_mode = Node.PROCESS_MODE_INHERIT
+	_is_logic_only_paused = false
 
 
 func compute_current_attribute(attribute_name: StringName) -> float:
@@ -393,7 +380,7 @@ func notify_boost_level_changed():
 func try_boost():
 	if current_boost_level < boost_max_level:
 		current_boost_level += 1
-		_play_fx_boost()
+		_play_boost_feedback()
 		notify_boost_level_changed()
 
 func try_decrement_boost_level():
@@ -446,6 +433,16 @@ func _play_fx_hit_obstacle():
 	in_game_manager.level.add_child(fx_hit_obstacle)
 	fx_hit_obstacle.global_position = fx_hit_obstacle_anchor.global_position
 
+
+func _play_boost_feedback():
+	# FX
+	_play_fx_boost()
+
+	# Camera
+	# Remember to oppose sign to make camera go more backward so we have the impression
+	# that player character goes more forward
+	in_game_manager.scrolling_center.set_extra_lookahead_distance_with_dampen(
+		-boost_abs_extra_lookahead_distance, boost_extra_lookahead_duration_before_dampen)
 
 func _play_fx_boost():
 	# Unlike FX Hit Obstacle, FX Boost is reusable, so it's prepared
