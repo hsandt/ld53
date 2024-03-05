@@ -641,14 +641,18 @@ texture = ExtResource("52_kgrpa")
 [node name="Floor" type="Node2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset" index="1"]
 
 [node name="Floor Full Rectangle" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Floor" index="0"]
+self_modulate = Color(0.658824, 0.756863, 0.803922, 1)
 z_index = -1
 scale = Vector2(1920, 1080)
 texture = ExtResource("5_1yeif")
 metadata/_edit_lock_ = true
 
-[node name="Floor Full Road Texture" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Floor" index="1"]
+[node name="Road Edge Top Rectangle" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Floor" index="1"]
+self_modulate = Color(0.556863, 0.666667, 0.705882, 1)
 z_index = -1
-metadata/_edit_lock_ = true
+position = Vector2(0, -470)
+scale = Vector2(1920, 156)
+texture = ExtResource("5_1yeif")
 
 [node name="Floor Playable Area Hint" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer Floor/Offset/Floor" index="2"]
 visible = false
@@ -861,7 +865,13 @@ position = Vector2(-4, 366)
 scale = Vector2(-0.5, -0.5)
 texture = ExtResource("32_mleuc")
 
-[node name="Trees" type="Node2D" parent="ParallaxForeground/ParallaxLayer Foreground/Offset" index="1"]
+[node name="Road Edge Bottom Rectangle" type="Sprite2D" parent="ParallaxForeground/ParallaxLayer Foreground/Offset" index="1"]
+self_modulate = Color(0.556863, 0.666667, 0.705882, 1)
+position = Vector2(0, 462)
+scale = Vector2(1920, 156)
+texture = ExtResource("5_1yeif")
+
+[node name="Trees" type="Node2D" parent="ParallaxForeground/ParallaxLayer Foreground/Offset" index="2"]
 position = Vector2(194, 494)
 
 [node name="TreeA" type="Sprite2D" parent="ParallaxForeground/ParallaxLayer Foreground/Offset/Trees" index="0"]
@@ -909,7 +919,7 @@ position = Vector2(679, 5)
 scale = Vector2(0.9, 0.9)
 texture = ExtResource("31_un84x")
 
-[node name="Rocks" type="Node2D" parent="ParallaxForeground/ParallaxLayer Foreground/Offset" index="2"]
+[node name="Rocks" type="Node2D" parent="ParallaxForeground/ParallaxLayer Foreground/Offset" index="3"]
 position = Vector2(0, -86)
 
 [node name="RockA" type="Sprite2D" parent="ParallaxForeground/ParallaxLayer Foreground/Offset/Rocks" index="0"]
@@ -927,7 +937,7 @@ position = Vector2(-2489, 528)
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("35_hh2yk")
 
-[node name="Foliage" type="Node2D" parent="ParallaxForeground/ParallaxLayer Foreground/Offset" index="3"]
+[node name="Foliage" type="Node2D" parent="ParallaxForeground/ParallaxLayer Foreground/Offset" index="4"]
 position = Vector2(0, -86)
 
 [node name="FoliageA" type="Sprite2D" parent="ParallaxForeground/ParallaxLayer Foreground/Offset/Foliage" index="0"]
@@ -950,7 +960,7 @@ position = Vector2(768, 497)
 scale = Vector2(0.9, 0.9)
 texture = ExtResource("43_a3wov")
 
-[node name="Snow" type="Node2D" parent="ParallaxForeground/ParallaxLayer Foreground/Offset" index="4"]
+[node name="Snow" type="Node2D" parent="ParallaxForeground/ParallaxLayer Foreground/Offset" index="5"]
 position = Vector2(0, -86)
 
 [node name="SnowA" type="Sprite2D" parent="ParallaxForeground/ParallaxLayer Foreground/Offset/Snow" index="0"]
