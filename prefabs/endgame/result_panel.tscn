@@ -38,9 +38,10 @@ grow_vertical = 2
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.576042
+anchor_left = 0.549479
+anchor_top = 0.0407407
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.959259
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
@@ -49,6 +50,7 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 2
 
 [node name="OutcomePanelContainer" type="PanelContainer" parent="MarginContainer/Control"]
+self_modulate = Color(1, 1, 1, 0.823529)
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -64,11 +66,12 @@ layout_mode = 2
 [node name="OutcomeLabel" type="Label" parent="MarginContainer/Control/OutcomePanelContainer/MarginContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 60
-text = "All your base is belonging"
+text = "All your powder has exploded!"
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="ScorePanelContainer" type="PanelContainer" parent="MarginContainer/Control"]
+self_modulate = Color(1, 1, 1, 0.823529)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.00129366
