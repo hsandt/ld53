@@ -13,6 +13,9 @@ extends Control
 @export var outcome_text_success: String
 @export var outcome_text_failure: String
 
+@export var background_texture_rect_success: Texture2D
+@export var background_texture_rect_failure: Texture2D
+
 ## Base powder value to multiply by time (with its own base)
 ## so we have some score > 0 even when no powder left
 @export var base_powder_value: float = 1.0
@@ -23,11 +26,15 @@ extends Control
 @export var base_remaining_time_value: float = 1.0
 @export var remaining_time_multiplier: float = 1.0
 
+@onready var background_texture_rect: TextureRect = $BackgroundTextureRect
+
 
 func _ready():
 	if GameManager.game_phase == Enums.GamePhase.SUCCESS:
+		background_texture_rect.texture = background_texture_rect_success
 		outcome_label.text = outcome_text_success
 	else:
+		background_texture_rect.texture = background_texture_rect_failure
 		outcome_label.text = outcome_text_failure
 
 	var powder_stats = GameManager.powder_stats
