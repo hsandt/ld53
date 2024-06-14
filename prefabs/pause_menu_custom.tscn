@@ -97,5 +97,5 @@ metadata/_edit_use_anchors_ = true
 [connection signal="close" from="OptionsMenu" to="." method="_on_options_menu_close"]
 
 [editable path="OptionsMenu"]
-[editable path="OptionsMenu/MarginContainer/TextureRect/ScrollContainer/VBoxContainer/MarginContainer/VBoxContainer/SFXVolumeSlider"]
-[editable path="OptionsMenu/MarginContainer/TextureRect/ScrollContainer/VBoxContainer/MarginContainer/VBoxContainer/MusicVolumeSlider"]
+[editable path="OptionsMenu/MarginContainer/PanelContainer/ScrollContainer/VBoxContainer/MarginContainer/VBoxContainer/SFXVolumeSlider"]
+[editable path="OptionsMenu/MarginContainer/PanelContainer/ScrollContainer/VBoxContainer/MarginContainer/VBoxContainer/MusicVolumeSlider"]
